@@ -27,7 +27,7 @@ export class AuthMiddleware {
             req.user = decoded;
             next();
         } catch (error) {
-            return new AppError("Token de acceso inválido o expirado", 403);
+            return next(new AppError("Token de acceso inválido o expirado", 403));
         }
     };
 }

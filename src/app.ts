@@ -8,6 +8,9 @@ import { errorHandler } from '@/shared/infrastructure/middleware/errorHandler';
 
 //Rutas de features
 import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
+import inmuebleRoutes from '@/features/inmueble/infrastructure/routes/inmueble.routes';
+
+
 
 const app: Express= express();
 
@@ -34,6 +37,9 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api', inmuebleRoutes);
+
+
 
 /* app.use('*', (req, res) => {
     res.status(404).json({
