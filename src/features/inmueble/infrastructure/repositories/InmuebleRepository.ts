@@ -35,4 +35,15 @@ export class InmuebleRepository {
     }
 
 
+    async listAllInmuebles(): Promise<any[]> {
+
+        const items = await prisma.inmueble.findMany({
+            include: { fotosInmueble: true },
+            orderBy: { fechaCreacion: 'desc' },
+        });
+        return items;
+    }
+
+
+
 }

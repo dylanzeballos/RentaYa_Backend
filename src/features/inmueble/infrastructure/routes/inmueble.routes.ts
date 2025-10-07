@@ -8,11 +8,15 @@ import { authMiddleware } from '@/shared/infrastructure/middleware/AuthMiddlewar
 
 
 
+
 const router: Router = Router();
 const repo = new InmuebleRepository();
 const createUseCase = new CreateInmuebleUseCase(repo);
 const controller = new InmuebleController(createUseCase);
 
+
+
 router.post('/inmuebles', authMiddleware.authenticate, validateSchema(createInmuebleSchema), controller.crearInmueble);
+router.get('/inmuebles', controller.listarInmuebles);
 
 export default router;
