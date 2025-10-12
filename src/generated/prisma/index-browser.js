@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.16.2
- * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
+ * Prisma Client JS version: 6.16.3
+ * Query Engine version: bb420e667c1820a8c05a38023385f6cc7ef8e83a
  */
 Prisma.prismaVersion = {
-  client: "6.16.2",
-  engine: "1c57fdcd7e44b29b9313256c76699e91c3ac3c43"
+  client: "6.16.3",
+  engine: "bb420e667c1820a8c05a38023385f6cc7ef8e83a"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -120,20 +120,107 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.UsuarioScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  googleId: 'googleId',
+  fotoPerfil: 'fotoPerfil',
+  correoElectronico: 'correoElectronico',
+  contrasenaHash: 'contrasenaHash',
+  nombreCompleto: 'nombreCompleto',
+  telefono: 'telefono',
+  rol: 'rol',
+  estadoVerificacion: 'estadoVerificacion',
+  refreshToken: 'refreshToken',
+  fechaCreacion: 'fechaCreacion',
+  fechaActualizacion: 'fechaActualizacion'
 };
 
-exports.Prisma.MessageScalarFieldEnum = {
+exports.Prisma.InmuebleScalarFieldEnum = {
   id: 'id',
-  content: 'content',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  propietarioId: 'propietarioId',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  direccion: 'direccion',
+  ciudad: 'ciudad',
+  dormitorios: 'dormitorios',
+  banos: 'banos',
+  areaM2: 'areaM2',
+  precio: 'precio',
+  tipoOperacion: 'tipoOperacion',
+  estado: 'estado',
+  fechaCreacion: 'fechaCreacion',
+  fechaActualizacion: 'fechaActualizacion'
+};
+
+exports.Prisma.InteresScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  inmuebleId: 'inmuebleId',
+  mensaje: 'mensaje',
+  estado: 'estado',
+  fechaCreacion: 'fechaCreacion'
+};
+
+exports.Prisma.MensajeScalarFieldEnum = {
+  id: 'id',
+  emisorId: 'emisorId',
+  receptorId: 'receptorId',
+  interesId: 'interesId',
+  contenido: 'contenido',
+  leido: 'leido',
+  fechaCreacion: 'fechaCreacion'
+};
+
+exports.Prisma.FotoInmuebleScalarFieldEnum = {
+  id: 'id',
+  inmuebleId: 'inmuebleId',
+  url: 'url',
+  orden: 'orden',
+  fechaCreacion: 'fechaCreacion'
+};
+
+exports.Prisma.ResenaScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  inmuebleId: 'inmuebleId',
+  contenido: 'contenido',
+  calificacion: 'calificacion',
+  fechaCreacion: 'fechaCreacion'
+};
+
+exports.Prisma.NotificacionScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  tipo: 'tipo',
+  titulo: 'titulo',
+  contenido: 'contenido',
+  leido: 'leido',
+  metadata: 'metadata',
+  fechaCreacion: 'fechaCreacion'
+};
+
+exports.Prisma.ReporteScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  tipo: 'tipo',
+  parametros: 'parametros',
+  archivoUrl: 'archivoUrl',
+  fechaCreacion: 'fechaCreacion'
+};
+
+exports.Prisma.FavoritoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  inmuebleId: 'inmuebleId',
+  fechaCreacion: 'fechaCreacion'
+};
+
+exports.Prisma.BusquedaGuardadaScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  parametrosBusqueda: 'parametrosBusqueda',
+  nombreBusqueda: 'nombreBusqueda',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.SortOrder = {
@@ -141,15 +228,43 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Message: 'Message'
+  Usuario: 'Usuario',
+  Inmueble: 'Inmueble',
+  Interes: 'Interes',
+  Mensaje: 'Mensaje',
+  FotoInmueble: 'FotoInmueble',
+  Resena: 'Resena',
+  Notificacion: 'Notificacion',
+  Reporte: 'Reporte',
+  Favorito: 'Favorito',
+  BusquedaGuardada: 'BusquedaGuardada'
 };
 
 /**

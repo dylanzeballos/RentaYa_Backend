@@ -1,71 +1,53 @@
-import express from 'express';
+import express, {Express} from 'express';
 import cors from 'cors';
-import { createServer } from 'http';
-import { Server as SocketIOServer } from 'socket.io';
-import { createMessageRoutes } from '@/features/messaging/infrastructure/routes/messageRoutes';
-import { createUserRoutes } from '@/features/user/infrastructure/routes/userRoutes';
-import { MessageController } from '@/features/messaging/infrastructure/controllers/MessageController';
-import { UserController } from '@/features/user/infrastructure/controllers/UserController';
-import { GetMessagesUseCase } from '@/features/messaging/application/usecases/GetMessagesUseCase';
-import { CreateUserUseCase } from '@/features/user/application/usecases/CreateUserUseCase';
-import { MessageRepository } from '@/features/messaging/infrastructure/repositories/MessageRepository';
-import { UserRepository } from '@/shared/infrastructure/repositories/UserRepository';
-import prisma from '@/config/prisma';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+
+
 import { errorHandler } from '@/shared/infrastructure/middleware/errorHandler';
 
-const app = express();
-const server = createServer(app);
-const io = new SocketIOServer(server, {
-    cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
-});
+//Rutas de features
+import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
+import inmuebleRoutes from '@/features/inmueble/infrastructure/routes/inmueble.routes';
 
-app.use(cors());
-app.use(express.json());
+
+
+const app: Express= express();
+
+app.use(helmet());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:8081',
+    credentials: true,
+}));
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // maximo 100 requests por IP por ventana
+});
+app.use(limiter);
+
+app.use(express.json({ limit: '10mb' })); // Limitar tamaño del body a 10mb
 app.use(express.urlencoded({ extended: true }));
 
-io.on('connection', (socket) => {
-    console.log(`Usuario conectado: ${socket.id}`);
-    
-    socket.on('join_room', (room) => {
-        socket.join(room);
-        console.log(`Usuario ${socket.id} se unió a la sala ${room}`);
-    });
-    
-    socket.on('send_message', (data) => {
-        socket.to(data.room).emit('receive_message', data);
-    });
-    
-    socket.on('disconnect', () => {
-        console.log(`Usuario desconectado: ${socket.id}`);
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
     });
 });
 
-app.set('io', io);
+app.use('/api/auth', authRoutes);
+app.use('/api', inmuebleRoutes);
 
-const messageRepository = new MessageRepository();
-const userRepository = new UserRepository(prisma);
 
-const getMessagesUseCase = new GetMessagesUseCase(messageRepository);
-const createUserUseCase = new CreateUserUseCase(userRepository);
 
-const messageController = new MessageController(getMessagesUseCase);
-const userController = new UserController(createUserUseCase);
-
-app.use('/api/messages', createMessageRoutes(messageController));
-app.use('/api/users', createUserRoutes(userController));
-
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK', message: 'Server is running' });
-});
+/* app.use('*', (req, res) => {
+    res.status(404).json({
+        success: false,
+        message: `Ruta ${req.originalUrl} no encontrada`,
+    });
+}); */
 
 app.use(errorHandler);
 
-const port = process.env.PORT || 3000;
-
-server.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-    console.log(`WebSocket server ready`);
-});
+export default app;
