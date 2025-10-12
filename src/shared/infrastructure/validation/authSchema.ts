@@ -41,3 +41,7 @@ export const refreshTokenSchema = z.object({
         refreshToken: z.string().min(1, 'El refresh token es requerido')
     }),
 });
+
+export const googleLoginSchema = z.object({
+    token: z.string().min(1, 'Token de Google es requerido')
+});

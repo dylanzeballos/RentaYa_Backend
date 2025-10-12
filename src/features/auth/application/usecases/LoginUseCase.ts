@@ -19,14 +19,15 @@ export class LoginUseCase {
             throw new AppError('Credenciales inválidas', 401);
         }
 
-        const isValidPassword = await this.hashService.compare(contrasena, usuario.contrasenaHash);
+        const isValidPassword = await this.hashService.compare(contrasena, usuario.contrasenaHash || '');
         if (!isValidPassword) {
             throw new AppError('Credenciales inválidas', 401);
         }
 
         const tokens = this.jwtService.generateTokens({
             userId: usuario.id,
-            email: usuario.correoElectronico
+            email: usuario.correoElectronico,
+            role : usuario.rol
         });
 
         await this.authRepository.updateUser(usuario.id, { fechaActualizacion: new Date() });
