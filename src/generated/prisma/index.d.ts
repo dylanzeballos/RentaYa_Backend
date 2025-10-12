@@ -339,8 +339,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.16.2
-   * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
+   * Prisma Client JS version: 6.16.3
+   * Query Engine version: bb420e667c1820a8c05a38023385f6cc7ef8e83a
    */
   export type PrismaVersion = {
     client: string
@@ -1882,36 +1882,45 @@ export namespace Prisma {
 
   export type UsuarioMinAggregateOutputType = {
     id: string | null
+    googleId: string | null
+    fotoPerfil: string | null
     correoElectronico: string | null
     contrasenaHash: string | null
     nombreCompleto: string | null
     telefono: string | null
     rol: string | null
     estadoVerificacion: string | null
+    refreshToken: string | null
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
   }
 
   export type UsuarioMaxAggregateOutputType = {
     id: string | null
+    googleId: string | null
+    fotoPerfil: string | null
     correoElectronico: string | null
     contrasenaHash: string | null
     nombreCompleto: string | null
     telefono: string | null
     rol: string | null
     estadoVerificacion: string | null
+    refreshToken: string | null
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
   }
 
   export type UsuarioCountAggregateOutputType = {
     id: number
+    googleId: number
+    fotoPerfil: number
     correoElectronico: number
     contrasenaHash: number
     nombreCompleto: number
     telefono: number
     rol: number
     estadoVerificacion: number
+    refreshToken: number
     fechaCreacion: number
     fechaActualizacion: number
     _all: number
@@ -1920,36 +1929,45 @@ export namespace Prisma {
 
   export type UsuarioMinAggregateInputType = {
     id?: true
+    googleId?: true
+    fotoPerfil?: true
     correoElectronico?: true
     contrasenaHash?: true
     nombreCompleto?: true
     telefono?: true
     rol?: true
     estadoVerificacion?: true
+    refreshToken?: true
     fechaCreacion?: true
     fechaActualizacion?: true
   }
 
   export type UsuarioMaxAggregateInputType = {
     id?: true
+    googleId?: true
+    fotoPerfil?: true
     correoElectronico?: true
     contrasenaHash?: true
     nombreCompleto?: true
     telefono?: true
     rol?: true
     estadoVerificacion?: true
+    refreshToken?: true
     fechaCreacion?: true
     fechaActualizacion?: true
   }
 
   export type UsuarioCountAggregateInputType = {
     id?: true
+    googleId?: true
+    fotoPerfil?: true
     correoElectronico?: true
     contrasenaHash?: true
     nombreCompleto?: true
     telefono?: true
     rol?: true
     estadoVerificacion?: true
+    refreshToken?: true
     fechaCreacion?: true
     fechaActualizacion?: true
     _all?: true
@@ -2029,12 +2047,15 @@ export namespace Prisma {
 
   export type UsuarioGroupByOutputType = {
     id: string
+    googleId: string | null
+    fotoPerfil: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash: string | null
     nombreCompleto: string | null
     telefono: string | null
     rol: string
     estadoVerificacion: string
+    refreshToken: string | null
     fechaCreacion: Date
     fechaActualizacion: Date
     _count: UsuarioCountAggregateOutputType | null
@@ -2058,12 +2079,15 @@ export namespace Prisma {
 
   export type UsuarioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    googleId?: boolean
+    fotoPerfil?: boolean
     correoElectronico?: boolean
     contrasenaHash?: boolean
     nombreCompleto?: boolean
     telefono?: boolean
     rol?: boolean
     estadoVerificacion?: boolean
+    refreshToken?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
     inmueblesPropietario?: boolean | Usuario$inmueblesPropietarioArgs<ExtArgs>
@@ -2080,41 +2104,50 @@ export namespace Prisma {
 
   export type UsuarioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    googleId?: boolean
+    fotoPerfil?: boolean
     correoElectronico?: boolean
     contrasenaHash?: boolean
     nombreCompleto?: boolean
     telefono?: boolean
     rol?: boolean
     estadoVerificacion?: boolean
+    refreshToken?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
   }, ExtArgs["result"]["usuario"]>
 
   export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    googleId?: boolean
+    fotoPerfil?: boolean
     correoElectronico?: boolean
     contrasenaHash?: boolean
     nombreCompleto?: boolean
     telefono?: boolean
     rol?: boolean
     estadoVerificacion?: boolean
+    refreshToken?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
   }, ExtArgs["result"]["usuario"]>
 
   export type UsuarioSelectScalar = {
     id?: boolean
+    googleId?: boolean
+    fotoPerfil?: boolean
     correoElectronico?: boolean
     contrasenaHash?: boolean
     nombreCompleto?: boolean
     telefono?: boolean
     rol?: boolean
     estadoVerificacion?: boolean
+    refreshToken?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "correoElectronico" | "contrasenaHash" | "nombreCompleto" | "telefono" | "rol" | "estadoVerificacion" | "fechaCreacion" | "fechaActualizacion", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "googleId" | "fotoPerfil" | "correoElectronico" | "contrasenaHash" | "nombreCompleto" | "telefono" | "rol" | "estadoVerificacion" | "refreshToken" | "fechaCreacion" | "fechaActualizacion", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inmueblesPropietario?: boolean | Usuario$inmueblesPropietarioArgs<ExtArgs>
     Intereses?: boolean | Usuario$InteresesArgs<ExtArgs>
@@ -2145,12 +2178,15 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      googleId: string | null
+      fotoPerfil: string | null
       correoElectronico: string
-      contrasenaHash: string
+      contrasenaHash: string | null
       nombreCompleto: string | null
       telefono: string | null
       rol: string
       estadoVerificacion: string
+      refreshToken: string | null
       fechaCreacion: Date
       fechaActualizacion: Date
     }, ExtArgs["result"]["usuario"]>
@@ -2586,12 +2622,15 @@ export namespace Prisma {
    */
   interface UsuarioFieldRefs {
     readonly id: FieldRef<"Usuario", 'String'>
+    readonly googleId: FieldRef<"Usuario", 'String'>
+    readonly fotoPerfil: FieldRef<"Usuario", 'String'>
     readonly correoElectronico: FieldRef<"Usuario", 'String'>
     readonly contrasenaHash: FieldRef<"Usuario", 'String'>
     readonly nombreCompleto: FieldRef<"Usuario", 'String'>
     readonly telefono: FieldRef<"Usuario", 'String'>
     readonly rol: FieldRef<"Usuario", 'String'>
     readonly estadoVerificacion: FieldRef<"Usuario", 'String'>
+    readonly refreshToken: FieldRef<"Usuario", 'String'>
     readonly fechaCreacion: FieldRef<"Usuario", 'DateTime'>
     readonly fechaActualizacion: FieldRef<"Usuario", 'DateTime'>
   }
@@ -13309,12 +13348,15 @@ export namespace Prisma {
 
   export const UsuarioScalarFieldEnum: {
     id: 'id',
+    googleId: 'googleId',
+    fotoPerfil: 'fotoPerfil',
     correoElectronico: 'correoElectronico',
     contrasenaHash: 'contrasenaHash',
     nombreCompleto: 'nombreCompleto',
     telefono: 'telefono',
     rol: 'rol',
     estadoVerificacion: 'estadoVerificacion',
+    refreshToken: 'refreshToken',
     fechaCreacion: 'fechaCreacion',
     fechaActualizacion: 'fechaActualizacion'
   };
@@ -13603,12 +13645,15 @@ export namespace Prisma {
     OR?: UsuarioWhereInput[]
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     id?: UuidFilter<"Usuario"> | string
+    googleId?: StringNullableFilter<"Usuario"> | string | null
+    fotoPerfil?: StringNullableFilter<"Usuario"> | string | null
     correoElectronico?: StringFilter<"Usuario"> | string
-    contrasenaHash?: StringFilter<"Usuario"> | string
+    contrasenaHash?: StringNullableFilter<"Usuario"> | string | null
     nombreCompleto?: StringNullableFilter<"Usuario"> | string | null
     telefono?: StringNullableFilter<"Usuario"> | string | null
     rol?: StringFilter<"Usuario"> | string
     estadoVerificacion?: StringFilter<"Usuario"> | string
+    refreshToken?: StringNullableFilter<"Usuario"> | string | null
     fechaCreacion?: DateTimeFilter<"Usuario"> | Date | string
     fechaActualizacion?: DateTimeFilter<"Usuario"> | Date | string
     inmueblesPropietario?: InmuebleListRelationFilter
@@ -13624,12 +13669,15 @@ export namespace Prisma {
 
   export type UsuarioOrderByWithRelationInput = {
     id?: SortOrder
+    googleId?: SortOrderInput | SortOrder
+    fotoPerfil?: SortOrderInput | SortOrder
     correoElectronico?: SortOrder
-    contrasenaHash?: SortOrder
+    contrasenaHash?: SortOrderInput | SortOrder
     nombreCompleto?: SortOrderInput | SortOrder
     telefono?: SortOrderInput | SortOrder
     rol?: SortOrder
     estadoVerificacion?: SortOrder
+    refreshToken?: SortOrderInput | SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
     inmueblesPropietario?: InmuebleOrderByRelationAggregateInput
@@ -13645,15 +13693,18 @@ export namespace Prisma {
 
   export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    googleId?: string
     correoElectronico?: string
     AND?: UsuarioWhereInput | UsuarioWhereInput[]
     OR?: UsuarioWhereInput[]
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
-    contrasenaHash?: StringFilter<"Usuario"> | string
+    fotoPerfil?: StringNullableFilter<"Usuario"> | string | null
+    contrasenaHash?: StringNullableFilter<"Usuario"> | string | null
     nombreCompleto?: StringNullableFilter<"Usuario"> | string | null
     telefono?: StringNullableFilter<"Usuario"> | string | null
     rol?: StringFilter<"Usuario"> | string
     estadoVerificacion?: StringFilter<"Usuario"> | string
+    refreshToken?: StringNullableFilter<"Usuario"> | string | null
     fechaCreacion?: DateTimeFilter<"Usuario"> | Date | string
     fechaActualizacion?: DateTimeFilter<"Usuario"> | Date | string
     inmueblesPropietario?: InmuebleListRelationFilter
@@ -13665,16 +13716,19 @@ export namespace Prisma {
     reportes?: ReporteListRelationFilter
     favoritos?: FavoritoListRelationFilter
     busquedasGuardadas?: BusquedaGuardadaListRelationFilter
-  }, "id" | "correoElectronico">
+  }, "id" | "googleId" | "correoElectronico">
 
   export type UsuarioOrderByWithAggregationInput = {
     id?: SortOrder
+    googleId?: SortOrderInput | SortOrder
+    fotoPerfil?: SortOrderInput | SortOrder
     correoElectronico?: SortOrder
-    contrasenaHash?: SortOrder
+    contrasenaHash?: SortOrderInput | SortOrder
     nombreCompleto?: SortOrderInput | SortOrder
     telefono?: SortOrderInput | SortOrder
     rol?: SortOrder
     estadoVerificacion?: SortOrder
+    refreshToken?: SortOrderInput | SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
     _count?: UsuarioCountOrderByAggregateInput
@@ -13687,12 +13741,15 @@ export namespace Prisma {
     OR?: UsuarioScalarWhereWithAggregatesInput[]
     NOT?: UsuarioScalarWhereWithAggregatesInput | UsuarioScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Usuario"> | string
+    googleId?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
+    fotoPerfil?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
     correoElectronico?: StringWithAggregatesFilter<"Usuario"> | string
-    contrasenaHash?: StringWithAggregatesFilter<"Usuario"> | string
+    contrasenaHash?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
     nombreCompleto?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
     telefono?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
     rol?: StringWithAggregatesFilter<"Usuario"> | string
     estadoVerificacion?: StringWithAggregatesFilter<"Usuario"> | string
+    refreshToken?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
     fechaCreacion?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
     fechaActualizacion?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
   }
@@ -14313,12 +14370,15 @@ export namespace Prisma {
 
   export type UsuarioCreateInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -14334,12 +14394,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -14355,12 +14418,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -14376,12 +14442,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -14397,36 +14466,45 @@ export namespace Prisma {
 
   export type UsuarioCreateManyInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
   }
 
   export type UsuarioUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UsuarioUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15065,21 +15143,6 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -15093,6 +15156,21 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -15193,36 +15271,45 @@ export namespace Prisma {
 
   export type UsuarioCountOrderByAggregateInput = {
     id?: SortOrder
+    googleId?: SortOrder
+    fotoPerfil?: SortOrder
     correoElectronico?: SortOrder
     contrasenaHash?: SortOrder
     nombreCompleto?: SortOrder
     telefono?: SortOrder
     rol?: SortOrder
     estadoVerificacion?: SortOrder
+    refreshToken?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
   }
 
   export type UsuarioMaxOrderByAggregateInput = {
     id?: SortOrder
+    googleId?: SortOrder
+    fotoPerfil?: SortOrder
     correoElectronico?: SortOrder
     contrasenaHash?: SortOrder
     nombreCompleto?: SortOrder
     telefono?: SortOrder
     rol?: SortOrder
     estadoVerificacion?: SortOrder
+    refreshToken?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
   }
 
   export type UsuarioMinOrderByAggregateInput = {
     id?: SortOrder
+    googleId?: SortOrder
+    fotoPerfil?: SortOrder
     correoElectronico?: SortOrder
     contrasenaHash?: SortOrder
     nombreCompleto?: SortOrder
     telefono?: SortOrder
     rol?: SortOrder
     estadoVerificacion?: SortOrder
+    refreshToken?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
   }
@@ -15237,24 +15324,6 @@ export namespace Prisma {
     gte?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
@@ -15276,6 +15345,24 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -16748,20 +16835,6 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -16774,6 +16847,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -16812,23 +16899,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -16855,6 +16925,23 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -17602,12 +17689,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutInmueblesPropietarioInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     Intereses?: InteresCreateNestedManyWithoutUsuarioInput
@@ -17622,12 +17712,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutInmueblesPropietarioInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     Intereses?: InteresUncheckedCreateNestedManyWithoutUsuarioInput
@@ -17758,12 +17851,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutInmueblesPropietarioInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     Intereses?: InteresUpdateManyWithoutUsuarioNestedInput
@@ -17778,12 +17874,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutInmueblesPropietarioInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     Intereses?: InteresUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -17873,12 +17972,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutInteresesInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -17893,12 +17995,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutInteresesInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -18002,12 +18107,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutInteresesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -18022,12 +18130,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutInteresesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -18109,12 +18220,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutMensajesEmitidosInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -18129,12 +18243,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutMensajesEmitidosInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -18154,12 +18271,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutMensajesRecibidosInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -18174,12 +18294,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutMensajesRecibidosInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -18233,12 +18356,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutMensajesEmitidosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -18253,12 +18379,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutMensajesEmitidosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -18284,12 +18413,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutMensajesRecibidosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -18304,12 +18436,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutMensajesRecibidosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -18449,12 +18584,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutResenasInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -18469,12 +18607,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutResenasInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -18550,12 +18691,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutResenasInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -18570,12 +18714,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutResenasInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -18641,12 +18788,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutNotificacionesInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -18661,12 +18811,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutNotificacionesInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -18697,12 +18850,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutNotificacionesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -18717,12 +18873,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutNotificacionesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -18737,12 +18896,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutReportesInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -18757,12 +18919,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutReportesInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -18793,12 +18958,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutReportesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -18813,12 +18981,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutReportesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -18833,12 +19004,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutFavoritosInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -18853,12 +19027,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutFavoritosInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -18934,12 +19111,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutFavoritosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -18954,12 +19134,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutFavoritosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
@@ -19025,12 +19208,15 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutBusquedasGuardadasInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleCreateNestedManyWithoutPropietarioInput
@@ -19045,12 +19231,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedCreateWithoutBusquedasGuardadasInput = {
     id?: string
+    googleId?: string | null
+    fotoPerfil?: string | null
     correoElectronico: string
-    contrasenaHash: string
+    contrasenaHash?: string | null
     nombreCompleto?: string | null
     telefono?: string | null
     rol?: string
     estadoVerificacion?: string
+    refreshToken?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     inmueblesPropietario?: InmuebleUncheckedCreateNestedManyWithoutPropietarioInput
@@ -19081,12 +19270,15 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutBusquedasGuardadasInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUpdateManyWithoutPropietarioNestedInput
@@ -19101,12 +19293,15 @@ export namespace Prisma {
 
   export type UsuarioUncheckedUpdateWithoutBusquedasGuardadasInput = {
     id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
     correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: StringFieldUpdateOperationsInput | string
+    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
     nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
     telefono?: NullableStringFieldUpdateOperationsInput | string | null
     rol?: StringFieldUpdateOperationsInput | string
     estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueblesPropietario?: InmuebleUncheckedUpdateManyWithoutPropietarioNestedInput
