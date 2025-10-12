@@ -30,7 +30,8 @@ export class RegisterUseCase {
 
         const tokens = this.jwtService.generateTokens({
             userId: usuario.id,
-            email: usuario.correoElectronico
+            email: usuario.correoElectronico,
+            role: usuario.rol
         });
 
         return {

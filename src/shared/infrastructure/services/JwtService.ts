@@ -23,6 +23,18 @@ export class JwtService {
 
         return { accessToken, refreshToken };
     }
+
+    generateAccessToken(payload: TokenPayload): string {
+        return jwt.sign(payload, this.accessTokenSecret, {
+            expiresIn: this.accessTokenExpiry
+        });
+    }
+
+    generateRefreshToken(payload: Pick<TokenPayload, 'userId'>): string {
+        return jwt.sign(payload, this.refreshTokenSecret, {
+            expiresIn: this.refreshTokenExpiry
+        });
+    }
     
     verifyAccessToken = (token: string): TokenPayload => {
         return jwt.verify(token, this.accessTokenSecret) as TokenPayload;

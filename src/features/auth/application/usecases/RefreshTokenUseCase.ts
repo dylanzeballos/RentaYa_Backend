@@ -22,7 +22,8 @@ export class RefreshTokenUseCase {
 
             return this.jwtService.generateTokens({
                 userId: usuario.id,
-                email: usuario.correoElectronico
+                email: usuario.correoElectronico,
+                role: usuario.rol
             });
         } catch (error) {
             throw new AppError('Token de refresco inválido o expirado', 403);
