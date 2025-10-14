@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -16,55 +10,51 @@ datasource db {
 }
 
 model Usuario {
-  id                 String   @id @default(uuid()) @db.Uuid
-  googleId           String?  @unique
-  fotoPerfil         String?  
-  correoElectronico  String   @unique @db.VarChar(255)
-  contrasenaHash     String?  
-  nombreCompleto     String?  @db.VarChar(255)
-  telefono           String?  @db.VarChar(20)
-  rol                String   @default("usuario")@db.VarChar(20) // 'propietario' o 'inquilino'
-  estadoVerificacion String   @default("pendiente") @db.VarChar(20)
-  refreshToken       String?
-  fechaCreacion      DateTime @default(now()) @db.Timestamp(0)
-  fechaActualizacion DateTime @updatedAt @db.Timestamp(0)
-
-  // Relaciones
+  id                   String             @id @default(uuid()) @db.Uuid
+  googleId             String?            @unique
+  fotoPerfil           String?
+  correoElectronico    String             @unique @db.VarChar(255)
+  contrasenaHash       String?
+  nombreCompleto       String?            @db.VarChar(255)
+  telefono             String?            @db.VarChar(20)
+  rol                  String             @default("usuario") @db.VarChar(20)
+  estadoVerificacion   String             @default("pendiente") @db.VarChar(20)
+  refreshToken         String?
+  fechaCreacion        DateTime           @default(now()) @db.Timestamp(0)
+  fechaActualizacion   DateTime           @updatedAt @db.Timestamp(0)
+  busquedasGuardadas   BusquedaGuardada[]
+  favoritos            Favorito[]
   inmueblesPropietario Inmueble[]
   Intereses            Interes[]
   mensajesEmitidos     Mensaje[]          @relation("MensajesEmisor")
   mensajesRecibidos    Mensaje[]          @relation("MensajesReceptor")
-  resenas              Resena[]
   notificaciones       Notificacion[]
   reportes             Reporte[]
-  favoritos            Favorito[]
-  busquedasGuardadas   BusquedaGuardada[]
-
+  resenas              Resena[]
+  preferences         UserPreference?    @relation("UserPreferences")
   @@map("usuarios")
 }
 
 model Inmueble {
-  id                 String   @id @default(uuid()) @db.Uuid
-  propietarioId      String   @db.Uuid
-  titulo             String   @db.VarChar(255)
-  descripcion        String?  @db.Text
-  direccion          String?  @db.VarChar(500)
-  ciudad             String   @default("Cochabamba") @db.VarChar(100)
+  id                 String         @id @default(uuid()) @db.Uuid
+  propietarioId      String         @db.Uuid
+  titulo             String         @db.VarChar(255)
+  descripcion        String?
+  direccion          String?        @db.VarChar(500)
+  ciudad             String         @default("Cochabamba") @db.VarChar(100)
   dormitorios        Int?
   banos              Int?
-  areaM2             Decimal? @db.Decimal(10, 2)
-  precio             Decimal  @db.Decimal(12, 2)
-  tipoOperacion      String   @db.VarChar(20) // 'alquiler' o 'anticretico'
-  estado             String   @default("disponible") @db.VarChar(20) // 'disponible', 'alquilado'
-  fechaCreacion      DateTime @default(now()) @db.Timestamp(0)
-  fechaActualizacion DateTime @updatedAt @db.Timestamp(0)
-
-  // Relaciones
-  propietario   Usuario        @relation(fields: [propietarioId], references: [id], onDelete: Cascade)
-  intereses     Interes[]
-  fotosInmueble FotoInmueble[]
-  resenas       Resena[]
-  favoritos     Favorito[]
+  areaM2             Decimal?       @db.Decimal(10, 2)
+  precio             Decimal        @db.Decimal(12, 2)
+  tipoOperacion      String         @db.VarChar(20)
+  estado             String         @default("disponible") @db.VarChar(20)
+  fechaCreacion      DateTime       @default(now()) @db.Timestamp(0)
+  fechaActualizacion DateTime       @updatedAt @db.Timestamp(0)
+  favoritos          Favorito[]
+  fotosInmueble      FotoInmueble[]
+  propietario        Usuario        @relation(fields: [propietarioId], references: [id], onDelete: Cascade)
+  intereses          Interes[]
+  resenas            Resena[]
 
   @@index([ciudad])
   @@index([estado])
@@ -74,17 +64,15 @@ model Inmueble {
 }
 
 model Interes {
-  id            String   @id @default(uuid()) @db.Uuid
-  usuarioId     String   @db.Uuid
-  inmuebleId    String   @db.Uuid
-  mensaje       String?  @db.Text
-  estado        String   @default("pendiente") @db.VarChar(20)
-  fechaCreacion DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  usuario  Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  inmueble Inmueble  @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
-  mensajes Mensaje[]
+  id            String    @id @default(uuid()) @db.Uuid
+  usuarioId     String    @db.Uuid
+  inmuebleId    String    @db.Uuid
+  mensaje       String?
+  estado        String    @default("pendiente") @db.VarChar(20)
+  fechaCreacion DateTime  @default(now()) @db.Timestamp(0)
+  inmueble      Inmueble  @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
+  usuario       Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  mensajes      Mensaje[]
 
   @@index([usuarioId])
   @@index([inmuebleId])
@@ -95,15 +83,13 @@ model Mensaje {
   id            BigInt   @id @default(autoincrement())
   emisorId      String   @db.Uuid
   receptorId    String   @db.Uuid
-  interesId     String?   @db.Uuid
-  contenido     String   @db.Text
+  interesId     String?  @db.Uuid
+  contenido     String
   leido         Boolean  @default(false)
   fechaCreacion DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  emisor   Usuario  @relation("MensajesEmisor", fields: [emisorId], references: [id], onDelete: Cascade)
-  receptor Usuario  @relation("MensajesReceptor", fields: [receptorId], references: [id], onDelete: Cascade)
-  interes  Interes? @relation(fields: [interesId], references: [id], onDelete: SetNull)
+  emisor        Usuario  @relation("MensajesEmisor", fields: [emisorId], references: [id], onDelete: Cascade)
+  interes       Interes? @relation(fields: [interesId], references: [id])
+  receptor      Usuario  @relation("MensajesReceptor", fields: [receptorId], references: [id], onDelete: Cascade)
 
   @@index([emisorId, receptorId])
   @@index([interesId])
@@ -113,12 +99,10 @@ model Mensaje {
 model FotoInmueble {
   id            BigInt   @id @default(autoincrement())
   inmuebleId    String   @db.Uuid
-  url           String   @db.Text
+  url           String
   orden         Int?
   fechaCreacion DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  inmueble Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
+  inmueble      Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
 
   @@index([inmuebleId])
   @@map("fotos_inmueble")
@@ -128,13 +112,11 @@ model Resena {
   id            BigInt   @id @default(autoincrement())
   usuarioId     String   @db.Uuid
   inmuebleId    String   @db.Uuid
-  contenido     String   @db.Text
-  calificacion  Int      @db.Integer
+  contenido     String
+  calificacion  Int
   fechaCreacion DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  usuario  Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  inmueble Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
+  inmueble      Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
   @@index([usuarioId])
   @@index([inmuebleId])
@@ -146,13 +128,11 @@ model Notificacion {
   usuarioId     String   @db.Uuid
   tipo          String   @db.VarChar(50)
   titulo        String   @db.VarChar(255)
-  contenido     String   @db.Text
+  contenido     String
   leido         Boolean  @default(false)
   metadata      Json?
   fechaCreacion DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
   @@index([usuarioId])
   @@index([leido])
@@ -166,9 +146,7 @@ model Reporte {
   parametros    Json?
   archivoUrl    String?  @db.VarChar(500)
   fechaCreacion DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
   @@index([usuarioId])
   @@map("reportes")
@@ -179,10 +157,8 @@ model Favorito {
   usuarioId     String   @db.Uuid
   inmuebleId    String   @db.Uuid
   fechaCreacion DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  usuario  Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  inmueble Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
+  inmueble      Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
   @@unique([usuarioId, inmuebleId])
   @@index([usuarioId])
@@ -196,10 +172,20 @@ model BusquedaGuardada {
   parametrosBusqueda Json
   nombreBusqueda     String?  @db.VarChar(255)
   fechaCreacion      DateTime @default(now()) @db.Timestamp(0)
-
-  // Relaciones
-  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuario            Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
   @@index([usuarioId])
   @@map("busquedas_guardadas")
+}
+model UserPreference {
+  id             String   @id @default(uuid()) @db.Uuid
+  userId         String   @unique @db.Uuid
+  propertyTypes  String[]
+  modality       String?
+  locations      String[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user          Usuario    @relation("UserPreferences", fields: [userId], references: [id])
+  @@map("user_preferences")
 }
