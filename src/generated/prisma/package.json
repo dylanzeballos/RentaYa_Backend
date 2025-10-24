@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
   "name": "prisma-client-99d3037f94036760ca2c38efc167de9d05f9d5a7770d888dc62ac7f705effade",
-=======
-  "name": "prisma-client-bad721a617c27f8e1e45377e1f76bec3320ba357bb74f182767754223bbe8931",
->>>>>>> Stashed changes
   "main": "index.js",
   "types": "index.d.ts",
   "browser": "default.js",
@@ -155,7 +151,7 @@
     },
     "./*": "./*"
   },
-  "version": "6.18.0",
+  "version": "6.16.3",
   "sideEffects": false,
   "imports": {
     "#wasm-engine-loader": {

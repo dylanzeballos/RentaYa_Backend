@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.18.0
- * Query Engine version: 34b5a692b7bd79939a9a2c3ef97d816e749cda2f
+ * Prisma Client JS version: 6.16.3
+ * Query Engine version: bb420e667c1820a8c05a38023385f6cc7ef8e83a
  */
 Prisma.prismaVersion = {
-  client: "6.18.0",
-  engine: "34b5a692b7bd79939a9a2c3ef97d816e749cda2f"
+  client: "6.16.3",
+  engine: "bb420e667c1820a8c05a38023385f6cc7ef8e83a"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -123,104 +123,104 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UsuarioScalarFieldEnum = {
   id: 'id',
   googleId: 'googleId',
-  profilePhoto: 'profilePhoto',
-  email: 'email',
-  passwordHash: 'passwordHash',
-  fullName: 'fullName',
-  phone: 'phone',
-  role: 'role',
-  verificationStatus: 'verificationStatus',
+  fotoPerfil: 'fotoPerfil',
+  correoElectronico: 'correoElectronico',
+  contrasenaHash: 'contrasenaHash',
+  nombreCompleto: 'nombreCompleto',
+  telefono: 'telefono',
+  rol: 'rol',
+  estadoVerificacion: 'estadoVerificacion',
   refreshToken: 'refreshToken',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  fechaCreacion: 'fechaCreacion',
+  fechaActualizacion: 'fechaActualizacion'
 };
 
 exports.Prisma.InmuebleScalarFieldEnum = {
   id: 'id',
-  ownerId: 'ownerId',
-  title: 'title',
-  description: 'description',
-  address: 'address',
-  city: 'city',
-  bedrooms: 'bedrooms',
-  bathrooms: 'bathrooms',
+  propietarioId: 'propietarioId',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  direccion: 'direccion',
+  ciudad: 'ciudad',
+  dormitorios: 'dormitorios',
+  banos: 'banos',
   areaM2: 'areaM2',
-  price: 'price',
-  operationType: 'operationType',
-  status: 'status',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  precio: 'precio',
+  tipoOperacion: 'tipoOperacion',
+  estado: 'estado',
+  fechaCreacion: 'fechaCreacion',
+  fechaActualizacion: 'fechaActualizacion'
 };
 
 exports.Prisma.InteresScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  propertyId: 'propertyId',
-  message: 'message',
-  status: 'status',
-  createdAt: 'createdAt'
+  usuarioId: 'usuarioId',
+  inmuebleId: 'inmuebleId',
+  mensaje: 'mensaje',
+  estado: 'estado',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.MensajeScalarFieldEnum = {
   id: 'id',
-  senderId: 'senderId',
-  receiverId: 'receiverId',
-  interestId: 'interestId',
-  content: 'content',
-  read: 'read',
-  createdAt: 'createdAt'
+  emisorId: 'emisorId',
+  receptorId: 'receptorId',
+  interesId: 'interesId',
+  contenido: 'contenido',
+  leido: 'leido',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.FotoInmuebleScalarFieldEnum = {
   id: 'id',
-  propertyId: 'propertyId',
+  inmuebleId: 'inmuebleId',
   url: 'url',
-  order: 'order',
-  createdAt: 'createdAt'
+  orden: 'orden',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.ResenaScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  propertyId: 'propertyId',
-  content: 'content',
-  rating: 'rating',
-  createdAt: 'createdAt'
+  usuarioId: 'usuarioId',
+  inmuebleId: 'inmuebleId',
+  contenido: 'contenido',
+  calificacion: 'calificacion',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.NotificacionScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  type: 'type',
-  title: 'title',
-  content: 'content',
-  read: 'read',
+  usuarioId: 'usuarioId',
+  tipo: 'tipo',
+  titulo: 'titulo',
+  contenido: 'contenido',
+  leido: 'leido',
   metadata: 'metadata',
-  createdAt: 'createdAt'
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.ReporteScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  type: 'type',
-  parameters: 'parameters',
-  fileUrl: 'fileUrl',
-  createdAt: 'createdAt'
+  usuarioId: 'usuarioId',
+  tipo: 'tipo',
+  parametros: 'parametros',
+  archivoUrl: 'archivoUrl',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.FavoritoScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  propertyId: 'propertyId',
-  createdAt: 'createdAt'
+  usuarioId: 'usuarioId',
+  inmuebleId: 'inmuebleId',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.BusquedaGuardadaScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  searchParameters: 'searchParameters',
-  searchName: 'searchName',
-  createdAt: 'createdAt'
+  usuarioId: 'usuarioId',
+  parametrosBusqueda: 'parametrosBusqueda',
+  nombreBusqueda: 'nombreBusqueda',
+  fechaCreacion: 'fechaCreacion'
 };
 
 exports.Prisma.UserPreferenceScalarFieldEnum = {

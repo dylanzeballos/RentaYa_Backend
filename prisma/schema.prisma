@@ -33,6 +33,7 @@ model Usuario {
   reports           Reporte[]
   favorites         Favorito[]
   savedSearches     BusquedaGuardada[]
+  userPreference    UserPreference?    @relation("UserPreferences")
 
   @@map("users")
 }
