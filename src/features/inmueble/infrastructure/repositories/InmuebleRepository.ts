@@ -3,33 +3,33 @@ import { Inmueble } from '@/generated/prisma';
 
 export class InmuebleRepository {
     async createInmueble(payload: {
-        propietarioId: string;
-        titulo: string;
-        descripcion?: string | null;
-        direccion?: string | null;
-        ciudad?: string;
-        dormitorios?: number | null;
-        banos?: number | null;
+        ownerId: string;
+        title: string;
+        description?: string | null;
+        address?: string | null;
+        city?: string;
+        bedrooms?: number | null;
+        bathrooms?: number | null;
         areaM2?: number | null;
-        precio: number;
-        tipoOperacion: string;
-        fotos?: string[];
+        price: number;
+        operationType: string;
+        photos?: string[];
 
     }): Promise<Inmueble> {
 
-        const { fotos, ...inmuebleData } = payload;
+        const { photos, ...inmuebleData } = payload;
 
         // mapear explícitamente y usar any para evitar errores estrictos de tipos
         const dataPayload: any = {
             ...inmuebleData,
-            fotosInmueble: fotos
-                ? { create: fotos.map((url, idx) => ({ url, orden: idx + 1 })) }
+            propertyPhotos: photos
+                ? { create: photos.map((url, idx) => ({ url, order: idx + 1 })) }
                 : undefined,
         };
 
         const created = await prisma.inmueble.create({
             data: dataPayload,
-            include: { fotosInmueble: true },
+            include: { propertyPhotos: true },
         });
         return created;
     }
@@ -38,8 +38,8 @@ export class InmuebleRepository {
     async listAllInmuebles(): Promise<any[]> {
 
         const items = await prisma.inmueble.findMany({
-            include: { fotosInmueble: true },
-            orderBy: { fechaCreacion: 'desc' },
+            include: { propertyPhotos: true },
+            orderBy: { createdAt: 'desc' },
         });
         return items;
     }

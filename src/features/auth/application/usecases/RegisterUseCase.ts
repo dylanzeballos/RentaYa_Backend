@@ -12,36 +12,36 @@ export class RegisterUseCase {
     ) {}
 
     async execute(request: RegisterRequest): Promise<AuthResponse> {
-        const { correoElectronico, contrasena, nombreCompleto, telefono } = request;
+        const { email, password, fullName, phone } = request;
 
-        const existingUser = await this.authRepository.findUserByEmail(correoElectronico);
+        const existingUser = await this.authRepository.findUserByEmail(email);
         if (existingUser) {
             throw new AppError('El correo electrónico ya está en uso', 409);
         }
 
-        const contrasenaHash = await this.hashService.hash(contrasena);
+        const passwordHash = await this.hashService.hash(password);
 
-        const usuario = await this.authRepository.createUser({
-            correoElectronico,
-            contrasenaHash,
-            nombreCompleto,
-            telefono
+        const user = await this.authRepository.createUser({
+            email,
+            passwordHash,
+            fullName,
+            phone
         });
 
         const tokens = this.jwtService.generateTokens({
-            userId: usuario.id,
-            email: usuario.correoElectronico,
-            role: usuario.rol
+            userId: user.id,
+            email: user.email,
+            role: user.role
         });
 
         return {
             user: {
-                id: usuario.id,
-                correoElectronico: usuario.correoElectronico,
-                nombreCompleto: usuario.nombreCompleto,
-                telefono: usuario.telefono,
-                rol: usuario.rol,
-                estadoVerificacion: usuario.estadoVerificacion
+                id: user.id,
+                email: user.email,
+                fullName: user.fullName,
+                phone: user.phone,
+                role: user.role,
+                verificationStatus: user.verificationStatus
             },
             ...tokens
         };

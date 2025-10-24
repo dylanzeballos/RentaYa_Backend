@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { TokenPayload, TokenResponse } from '@/shared/domain/types/AuthTypes';
 
 export class JwtService {
@@ -13,27 +13,23 @@ export class JwtService {
     }
 
     generateTokens(payload: TokenPayload): TokenResponse {
-        const accessToken = jwt.sign(payload, this.accessTokenSecret, {
-            expiresIn: this.accessTokenExpiry
-        });
-
-        const refreshToken = jwt.sign(payload, this.refreshTokenSecret, {
-            expiresIn: this.refreshTokenExpiry
-        });
+        const options: any = { expiresIn: this.accessTokenExpiry };
+        const refreshOptions: any = { expiresIn: this.refreshTokenExpiry };
+        
+        const accessToken = jwt.sign(payload as object, this.accessTokenSecret, options);
+        const refreshToken = jwt.sign(payload as object, this.refreshTokenSecret, refreshOptions);
 
         return { accessToken, refreshToken };
     }
 
     generateAccessToken(payload: TokenPayload): string {
-        return jwt.sign(payload, this.accessTokenSecret, {
-            expiresIn: this.accessTokenExpiry
-        });
+        const options: any = { expiresIn: this.accessTokenExpiry };
+        return jwt.sign(payload as object, this.accessTokenSecret, options);
     }
 
     generateRefreshToken(payload: Pick<TokenPayload, 'userId'>): string {
-        return jwt.sign(payload, this.refreshTokenSecret, {
-            expiresIn: this.refreshTokenExpiry
-        });
+        const options: any = { expiresIn: this.refreshTokenExpiry };
+        return jwt.sign(payload as object, this.refreshTokenSecret, options);
     }
     
     verifyAccessToken = (token: string): TokenPayload => {
