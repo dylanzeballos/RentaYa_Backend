@@ -25,22 +25,22 @@ export class GoogleLoginUseCase {
             if (user) {
                 const updateData = {
                     googleId: googleUser.id,
-                    nombreCompleto: googleUser.name,
-                    ...(googleUser.picture && { fotoPerfil: googleUser.picture })
+                    fullName: googleUser.name,
+                    ...(googleUser.picture && { profilePhoto: googleUser.picture })
                 };
                 user = await this.authRepository.updateUserGoogleInfo(user.id, updateData);
             } else {
                 user = await this.authRepository.createGoogleUser({
                     googleId: googleUser.id,
-                    correoElectronico: googleUser.email,
-                    nombreCompleto: googleUser.name,
-                    fotoPerfil: googleUser.picture || null,
+                    email: googleUser.email,
+                    fullName: googleUser.name,
+                    profilePhoto: googleUser.picture || null,
                 });
             }
         } else {
             const updateData = {
-                nombreCompleto: googleUser.name,
-                ...(googleUser.picture && { fotoPerfil: googleUser.picture })
+                fullName: googleUser.name,
+                ...(googleUser.picture && { profilePhoto: googleUser.picture })
             };
             user = await this.authRepository.updateUserGoogleInfo(user.id, updateData);
 
@@ -48,8 +48,8 @@ export class GoogleLoginUseCase {
 
         const accessToken = this.jwtService.generateAccessToken({
             userId: user.id,
-            email: user.correoElectronico,
-            role: user.rol
+            email: user.email,
+            role: user.role
         });
 
         const refreshToken = this.jwtService.generateRefreshToken({
@@ -61,11 +61,11 @@ export class GoogleLoginUseCase {
         return {
             user: {
                 id: user.id,
-                correoElectronico: user.correoElectronico,
-                nombreCompleto: user.nombreCompleto,
-                telefono: user.telefono,
-                rol: user.rol,
-                estadoVerificacion: user.estadoVerificacion
+                email: user.email,
+                fullName: user.fullName,
+                phone: user.phone,
+                role: user.role,
+                verificationStatus: user.verificationStatus
             },
             accessToken,
             refreshToken

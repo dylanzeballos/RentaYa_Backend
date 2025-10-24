@@ -4,10 +4,10 @@ import { GoogleUserData } from "@/shared/domain/types/AuthTypes";
 export interface IAuthRepository {
     findUserByEmail(email: string): Promise<Usuario | null>;
     createUser(userData: {
-        correoElectronico: string;
-        contrasenaHash: string;
-        nombreCompleto?: string | undefined;
-        telefono?: string | undefined;
+        email: string;
+        passwordHash: string;
+        fullName?: string | undefined;
+        phone?: string | undefined;
     }): Promise<Usuario>;
     updateUser(id: string, data: Partial<Usuario>): Promise<Usuario>;
     findUserByGoogleId(googleId: string): Promise<any | null>;

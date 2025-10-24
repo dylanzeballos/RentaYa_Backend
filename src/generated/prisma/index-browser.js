@@ -223,6 +223,16 @@ exports.Prisma.BusquedaGuardadaScalarFieldEnum = {
   fechaCreacion: 'fechaCreacion'
 };
 
+exports.Prisma.UserPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  propertyTypes: 'propertyTypes',
+  modality: 'modality',
+  locations: 'locations',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -264,7 +274,8 @@ exports.Prisma.ModelName = {
   Notificacion: 'Notificacion',
   Reporte: 'Reporte',
   Favorito: 'Favorito',
-  BusquedaGuardada: 'BusquedaGuardada'
+  BusquedaGuardada: 'BusquedaGuardada',
+  UserPreference: 'UserPreference'
 };
 
 /**
