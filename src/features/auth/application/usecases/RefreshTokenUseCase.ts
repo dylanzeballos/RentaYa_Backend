@@ -15,15 +15,15 @@ export class RefreshTokenUseCase {
         try {
             const decoded = this.jwtService.verifyRefreshToken(refreshToken);
 
-            const usuario = await this.authRepository.findUserByEmail(decoded.email);
-            if (!usuario) {
+            const user = await this.authRepository.findUserByEmail(decoded.email);
+            if (!user) {
                 throw new AppError('Usuario no encontrado', 404);
             }
 
             return this.jwtService.generateTokens({
-                userId: usuario.id,
-                email: usuario.correoElectronico,
-                role: usuario.rol
+                userId: user.id,
+                email: user.email,
+                role: user.role
             });
         } catch (error) {
             throw new AppError('Token de refresco inválido o expirado', 403);

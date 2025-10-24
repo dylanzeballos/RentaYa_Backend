@@ -6,15 +6,15 @@ import { GoogleUserData } from '@/shared/domain/types/AuthTypes';
 export class AuthRepository implements IAuthRepository {
     async findUserByEmail(email: string): Promise<Usuario | null> {
         return prisma.usuario.findUnique({
-            where: { correoElectronico: email }
+            where: { email: email }
         });
     }
 
     async createUser(userData: {
-        correoElectronico: string;
-        contrasenaHash: string;
-        nombreCompleto?: string;
-        telefono?: string;
+        email: string;
+        passwordHash: string;
+        fullName?: string;
+        phone?: string;
     }): Promise<Usuario> {
         return prisma.usuario.create({
             data: userData
@@ -38,11 +38,11 @@ export class AuthRepository implements IAuthRepository {
         return await prisma.usuario.create({
             data: {
                 googleId: userData.googleId,
-                correoElectronico: userData.correoElectronico,
-                nombreCompleto: userData.nombreCompleto,
-                fotoPerfil: userData.fotoPerfil || null,
-                rol: 'usuario',
-                estadoVerificacion: 'verificado'
+                email: userData.email,
+                fullName: userData.fullName,
+                profilePhoto: userData.profilePhoto || null,
+                role: 'usuario',
+                verificationStatus: 'verificado'
             }
         });
     }
@@ -52,7 +52,7 @@ export class AuthRepository implements IAuthRepository {
             where: { id: userId },
             data: {
                 ...googleData,
-                estadoVerificacion: 'verificado'
+                verificationStatus: 'verificado'
             }
         });
     }

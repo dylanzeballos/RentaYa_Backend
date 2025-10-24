@@ -354,8 +354,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.16.3
-   * Query Engine version: bb420e667c1820a8c05a38023385f6cc7ef8e83a
+   * Prisma Client JS version: 6.18.0
+   * Query Engine version: 34b5a692b7bd79939a9a2c3ef97d816e749cda2f
    */
   export type PrismaVersion = {
     client: string
@@ -368,6 +368,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -1770,6 +1771,7 @@ export namespace Prisma {
    */
 
   export type UsuarioCountOutputType = {
+<<<<<<< Updated upstream
     busquedasGuardadas: number
     favoritos: number
     inmueblesPropietario: number
@@ -1791,6 +1793,29 @@ export namespace Prisma {
     notificaciones?: boolean | UsuarioCountOutputTypeCountNotificacionesArgs
     reportes?: boolean | UsuarioCountOutputTypeCountReportesArgs
     resenas?: boolean | UsuarioCountOutputTypeCountResenasArgs
+=======
+    ownedProperties: number
+    interests: number
+    sentMessages: number
+    receivedMessages: number
+    reviews: number
+    notifications: number
+    reports: number
+    favorites: number
+    savedSearches: number
+  }
+
+  export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ownedProperties?: boolean | UsuarioCountOutputTypeCountOwnedPropertiesArgs
+    interests?: boolean | UsuarioCountOutputTypeCountInterestsArgs
+    sentMessages?: boolean | UsuarioCountOutputTypeCountSentMessagesArgs
+    receivedMessages?: boolean | UsuarioCountOutputTypeCountReceivedMessagesArgs
+    reviews?: boolean | UsuarioCountOutputTypeCountReviewsArgs
+    notifications?: boolean | UsuarioCountOutputTypeCountNotificationsArgs
+    reports?: boolean | UsuarioCountOutputTypeCountReportsArgs
+    favorites?: boolean | UsuarioCountOutputTypeCountFavoritesArgs
+    savedSearches?: boolean | UsuarioCountOutputTypeCountSavedSearchesArgs
+>>>>>>> Stashed changes
   }
 
   // Custom InputTypes
@@ -1807,6 +1832,7 @@ export namespace Prisma {
   /**
    * UsuarioCountOutputType without action
    */
+<<<<<<< Updated upstream
   export type UsuarioCountOutputTypeCountBusquedasGuardadasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BusquedaGuardadaWhereInput
   }
@@ -1822,49 +1848,75 @@ export namespace Prisma {
    * UsuarioCountOutputType without action
    */
   export type UsuarioCountOutputTypeCountInmueblesPropietarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+=======
+  export type UsuarioCountOutputTypeCountOwnedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+>>>>>>> Stashed changes
     where?: InmuebleWhereInput
   }
 
   /**
    * UsuarioCountOutputType without action
    */
-  export type UsuarioCountOutputTypeCountInteresesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsuarioCountOutputTypeCountInterestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InteresWhereInput
   }
 
   /**
    * UsuarioCountOutputType without action
    */
-  export type UsuarioCountOutputTypeCountMensajesEmitidosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsuarioCountOutputTypeCountSentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MensajeWhereInput
   }
 
   /**
    * UsuarioCountOutputType without action
    */
-  export type UsuarioCountOutputTypeCountMensajesRecibidosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsuarioCountOutputTypeCountReceivedMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MensajeWhereInput
   }
 
   /**
    * UsuarioCountOutputType without action
    */
+<<<<<<< Updated upstream
   export type UsuarioCountOutputTypeCountNotificacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+=======
+  export type UsuarioCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResenaWhereInput
+  }
+
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+>>>>>>> Stashed changes
     where?: NotificacionWhereInput
   }
 
   /**
    * UsuarioCountOutputType without action
    */
-  export type UsuarioCountOutputTypeCountReportesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsuarioCountOutputTypeCountReportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReporteWhereInput
   }
 
   /**
    * UsuarioCountOutputType without action
    */
+<<<<<<< Updated upstream
   export type UsuarioCountOutputTypeCountResenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ResenaWhereInput
+=======
+  export type UsuarioCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FavoritoWhereInput
+  }
+
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountSavedSearchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BusquedaGuardadaWhereInput
+>>>>>>> Stashed changes
   }
 
 
@@ -1873,6 +1925,7 @@ export namespace Prisma {
    */
 
   export type InmuebleCountOutputType = {
+<<<<<<< Updated upstream
     favoritos: number
     fotosInmueble: number
     intereses: number
@@ -1884,6 +1937,19 @@ export namespace Prisma {
     fotosInmueble?: boolean | InmuebleCountOutputTypeCountFotosInmuebleArgs
     intereses?: boolean | InmuebleCountOutputTypeCountInteresesArgs
     resenas?: boolean | InmuebleCountOutputTypeCountResenasArgs
+=======
+    interests: number
+    propertyPhotos: number
+    reviews: number
+    favorites: number
+  }
+
+  export type InmuebleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    interests?: boolean | InmuebleCountOutputTypeCountInterestsArgs
+    propertyPhotos?: boolean | InmuebleCountOutputTypeCountPropertyPhotosArgs
+    reviews?: boolean | InmuebleCountOutputTypeCountReviewsArgs
+    favorites?: boolean | InmuebleCountOutputTypeCountFavoritesArgs
+>>>>>>> Stashed changes
   }
 
   // Custom InputTypes
@@ -1900,29 +1966,44 @@ export namespace Prisma {
   /**
    * InmuebleCountOutputType without action
    */
+<<<<<<< Updated upstream
   export type InmuebleCountOutputTypeCountFavoritosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FavoritoWhereInput
+=======
+  export type InmuebleCountOutputTypeCountInterestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InteresWhereInput
+>>>>>>> Stashed changes
   }
 
   /**
    * InmuebleCountOutputType without action
    */
-  export type InmuebleCountOutputTypeCountFotosInmuebleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InmuebleCountOutputTypeCountPropertyPhotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FotoInmuebleWhereInput
   }
 
   /**
    * InmuebleCountOutputType without action
    */
+<<<<<<< Updated upstream
   export type InmuebleCountOutputTypeCountInteresesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InteresWhereInput
+=======
+  export type InmuebleCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResenaWhereInput
+>>>>>>> Stashed changes
   }
 
   /**
    * InmuebleCountOutputType without action
    */
+<<<<<<< Updated upstream
   export type InmuebleCountOutputTypeCountResenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ResenaWhereInput
+=======
+  export type InmuebleCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FavoritoWhereInput
+>>>>>>> Stashed changes
   }
 
 
@@ -1931,11 +2012,11 @@ export namespace Prisma {
    */
 
   export type InteresCountOutputType = {
-    mensajes: number
+    messages: number
   }
 
   export type InteresCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mensajes?: boolean | InteresCountOutputTypeCountMensajesArgs
+    messages?: boolean | InteresCountOutputTypeCountMessagesArgs
   }
 
   // Custom InputTypes
@@ -1952,7 +2033,7 @@ export namespace Prisma {
   /**
    * InteresCountOutputType without action
    */
-  export type InteresCountOutputTypeCountMensajesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InteresCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MensajeWhereInput
   }
 
@@ -1974,46 +2055,46 @@ export namespace Prisma {
   export type UsuarioMinAggregateOutputType = {
     id: string | null
     googleId: string | null
-    fotoPerfil: string | null
-    correoElectronico: string | null
-    contrasenaHash: string | null
-    nombreCompleto: string | null
-    telefono: string | null
-    rol: string | null
-    estadoVerificacion: string | null
+    profilePhoto: string | null
+    email: string | null
+    passwordHash: string | null
+    fullName: string | null
+    phone: string | null
+    role: string | null
+    verificationStatus: string | null
     refreshToken: string | null
-    fechaCreacion: Date | null
-    fechaActualizacion: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UsuarioMaxAggregateOutputType = {
     id: string | null
     googleId: string | null
-    fotoPerfil: string | null
-    correoElectronico: string | null
-    contrasenaHash: string | null
-    nombreCompleto: string | null
-    telefono: string | null
-    rol: string | null
-    estadoVerificacion: string | null
+    profilePhoto: string | null
+    email: string | null
+    passwordHash: string | null
+    fullName: string | null
+    phone: string | null
+    role: string | null
+    verificationStatus: string | null
     refreshToken: string | null
-    fechaCreacion: Date | null
-    fechaActualizacion: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UsuarioCountAggregateOutputType = {
     id: number
     googleId: number
-    fotoPerfil: number
-    correoElectronico: number
-    contrasenaHash: number
-    nombreCompleto: number
-    telefono: number
-    rol: number
-    estadoVerificacion: number
+    profilePhoto: number
+    email: number
+    passwordHash: number
+    fullName: number
+    phone: number
+    role: number
+    verificationStatus: number
     refreshToken: number
-    fechaCreacion: number
-    fechaActualizacion: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -2021,46 +2102,46 @@ export namespace Prisma {
   export type UsuarioMinAggregateInputType = {
     id?: true
     googleId?: true
-    fotoPerfil?: true
-    correoElectronico?: true
-    contrasenaHash?: true
-    nombreCompleto?: true
-    telefono?: true
-    rol?: true
-    estadoVerificacion?: true
+    profilePhoto?: true
+    email?: true
+    passwordHash?: true
+    fullName?: true
+    phone?: true
+    role?: true
+    verificationStatus?: true
     refreshToken?: true
-    fechaCreacion?: true
-    fechaActualizacion?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UsuarioMaxAggregateInputType = {
     id?: true
     googleId?: true
-    fotoPerfil?: true
-    correoElectronico?: true
-    contrasenaHash?: true
-    nombreCompleto?: true
-    telefono?: true
-    rol?: true
-    estadoVerificacion?: true
+    profilePhoto?: true
+    email?: true
+    passwordHash?: true
+    fullName?: true
+    phone?: true
+    role?: true
+    verificationStatus?: true
     refreshToken?: true
-    fechaCreacion?: true
-    fechaActualizacion?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UsuarioCountAggregateInputType = {
     id?: true
     googleId?: true
-    fotoPerfil?: true
-    correoElectronico?: true
-    contrasenaHash?: true
-    nombreCompleto?: true
-    telefono?: true
-    rol?: true
-    estadoVerificacion?: true
+    profilePhoto?: true
+    email?: true
+    passwordHash?: true
+    fullName?: true
+    phone?: true
+    role?: true
+    verificationStatus?: true
     refreshToken?: true
-    fechaCreacion?: true
-    fechaActualizacion?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -2139,16 +2220,16 @@ export namespace Prisma {
   export type UsuarioGroupByOutputType = {
     id: string
     googleId: string | null
-    fotoPerfil: string | null
-    correoElectronico: string
-    contrasenaHash: string | null
-    nombreCompleto: string | null
-    telefono: string | null
-    rol: string
-    estadoVerificacion: string
+    profilePhoto: string | null
+    email: string
+    passwordHash: string | null
+    fullName: string | null
+    phone: string | null
+    role: string
+    verificationStatus: string
     refreshToken: string | null
-    fechaCreacion: Date
-    fechaActualizacion: Date
+    createdAt: Date
+    updatedAt: Date
     _count: UsuarioCountAggregateOutputType | null
     _min: UsuarioMinAggregateOutputType | null
     _max: UsuarioMaxAggregateOutputType | null
@@ -2171,14 +2252,15 @@ export namespace Prisma {
   export type UsuarioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     googleId?: boolean
-    fotoPerfil?: boolean
-    correoElectronico?: boolean
-    contrasenaHash?: boolean
-    nombreCompleto?: boolean
-    telefono?: boolean
-    rol?: boolean
-    estadoVerificacion?: boolean
+    profilePhoto?: boolean
+    email?: boolean
+    passwordHash?: boolean
+    fullName?: boolean
+    phone?: boolean
+    role?: boolean
+    verificationStatus?: boolean
     refreshToken?: boolean
+<<<<<<< Updated upstream
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
     busquedasGuardadas?: boolean | Usuario$busquedasGuardadasArgs<ExtArgs>
@@ -2191,56 +2273,70 @@ export namespace Prisma {
     reportes?: boolean | Usuario$reportesArgs<ExtArgs>
     resenas?: boolean | Usuario$resenasArgs<ExtArgs>
     preferences?: boolean | Usuario$preferencesArgs<ExtArgs>
+=======
+    createdAt?: boolean
+    updatedAt?: boolean
+    ownedProperties?: boolean | Usuario$ownedPropertiesArgs<ExtArgs>
+    interests?: boolean | Usuario$interestsArgs<ExtArgs>
+    sentMessages?: boolean | Usuario$sentMessagesArgs<ExtArgs>
+    receivedMessages?: boolean | Usuario$receivedMessagesArgs<ExtArgs>
+    reviews?: boolean | Usuario$reviewsArgs<ExtArgs>
+    notifications?: boolean | Usuario$notificationsArgs<ExtArgs>
+    reports?: boolean | Usuario$reportsArgs<ExtArgs>
+    favorites?: boolean | Usuario$favoritesArgs<ExtArgs>
+    savedSearches?: boolean | Usuario$savedSearchesArgs<ExtArgs>
+>>>>>>> Stashed changes
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
   export type UsuarioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     googleId?: boolean
-    fotoPerfil?: boolean
-    correoElectronico?: boolean
-    contrasenaHash?: boolean
-    nombreCompleto?: boolean
-    telefono?: boolean
-    rol?: boolean
-    estadoVerificacion?: boolean
+    profilePhoto?: boolean
+    email?: boolean
+    passwordHash?: boolean
+    fullName?: boolean
+    phone?: boolean
+    role?: boolean
+    verificationStatus?: boolean
     refreshToken?: boolean
-    fechaCreacion?: boolean
-    fechaActualizacion?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["usuario"]>
 
   export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     googleId?: boolean
-    fotoPerfil?: boolean
-    correoElectronico?: boolean
-    contrasenaHash?: boolean
-    nombreCompleto?: boolean
-    telefono?: boolean
-    rol?: boolean
-    estadoVerificacion?: boolean
+    profilePhoto?: boolean
+    email?: boolean
+    passwordHash?: boolean
+    fullName?: boolean
+    phone?: boolean
+    role?: boolean
+    verificationStatus?: boolean
     refreshToken?: boolean
-    fechaCreacion?: boolean
-    fechaActualizacion?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["usuario"]>
 
   export type UsuarioSelectScalar = {
     id?: boolean
     googleId?: boolean
-    fotoPerfil?: boolean
-    correoElectronico?: boolean
-    contrasenaHash?: boolean
-    nombreCompleto?: boolean
-    telefono?: boolean
-    rol?: boolean
-    estadoVerificacion?: boolean
+    profilePhoto?: boolean
+    email?: boolean
+    passwordHash?: boolean
+    fullName?: boolean
+    phone?: boolean
+    role?: boolean
+    verificationStatus?: boolean
     refreshToken?: boolean
-    fechaCreacion?: boolean
-    fechaActualizacion?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "googleId" | "fotoPerfil" | "correoElectronico" | "contrasenaHash" | "nombreCompleto" | "telefono" | "rol" | "estadoVerificacion" | "refreshToken" | "fechaCreacion" | "fechaActualizacion", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "googleId" | "profilePhoto" | "email" | "passwordHash" | "fullName" | "phone" | "role" | "verificationStatus" | "refreshToken" | "createdAt" | "updatedAt", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< Updated upstream
     busquedasGuardadas?: boolean | Usuario$busquedasGuardadasArgs<ExtArgs>
     favoritos?: boolean | Usuario$favoritosArgs<ExtArgs>
     inmueblesPropietario?: boolean | Usuario$inmueblesPropietarioArgs<ExtArgs>
@@ -2251,6 +2347,17 @@ export namespace Prisma {
     reportes?: boolean | Usuario$reportesArgs<ExtArgs>
     resenas?: boolean | Usuario$resenasArgs<ExtArgs>
     preferences?: boolean | Usuario$preferencesArgs<ExtArgs>
+=======
+    ownedProperties?: boolean | Usuario$ownedPropertiesArgs<ExtArgs>
+    interests?: boolean | Usuario$interestsArgs<ExtArgs>
+    sentMessages?: boolean | Usuario$sentMessagesArgs<ExtArgs>
+    receivedMessages?: boolean | Usuario$receivedMessagesArgs<ExtArgs>
+    reviews?: boolean | Usuario$reviewsArgs<ExtArgs>
+    notifications?: boolean | Usuario$notificationsArgs<ExtArgs>
+    reports?: boolean | Usuario$reportsArgs<ExtArgs>
+    favorites?: boolean | Usuario$favoritesArgs<ExtArgs>
+    savedSearches?: boolean | Usuario$savedSearchesArgs<ExtArgs>
+>>>>>>> Stashed changes
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UsuarioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2259,6 +2366,7 @@ export namespace Prisma {
   export type $UsuarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Usuario"
     objects: {
+<<<<<<< Updated upstream
       busquedasGuardadas: Prisma.$BusquedaGuardadaPayload<ExtArgs>[]
       favoritos: Prisma.$FavoritoPayload<ExtArgs>[]
       inmueblesPropietario: Prisma.$InmueblePayload<ExtArgs>[]
@@ -2269,20 +2377,31 @@ export namespace Prisma {
       reportes: Prisma.$ReportePayload<ExtArgs>[]
       resenas: Prisma.$ResenaPayload<ExtArgs>[]
       preferences: Prisma.$UserPreferencePayload<ExtArgs> | null
+=======
+      ownedProperties: Prisma.$InmueblePayload<ExtArgs>[]
+      interests: Prisma.$InteresPayload<ExtArgs>[]
+      sentMessages: Prisma.$MensajePayload<ExtArgs>[]
+      receivedMessages: Prisma.$MensajePayload<ExtArgs>[]
+      reviews: Prisma.$ResenaPayload<ExtArgs>[]
+      notifications: Prisma.$NotificacionPayload<ExtArgs>[]
+      reports: Prisma.$ReportePayload<ExtArgs>[]
+      favorites: Prisma.$FavoritoPayload<ExtArgs>[]
+      savedSearches: Prisma.$BusquedaGuardadaPayload<ExtArgs>[]
+>>>>>>> Stashed changes
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       googleId: string | null
-      fotoPerfil: string | null
-      correoElectronico: string
-      contrasenaHash: string | null
-      nombreCompleto: string | null
-      telefono: string | null
-      rol: string
-      estadoVerificacion: string
+      profilePhoto: string | null
+      email: string
+      passwordHash: string | null
+      fullName: string | null
+      phone: string | null
+      role: string
+      verificationStatus: string
       refreshToken: string | null
-      fechaCreacion: Date
-      fechaActualizacion: Date
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["usuario"]>
     composites: {}
   }
@@ -2677,6 +2796,7 @@ export namespace Prisma {
    */
   export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+<<<<<<< Updated upstream
     busquedasGuardadas<T extends Usuario$busquedasGuardadasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$busquedasGuardadasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusquedaGuardadaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favoritos<T extends Usuario$favoritosArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$favoritosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     inmueblesPropietario<T extends Usuario$inmueblesPropietarioArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$inmueblesPropietarioArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2687,6 +2807,17 @@ export namespace Prisma {
     reportes<T extends Usuario$reportesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$reportesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     resenas<T extends Usuario$resenasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$resenasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     preferences<T extends Usuario$preferencesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$preferencesArgs<ExtArgs>>): Prisma__UserPreferenceClient<$Result.GetResult<Prisma.$UserPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+=======
+    ownedProperties<T extends Usuario$ownedPropertiesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$ownedPropertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    interests<T extends Usuario$interestsArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$interestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InteresPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sentMessages<T extends Usuario$sentMessagesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MensajePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    receivedMessages<T extends Usuario$receivedMessagesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$receivedMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MensajePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends Usuario$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notifications<T extends Usuario$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reports<T extends Usuario$reportsArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    favorites<T extends Usuario$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    savedSearches<T extends Usuario$savedSearchesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$savedSearchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusquedaGuardadaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+>>>>>>> Stashed changes
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2718,16 +2849,16 @@ export namespace Prisma {
   interface UsuarioFieldRefs {
     readonly id: FieldRef<"Usuario", 'String'>
     readonly googleId: FieldRef<"Usuario", 'String'>
-    readonly fotoPerfil: FieldRef<"Usuario", 'String'>
-    readonly correoElectronico: FieldRef<"Usuario", 'String'>
-    readonly contrasenaHash: FieldRef<"Usuario", 'String'>
-    readonly nombreCompleto: FieldRef<"Usuario", 'String'>
-    readonly telefono: FieldRef<"Usuario", 'String'>
-    readonly rol: FieldRef<"Usuario", 'String'>
-    readonly estadoVerificacion: FieldRef<"Usuario", 'String'>
+    readonly profilePhoto: FieldRef<"Usuario", 'String'>
+    readonly email: FieldRef<"Usuario", 'String'>
+    readonly passwordHash: FieldRef<"Usuario", 'String'>
+    readonly fullName: FieldRef<"Usuario", 'String'>
+    readonly phone: FieldRef<"Usuario", 'String'>
+    readonly role: FieldRef<"Usuario", 'String'>
+    readonly verificationStatus: FieldRef<"Usuario", 'String'>
     readonly refreshToken: FieldRef<"Usuario", 'String'>
-    readonly fechaCreacion: FieldRef<"Usuario", 'DateTime'>
-    readonly fechaActualizacion: FieldRef<"Usuario", 'DateTime'>
+    readonly createdAt: FieldRef<"Usuario", 'DateTime'>
+    readonly updatedAt: FieldRef<"Usuario", 'DateTime'>
   }
     
 
@@ -3116,6 +3247,7 @@ export namespace Prisma {
   }
 
   /**
+<<<<<<< Updated upstream
    * Usuario.busquedasGuardadas
    */
   export type Usuario$busquedasGuardadasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3165,8 +3297,11 @@ export namespace Prisma {
 
   /**
    * Usuario.inmueblesPropietario
+=======
+   * Usuario.ownedProperties
+>>>>>>> Stashed changes
    */
-  export type Usuario$inmueblesPropietarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Usuario$ownedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Inmueble
      */
@@ -3188,9 +3323,9 @@ export namespace Prisma {
   }
 
   /**
-   * Usuario.Intereses
+   * Usuario.interests
    */
-  export type Usuario$InteresesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Usuario$interestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Interes
      */
@@ -3212,9 +3347,9 @@ export namespace Prisma {
   }
 
   /**
-   * Usuario.mensajesEmitidos
+   * Usuario.sentMessages
    */
-  export type Usuario$mensajesEmitidosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Usuario$sentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Mensaje
      */
@@ -3236,9 +3371,9 @@ export namespace Prisma {
   }
 
   /**
-   * Usuario.mensajesRecibidos
+   * Usuario.receivedMessages
    */
-  export type Usuario$mensajesRecibidosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Usuario$receivedMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Mensaje
      */
@@ -3260,57 +3395,12 @@ export namespace Prisma {
   }
 
   /**
+<<<<<<< Updated upstream
    * Usuario.notificaciones
+=======
+   * Usuario.reviews
    */
-  export type Usuario$notificacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Notificacion
-     */
-    select?: NotificacionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Notificacion
-     */
-    omit?: NotificacionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: NotificacionInclude<ExtArgs> | null
-    where?: NotificacionWhereInput
-    orderBy?: NotificacionOrderByWithRelationInput | NotificacionOrderByWithRelationInput[]
-    cursor?: NotificacionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: NotificacionScalarFieldEnum | NotificacionScalarFieldEnum[]
-  }
-
-  /**
-   * Usuario.reportes
-   */
-  export type Usuario$reportesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Reporte
-     */
-    select?: ReporteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Reporte
-     */
-    omit?: ReporteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReporteInclude<ExtArgs> | null
-    where?: ReporteWhereInput
-    orderBy?: ReporteOrderByWithRelationInput | ReporteOrderByWithRelationInput[]
-    cursor?: ReporteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ReporteScalarFieldEnum | ReporteScalarFieldEnum[]
-  }
-
-  /**
-   * Usuario.resenas
-   */
-  export type Usuario$resenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Usuario$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Resena
      */
@@ -3332,9 +3422,94 @@ export namespace Prisma {
   }
 
   /**
+   * Usuario.notifications
+>>>>>>> Stashed changes
+   */
+  export type Usuario$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacion
+     */
+    select?: NotificacionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacion
+     */
+    omit?: NotificacionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacionInclude<ExtArgs> | null
+    where?: NotificacionWhereInput
+    orderBy?: NotificacionOrderByWithRelationInput | NotificacionOrderByWithRelationInput[]
+    cursor?: NotificacionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificacionScalarFieldEnum | NotificacionScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario.reports
+   */
+  export type Usuario$reportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Reporte
+     */
+    select?: ReporteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Reporte
+     */
+    omit?: ReporteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReporteInclude<ExtArgs> | null
+    where?: ReporteWhereInput
+    orderBy?: ReporteOrderByWithRelationInput | ReporteOrderByWithRelationInput[]
+    cursor?: ReporteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReporteScalarFieldEnum | ReporteScalarFieldEnum[]
+  }
+
+  /**
+<<<<<<< Updated upstream
+   * Usuario.resenas
+   */
+  export type Usuario$resenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+=======
+   * Usuario.favorites
+   */
+  export type Usuario$favoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+>>>>>>> Stashed changes
+    /**
+     * Select specific fields to fetch from the Resena
+     */
+    select?: ResenaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resena
+     */
+    omit?: ResenaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResenaInclude<ExtArgs> | null
+    where?: ResenaWhereInput
+    orderBy?: ResenaOrderByWithRelationInput | ResenaOrderByWithRelationInput[]
+    cursor?: ResenaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ResenaScalarFieldEnum | ResenaScalarFieldEnum[]
+  }
+
+  /**
+<<<<<<< Updated upstream
    * Usuario.preferences
    */
   export type Usuario$preferencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+=======
+   * Usuario.savedSearches
+   */
+  export type Usuario$savedSearchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+>>>>>>> Stashed changes
     /**
      * Select specific fields to fetch from the UserPreference
      */
@@ -3382,135 +3557,135 @@ export namespace Prisma {
   }
 
   export type InmuebleAvgAggregateOutputType = {
-    dormitorios: number | null
-    banos: number | null
+    bedrooms: number | null
+    bathrooms: number | null
     areaM2: Decimal | null
-    precio: Decimal | null
+    price: Decimal | null
   }
 
   export type InmuebleSumAggregateOutputType = {
-    dormitorios: number | null
-    banos: number | null
+    bedrooms: number | null
+    bathrooms: number | null
     areaM2: Decimal | null
-    precio: Decimal | null
+    price: Decimal | null
   }
 
   export type InmuebleMinAggregateOutputType = {
     id: string | null
-    propietarioId: string | null
-    titulo: string | null
-    descripcion: string | null
-    direccion: string | null
-    ciudad: string | null
-    dormitorios: number | null
-    banos: number | null
+    ownerId: string | null
+    title: string | null
+    description: string | null
+    address: string | null
+    city: string | null
+    bedrooms: number | null
+    bathrooms: number | null
     areaM2: Decimal | null
-    precio: Decimal | null
-    tipoOperacion: string | null
-    estado: string | null
-    fechaCreacion: Date | null
-    fechaActualizacion: Date | null
+    price: Decimal | null
+    operationType: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type InmuebleMaxAggregateOutputType = {
     id: string | null
-    propietarioId: string | null
-    titulo: string | null
-    descripcion: string | null
-    direccion: string | null
-    ciudad: string | null
-    dormitorios: number | null
-    banos: number | null
+    ownerId: string | null
+    title: string | null
+    description: string | null
+    address: string | null
+    city: string | null
+    bedrooms: number | null
+    bathrooms: number | null
     areaM2: Decimal | null
-    precio: Decimal | null
-    tipoOperacion: string | null
-    estado: string | null
-    fechaCreacion: Date | null
-    fechaActualizacion: Date | null
+    price: Decimal | null
+    operationType: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type InmuebleCountAggregateOutputType = {
     id: number
-    propietarioId: number
-    titulo: number
-    descripcion: number
-    direccion: number
-    ciudad: number
-    dormitorios: number
-    banos: number
+    ownerId: number
+    title: number
+    description: number
+    address: number
+    city: number
+    bedrooms: number
+    bathrooms: number
     areaM2: number
-    precio: number
-    tipoOperacion: number
-    estado: number
-    fechaCreacion: number
-    fechaActualizacion: number
+    price: number
+    operationType: number
+    status: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type InmuebleAvgAggregateInputType = {
-    dormitorios?: true
-    banos?: true
+    bedrooms?: true
+    bathrooms?: true
     areaM2?: true
-    precio?: true
+    price?: true
   }
 
   export type InmuebleSumAggregateInputType = {
-    dormitorios?: true
-    banos?: true
+    bedrooms?: true
+    bathrooms?: true
     areaM2?: true
-    precio?: true
+    price?: true
   }
 
   export type InmuebleMinAggregateInputType = {
     id?: true
-    propietarioId?: true
-    titulo?: true
-    descripcion?: true
-    direccion?: true
-    ciudad?: true
-    dormitorios?: true
-    banos?: true
+    ownerId?: true
+    title?: true
+    description?: true
+    address?: true
+    city?: true
+    bedrooms?: true
+    bathrooms?: true
     areaM2?: true
-    precio?: true
-    tipoOperacion?: true
-    estado?: true
-    fechaCreacion?: true
-    fechaActualizacion?: true
+    price?: true
+    operationType?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type InmuebleMaxAggregateInputType = {
     id?: true
-    propietarioId?: true
-    titulo?: true
-    descripcion?: true
-    direccion?: true
-    ciudad?: true
-    dormitorios?: true
-    banos?: true
+    ownerId?: true
+    title?: true
+    description?: true
+    address?: true
+    city?: true
+    bedrooms?: true
+    bathrooms?: true
     areaM2?: true
-    precio?: true
-    tipoOperacion?: true
-    estado?: true
-    fechaCreacion?: true
-    fechaActualizacion?: true
+    price?: true
+    operationType?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type InmuebleCountAggregateInputType = {
     id?: true
-    propietarioId?: true
-    titulo?: true
-    descripcion?: true
-    direccion?: true
-    ciudad?: true
-    dormitorios?: true
-    banos?: true
+    ownerId?: true
+    title?: true
+    description?: true
+    address?: true
+    city?: true
+    bedrooms?: true
+    bathrooms?: true
     areaM2?: true
-    precio?: true
-    tipoOperacion?: true
-    estado?: true
-    fechaCreacion?: true
-    fechaActualizacion?: true
+    price?: true
+    operationType?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -3602,19 +3777,19 @@ export namespace Prisma {
 
   export type InmuebleGroupByOutputType = {
     id: string
-    propietarioId: string
-    titulo: string
-    descripcion: string | null
-    direccion: string | null
-    ciudad: string
-    dormitorios: number | null
-    banos: number | null
+    ownerId: string
+    title: string
+    description: string | null
+    address: string | null
+    city: string
+    bedrooms: number | null
+    bathrooms: number | null
     areaM2: Decimal | null
-    precio: Decimal
-    tipoOperacion: string
-    estado: string
-    fechaCreacion: Date
-    fechaActualizacion: Date
+    price: Decimal
+    operationType: string
+    status: string
+    createdAt: Date
+    updatedAt: Date
     _count: InmuebleCountAggregateOutputType | null
     _avg: InmuebleAvgAggregateOutputType | null
     _sum: InmuebleSumAggregateOutputType | null
@@ -3638,14 +3813,15 @@ export namespace Prisma {
 
   export type InmuebleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    propietarioId?: boolean
-    titulo?: boolean
-    descripcion?: boolean
-    direccion?: boolean
-    ciudad?: boolean
-    dormitorios?: boolean
-    banos?: boolean
+    ownerId?: boolean
+    title?: boolean
+    description?: boolean
+    address?: boolean
+    city?: boolean
+    bedrooms?: boolean
+    bathrooms?: boolean
     areaM2?: boolean
+<<<<<<< Updated upstream
     precio?: boolean
     tipoOperacion?: boolean
     estado?: boolean
@@ -3656,102 +3832,130 @@ export namespace Prisma {
     propietario?: boolean | UsuarioDefaultArgs<ExtArgs>
     intereses?: boolean | Inmueble$interesesArgs<ExtArgs>
     resenas?: boolean | Inmueble$resenasArgs<ExtArgs>
+=======
+    price?: boolean
+    operationType?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interests?: boolean | Inmueble$interestsArgs<ExtArgs>
+    propertyPhotos?: boolean | Inmueble$propertyPhotosArgs<ExtArgs>
+    reviews?: boolean | Inmueble$reviewsArgs<ExtArgs>
+    favorites?: boolean | Inmueble$favoritesArgs<ExtArgs>
+>>>>>>> Stashed changes
     _count?: boolean | InmuebleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inmueble"]>
 
   export type InmuebleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    propietarioId?: boolean
-    titulo?: boolean
-    descripcion?: boolean
-    direccion?: boolean
-    ciudad?: boolean
-    dormitorios?: boolean
-    banos?: boolean
+    ownerId?: boolean
+    title?: boolean
+    description?: boolean
+    address?: boolean
+    city?: boolean
+    bedrooms?: boolean
+    bathrooms?: boolean
     areaM2?: boolean
-    precio?: boolean
-    tipoOperacion?: boolean
-    estado?: boolean
-    fechaCreacion?: boolean
-    fechaActualizacion?: boolean
-    propietario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    price?: boolean
+    operationType?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inmueble"]>
 
   export type InmuebleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    propietarioId?: boolean
-    titulo?: boolean
-    descripcion?: boolean
-    direccion?: boolean
-    ciudad?: boolean
-    dormitorios?: boolean
-    banos?: boolean
+    ownerId?: boolean
+    title?: boolean
+    description?: boolean
+    address?: boolean
+    city?: boolean
+    bedrooms?: boolean
+    bathrooms?: boolean
     areaM2?: boolean
-    precio?: boolean
-    tipoOperacion?: boolean
-    estado?: boolean
-    fechaCreacion?: boolean
-    fechaActualizacion?: boolean
-    propietario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    price?: boolean
+    operationType?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    owner?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inmueble"]>
 
   export type InmuebleSelectScalar = {
     id?: boolean
-    propietarioId?: boolean
-    titulo?: boolean
-    descripcion?: boolean
-    direccion?: boolean
-    ciudad?: boolean
-    dormitorios?: boolean
-    banos?: boolean
+    ownerId?: boolean
+    title?: boolean
+    description?: boolean
+    address?: boolean
+    city?: boolean
+    bedrooms?: boolean
+    bathrooms?: boolean
     areaM2?: boolean
-    precio?: boolean
-    tipoOperacion?: boolean
-    estado?: boolean
-    fechaCreacion?: boolean
-    fechaActualizacion?: boolean
+    price?: boolean
+    operationType?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type InmuebleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propietarioId" | "titulo" | "descripcion" | "direccion" | "ciudad" | "dormitorios" | "banos" | "areaM2" | "precio" | "tipoOperacion" | "estado" | "fechaCreacion" | "fechaActualizacion", ExtArgs["result"]["inmueble"]>
+  export type InmuebleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "description" | "address" | "city" | "bedrooms" | "bathrooms" | "areaM2" | "price" | "operationType" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["inmueble"]>
   export type InmuebleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< Updated upstream
     favoritos?: boolean | Inmueble$favoritosArgs<ExtArgs>
     fotosInmueble?: boolean | Inmueble$fotosInmuebleArgs<ExtArgs>
     propietario?: boolean | UsuarioDefaultArgs<ExtArgs>
     intereses?: boolean | Inmueble$interesesArgs<ExtArgs>
     resenas?: boolean | Inmueble$resenasArgs<ExtArgs>
+=======
+    owner?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interests?: boolean | Inmueble$interestsArgs<ExtArgs>
+    propertyPhotos?: boolean | Inmueble$propertyPhotosArgs<ExtArgs>
+    reviews?: boolean | Inmueble$reviewsArgs<ExtArgs>
+    favorites?: boolean | Inmueble$favoritesArgs<ExtArgs>
+>>>>>>> Stashed changes
     _count?: boolean | InmuebleCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type InmuebleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    propietario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    owner?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type InmuebleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    propietario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    owner?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
 
   export type $InmueblePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Inmueble"
     objects: {
+<<<<<<< Updated upstream
       favoritos: Prisma.$FavoritoPayload<ExtArgs>[]
       fotosInmueble: Prisma.$FotoInmueblePayload<ExtArgs>[]
       propietario: Prisma.$UsuarioPayload<ExtArgs>
       intereses: Prisma.$InteresPayload<ExtArgs>[]
       resenas: Prisma.$ResenaPayload<ExtArgs>[]
+=======
+      owner: Prisma.$UsuarioPayload<ExtArgs>
+      interests: Prisma.$InteresPayload<ExtArgs>[]
+      propertyPhotos: Prisma.$FotoInmueblePayload<ExtArgs>[]
+      reviews: Prisma.$ResenaPayload<ExtArgs>[]
+      favorites: Prisma.$FavoritoPayload<ExtArgs>[]
+>>>>>>> Stashed changes
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      propietarioId: string
-      titulo: string
-      descripcion: string | null
-      direccion: string | null
-      ciudad: string
-      dormitorios: number | null
-      banos: number | null
+      ownerId: string
+      title: string
+      description: string | null
+      address: string | null
+      city: string
+      bedrooms: number | null
+      bathrooms: number | null
       areaM2: Prisma.Decimal | null
-      precio: Prisma.Decimal
-      tipoOperacion: string
-      estado: string
-      fechaCreacion: Date
-      fechaActualizacion: Date
+      price: Prisma.Decimal
+      operationType: string
+      status: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["inmueble"]>
     composites: {}
   }
@@ -4146,11 +4350,19 @@ export namespace Prisma {
    */
   export interface Prisma__InmuebleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+<<<<<<< Updated upstream
     favoritos<T extends Inmueble$favoritosArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$favoritosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     fotosInmueble<T extends Inmueble$fotosInmuebleArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$fotosInmuebleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FotoInmueblePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     propietario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     intereses<T extends Inmueble$interesesArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$interesesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InteresPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     resenas<T extends Inmueble$resenasArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$resenasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+=======
+    owner<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    interests<T extends Inmueble$interestsArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$interestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InteresPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    propertyPhotos<T extends Inmueble$propertyPhotosArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$propertyPhotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FotoInmueblePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends Inmueble$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    favorites<T extends Inmueble$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, Inmueble$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+>>>>>>> Stashed changes
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4181,19 +4393,19 @@ export namespace Prisma {
    */
   interface InmuebleFieldRefs {
     readonly id: FieldRef<"Inmueble", 'String'>
-    readonly propietarioId: FieldRef<"Inmueble", 'String'>
-    readonly titulo: FieldRef<"Inmueble", 'String'>
-    readonly descripcion: FieldRef<"Inmueble", 'String'>
-    readonly direccion: FieldRef<"Inmueble", 'String'>
-    readonly ciudad: FieldRef<"Inmueble", 'String'>
-    readonly dormitorios: FieldRef<"Inmueble", 'Int'>
-    readonly banos: FieldRef<"Inmueble", 'Int'>
+    readonly ownerId: FieldRef<"Inmueble", 'String'>
+    readonly title: FieldRef<"Inmueble", 'String'>
+    readonly description: FieldRef<"Inmueble", 'String'>
+    readonly address: FieldRef<"Inmueble", 'String'>
+    readonly city: FieldRef<"Inmueble", 'String'>
+    readonly bedrooms: FieldRef<"Inmueble", 'Int'>
+    readonly bathrooms: FieldRef<"Inmueble", 'Int'>
     readonly areaM2: FieldRef<"Inmueble", 'Decimal'>
-    readonly precio: FieldRef<"Inmueble", 'Decimal'>
-    readonly tipoOperacion: FieldRef<"Inmueble", 'String'>
-    readonly estado: FieldRef<"Inmueble", 'String'>
-    readonly fechaCreacion: FieldRef<"Inmueble", 'DateTime'>
-    readonly fechaActualizacion: FieldRef<"Inmueble", 'DateTime'>
+    readonly price: FieldRef<"Inmueble", 'Decimal'>
+    readonly operationType: FieldRef<"Inmueble", 'String'>
+    readonly status: FieldRef<"Inmueble", 'String'>
+    readonly createdAt: FieldRef<"Inmueble", 'DateTime'>
+    readonly updatedAt: FieldRef<"Inmueble", 'DateTime'>
   }
     
 
@@ -4590,9 +4802,15 @@ export namespace Prisma {
   }
 
   /**
+<<<<<<< Updated upstream
    * Inmueble.favoritos
    */
   export type Inmueble$favoritosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+=======
+   * Inmueble.interests
+   */
+  export type Inmueble$interestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+>>>>>>> Stashed changes
     /**
      * Select specific fields to fetch from the Favorito
      */
@@ -4614,9 +4832,9 @@ export namespace Prisma {
   }
 
   /**
-   * Inmueble.fotosInmueble
+   * Inmueble.propertyPhotos
    */
-  export type Inmueble$fotosInmuebleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Inmueble$propertyPhotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the FotoInmueble
      */
@@ -4638,6 +4856,7 @@ export namespace Prisma {
   }
 
   /**
+<<<<<<< Updated upstream
    * Inmueble.intereses
    */
   export type Inmueble$interesesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4663,8 +4882,11 @@ export namespace Prisma {
 
   /**
    * Inmueble.resenas
+=======
+   * Inmueble.reviews
+>>>>>>> Stashed changes
    */
-  export type Inmueble$resenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Inmueble$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Resena
      */
@@ -4686,6 +4908,33 @@ export namespace Prisma {
   }
 
   /**
+<<<<<<< Updated upstream
+=======
+   * Inmueble.favorites
+   */
+  export type Inmueble$favoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    where?: FavoritoWhereInput
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    cursor?: FavoritoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+>>>>>>> Stashed changes
    * Inmueble without action
    */
   export type InmuebleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4716,58 +4965,58 @@ export namespace Prisma {
 
   export type InteresMinAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    inmuebleId: string | null
-    mensaje: string | null
-    estado: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    propertyId: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
   }
 
   export type InteresMaxAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    inmuebleId: string | null
-    mensaje: string | null
-    estado: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    propertyId: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
   }
 
   export type InteresCountAggregateOutputType = {
     id: number
-    usuarioId: number
-    inmuebleId: number
-    mensaje: number
-    estado: number
-    fechaCreacion: number
+    userId: number
+    propertyId: number
+    message: number
+    status: number
+    createdAt: number
     _all: number
   }
 
 
   export type InteresMinAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    mensaje?: true
-    estado?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    message?: true
+    status?: true
+    createdAt?: true
   }
 
   export type InteresMaxAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    mensaje?: true
-    estado?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    message?: true
+    status?: true
+    createdAt?: true
   }
 
   export type InteresCountAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    mensaje?: true
-    estado?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    message?: true
+    status?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -4845,11 +5094,11 @@ export namespace Prisma {
 
   export type InteresGroupByOutputType = {
     id: string
-    usuarioId: string
-    inmuebleId: string
-    mensaje: string | null
-    estado: string
-    fechaCreacion: Date
+    userId: string
+    propertyId: string
+    message: string | null
+    status: string
+    createdAt: Date
     _count: InteresCountAggregateOutputType | null
     _min: InteresMinAggregateOutputType | null
     _max: InteresMaxAggregateOutputType | null
@@ -4871,6 +5120,7 @@ export namespace Prisma {
 
   export type InteresSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     mensaje?: boolean
@@ -4879,11 +5129,22 @@ export namespace Prisma {
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     mensajes?: boolean | Interes$mensajesArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+    messages?: boolean | Interes$messagesArgs<ExtArgs>
+>>>>>>> Stashed changes
     _count?: boolean | InteresCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["interes"]>
 
   export type InteresSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     mensaje?: boolean
@@ -4891,10 +5152,20 @@ export namespace Prisma {
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["interes"]>
 
   export type InteresSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     mensaje?: boolean
@@ -4902,19 +5173,29 @@ export namespace Prisma {
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["interes"]>
 
   export type InteresSelectScalar = {
     id?: boolean
-    usuarioId?: boolean
-    inmuebleId?: boolean
-    mensaje?: boolean
-    estado?: boolean
-    fechaCreacion?: boolean
+    userId?: boolean
+    propertyId?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
   }
 
-  export type InteresOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "usuarioId" | "inmuebleId" | "mensaje" | "estado" | "fechaCreacion", ExtArgs["result"]["interes"]>
+  export type InteresOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyId" | "message" | "status" | "createdAt", ExtArgs["result"]["interes"]>
   export type InteresInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< Updated upstream
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     mensajes?: boolean | Interes$mensajesArgs<ExtArgs>
@@ -4927,22 +5208,42 @@ export namespace Prisma {
   export type InteresIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+    messages?: boolean | Interes$messagesArgs<ExtArgs>
+    _count?: boolean | InteresCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type InteresIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+  }
+  export type InteresIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }
 
   export type $InteresPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Interes"
     objects: {
+<<<<<<< Updated upstream
       inmueble: Prisma.$InmueblePayload<ExtArgs>
       usuario: Prisma.$UsuarioPayload<ExtArgs>
       mensajes: Prisma.$MensajePayload<ExtArgs>[]
+=======
+      user: Prisma.$UsuarioPayload<ExtArgs>
+      property: Prisma.$InmueblePayload<ExtArgs>
+      messages: Prisma.$MensajePayload<ExtArgs>[]
+>>>>>>> Stashed changes
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      usuarioId: string
-      inmuebleId: string
-      mensaje: string | null
-      estado: string
-      fechaCreacion: Date
+      userId: string
+      propertyId: string
+      message: string | null
+      status: string
+      createdAt: Date
     }, ExtArgs["result"]["interes"]>
     composites: {}
   }
@@ -5337,9 +5638,15 @@ export namespace Prisma {
    */
   export interface Prisma__InteresClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+<<<<<<< Updated upstream
     inmueble<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     mensajes<T extends Interes$mensajesArgs<ExtArgs> = {}>(args?: Subset<T, Interes$mensajesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MensajePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+=======
+    user<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    property<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    messages<T extends Interes$messagesArgs<ExtArgs> = {}>(args?: Subset<T, Interes$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MensajePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+>>>>>>> Stashed changes
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5370,11 +5677,11 @@ export namespace Prisma {
    */
   interface InteresFieldRefs {
     readonly id: FieldRef<"Interes", 'String'>
-    readonly usuarioId: FieldRef<"Interes", 'String'>
-    readonly inmuebleId: FieldRef<"Interes", 'String'>
-    readonly mensaje: FieldRef<"Interes", 'String'>
-    readonly estado: FieldRef<"Interes", 'String'>
-    readonly fechaCreacion: FieldRef<"Interes", 'DateTime'>
+    readonly userId: FieldRef<"Interes", 'String'>
+    readonly propertyId: FieldRef<"Interes", 'String'>
+    readonly message: FieldRef<"Interes", 'String'>
+    readonly status: FieldRef<"Interes", 'String'>
+    readonly createdAt: FieldRef<"Interes", 'DateTime'>
   }
     
 
@@ -5771,9 +6078,9 @@ export namespace Prisma {
   }
 
   /**
-   * Interes.mensajes
+   * Interes.messages
    */
-  export type Interes$mensajesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Interes$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Mensaje
      */
@@ -5835,32 +6142,32 @@ export namespace Prisma {
 
   export type MensajeMinAggregateOutputType = {
     id: bigint | null
-    emisorId: string | null
-    receptorId: string | null
-    interesId: string | null
-    contenido: string | null
-    leido: boolean | null
-    fechaCreacion: Date | null
+    senderId: string | null
+    receiverId: string | null
+    interestId: string | null
+    content: string | null
+    read: boolean | null
+    createdAt: Date | null
   }
 
   export type MensajeMaxAggregateOutputType = {
     id: bigint | null
-    emisorId: string | null
-    receptorId: string | null
-    interesId: string | null
-    contenido: string | null
-    leido: boolean | null
-    fechaCreacion: Date | null
+    senderId: string | null
+    receiverId: string | null
+    interestId: string | null
+    content: string | null
+    read: boolean | null
+    createdAt: Date | null
   }
 
   export type MensajeCountAggregateOutputType = {
     id: number
-    emisorId: number
-    receptorId: number
-    interesId: number
-    contenido: number
-    leido: number
-    fechaCreacion: number
+    senderId: number
+    receiverId: number
+    interestId: number
+    content: number
+    read: number
+    createdAt: number
     _all: number
   }
 
@@ -5875,32 +6182,32 @@ export namespace Prisma {
 
   export type MensajeMinAggregateInputType = {
     id?: true
-    emisorId?: true
-    receptorId?: true
-    interesId?: true
-    contenido?: true
-    leido?: true
-    fechaCreacion?: true
+    senderId?: true
+    receiverId?: true
+    interestId?: true
+    content?: true
+    read?: true
+    createdAt?: true
   }
 
   export type MensajeMaxAggregateInputType = {
     id?: true
-    emisorId?: true
-    receptorId?: true
-    interesId?: true
-    contenido?: true
-    leido?: true
-    fechaCreacion?: true
+    senderId?: true
+    receiverId?: true
+    interestId?: true
+    content?: true
+    read?: true
+    createdAt?: true
   }
 
   export type MensajeCountAggregateInputType = {
     id?: true
-    emisorId?: true
-    receptorId?: true
-    interesId?: true
-    contenido?: true
-    leido?: true
-    fechaCreacion?: true
+    senderId?: true
+    receiverId?: true
+    interestId?: true
+    content?: true
+    read?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -5992,12 +6299,12 @@ export namespace Prisma {
 
   export type MensajeGroupByOutputType = {
     id: bigint
-    emisorId: string
-    receptorId: string
-    interesId: string | null
-    contenido: string
-    leido: boolean
-    fechaCreacion: Date
+    senderId: string
+    receiverId: string
+    interestId: string | null
+    content: string
+    read: boolean
+    createdAt: Date
     _count: MensajeCountAggregateOutputType | null
     _avg: MensajeAvgAggregateOutputType | null
     _sum: MensajeSumAggregateOutputType | null
@@ -6021,6 +6328,7 @@ export namespace Prisma {
 
   export type MensajeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     emisorId?: boolean
     receptorId?: boolean
     interesId?: boolean
@@ -6030,10 +6338,22 @@ export namespace Prisma {
     emisor?: boolean | UsuarioDefaultArgs<ExtArgs>
     interes?: boolean | Mensaje$interesArgs<ExtArgs>
     receptor?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    senderId?: boolean
+    receiverId?: boolean
+    interestId?: boolean
+    content?: boolean
+    read?: boolean
+    createdAt?: boolean
+    sender?: boolean | UsuarioDefaultArgs<ExtArgs>
+    receiver?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interest?: boolean | Mensaje$interestArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["mensaje"]>
 
   export type MensajeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     emisorId?: boolean
     receptorId?: boolean
     interesId?: boolean
@@ -6043,10 +6363,22 @@ export namespace Prisma {
     emisor?: boolean | UsuarioDefaultArgs<ExtArgs>
     interes?: boolean | Mensaje$interesArgs<ExtArgs>
     receptor?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    senderId?: boolean
+    receiverId?: boolean
+    interestId?: boolean
+    content?: boolean
+    read?: boolean
+    createdAt?: boolean
+    sender?: boolean | UsuarioDefaultArgs<ExtArgs>
+    receiver?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interest?: boolean | Mensaje$interestArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["mensaje"]>
 
   export type MensajeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     emisorId?: boolean
     receptorId?: boolean
     interesId?: boolean
@@ -6056,20 +6388,32 @@ export namespace Prisma {
     emisor?: boolean | UsuarioDefaultArgs<ExtArgs>
     interes?: boolean | Mensaje$interesArgs<ExtArgs>
     receptor?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    senderId?: boolean
+    receiverId?: boolean
+    interestId?: boolean
+    content?: boolean
+    read?: boolean
+    createdAt?: boolean
+    sender?: boolean | UsuarioDefaultArgs<ExtArgs>
+    receiver?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interest?: boolean | Mensaje$interestArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["mensaje"]>
 
   export type MensajeSelectScalar = {
     id?: boolean
-    emisorId?: boolean
-    receptorId?: boolean
-    interesId?: boolean
-    contenido?: boolean
-    leido?: boolean
-    fechaCreacion?: boolean
+    senderId?: boolean
+    receiverId?: boolean
+    interestId?: boolean
+    content?: boolean
+    read?: boolean
+    createdAt?: boolean
   }
 
-  export type MensajeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "emisorId" | "receptorId" | "interesId" | "contenido" | "leido" | "fechaCreacion", ExtArgs["result"]["mensaje"]>
+  export type MensajeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "senderId" | "receiverId" | "interestId" | "content" | "read" | "createdAt", ExtArgs["result"]["mensaje"]>
   export type MensajeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< Updated upstream
     emisor?: boolean | UsuarioDefaultArgs<ExtArgs>
     interes?: boolean | Mensaje$interesArgs<ExtArgs>
     receptor?: boolean | UsuarioDefaultArgs<ExtArgs>
@@ -6083,23 +6427,44 @@ export namespace Prisma {
     emisor?: boolean | UsuarioDefaultArgs<ExtArgs>
     interes?: boolean | Mensaje$interesArgs<ExtArgs>
     receptor?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    sender?: boolean | UsuarioDefaultArgs<ExtArgs>
+    receiver?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interest?: boolean | Mensaje$interestArgs<ExtArgs>
+  }
+  export type MensajeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UsuarioDefaultArgs<ExtArgs>
+    receiver?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interest?: boolean | Mensaje$interestArgs<ExtArgs>
+  }
+  export type MensajeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UsuarioDefaultArgs<ExtArgs>
+    receiver?: boolean | UsuarioDefaultArgs<ExtArgs>
+    interest?: boolean | Mensaje$interestArgs<ExtArgs>
+>>>>>>> Stashed changes
   }
 
   export type $MensajePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Mensaje"
     objects: {
+<<<<<<< Updated upstream
       emisor: Prisma.$UsuarioPayload<ExtArgs>
       interes: Prisma.$InteresPayload<ExtArgs> | null
       receptor: Prisma.$UsuarioPayload<ExtArgs>
+=======
+      sender: Prisma.$UsuarioPayload<ExtArgs>
+      receiver: Prisma.$UsuarioPayload<ExtArgs>
+      interest: Prisma.$InteresPayload<ExtArgs> | null
+>>>>>>> Stashed changes
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
-      emisorId: string
-      receptorId: string
-      interesId: string | null
-      contenido: string
-      leido: boolean
-      fechaCreacion: Date
+      senderId: string
+      receiverId: string
+      interestId: string | null
+      content: string
+      read: boolean
+      createdAt: Date
     }, ExtArgs["result"]["mensaje"]>
     composites: {}
   }
@@ -6494,9 +6859,15 @@ export namespace Prisma {
    */
   export interface Prisma__MensajeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+<<<<<<< Updated upstream
     emisor<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     interes<T extends Mensaje$interesArgs<ExtArgs> = {}>(args?: Subset<T, Mensaje$interesArgs<ExtArgs>>): Prisma__InteresClient<$Result.GetResult<Prisma.$InteresPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     receptor<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+=======
+    sender<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    receiver<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    interest<T extends Mensaje$interestArgs<ExtArgs> = {}>(args?: Subset<T, Mensaje$interestArgs<ExtArgs>>): Prisma__InteresClient<$Result.GetResult<Prisma.$InteresPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+>>>>>>> Stashed changes
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6527,12 +6898,12 @@ export namespace Prisma {
    */
   interface MensajeFieldRefs {
     readonly id: FieldRef<"Mensaje", 'BigInt'>
-    readonly emisorId: FieldRef<"Mensaje", 'String'>
-    readonly receptorId: FieldRef<"Mensaje", 'String'>
-    readonly interesId: FieldRef<"Mensaje", 'String'>
-    readonly contenido: FieldRef<"Mensaje", 'String'>
-    readonly leido: FieldRef<"Mensaje", 'Boolean'>
-    readonly fechaCreacion: FieldRef<"Mensaje", 'DateTime'>
+    readonly senderId: FieldRef<"Mensaje", 'String'>
+    readonly receiverId: FieldRef<"Mensaje", 'String'>
+    readonly interestId: FieldRef<"Mensaje", 'String'>
+    readonly content: FieldRef<"Mensaje", 'String'>
+    readonly read: FieldRef<"Mensaje", 'Boolean'>
+    readonly createdAt: FieldRef<"Mensaje", 'DateTime'>
   }
     
 
@@ -6929,9 +7300,9 @@ export namespace Prisma {
   }
 
   /**
-   * Mensaje.interes
+   * Mensaje.interest
    */
-  export type Mensaje$interesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Mensaje$interestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Interes
      */
@@ -6980,72 +7351,72 @@ export namespace Prisma {
 
   export type FotoInmuebleAvgAggregateOutputType = {
     id: number | null
-    orden: number | null
+    order: number | null
   }
 
   export type FotoInmuebleSumAggregateOutputType = {
     id: bigint | null
-    orden: number | null
+    order: number | null
   }
 
   export type FotoInmuebleMinAggregateOutputType = {
     id: bigint | null
-    inmuebleId: string | null
+    propertyId: string | null
     url: string | null
-    orden: number | null
-    fechaCreacion: Date | null
+    order: number | null
+    createdAt: Date | null
   }
 
   export type FotoInmuebleMaxAggregateOutputType = {
     id: bigint | null
-    inmuebleId: string | null
+    propertyId: string | null
     url: string | null
-    orden: number | null
-    fechaCreacion: Date | null
+    order: number | null
+    createdAt: Date | null
   }
 
   export type FotoInmuebleCountAggregateOutputType = {
     id: number
-    inmuebleId: number
+    propertyId: number
     url: number
-    orden: number
-    fechaCreacion: number
+    order: number
+    createdAt: number
     _all: number
   }
 
 
   export type FotoInmuebleAvgAggregateInputType = {
     id?: true
-    orden?: true
+    order?: true
   }
 
   export type FotoInmuebleSumAggregateInputType = {
     id?: true
-    orden?: true
+    order?: true
   }
 
   export type FotoInmuebleMinAggregateInputType = {
     id?: true
-    inmuebleId?: true
+    propertyId?: true
     url?: true
-    orden?: true
-    fechaCreacion?: true
+    order?: true
+    createdAt?: true
   }
 
   export type FotoInmuebleMaxAggregateInputType = {
     id?: true
-    inmuebleId?: true
+    propertyId?: true
     url?: true
-    orden?: true
-    fechaCreacion?: true
+    order?: true
+    createdAt?: true
   }
 
   export type FotoInmuebleCountAggregateInputType = {
     id?: true
-    inmuebleId?: true
+    propertyId?: true
     url?: true
-    orden?: true
-    fechaCreacion?: true
+    order?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -7137,10 +7508,10 @@ export namespace Prisma {
 
   export type FotoInmuebleGroupByOutputType = {
     id: bigint
-    inmuebleId: string
+    propertyId: string
     url: string
-    orden: number | null
-    fechaCreacion: Date
+    order: number | null
+    createdAt: Date
     _count: FotoInmuebleCountAggregateOutputType | null
     _avg: FotoInmuebleAvgAggregateOutputType | null
     _sum: FotoInmuebleSumAggregateOutputType | null
@@ -7164,61 +7535,61 @@ export namespace Prisma {
 
   export type FotoInmuebleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    inmuebleId?: boolean
+    propertyId?: boolean
     url?: boolean
-    orden?: boolean
-    fechaCreacion?: boolean
-    inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
+    order?: boolean
+    createdAt?: boolean
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fotoInmueble"]>
 
   export type FotoInmuebleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    inmuebleId?: boolean
+    propertyId?: boolean
     url?: boolean
-    orden?: boolean
-    fechaCreacion?: boolean
-    inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
+    order?: boolean
+    createdAt?: boolean
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fotoInmueble"]>
 
   export type FotoInmuebleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    inmuebleId?: boolean
+    propertyId?: boolean
     url?: boolean
-    orden?: boolean
-    fechaCreacion?: boolean
-    inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
+    order?: boolean
+    createdAt?: boolean
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fotoInmueble"]>
 
   export type FotoInmuebleSelectScalar = {
     id?: boolean
-    inmuebleId?: boolean
+    propertyId?: boolean
     url?: boolean
-    orden?: boolean
-    fechaCreacion?: boolean
+    order?: boolean
+    createdAt?: boolean
   }
 
-  export type FotoInmuebleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inmuebleId" | "url" | "orden" | "fechaCreacion", ExtArgs["result"]["fotoInmueble"]>
+  export type FotoInmuebleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "url" | "order" | "createdAt", ExtArgs["result"]["fotoInmueble"]>
   export type FotoInmuebleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
   }
   export type FotoInmuebleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
   }
   export type FotoInmuebleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
   }
 
   export type $FotoInmueblePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "FotoInmueble"
     objects: {
-      inmueble: Prisma.$InmueblePayload<ExtArgs>
+      property: Prisma.$InmueblePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
-      inmuebleId: string
+      propertyId: string
       url: string
-      orden: number | null
-      fechaCreacion: Date
+      order: number | null
+      createdAt: Date
     }, ExtArgs["result"]["fotoInmueble"]>
     composites: {}
   }
@@ -7613,7 +7984,7 @@ export namespace Prisma {
    */
   export interface Prisma__FotoInmuebleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    inmueble<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    property<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7644,10 +8015,10 @@ export namespace Prisma {
    */
   interface FotoInmuebleFieldRefs {
     readonly id: FieldRef<"FotoInmueble", 'BigInt'>
-    readonly inmuebleId: FieldRef<"FotoInmueble", 'String'>
+    readonly propertyId: FieldRef<"FotoInmueble", 'String'>
     readonly url: FieldRef<"FotoInmueble", 'String'>
-    readonly orden: FieldRef<"FotoInmueble", 'Int'>
-    readonly fechaCreacion: FieldRef<"FotoInmueble", 'DateTime'>
+    readonly order: FieldRef<"FotoInmueble", 'Int'>
+    readonly createdAt: FieldRef<"FotoInmueble", 'DateTime'>
   }
     
 
@@ -8076,78 +8447,78 @@ export namespace Prisma {
 
   export type ResenaAvgAggregateOutputType = {
     id: number | null
-    calificacion: number | null
+    rating: number | null
   }
 
   export type ResenaSumAggregateOutputType = {
     id: bigint | null
-    calificacion: number | null
+    rating: number | null
   }
 
   export type ResenaMinAggregateOutputType = {
     id: bigint | null
-    usuarioId: string | null
-    inmuebleId: string | null
-    contenido: string | null
-    calificacion: number | null
-    fechaCreacion: Date | null
+    userId: string | null
+    propertyId: string | null
+    content: string | null
+    rating: number | null
+    createdAt: Date | null
   }
 
   export type ResenaMaxAggregateOutputType = {
     id: bigint | null
-    usuarioId: string | null
-    inmuebleId: string | null
-    contenido: string | null
-    calificacion: number | null
-    fechaCreacion: Date | null
+    userId: string | null
+    propertyId: string | null
+    content: string | null
+    rating: number | null
+    createdAt: Date | null
   }
 
   export type ResenaCountAggregateOutputType = {
     id: number
-    usuarioId: number
-    inmuebleId: number
-    contenido: number
-    calificacion: number
-    fechaCreacion: number
+    userId: number
+    propertyId: number
+    content: number
+    rating: number
+    createdAt: number
     _all: number
   }
 
 
   export type ResenaAvgAggregateInputType = {
     id?: true
-    calificacion?: true
+    rating?: true
   }
 
   export type ResenaSumAggregateInputType = {
     id?: true
-    calificacion?: true
+    rating?: true
   }
 
   export type ResenaMinAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    contenido?: true
-    calificacion?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    content?: true
+    rating?: true
+    createdAt?: true
   }
 
   export type ResenaMaxAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    contenido?: true
-    calificacion?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    content?: true
+    rating?: true
+    createdAt?: true
   }
 
   export type ResenaCountAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    contenido?: true
-    calificacion?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    content?: true
+    rating?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -8239,11 +8610,11 @@ export namespace Prisma {
 
   export type ResenaGroupByOutputType = {
     id: bigint
-    usuarioId: string
-    inmuebleId: string
-    contenido: string
-    calificacion: number
-    fechaCreacion: Date
+    userId: string
+    propertyId: string
+    content: string
+    rating: number
+    createdAt: Date
     _count: ResenaCountAggregateOutputType | null
     _avg: ResenaAvgAggregateOutputType | null
     _sum: ResenaSumAggregateOutputType | null
@@ -8267,6 +8638,7 @@ export namespace Prisma {
 
   export type ResenaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     contenido?: boolean
@@ -8274,10 +8646,20 @@ export namespace Prisma {
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    content?: boolean
+    rating?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["resena"]>
 
   export type ResenaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     contenido?: boolean
@@ -8285,10 +8667,20 @@ export namespace Prisma {
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    content?: boolean
+    rating?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["resena"]>
 
   export type ResenaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     contenido?: boolean
@@ -8296,19 +8688,29 @@ export namespace Prisma {
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    content?: boolean
+    rating?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["resena"]>
 
   export type ResenaSelectScalar = {
     id?: boolean
-    usuarioId?: boolean
-    inmuebleId?: boolean
-    contenido?: boolean
-    calificacion?: boolean
-    fechaCreacion?: boolean
+    userId?: boolean
+    propertyId?: boolean
+    content?: boolean
+    rating?: boolean
+    createdAt?: boolean
   }
 
-  export type ResenaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "usuarioId" | "inmuebleId" | "contenido" | "calificacion" | "fechaCreacion", ExtArgs["result"]["resena"]>
+  export type ResenaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyId" | "content" | "rating" | "createdAt", ExtArgs["result"]["resena"]>
   export type ResenaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< Updated upstream
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
@@ -8319,21 +8721,38 @@ export namespace Prisma {
   export type ResenaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+  }
+  export type ResenaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+  }
+  export type ResenaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }
 
   export type $ResenaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Resena"
     objects: {
+<<<<<<< Updated upstream
       inmueble: Prisma.$InmueblePayload<ExtArgs>
       usuario: Prisma.$UsuarioPayload<ExtArgs>
+=======
+      user: Prisma.$UsuarioPayload<ExtArgs>
+      property: Prisma.$InmueblePayload<ExtArgs>
+>>>>>>> Stashed changes
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
-      usuarioId: string
-      inmuebleId: string
-      contenido: string
-      calificacion: number
-      fechaCreacion: Date
+      userId: string
+      propertyId: string
+      content: string
+      rating: number
+      createdAt: Date
     }, ExtArgs["result"]["resena"]>
     composites: {}
   }
@@ -8728,8 +9147,13 @@ export namespace Prisma {
    */
   export interface Prisma__ResenaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+<<<<<<< Updated upstream
     inmueble<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+=======
+    user<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    property<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+>>>>>>> Stashed changes
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8760,11 +9184,11 @@ export namespace Prisma {
    */
   interface ResenaFieldRefs {
     readonly id: FieldRef<"Resena", 'BigInt'>
-    readonly usuarioId: FieldRef<"Resena", 'String'>
-    readonly inmuebleId: FieldRef<"Resena", 'String'>
-    readonly contenido: FieldRef<"Resena", 'String'>
-    readonly calificacion: FieldRef<"Resena", 'Int'>
-    readonly fechaCreacion: FieldRef<"Resena", 'DateTime'>
+    readonly userId: FieldRef<"Resena", 'String'>
+    readonly propertyId: FieldRef<"Resena", 'String'>
+    readonly content: FieldRef<"Resena", 'String'>
+    readonly rating: FieldRef<"Resena", 'Int'>
+    readonly createdAt: FieldRef<"Resena", 'DateTime'>
   }
     
 
@@ -9191,66 +9615,66 @@ export namespace Prisma {
 
   export type NotificacionMinAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    tipo: string | null
-    titulo: string | null
-    contenido: string | null
-    leido: boolean | null
-    fechaCreacion: Date | null
+    userId: string | null
+    type: string | null
+    title: string | null
+    content: string | null
+    read: boolean | null
+    createdAt: Date | null
   }
 
   export type NotificacionMaxAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    tipo: string | null
-    titulo: string | null
-    contenido: string | null
-    leido: boolean | null
-    fechaCreacion: Date | null
+    userId: string | null
+    type: string | null
+    title: string | null
+    content: string | null
+    read: boolean | null
+    createdAt: Date | null
   }
 
   export type NotificacionCountAggregateOutputType = {
     id: number
-    usuarioId: number
-    tipo: number
-    titulo: number
-    contenido: number
-    leido: number
+    userId: number
+    type: number
+    title: number
+    content: number
+    read: number
     metadata: number
-    fechaCreacion: number
+    createdAt: number
     _all: number
   }
 
 
   export type NotificacionMinAggregateInputType = {
     id?: true
-    usuarioId?: true
-    tipo?: true
-    titulo?: true
-    contenido?: true
-    leido?: true
-    fechaCreacion?: true
+    userId?: true
+    type?: true
+    title?: true
+    content?: true
+    read?: true
+    createdAt?: true
   }
 
   export type NotificacionMaxAggregateInputType = {
     id?: true
-    usuarioId?: true
-    tipo?: true
-    titulo?: true
-    contenido?: true
-    leido?: true
-    fechaCreacion?: true
+    userId?: true
+    type?: true
+    title?: true
+    content?: true
+    read?: true
+    createdAt?: true
   }
 
   export type NotificacionCountAggregateInputType = {
     id?: true
-    usuarioId?: true
-    tipo?: true
-    titulo?: true
-    contenido?: true
-    leido?: true
+    userId?: true
+    type?: true
+    title?: true
+    content?: true
+    read?: true
     metadata?: true
-    fechaCreacion?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -9328,13 +9752,13 @@ export namespace Prisma {
 
   export type NotificacionGroupByOutputType = {
     id: string
-    usuarioId: string
-    tipo: string
-    titulo: string
-    contenido: string
-    leido: boolean
+    userId: string
+    type: string
+    title: string
+    content: string
+    read: boolean
     metadata: JsonValue | null
-    fechaCreacion: Date
+    createdAt: Date
     _count: NotificacionCountAggregateOutputType | null
     _min: NotificacionMinAggregateOutputType | null
     _max: NotificacionMaxAggregateOutputType | null
@@ -9356,76 +9780,76 @@ export namespace Prisma {
 
   export type NotificacionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    titulo?: boolean
-    contenido?: boolean
-    leido?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    read?: boolean
     metadata?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notificacion"]>
 
   export type NotificacionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    titulo?: boolean
-    contenido?: boolean
-    leido?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    read?: boolean
     metadata?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notificacion"]>
 
   export type NotificacionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    titulo?: boolean
-    contenido?: boolean
-    leido?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    read?: boolean
     metadata?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notificacion"]>
 
   export type NotificacionSelectScalar = {
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    titulo?: boolean
-    contenido?: boolean
-    leido?: boolean
+    userId?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    read?: boolean
     metadata?: boolean
-    fechaCreacion?: boolean
+    createdAt?: boolean
   }
 
-  export type NotificacionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "usuarioId" | "tipo" | "titulo" | "contenido" | "leido" | "metadata" | "fechaCreacion", ExtArgs["result"]["notificacion"]>
+  export type NotificacionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "title" | "content" | "read" | "metadata" | "createdAt", ExtArgs["result"]["notificacion"]>
   export type NotificacionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type NotificacionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type NotificacionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
 
   export type $NotificacionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Notificacion"
     objects: {
-      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      user: Prisma.$UsuarioPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      usuarioId: string
-      tipo: string
-      titulo: string
-      contenido: string
-      leido: boolean
+      userId: string
+      type: string
+      title: string
+      content: string
+      read: boolean
       metadata: Prisma.JsonValue | null
-      fechaCreacion: Date
+      createdAt: Date
     }, ExtArgs["result"]["notificacion"]>
     composites: {}
   }
@@ -9820,7 +10244,7 @@ export namespace Prisma {
    */
   export interface Prisma__NotificacionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9851,13 +10275,13 @@ export namespace Prisma {
    */
   interface NotificacionFieldRefs {
     readonly id: FieldRef<"Notificacion", 'String'>
-    readonly usuarioId: FieldRef<"Notificacion", 'String'>
-    readonly tipo: FieldRef<"Notificacion", 'String'>
-    readonly titulo: FieldRef<"Notificacion", 'String'>
-    readonly contenido: FieldRef<"Notificacion", 'String'>
-    readonly leido: FieldRef<"Notificacion", 'Boolean'>
+    readonly userId: FieldRef<"Notificacion", 'String'>
+    readonly type: FieldRef<"Notificacion", 'String'>
+    readonly title: FieldRef<"Notificacion", 'String'>
+    readonly content: FieldRef<"Notificacion", 'String'>
+    readonly read: FieldRef<"Notificacion", 'Boolean'>
     readonly metadata: FieldRef<"Notificacion", 'Json'>
-    readonly fechaCreacion: FieldRef<"Notificacion", 'DateTime'>
+    readonly createdAt: FieldRef<"Notificacion", 'DateTime'>
   }
     
 
@@ -10284,54 +10708,54 @@ export namespace Prisma {
 
   export type ReporteMinAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    tipo: string | null
-    archivoUrl: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    type: string | null
+    fileUrl: string | null
+    createdAt: Date | null
   }
 
   export type ReporteMaxAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    tipo: string | null
-    archivoUrl: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    type: string | null
+    fileUrl: string | null
+    createdAt: Date | null
   }
 
   export type ReporteCountAggregateOutputType = {
     id: number
-    usuarioId: number
-    tipo: number
-    parametros: number
-    archivoUrl: number
-    fechaCreacion: number
+    userId: number
+    type: number
+    parameters: number
+    fileUrl: number
+    createdAt: number
     _all: number
   }
 
 
   export type ReporteMinAggregateInputType = {
     id?: true
-    usuarioId?: true
-    tipo?: true
-    archivoUrl?: true
-    fechaCreacion?: true
+    userId?: true
+    type?: true
+    fileUrl?: true
+    createdAt?: true
   }
 
   export type ReporteMaxAggregateInputType = {
     id?: true
-    usuarioId?: true
-    tipo?: true
-    archivoUrl?: true
-    fechaCreacion?: true
+    userId?: true
+    type?: true
+    fileUrl?: true
+    createdAt?: true
   }
 
   export type ReporteCountAggregateInputType = {
     id?: true
-    usuarioId?: true
-    tipo?: true
-    parametros?: true
-    archivoUrl?: true
-    fechaCreacion?: true
+    userId?: true
+    type?: true
+    parameters?: true
+    fileUrl?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -10409,11 +10833,11 @@ export namespace Prisma {
 
   export type ReporteGroupByOutputType = {
     id: string
-    usuarioId: string
-    tipo: string
-    parametros: JsonValue | null
-    archivoUrl: string | null
-    fechaCreacion: Date
+    userId: string
+    type: string
+    parameters: JsonValue | null
+    fileUrl: string | null
+    createdAt: Date
     _count: ReporteCountAggregateOutputType | null
     _min: ReporteMinAggregateOutputType | null
     _max: ReporteMaxAggregateOutputType | null
@@ -10435,66 +10859,66 @@ export namespace Prisma {
 
   export type ReporteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    parametros?: boolean
-    archivoUrl?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    userId?: boolean
+    type?: boolean
+    parameters?: boolean
+    fileUrl?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reporte"]>
 
   export type ReporteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    parametros?: boolean
-    archivoUrl?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    userId?: boolean
+    type?: boolean
+    parameters?: boolean
+    fileUrl?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reporte"]>
 
   export type ReporteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    parametros?: boolean
-    archivoUrl?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    userId?: boolean
+    type?: boolean
+    parameters?: boolean
+    fileUrl?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reporte"]>
 
   export type ReporteSelectScalar = {
     id?: boolean
-    usuarioId?: boolean
-    tipo?: boolean
-    parametros?: boolean
-    archivoUrl?: boolean
-    fechaCreacion?: boolean
+    userId?: boolean
+    type?: boolean
+    parameters?: boolean
+    fileUrl?: boolean
+    createdAt?: boolean
   }
 
-  export type ReporteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "usuarioId" | "tipo" | "parametros" | "archivoUrl" | "fechaCreacion", ExtArgs["result"]["reporte"]>
+  export type ReporteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "parameters" | "fileUrl" | "createdAt", ExtArgs["result"]["reporte"]>
   export type ReporteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type ReporteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type ReporteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
 
   export type $ReportePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Reporte"
     objects: {
-      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      user: Prisma.$UsuarioPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      usuarioId: string
-      tipo: string
-      parametros: Prisma.JsonValue | null
-      archivoUrl: string | null
-      fechaCreacion: Date
+      userId: string
+      type: string
+      parameters: Prisma.JsonValue | null
+      fileUrl: string | null
+      createdAt: Date
     }, ExtArgs["result"]["reporte"]>
     composites: {}
   }
@@ -10889,7 +11313,7 @@ export namespace Prisma {
    */
   export interface Prisma__ReporteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10920,11 +11344,11 @@ export namespace Prisma {
    */
   interface ReporteFieldRefs {
     readonly id: FieldRef<"Reporte", 'String'>
-    readonly usuarioId: FieldRef<"Reporte", 'String'>
-    readonly tipo: FieldRef<"Reporte", 'String'>
-    readonly parametros: FieldRef<"Reporte", 'Json'>
-    readonly archivoUrl: FieldRef<"Reporte", 'String'>
-    readonly fechaCreacion: FieldRef<"Reporte", 'DateTime'>
+    readonly userId: FieldRef<"Reporte", 'String'>
+    readonly type: FieldRef<"Reporte", 'String'>
+    readonly parameters: FieldRef<"Reporte", 'Json'>
+    readonly fileUrl: FieldRef<"Reporte", 'String'>
+    readonly createdAt: FieldRef<"Reporte", 'DateTime'>
   }
     
 
@@ -11351,46 +11775,46 @@ export namespace Prisma {
 
   export type FavoritoMinAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    inmuebleId: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    propertyId: string | null
+    createdAt: Date | null
   }
 
   export type FavoritoMaxAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    inmuebleId: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    propertyId: string | null
+    createdAt: Date | null
   }
 
   export type FavoritoCountAggregateOutputType = {
     id: number
-    usuarioId: number
-    inmuebleId: number
-    fechaCreacion: number
+    userId: number
+    propertyId: number
+    createdAt: number
     _all: number
   }
 
 
   export type FavoritoMinAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    createdAt?: true
   }
 
   export type FavoritoMaxAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    createdAt?: true
   }
 
   export type FavoritoCountAggregateInputType = {
     id?: true
-    usuarioId?: true
-    inmuebleId?: true
-    fechaCreacion?: true
+    userId?: true
+    propertyId?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -11468,9 +11892,9 @@ export namespace Prisma {
 
   export type FavoritoGroupByOutputType = {
     id: string
-    usuarioId: string
-    inmuebleId: string
-    fechaCreacion: Date
+    userId: string
+    propertyId: string
+    createdAt: Date
     _count: FavoritoCountAggregateOutputType | null
     _min: FavoritoMinAggregateOutputType | null
     _max: FavoritoMaxAggregateOutputType | null
@@ -11492,40 +11916,65 @@ export namespace Prisma {
 
   export type FavoritoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["favorito"]>
 
   export type FavoritoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["favorito"]>
 
   export type FavoritoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+<<<<<<< Updated upstream
     usuarioId?: boolean
     inmuebleId?: boolean
     fechaCreacion?: boolean
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    userId?: boolean
+    propertyId?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }, ExtArgs["result"]["favorito"]>
 
   export type FavoritoSelectScalar = {
     id?: boolean
-    usuarioId?: boolean
-    inmuebleId?: boolean
-    fechaCreacion?: boolean
+    userId?: boolean
+    propertyId?: boolean
+    createdAt?: boolean
   }
 
-  export type FavoritoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "usuarioId" | "inmuebleId" | "fechaCreacion", ExtArgs["result"]["favorito"]>
+  export type FavoritoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyId" | "createdAt", ExtArgs["result"]["favorito"]>
   export type FavoritoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< Updated upstream
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
@@ -11536,19 +11985,36 @@ export namespace Prisma {
   export type FavoritoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inmueble?: boolean | InmuebleDefaultArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+=======
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+  }
+  export type FavoritoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+  }
+  export type FavoritoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
+    property?: boolean | InmuebleDefaultArgs<ExtArgs>
+>>>>>>> Stashed changes
   }
 
   export type $FavoritoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Favorito"
     objects: {
+<<<<<<< Updated upstream
       inmueble: Prisma.$InmueblePayload<ExtArgs>
       usuario: Prisma.$UsuarioPayload<ExtArgs>
+=======
+      user: Prisma.$UsuarioPayload<ExtArgs>
+      property: Prisma.$InmueblePayload<ExtArgs>
+>>>>>>> Stashed changes
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      usuarioId: string
-      inmuebleId: string
-      fechaCreacion: Date
+      userId: string
+      propertyId: string
+      createdAt: Date
     }, ExtArgs["result"]["favorito"]>
     composites: {}
   }
@@ -11943,8 +12409,13 @@ export namespace Prisma {
    */
   export interface Prisma__FavoritoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+<<<<<<< Updated upstream
     inmueble<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+=======
+    user<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    property<T extends InmuebleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InmuebleDefaultArgs<ExtArgs>>): Prisma__InmuebleClient<$Result.GetResult<Prisma.$InmueblePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+>>>>>>> Stashed changes
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11975,9 +12446,9 @@ export namespace Prisma {
    */
   interface FavoritoFieldRefs {
     readonly id: FieldRef<"Favorito", 'String'>
-    readonly usuarioId: FieldRef<"Favorito", 'String'>
-    readonly inmuebleId: FieldRef<"Favorito", 'String'>
-    readonly fechaCreacion: FieldRef<"Favorito", 'DateTime'>
+    readonly userId: FieldRef<"Favorito", 'String'>
+    readonly propertyId: FieldRef<"Favorito", 'String'>
+    readonly createdAt: FieldRef<"Favorito", 'DateTime'>
   }
     
 
@@ -12404,48 +12875,48 @@ export namespace Prisma {
 
   export type BusquedaGuardadaMinAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    nombreBusqueda: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    searchName: string | null
+    createdAt: Date | null
   }
 
   export type BusquedaGuardadaMaxAggregateOutputType = {
     id: string | null
-    usuarioId: string | null
-    nombreBusqueda: string | null
-    fechaCreacion: Date | null
+    userId: string | null
+    searchName: string | null
+    createdAt: Date | null
   }
 
   export type BusquedaGuardadaCountAggregateOutputType = {
     id: number
-    usuarioId: number
-    parametrosBusqueda: number
-    nombreBusqueda: number
-    fechaCreacion: number
+    userId: number
+    searchParameters: number
+    searchName: number
+    createdAt: number
     _all: number
   }
 
 
   export type BusquedaGuardadaMinAggregateInputType = {
     id?: true
-    usuarioId?: true
-    nombreBusqueda?: true
-    fechaCreacion?: true
+    userId?: true
+    searchName?: true
+    createdAt?: true
   }
 
   export type BusquedaGuardadaMaxAggregateInputType = {
     id?: true
-    usuarioId?: true
-    nombreBusqueda?: true
-    fechaCreacion?: true
+    userId?: true
+    searchName?: true
+    createdAt?: true
   }
 
   export type BusquedaGuardadaCountAggregateInputType = {
     id?: true
-    usuarioId?: true
-    parametrosBusqueda?: true
-    nombreBusqueda?: true
-    fechaCreacion?: true
+    userId?: true
+    searchParameters?: true
+    searchName?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -12523,10 +12994,10 @@ export namespace Prisma {
 
   export type BusquedaGuardadaGroupByOutputType = {
     id: string
-    usuarioId: string
-    parametrosBusqueda: JsonValue
-    nombreBusqueda: string | null
-    fechaCreacion: Date
+    userId: string
+    searchParameters: JsonValue
+    searchName: string | null
+    createdAt: Date
     _count: BusquedaGuardadaCountAggregateOutputType | null
     _min: BusquedaGuardadaMinAggregateOutputType | null
     _max: BusquedaGuardadaMaxAggregateOutputType | null
@@ -12548,61 +13019,61 @@ export namespace Prisma {
 
   export type BusquedaGuardadaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    parametrosBusqueda?: boolean
-    nombreBusqueda?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    userId?: boolean
+    searchParameters?: boolean
+    searchName?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["busquedaGuardada"]>
 
   export type BusquedaGuardadaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    parametrosBusqueda?: boolean
-    nombreBusqueda?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    userId?: boolean
+    searchParameters?: boolean
+    searchName?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["busquedaGuardada"]>
 
   export type BusquedaGuardadaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    usuarioId?: boolean
-    parametrosBusqueda?: boolean
-    nombreBusqueda?: boolean
-    fechaCreacion?: boolean
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    userId?: boolean
+    searchParameters?: boolean
+    searchName?: boolean
+    createdAt?: boolean
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["busquedaGuardada"]>
 
   export type BusquedaGuardadaSelectScalar = {
     id?: boolean
-    usuarioId?: boolean
-    parametrosBusqueda?: boolean
-    nombreBusqueda?: boolean
-    fechaCreacion?: boolean
+    userId?: boolean
+    searchParameters?: boolean
+    searchName?: boolean
+    createdAt?: boolean
   }
 
-  export type BusquedaGuardadaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "usuarioId" | "parametrosBusqueda" | "nombreBusqueda" | "fechaCreacion", ExtArgs["result"]["busquedaGuardada"]>
+  export type BusquedaGuardadaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "searchParameters" | "searchName" | "createdAt", ExtArgs["result"]["busquedaGuardada"]>
   export type BusquedaGuardadaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type BusquedaGuardadaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type BusquedaGuardadaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    user?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
 
   export type $BusquedaGuardadaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BusquedaGuardada"
     objects: {
-      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      user: Prisma.$UsuarioPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      usuarioId: string
-      parametrosBusqueda: Prisma.JsonValue
-      nombreBusqueda: string | null
-      fechaCreacion: Date
+      userId: string
+      searchParameters: Prisma.JsonValue
+      searchName: string | null
+      createdAt: Date
     }, ExtArgs["result"]["busquedaGuardada"]>
     composites: {}
   }
@@ -12997,7 +13468,7 @@ export namespace Prisma {
    */
   export interface Prisma__BusquedaGuardadaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13028,10 +13499,10 @@ export namespace Prisma {
    */
   interface BusquedaGuardadaFieldRefs {
     readonly id: FieldRef<"BusquedaGuardada", 'String'>
-    readonly usuarioId: FieldRef<"BusquedaGuardada", 'String'>
-    readonly parametrosBusqueda: FieldRef<"BusquedaGuardada", 'Json'>
-    readonly nombreBusqueda: FieldRef<"BusquedaGuardada", 'String'>
-    readonly fechaCreacion: FieldRef<"BusquedaGuardada", 'DateTime'>
+    readonly userId: FieldRef<"BusquedaGuardada", 'String'>
+    readonly searchParameters: FieldRef<"BusquedaGuardada", 'Json'>
+    readonly searchName: FieldRef<"BusquedaGuardada", 'String'>
+    readonly createdAt: FieldRef<"BusquedaGuardada", 'DateTime'>
   }
     
 
@@ -14539,16 +15010,16 @@ export namespace Prisma {
   export const UsuarioScalarFieldEnum: {
     id: 'id',
     googleId: 'googleId',
-    fotoPerfil: 'fotoPerfil',
-    correoElectronico: 'correoElectronico',
-    contrasenaHash: 'contrasenaHash',
-    nombreCompleto: 'nombreCompleto',
-    telefono: 'telefono',
-    rol: 'rol',
-    estadoVerificacion: 'estadoVerificacion',
+    profilePhoto: 'profilePhoto',
+    email: 'email',
+    passwordHash: 'passwordHash',
+    fullName: 'fullName',
+    phone: 'phone',
+    role: 'role',
+    verificationStatus: 'verificationStatus',
     refreshToken: 'refreshToken',
-    fechaCreacion: 'fechaCreacion',
-    fechaActualizacion: 'fechaActualizacion'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
@@ -14556,19 +15027,19 @@ export namespace Prisma {
 
   export const InmuebleScalarFieldEnum: {
     id: 'id',
-    propietarioId: 'propietarioId',
-    titulo: 'titulo',
-    descripcion: 'descripcion',
-    direccion: 'direccion',
-    ciudad: 'ciudad',
-    dormitorios: 'dormitorios',
-    banos: 'banos',
+    ownerId: 'ownerId',
+    title: 'title',
+    description: 'description',
+    address: 'address',
+    city: 'city',
+    bedrooms: 'bedrooms',
+    bathrooms: 'bathrooms',
     areaM2: 'areaM2',
-    precio: 'precio',
-    tipoOperacion: 'tipoOperacion',
-    estado: 'estado',
-    fechaCreacion: 'fechaCreacion',
-    fechaActualizacion: 'fechaActualizacion'
+    price: 'price',
+    operationType: 'operationType',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type InmuebleScalarFieldEnum = (typeof InmuebleScalarFieldEnum)[keyof typeof InmuebleScalarFieldEnum]
@@ -14576,11 +15047,11 @@ export namespace Prisma {
 
   export const InteresScalarFieldEnum: {
     id: 'id',
-    usuarioId: 'usuarioId',
-    inmuebleId: 'inmuebleId',
-    mensaje: 'mensaje',
-    estado: 'estado',
-    fechaCreacion: 'fechaCreacion'
+    userId: 'userId',
+    propertyId: 'propertyId',
+    message: 'message',
+    status: 'status',
+    createdAt: 'createdAt'
   };
 
   export type InteresScalarFieldEnum = (typeof InteresScalarFieldEnum)[keyof typeof InteresScalarFieldEnum]
@@ -14588,12 +15059,12 @@ export namespace Prisma {
 
   export const MensajeScalarFieldEnum: {
     id: 'id',
-    emisorId: 'emisorId',
-    receptorId: 'receptorId',
-    interesId: 'interesId',
-    contenido: 'contenido',
-    leido: 'leido',
-    fechaCreacion: 'fechaCreacion'
+    senderId: 'senderId',
+    receiverId: 'receiverId',
+    interestId: 'interestId',
+    content: 'content',
+    read: 'read',
+    createdAt: 'createdAt'
   };
 
   export type MensajeScalarFieldEnum = (typeof MensajeScalarFieldEnum)[keyof typeof MensajeScalarFieldEnum]
@@ -14601,10 +15072,10 @@ export namespace Prisma {
 
   export const FotoInmuebleScalarFieldEnum: {
     id: 'id',
-    inmuebleId: 'inmuebleId',
+    propertyId: 'propertyId',
     url: 'url',
-    orden: 'orden',
-    fechaCreacion: 'fechaCreacion'
+    order: 'order',
+    createdAt: 'createdAt'
   };
 
   export type FotoInmuebleScalarFieldEnum = (typeof FotoInmuebleScalarFieldEnum)[keyof typeof FotoInmuebleScalarFieldEnum]
@@ -14612,11 +15083,11 @@ export namespace Prisma {
 
   export const ResenaScalarFieldEnum: {
     id: 'id',
-    usuarioId: 'usuarioId',
-    inmuebleId: 'inmuebleId',
-    contenido: 'contenido',
-    calificacion: 'calificacion',
-    fechaCreacion: 'fechaCreacion'
+    userId: 'userId',
+    propertyId: 'propertyId',
+    content: 'content',
+    rating: 'rating',
+    createdAt: 'createdAt'
   };
 
   export type ResenaScalarFieldEnum = (typeof ResenaScalarFieldEnum)[keyof typeof ResenaScalarFieldEnum]
@@ -14624,13 +15095,13 @@ export namespace Prisma {
 
   export const NotificacionScalarFieldEnum: {
     id: 'id',
-    usuarioId: 'usuarioId',
-    tipo: 'tipo',
-    titulo: 'titulo',
-    contenido: 'contenido',
-    leido: 'leido',
+    userId: 'userId',
+    type: 'type',
+    title: 'title',
+    content: 'content',
+    read: 'read',
     metadata: 'metadata',
-    fechaCreacion: 'fechaCreacion'
+    createdAt: 'createdAt'
   };
 
   export type NotificacionScalarFieldEnum = (typeof NotificacionScalarFieldEnum)[keyof typeof NotificacionScalarFieldEnum]
@@ -14638,11 +15109,11 @@ export namespace Prisma {
 
   export const ReporteScalarFieldEnum: {
     id: 'id',
-    usuarioId: 'usuarioId',
-    tipo: 'tipo',
-    parametros: 'parametros',
-    archivoUrl: 'archivoUrl',
-    fechaCreacion: 'fechaCreacion'
+    userId: 'userId',
+    type: 'type',
+    parameters: 'parameters',
+    fileUrl: 'fileUrl',
+    createdAt: 'createdAt'
   };
 
   export type ReporteScalarFieldEnum = (typeof ReporteScalarFieldEnum)[keyof typeof ReporteScalarFieldEnum]
@@ -14650,9 +15121,9 @@ export namespace Prisma {
 
   export const FavoritoScalarFieldEnum: {
     id: 'id',
-    usuarioId: 'usuarioId',
-    inmuebleId: 'inmuebleId',
-    fechaCreacion: 'fechaCreacion'
+    userId: 'userId',
+    propertyId: 'propertyId',
+    createdAt: 'createdAt'
   };
 
   export type FavoritoScalarFieldEnum = (typeof FavoritoScalarFieldEnum)[keyof typeof FavoritoScalarFieldEnum]
@@ -14660,10 +15131,10 @@ export namespace Prisma {
 
   export const BusquedaGuardadaScalarFieldEnum: {
     id: 'id',
-    usuarioId: 'usuarioId',
-    parametrosBusqueda: 'parametrosBusqueda',
-    nombreBusqueda: 'nombreBusqueda',
-    fechaCreacion: 'fechaCreacion'
+    userId: 'userId',
+    searchParameters: 'searchParameters',
+    searchName: 'searchName',
+    createdAt: 'createdAt'
   };
 
   export type BusquedaGuardadaScalarFieldEnum = (typeof BusquedaGuardadaScalarFieldEnum)[keyof typeof BusquedaGuardadaScalarFieldEnum]
@@ -14849,14 +15320,15 @@ export namespace Prisma {
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     id?: UuidFilter<"Usuario"> | string
     googleId?: StringNullableFilter<"Usuario"> | string | null
-    fotoPerfil?: StringNullableFilter<"Usuario"> | string | null
-    correoElectronico?: StringFilter<"Usuario"> | string
-    contrasenaHash?: StringNullableFilter<"Usuario"> | string | null
-    nombreCompleto?: StringNullableFilter<"Usuario"> | string | null
-    telefono?: StringNullableFilter<"Usuario"> | string | null
-    rol?: StringFilter<"Usuario"> | string
-    estadoVerificacion?: StringFilter<"Usuario"> | string
+    profilePhoto?: StringNullableFilter<"Usuario"> | string | null
+    email?: StringFilter<"Usuario"> | string
+    passwordHash?: StringNullableFilter<"Usuario"> | string | null
+    fullName?: StringNullableFilter<"Usuario"> | string | null
+    phone?: StringNullableFilter<"Usuario"> | string | null
+    role?: StringFilter<"Usuario"> | string
+    verificationStatus?: StringFilter<"Usuario"> | string
     refreshToken?: StringNullableFilter<"Usuario"> | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFilter<"Usuario"> | Date | string
     fechaActualizacion?: DateTimeFilter<"Usuario"> | Date | string
     busquedasGuardadas?: BusquedaGuardadaListRelationFilter
@@ -14869,19 +15341,33 @@ export namespace Prisma {
     reportes?: ReporteListRelationFilter
     resenas?: ResenaListRelationFilter
     preferences?: XOR<UserPreferenceNullableScalarRelationFilter, UserPreferenceWhereInput> | null
+=======
+    createdAt?: DateTimeFilter<"Usuario"> | Date | string
+    updatedAt?: DateTimeFilter<"Usuario"> | Date | string
+    ownedProperties?: InmuebleListRelationFilter
+    interests?: InteresListRelationFilter
+    sentMessages?: MensajeListRelationFilter
+    receivedMessages?: MensajeListRelationFilter
+    reviews?: ResenaListRelationFilter
+    notifications?: NotificacionListRelationFilter
+    reports?: ReporteListRelationFilter
+    favorites?: FavoritoListRelationFilter
+    savedSearches?: BusquedaGuardadaListRelationFilter
+>>>>>>> Stashed changes
   }
 
   export type UsuarioOrderByWithRelationInput = {
     id?: SortOrder
     googleId?: SortOrderInput | SortOrder
-    fotoPerfil?: SortOrderInput | SortOrder
-    correoElectronico?: SortOrder
-    contrasenaHash?: SortOrderInput | SortOrder
-    nombreCompleto?: SortOrderInput | SortOrder
-    telefono?: SortOrderInput | SortOrder
-    rol?: SortOrder
-    estadoVerificacion?: SortOrder
+    profilePhoto?: SortOrderInput | SortOrder
+    email?: SortOrder
+    passwordHash?: SortOrderInput | SortOrder
+    fullName?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    role?: SortOrder
+    verificationStatus?: SortOrder
     refreshToken?: SortOrderInput | SortOrder
+<<<<<<< Updated upstream
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
     busquedasGuardadas?: BusquedaGuardadaOrderByRelationAggregateInput
@@ -14894,22 +15380,36 @@ export namespace Prisma {
     reportes?: ReporteOrderByRelationAggregateInput
     resenas?: ResenaOrderByRelationAggregateInput
     preferences?: UserPreferenceOrderByWithRelationInput
+=======
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ownedProperties?: InmuebleOrderByRelationAggregateInput
+    interests?: InteresOrderByRelationAggregateInput
+    sentMessages?: MensajeOrderByRelationAggregateInput
+    receivedMessages?: MensajeOrderByRelationAggregateInput
+    reviews?: ResenaOrderByRelationAggregateInput
+    notifications?: NotificacionOrderByRelationAggregateInput
+    reports?: ReporteOrderByRelationAggregateInput
+    favorites?: FavoritoOrderByRelationAggregateInput
+    savedSearches?: BusquedaGuardadaOrderByRelationAggregateInput
+>>>>>>> Stashed changes
   }
 
   export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     googleId?: string
-    correoElectronico?: string
+    email?: string
     AND?: UsuarioWhereInput | UsuarioWhereInput[]
     OR?: UsuarioWhereInput[]
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
-    fotoPerfil?: StringNullableFilter<"Usuario"> | string | null
-    contrasenaHash?: StringNullableFilter<"Usuario"> | string | null
-    nombreCompleto?: StringNullableFilter<"Usuario"> | string | null
-    telefono?: StringNullableFilter<"Usuario"> | string | null
-    rol?: StringFilter<"Usuario"> | string
-    estadoVerificacion?: StringFilter<"Usuario"> | string
+    profilePhoto?: StringNullableFilter<"Usuario"> | string | null
+    passwordHash?: StringNullableFilter<"Usuario"> | string | null
+    fullName?: StringNullableFilter<"Usuario"> | string | null
+    phone?: StringNullableFilter<"Usuario"> | string | null
+    role?: StringFilter<"Usuario"> | string
+    verificationStatus?: StringFilter<"Usuario"> | string
     refreshToken?: StringNullableFilter<"Usuario"> | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFilter<"Usuario"> | Date | string
     fechaActualizacion?: DateTimeFilter<"Usuario"> | Date | string
     busquedasGuardadas?: BusquedaGuardadaListRelationFilter
@@ -14923,20 +15423,34 @@ export namespace Prisma {
     resenas?: ResenaListRelationFilter
     preferences?: XOR<UserPreferenceNullableScalarRelationFilter, UserPreferenceWhereInput> | null
   }, "id" | "googleId" | "correoElectronico">
+=======
+    createdAt?: DateTimeFilter<"Usuario"> | Date | string
+    updatedAt?: DateTimeFilter<"Usuario"> | Date | string
+    ownedProperties?: InmuebleListRelationFilter
+    interests?: InteresListRelationFilter
+    sentMessages?: MensajeListRelationFilter
+    receivedMessages?: MensajeListRelationFilter
+    reviews?: ResenaListRelationFilter
+    notifications?: NotificacionListRelationFilter
+    reports?: ReporteListRelationFilter
+    favorites?: FavoritoListRelationFilter
+    savedSearches?: BusquedaGuardadaListRelationFilter
+  }, "id" | "googleId" | "email">
+>>>>>>> Stashed changes
 
   export type UsuarioOrderByWithAggregationInput = {
     id?: SortOrder
     googleId?: SortOrderInput | SortOrder
-    fotoPerfil?: SortOrderInput | SortOrder
-    correoElectronico?: SortOrder
-    contrasenaHash?: SortOrderInput | SortOrder
-    nombreCompleto?: SortOrderInput | SortOrder
-    telefono?: SortOrderInput | SortOrder
-    rol?: SortOrder
-    estadoVerificacion?: SortOrder
+    profilePhoto?: SortOrderInput | SortOrder
+    email?: SortOrder
+    passwordHash?: SortOrderInput | SortOrder
+    fullName?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    role?: SortOrder
+    verificationStatus?: SortOrder
     refreshToken?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: UsuarioCountOrderByAggregateInput
     _max?: UsuarioMaxOrderByAggregateInput
     _min?: UsuarioMinOrderByAggregateInput
@@ -14948,16 +15462,16 @@ export namespace Prisma {
     NOT?: UsuarioScalarWhereWithAggregatesInput | UsuarioScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Usuario"> | string
     googleId?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
-    fotoPerfil?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
-    correoElectronico?: StringWithAggregatesFilter<"Usuario"> | string
-    contrasenaHash?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
-    nombreCompleto?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
-    telefono?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
-    rol?: StringWithAggregatesFilter<"Usuario"> | string
-    estadoVerificacion?: StringWithAggregatesFilter<"Usuario"> | string
+    profilePhoto?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
+    email?: StringWithAggregatesFilter<"Usuario"> | string
+    passwordHash?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
+    fullName?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
+    role?: StringWithAggregatesFilter<"Usuario"> | string
+    verificationStatus?: StringWithAggregatesFilter<"Usuario"> | string
     refreshToken?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
-    fechaActualizacion?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
   }
 
   export type InmuebleWhereInput = {
@@ -14965,14 +15479,15 @@ export namespace Prisma {
     OR?: InmuebleWhereInput[]
     NOT?: InmuebleWhereInput | InmuebleWhereInput[]
     id?: UuidFilter<"Inmueble"> | string
-    propietarioId?: UuidFilter<"Inmueble"> | string
-    titulo?: StringFilter<"Inmueble"> | string
-    descripcion?: StringNullableFilter<"Inmueble"> | string | null
-    direccion?: StringNullableFilter<"Inmueble"> | string | null
-    ciudad?: StringFilter<"Inmueble"> | string
-    dormitorios?: IntNullableFilter<"Inmueble"> | number | null
-    banos?: IntNullableFilter<"Inmueble"> | number | null
+    ownerId?: UuidFilter<"Inmueble"> | string
+    title?: StringFilter<"Inmueble"> | string
+    description?: StringNullableFilter<"Inmueble"> | string | null
+    address?: StringNullableFilter<"Inmueble"> | string | null
+    city?: StringFilter<"Inmueble"> | string
+    bedrooms?: IntNullableFilter<"Inmueble"> | number | null
+    bathrooms?: IntNullableFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFilter<"Inmueble"> | string
     estado?: StringFilter<"Inmueble"> | string
@@ -14983,18 +15498,31 @@ export namespace Prisma {
     propietario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     intereses?: InteresListRelationFilter
     resenas?: ResenaListRelationFilter
+=======
+    price?: DecimalFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
+    operationType?: StringFilter<"Inmueble"> | string
+    status?: StringFilter<"Inmueble"> | string
+    createdAt?: DateTimeFilter<"Inmueble"> | Date | string
+    updatedAt?: DateTimeFilter<"Inmueble"> | Date | string
+    owner?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    interests?: InteresListRelationFilter
+    propertyPhotos?: FotoInmuebleListRelationFilter
+    reviews?: ResenaListRelationFilter
+    favorites?: FavoritoListRelationFilter
+>>>>>>> Stashed changes
   }
 
   export type InmuebleOrderByWithRelationInput = {
     id?: SortOrder
-    propietarioId?: SortOrder
-    titulo?: SortOrder
-    descripcion?: SortOrderInput | SortOrder
-    direccion?: SortOrderInput | SortOrder
-    ciudad?: SortOrder
-    dormitorios?: SortOrderInput | SortOrder
-    banos?: SortOrderInput | SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    city?: SortOrder
+    bedrooms?: SortOrderInput | SortOrder
+    bathrooms?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
+<<<<<<< Updated upstream
     precio?: SortOrder
     tipoOperacion?: SortOrder
     estado?: SortOrder
@@ -15005,6 +15533,18 @@ export namespace Prisma {
     propietario?: UsuarioOrderByWithRelationInput
     intereses?: InteresOrderByRelationAggregateInput
     resenas?: ResenaOrderByRelationAggregateInput
+=======
+    price?: SortOrder
+    operationType?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    owner?: UsuarioOrderByWithRelationInput
+    interests?: InteresOrderByRelationAggregateInput
+    propertyPhotos?: FotoInmuebleOrderByRelationAggregateInput
+    reviews?: ResenaOrderByRelationAggregateInput
+    favorites?: FavoritoOrderByRelationAggregateInput
+>>>>>>> Stashed changes
   }
 
   export type InmuebleWhereUniqueInput = Prisma.AtLeast<{
@@ -15012,14 +15552,15 @@ export namespace Prisma {
     AND?: InmuebleWhereInput | InmuebleWhereInput[]
     OR?: InmuebleWhereInput[]
     NOT?: InmuebleWhereInput | InmuebleWhereInput[]
-    propietarioId?: UuidFilter<"Inmueble"> | string
-    titulo?: StringFilter<"Inmueble"> | string
-    descripcion?: StringNullableFilter<"Inmueble"> | string | null
-    direccion?: StringNullableFilter<"Inmueble"> | string | null
-    ciudad?: StringFilter<"Inmueble"> | string
-    dormitorios?: IntNullableFilter<"Inmueble"> | number | null
-    banos?: IntNullableFilter<"Inmueble"> | number | null
+    ownerId?: UuidFilter<"Inmueble"> | string
+    title?: StringFilter<"Inmueble"> | string
+    description?: StringNullableFilter<"Inmueble"> | string | null
+    address?: StringNullableFilter<"Inmueble"> | string | null
+    city?: StringFilter<"Inmueble"> | string
+    bedrooms?: IntNullableFilter<"Inmueble"> | number | null
+    bathrooms?: IntNullableFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFilter<"Inmueble"> | string
     estado?: StringFilter<"Inmueble"> | string
@@ -15030,23 +15571,35 @@ export namespace Prisma {
     propietario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     intereses?: InteresListRelationFilter
     resenas?: ResenaListRelationFilter
+=======
+    price?: DecimalFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
+    operationType?: StringFilter<"Inmueble"> | string
+    status?: StringFilter<"Inmueble"> | string
+    createdAt?: DateTimeFilter<"Inmueble"> | Date | string
+    updatedAt?: DateTimeFilter<"Inmueble"> | Date | string
+    owner?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    interests?: InteresListRelationFilter
+    propertyPhotos?: FotoInmuebleListRelationFilter
+    reviews?: ResenaListRelationFilter
+    favorites?: FavoritoListRelationFilter
+>>>>>>> Stashed changes
   }, "id">
 
   export type InmuebleOrderByWithAggregationInput = {
     id?: SortOrder
-    propietarioId?: SortOrder
-    titulo?: SortOrder
-    descripcion?: SortOrderInput | SortOrder
-    direccion?: SortOrderInput | SortOrder
-    ciudad?: SortOrder
-    dormitorios?: SortOrderInput | SortOrder
-    banos?: SortOrderInput | SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    city?: SortOrder
+    bedrooms?: SortOrderInput | SortOrder
+    bathrooms?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
-    precio?: SortOrder
-    tipoOperacion?: SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    price?: SortOrder
+    operationType?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: InmuebleCountOrderByAggregateInput
     _avg?: InmuebleAvgOrderByAggregateInput
     _max?: InmuebleMaxOrderByAggregateInput
@@ -15059,19 +15612,19 @@ export namespace Prisma {
     OR?: InmuebleScalarWhereWithAggregatesInput[]
     NOT?: InmuebleScalarWhereWithAggregatesInput | InmuebleScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Inmueble"> | string
-    propietarioId?: UuidWithAggregatesFilter<"Inmueble"> | string
-    titulo?: StringWithAggregatesFilter<"Inmueble"> | string
-    descripcion?: StringNullableWithAggregatesFilter<"Inmueble"> | string | null
-    direccion?: StringNullableWithAggregatesFilter<"Inmueble"> | string | null
-    ciudad?: StringWithAggregatesFilter<"Inmueble"> | string
-    dormitorios?: IntNullableWithAggregatesFilter<"Inmueble"> | number | null
-    banos?: IntNullableWithAggregatesFilter<"Inmueble"> | number | null
+    ownerId?: UuidWithAggregatesFilter<"Inmueble"> | string
+    title?: StringWithAggregatesFilter<"Inmueble"> | string
+    description?: StringNullableWithAggregatesFilter<"Inmueble"> | string | null
+    address?: StringNullableWithAggregatesFilter<"Inmueble"> | string | null
+    city?: StringWithAggregatesFilter<"Inmueble"> | string
+    bedrooms?: IntNullableWithAggregatesFilter<"Inmueble"> | number | null
+    bathrooms?: IntNullableWithAggregatesFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableWithAggregatesFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
-    precio?: DecimalWithAggregatesFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
-    tipoOperacion?: StringWithAggregatesFilter<"Inmueble"> | string
-    estado?: StringWithAggregatesFilter<"Inmueble"> | string
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Inmueble"> | Date | string
-    fechaActualizacion?: DateTimeWithAggregatesFilter<"Inmueble"> | Date | string
+    price?: DecimalWithAggregatesFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
+    operationType?: StringWithAggregatesFilter<"Inmueble"> | string
+    status?: StringWithAggregatesFilter<"Inmueble"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Inmueble"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Inmueble"> | Date | string
   }
 
   export type InteresWhereInput = {
@@ -15079,6 +15632,7 @@ export namespace Prisma {
     OR?: InteresWhereInput[]
     NOT?: InteresWhereInput | InteresWhereInput[]
     id?: UuidFilter<"Interes"> | string
+<<<<<<< Updated upstream
     usuarioId?: UuidFilter<"Interes"> | string
     inmuebleId?: UuidFilter<"Interes"> | string
     mensaje?: StringNullableFilter<"Interes"> | string | null
@@ -15087,10 +15641,21 @@ export namespace Prisma {
     inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     mensajes?: MensajeListRelationFilter
+=======
+    userId?: UuidFilter<"Interes"> | string
+    propertyId?: UuidFilter<"Interes"> | string
+    message?: StringNullableFilter<"Interes"> | string | null
+    status?: StringFilter<"Interes"> | string
+    createdAt?: DateTimeFilter<"Interes"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+    messages?: MensajeListRelationFilter
+>>>>>>> Stashed changes
   }
 
   export type InteresOrderByWithRelationInput = {
     id?: SortOrder
+<<<<<<< Updated upstream
     usuarioId?: SortOrder
     inmuebleId?: SortOrder
     mensaje?: SortOrderInput | SortOrder
@@ -15099,6 +15664,16 @@ export namespace Prisma {
     inmueble?: InmuebleOrderByWithRelationInput
     usuario?: UsuarioOrderByWithRelationInput
     mensajes?: MensajeOrderByRelationAggregateInput
+=======
+    userId?: SortOrder
+    propertyId?: SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    user?: UsuarioOrderByWithRelationInput
+    property?: InmuebleOrderByWithRelationInput
+    messages?: MensajeOrderByRelationAggregateInput
+>>>>>>> Stashed changes
   }
 
   export type InteresWhereUniqueInput = Prisma.AtLeast<{
@@ -15106,6 +15681,7 @@ export namespace Prisma {
     AND?: InteresWhereInput | InteresWhereInput[]
     OR?: InteresWhereInput[]
     NOT?: InteresWhereInput | InteresWhereInput[]
+<<<<<<< Updated upstream
     usuarioId?: UuidFilter<"Interes"> | string
     inmuebleId?: UuidFilter<"Interes"> | string
     mensaje?: StringNullableFilter<"Interes"> | string | null
@@ -15114,15 +15690,25 @@ export namespace Prisma {
     inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     mensajes?: MensajeListRelationFilter
+=======
+    userId?: UuidFilter<"Interes"> | string
+    propertyId?: UuidFilter<"Interes"> | string
+    message?: StringNullableFilter<"Interes"> | string | null
+    status?: StringFilter<"Interes"> | string
+    createdAt?: DateTimeFilter<"Interes"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+    messages?: MensajeListRelationFilter
+>>>>>>> Stashed changes
   }, "id">
 
   export type InteresOrderByWithAggregationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    mensaje?: SortOrderInput | SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
     _count?: InteresCountOrderByAggregateInput
     _max?: InteresMaxOrderByAggregateInput
     _min?: InteresMinOrderByAggregateInput
@@ -15133,11 +15719,11 @@ export namespace Prisma {
     OR?: InteresScalarWhereWithAggregatesInput[]
     NOT?: InteresScalarWhereWithAggregatesInput | InteresScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Interes"> | string
-    usuarioId?: UuidWithAggregatesFilter<"Interes"> | string
-    inmuebleId?: UuidWithAggregatesFilter<"Interes"> | string
-    mensaje?: StringNullableWithAggregatesFilter<"Interes"> | string | null
-    estado?: StringWithAggregatesFilter<"Interes"> | string
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Interes"> | Date | string
+    userId?: UuidWithAggregatesFilter<"Interes"> | string
+    propertyId?: UuidWithAggregatesFilter<"Interes"> | string
+    message?: StringNullableWithAggregatesFilter<"Interes"> | string | null
+    status?: StringWithAggregatesFilter<"Interes"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Interes"> | Date | string
   }
 
   export type MensajeWhereInput = {
@@ -15145,6 +15731,7 @@ export namespace Prisma {
     OR?: MensajeWhereInput[]
     NOT?: MensajeWhereInput | MensajeWhereInput[]
     id?: BigIntFilter<"Mensaje"> | bigint | number
+<<<<<<< Updated upstream
     emisorId?: UuidFilter<"Mensaje"> | string
     receptorId?: UuidFilter<"Mensaje"> | string
     interesId?: UuidNullableFilter<"Mensaje"> | string | null
@@ -15154,10 +15741,22 @@ export namespace Prisma {
     emisor?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     interes?: XOR<InteresNullableScalarRelationFilter, InteresWhereInput> | null
     receptor?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+=======
+    senderId?: UuidFilter<"Mensaje"> | string
+    receiverId?: UuidFilter<"Mensaje"> | string
+    interestId?: UuidNullableFilter<"Mensaje"> | string | null
+    content?: StringFilter<"Mensaje"> | string
+    read?: BoolFilter<"Mensaje"> | boolean
+    createdAt?: DateTimeFilter<"Mensaje"> | Date | string
+    sender?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    receiver?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    interest?: XOR<InteresNullableScalarRelationFilter, InteresWhereInput> | null
+>>>>>>> Stashed changes
   }
 
   export type MensajeOrderByWithRelationInput = {
     id?: SortOrder
+<<<<<<< Updated upstream
     emisorId?: SortOrder
     receptorId?: SortOrder
     interesId?: SortOrderInput | SortOrder
@@ -15167,6 +15766,17 @@ export namespace Prisma {
     emisor?: UsuarioOrderByWithRelationInput
     interes?: InteresOrderByWithRelationInput
     receptor?: UsuarioOrderByWithRelationInput
+=======
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    interestId?: SortOrderInput | SortOrder
+    content?: SortOrder
+    read?: SortOrder
+    createdAt?: SortOrder
+    sender?: UsuarioOrderByWithRelationInput
+    receiver?: UsuarioOrderByWithRelationInput
+    interest?: InteresOrderByWithRelationInput
+>>>>>>> Stashed changes
   }
 
   export type MensajeWhereUniqueInput = Prisma.AtLeast<{
@@ -15174,6 +15784,7 @@ export namespace Prisma {
     AND?: MensajeWhereInput | MensajeWhereInput[]
     OR?: MensajeWhereInput[]
     NOT?: MensajeWhereInput | MensajeWhereInput[]
+<<<<<<< Updated upstream
     emisorId?: UuidFilter<"Mensaje"> | string
     receptorId?: UuidFilter<"Mensaje"> | string
     interesId?: UuidNullableFilter<"Mensaje"> | string | null
@@ -15183,16 +15794,27 @@ export namespace Prisma {
     emisor?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     interes?: XOR<InteresNullableScalarRelationFilter, InteresWhereInput> | null
     receptor?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+=======
+    senderId?: UuidFilter<"Mensaje"> | string
+    receiverId?: UuidFilter<"Mensaje"> | string
+    interestId?: UuidNullableFilter<"Mensaje"> | string | null
+    content?: StringFilter<"Mensaje"> | string
+    read?: BoolFilter<"Mensaje"> | boolean
+    createdAt?: DateTimeFilter<"Mensaje"> | Date | string
+    sender?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    receiver?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    interest?: XOR<InteresNullableScalarRelationFilter, InteresWhereInput> | null
+>>>>>>> Stashed changes
   }, "id">
 
   export type MensajeOrderByWithAggregationInput = {
     id?: SortOrder
-    emisorId?: SortOrder
-    receptorId?: SortOrder
-    interesId?: SortOrderInput | SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
-    fechaCreacion?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    interestId?: SortOrderInput | SortOrder
+    content?: SortOrder
+    read?: SortOrder
+    createdAt?: SortOrder
     _count?: MensajeCountOrderByAggregateInput
     _avg?: MensajeAvgOrderByAggregateInput
     _max?: MensajeMaxOrderByAggregateInput
@@ -15205,12 +15827,12 @@ export namespace Prisma {
     OR?: MensajeScalarWhereWithAggregatesInput[]
     NOT?: MensajeScalarWhereWithAggregatesInput | MensajeScalarWhereWithAggregatesInput[]
     id?: BigIntWithAggregatesFilter<"Mensaje"> | bigint | number
-    emisorId?: UuidWithAggregatesFilter<"Mensaje"> | string
-    receptorId?: UuidWithAggregatesFilter<"Mensaje"> | string
-    interesId?: UuidNullableWithAggregatesFilter<"Mensaje"> | string | null
-    contenido?: StringWithAggregatesFilter<"Mensaje"> | string
-    leido?: BoolWithAggregatesFilter<"Mensaje"> | boolean
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Mensaje"> | Date | string
+    senderId?: UuidWithAggregatesFilter<"Mensaje"> | string
+    receiverId?: UuidWithAggregatesFilter<"Mensaje"> | string
+    interestId?: UuidNullableWithAggregatesFilter<"Mensaje"> | string | null
+    content?: StringWithAggregatesFilter<"Mensaje"> | string
+    read?: BoolWithAggregatesFilter<"Mensaje"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Mensaje"> | Date | string
   }
 
   export type FotoInmuebleWhereInput = {
@@ -15218,20 +15840,20 @@ export namespace Prisma {
     OR?: FotoInmuebleWhereInput[]
     NOT?: FotoInmuebleWhereInput | FotoInmuebleWhereInput[]
     id?: BigIntFilter<"FotoInmueble"> | bigint | number
-    inmuebleId?: UuidFilter<"FotoInmueble"> | string
+    propertyId?: UuidFilter<"FotoInmueble"> | string
     url?: StringFilter<"FotoInmueble"> | string
-    orden?: IntNullableFilter<"FotoInmueble"> | number | null
-    fechaCreacion?: DateTimeFilter<"FotoInmueble"> | Date | string
-    inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+    order?: IntNullableFilter<"FotoInmueble"> | number | null
+    createdAt?: DateTimeFilter<"FotoInmueble"> | Date | string
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
   }
 
   export type FotoInmuebleOrderByWithRelationInput = {
     id?: SortOrder
-    inmuebleId?: SortOrder
+    propertyId?: SortOrder
     url?: SortOrder
-    orden?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
-    inmueble?: InmuebleOrderByWithRelationInput
+    order?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    property?: InmuebleOrderByWithRelationInput
   }
 
   export type FotoInmuebleWhereUniqueInput = Prisma.AtLeast<{
@@ -15239,19 +15861,19 @@ export namespace Prisma {
     AND?: FotoInmuebleWhereInput | FotoInmuebleWhereInput[]
     OR?: FotoInmuebleWhereInput[]
     NOT?: FotoInmuebleWhereInput | FotoInmuebleWhereInput[]
-    inmuebleId?: UuidFilter<"FotoInmueble"> | string
+    propertyId?: UuidFilter<"FotoInmueble"> | string
     url?: StringFilter<"FotoInmueble"> | string
-    orden?: IntNullableFilter<"FotoInmueble"> | number | null
-    fechaCreacion?: DateTimeFilter<"FotoInmueble"> | Date | string
-    inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+    order?: IntNullableFilter<"FotoInmueble"> | number | null
+    createdAt?: DateTimeFilter<"FotoInmueble"> | Date | string
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
   }, "id">
 
   export type FotoInmuebleOrderByWithAggregationInput = {
     id?: SortOrder
-    inmuebleId?: SortOrder
+    propertyId?: SortOrder
     url?: SortOrder
-    orden?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
+    order?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     _count?: FotoInmuebleCountOrderByAggregateInput
     _avg?: FotoInmuebleAvgOrderByAggregateInput
     _max?: FotoInmuebleMaxOrderByAggregateInput
@@ -15264,10 +15886,10 @@ export namespace Prisma {
     OR?: FotoInmuebleScalarWhereWithAggregatesInput[]
     NOT?: FotoInmuebleScalarWhereWithAggregatesInput | FotoInmuebleScalarWhereWithAggregatesInput[]
     id?: BigIntWithAggregatesFilter<"FotoInmueble"> | bigint | number
-    inmuebleId?: UuidWithAggregatesFilter<"FotoInmueble"> | string
+    propertyId?: UuidWithAggregatesFilter<"FotoInmueble"> | string
     url?: StringWithAggregatesFilter<"FotoInmueble"> | string
-    orden?: IntNullableWithAggregatesFilter<"FotoInmueble"> | number | null
-    fechaCreacion?: DateTimeWithAggregatesFilter<"FotoInmueble"> | Date | string
+    order?: IntNullableWithAggregatesFilter<"FotoInmueble"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"FotoInmueble"> | Date | string
   }
 
   export type ResenaWhereInput = {
@@ -15275,6 +15897,7 @@ export namespace Prisma {
     OR?: ResenaWhereInput[]
     NOT?: ResenaWhereInput | ResenaWhereInput[]
     id?: BigIntFilter<"Resena"> | bigint | number
+<<<<<<< Updated upstream
     usuarioId?: UuidFilter<"Resena"> | string
     inmuebleId?: UuidFilter<"Resena"> | string
     contenido?: StringFilter<"Resena"> | string
@@ -15282,10 +15905,20 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFilter<"Resena"> | Date | string
     inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+=======
+    userId?: UuidFilter<"Resena"> | string
+    propertyId?: UuidFilter<"Resena"> | string
+    content?: StringFilter<"Resena"> | string
+    rating?: IntFilter<"Resena"> | number
+    createdAt?: DateTimeFilter<"Resena"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+>>>>>>> Stashed changes
   }
 
   export type ResenaOrderByWithRelationInput = {
     id?: SortOrder
+<<<<<<< Updated upstream
     usuarioId?: SortOrder
     inmuebleId?: SortOrder
     contenido?: SortOrder
@@ -15293,6 +15926,15 @@ export namespace Prisma {
     fechaCreacion?: SortOrder
     inmueble?: InmuebleOrderByWithRelationInput
     usuario?: UsuarioOrderByWithRelationInput
+=======
+    userId?: SortOrder
+    propertyId?: SortOrder
+    content?: SortOrder
+    rating?: SortOrder
+    createdAt?: SortOrder
+    user?: UsuarioOrderByWithRelationInput
+    property?: InmuebleOrderByWithRelationInput
+>>>>>>> Stashed changes
   }
 
   export type ResenaWhereUniqueInput = Prisma.AtLeast<{
@@ -15300,6 +15942,7 @@ export namespace Prisma {
     AND?: ResenaWhereInput | ResenaWhereInput[]
     OR?: ResenaWhereInput[]
     NOT?: ResenaWhereInput | ResenaWhereInput[]
+<<<<<<< Updated upstream
     usuarioId?: UuidFilter<"Resena"> | string
     inmuebleId?: UuidFilter<"Resena"> | string
     contenido?: StringFilter<"Resena"> | string
@@ -15307,15 +15950,24 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFilter<"Resena"> | Date | string
     inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+=======
+    userId?: UuidFilter<"Resena"> | string
+    propertyId?: UuidFilter<"Resena"> | string
+    content?: StringFilter<"Resena"> | string
+    rating?: IntFilter<"Resena"> | number
+    createdAt?: DateTimeFilter<"Resena"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+>>>>>>> Stashed changes
   }, "id">
 
   export type ResenaOrderByWithAggregationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    contenido?: SortOrder
-    calificacion?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    content?: SortOrder
+    rating?: SortOrder
+    createdAt?: SortOrder
     _count?: ResenaCountOrderByAggregateInput
     _avg?: ResenaAvgOrderByAggregateInput
     _max?: ResenaMaxOrderByAggregateInput
@@ -15328,11 +15980,11 @@ export namespace Prisma {
     OR?: ResenaScalarWhereWithAggregatesInput[]
     NOT?: ResenaScalarWhereWithAggregatesInput | ResenaScalarWhereWithAggregatesInput[]
     id?: BigIntWithAggregatesFilter<"Resena"> | bigint | number
-    usuarioId?: UuidWithAggregatesFilter<"Resena"> | string
-    inmuebleId?: UuidWithAggregatesFilter<"Resena"> | string
-    contenido?: StringWithAggregatesFilter<"Resena"> | string
-    calificacion?: IntWithAggregatesFilter<"Resena"> | number
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Resena"> | Date | string
+    userId?: UuidWithAggregatesFilter<"Resena"> | string
+    propertyId?: UuidWithAggregatesFilter<"Resena"> | string
+    content?: StringWithAggregatesFilter<"Resena"> | string
+    rating?: IntWithAggregatesFilter<"Resena"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Resena"> | Date | string
   }
 
   export type NotificacionWhereInput = {
@@ -15340,26 +15992,26 @@ export namespace Prisma {
     OR?: NotificacionWhereInput[]
     NOT?: NotificacionWhereInput | NotificacionWhereInput[]
     id?: UuidFilter<"Notificacion"> | string
-    usuarioId?: UuidFilter<"Notificacion"> | string
-    tipo?: StringFilter<"Notificacion"> | string
-    titulo?: StringFilter<"Notificacion"> | string
-    contenido?: StringFilter<"Notificacion"> | string
-    leido?: BoolFilter<"Notificacion"> | boolean
+    userId?: UuidFilter<"Notificacion"> | string
+    type?: StringFilter<"Notificacion"> | string
+    title?: StringFilter<"Notificacion"> | string
+    content?: StringFilter<"Notificacion"> | string
+    read?: BoolFilter<"Notificacion"> | boolean
     metadata?: JsonNullableFilter<"Notificacion">
-    fechaCreacion?: DateTimeFilter<"Notificacion"> | Date | string
-    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    createdAt?: DateTimeFilter<"Notificacion"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }
 
   export type NotificacionOrderByWithRelationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    titulo?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
     metadata?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
-    usuario?: UsuarioOrderByWithRelationInput
+    createdAt?: SortOrder
+    user?: UsuarioOrderByWithRelationInput
   }
 
   export type NotificacionWhereUniqueInput = Prisma.AtLeast<{
@@ -15367,25 +16019,25 @@ export namespace Prisma {
     AND?: NotificacionWhereInput | NotificacionWhereInput[]
     OR?: NotificacionWhereInput[]
     NOT?: NotificacionWhereInput | NotificacionWhereInput[]
-    usuarioId?: UuidFilter<"Notificacion"> | string
-    tipo?: StringFilter<"Notificacion"> | string
-    titulo?: StringFilter<"Notificacion"> | string
-    contenido?: StringFilter<"Notificacion"> | string
-    leido?: BoolFilter<"Notificacion"> | boolean
+    userId?: UuidFilter<"Notificacion"> | string
+    type?: StringFilter<"Notificacion"> | string
+    title?: StringFilter<"Notificacion"> | string
+    content?: StringFilter<"Notificacion"> | string
+    read?: BoolFilter<"Notificacion"> | boolean
     metadata?: JsonNullableFilter<"Notificacion">
-    fechaCreacion?: DateTimeFilter<"Notificacion"> | Date | string
-    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    createdAt?: DateTimeFilter<"Notificacion"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }, "id">
 
   export type NotificacionOrderByWithAggregationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    titulo?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
     metadata?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
+    createdAt?: SortOrder
     _count?: NotificacionCountOrderByAggregateInput
     _max?: NotificacionMaxOrderByAggregateInput
     _min?: NotificacionMinOrderByAggregateInput
@@ -15396,13 +16048,13 @@ export namespace Prisma {
     OR?: NotificacionScalarWhereWithAggregatesInput[]
     NOT?: NotificacionScalarWhereWithAggregatesInput | NotificacionScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Notificacion"> | string
-    usuarioId?: UuidWithAggregatesFilter<"Notificacion"> | string
-    tipo?: StringWithAggregatesFilter<"Notificacion"> | string
-    titulo?: StringWithAggregatesFilter<"Notificacion"> | string
-    contenido?: StringWithAggregatesFilter<"Notificacion"> | string
-    leido?: BoolWithAggregatesFilter<"Notificacion"> | boolean
+    userId?: UuidWithAggregatesFilter<"Notificacion"> | string
+    type?: StringWithAggregatesFilter<"Notificacion"> | string
+    title?: StringWithAggregatesFilter<"Notificacion"> | string
+    content?: StringWithAggregatesFilter<"Notificacion"> | string
+    read?: BoolWithAggregatesFilter<"Notificacion"> | boolean
     metadata?: JsonNullableWithAggregatesFilter<"Notificacion">
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Notificacion"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Notificacion"> | Date | string
   }
 
   export type ReporteWhereInput = {
@@ -15410,22 +16062,22 @@ export namespace Prisma {
     OR?: ReporteWhereInput[]
     NOT?: ReporteWhereInput | ReporteWhereInput[]
     id?: UuidFilter<"Reporte"> | string
-    usuarioId?: UuidFilter<"Reporte"> | string
-    tipo?: StringFilter<"Reporte"> | string
-    parametros?: JsonNullableFilter<"Reporte">
-    archivoUrl?: StringNullableFilter<"Reporte"> | string | null
-    fechaCreacion?: DateTimeFilter<"Reporte"> | Date | string
-    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    userId?: UuidFilter<"Reporte"> | string
+    type?: StringFilter<"Reporte"> | string
+    parameters?: JsonNullableFilter<"Reporte">
+    fileUrl?: StringNullableFilter<"Reporte"> | string | null
+    createdAt?: DateTimeFilter<"Reporte"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }
 
   export type ReporteOrderByWithRelationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    parametros?: SortOrderInput | SortOrder
-    archivoUrl?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
-    usuario?: UsuarioOrderByWithRelationInput
+    userId?: SortOrder
+    type?: SortOrder
+    parameters?: SortOrderInput | SortOrder
+    fileUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    user?: UsuarioOrderByWithRelationInput
   }
 
   export type ReporteWhereUniqueInput = Prisma.AtLeast<{
@@ -15433,21 +16085,21 @@ export namespace Prisma {
     AND?: ReporteWhereInput | ReporteWhereInput[]
     OR?: ReporteWhereInput[]
     NOT?: ReporteWhereInput | ReporteWhereInput[]
-    usuarioId?: UuidFilter<"Reporte"> | string
-    tipo?: StringFilter<"Reporte"> | string
-    parametros?: JsonNullableFilter<"Reporte">
-    archivoUrl?: StringNullableFilter<"Reporte"> | string | null
-    fechaCreacion?: DateTimeFilter<"Reporte"> | Date | string
-    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    userId?: UuidFilter<"Reporte"> | string
+    type?: StringFilter<"Reporte"> | string
+    parameters?: JsonNullableFilter<"Reporte">
+    fileUrl?: StringNullableFilter<"Reporte"> | string | null
+    createdAt?: DateTimeFilter<"Reporte"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }, "id">
 
   export type ReporteOrderByWithAggregationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    parametros?: SortOrderInput | SortOrder
-    archivoUrl?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    parameters?: SortOrderInput | SortOrder
+    fileUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     _count?: ReporteCountOrderByAggregateInput
     _max?: ReporteMaxOrderByAggregateInput
     _min?: ReporteMinOrderByAggregateInput
@@ -15458,11 +16110,11 @@ export namespace Prisma {
     OR?: ReporteScalarWhereWithAggregatesInput[]
     NOT?: ReporteScalarWhereWithAggregatesInput | ReporteScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Reporte"> | string
-    usuarioId?: UuidWithAggregatesFilter<"Reporte"> | string
-    tipo?: StringWithAggregatesFilter<"Reporte"> | string
-    parametros?: JsonNullableWithAggregatesFilter<"Reporte">
-    archivoUrl?: StringNullableWithAggregatesFilter<"Reporte"> | string | null
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Reporte"> | Date | string
+    userId?: UuidWithAggregatesFilter<"Reporte"> | string
+    type?: StringWithAggregatesFilter<"Reporte"> | string
+    parameters?: JsonNullableWithAggregatesFilter<"Reporte">
+    fileUrl?: StringNullableWithAggregatesFilter<"Reporte"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Reporte"> | Date | string
   }
 
   export type FavoritoWhereInput = {
@@ -15470,40 +16122,65 @@ export namespace Prisma {
     OR?: FavoritoWhereInput[]
     NOT?: FavoritoWhereInput | FavoritoWhereInput[]
     id?: UuidFilter<"Favorito"> | string
+<<<<<<< Updated upstream
     usuarioId?: UuidFilter<"Favorito"> | string
     inmuebleId?: UuidFilter<"Favorito"> | string
     fechaCreacion?: DateTimeFilter<"Favorito"> | Date | string
     inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+=======
+    userId?: UuidFilter<"Favorito"> | string
+    propertyId?: UuidFilter<"Favorito"> | string
+    createdAt?: DateTimeFilter<"Favorito"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+>>>>>>> Stashed changes
   }
 
   export type FavoritoOrderByWithRelationInput = {
     id?: SortOrder
+<<<<<<< Updated upstream
     usuarioId?: SortOrder
     inmuebleId?: SortOrder
     fechaCreacion?: SortOrder
     inmueble?: InmuebleOrderByWithRelationInput
     usuario?: UsuarioOrderByWithRelationInput
+=======
+    userId?: SortOrder
+    propertyId?: SortOrder
+    createdAt?: SortOrder
+    user?: UsuarioOrderByWithRelationInput
+    property?: InmuebleOrderByWithRelationInput
+>>>>>>> Stashed changes
   }
 
   export type FavoritoWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    usuarioId_inmuebleId?: FavoritoUsuarioIdInmuebleIdCompoundUniqueInput
+    userId_propertyId?: FavoritoUserIdPropertyIdCompoundUniqueInput
     AND?: FavoritoWhereInput | FavoritoWhereInput[]
     OR?: FavoritoWhereInput[]
     NOT?: FavoritoWhereInput | FavoritoWhereInput[]
+<<<<<<< Updated upstream
     usuarioId?: UuidFilter<"Favorito"> | string
     inmuebleId?: UuidFilter<"Favorito"> | string
     fechaCreacion?: DateTimeFilter<"Favorito"> | Date | string
     inmueble?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }, "id" | "usuarioId_inmuebleId">
+=======
+    userId?: UuidFilter<"Favorito"> | string
+    propertyId?: UuidFilter<"Favorito"> | string
+    createdAt?: DateTimeFilter<"Favorito"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    property?: XOR<InmuebleScalarRelationFilter, InmuebleWhereInput>
+  }, "id" | "userId_propertyId">
+>>>>>>> Stashed changes
 
   export type FavoritoOrderByWithAggregationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    createdAt?: SortOrder
     _count?: FavoritoCountOrderByAggregateInput
     _max?: FavoritoMaxOrderByAggregateInput
     _min?: FavoritoMinOrderByAggregateInput
@@ -15514,9 +16191,9 @@ export namespace Prisma {
     OR?: FavoritoScalarWhereWithAggregatesInput[]
     NOT?: FavoritoScalarWhereWithAggregatesInput | FavoritoScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Favorito"> | string
-    usuarioId?: UuidWithAggregatesFilter<"Favorito"> | string
-    inmuebleId?: UuidWithAggregatesFilter<"Favorito"> | string
-    fechaCreacion?: DateTimeWithAggregatesFilter<"Favorito"> | Date | string
+    userId?: UuidWithAggregatesFilter<"Favorito"> | string
+    propertyId?: UuidWithAggregatesFilter<"Favorito"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Favorito"> | Date | string
   }
 
   export type BusquedaGuardadaWhereInput = {
@@ -15524,20 +16201,20 @@ export namespace Prisma {
     OR?: BusquedaGuardadaWhereInput[]
     NOT?: BusquedaGuardadaWhereInput | BusquedaGuardadaWhereInput[]
     id?: UuidFilter<"BusquedaGuardada"> | string
-    usuarioId?: UuidFilter<"BusquedaGuardada"> | string
-    parametrosBusqueda?: JsonFilter<"BusquedaGuardada">
-    nombreBusqueda?: StringNullableFilter<"BusquedaGuardada"> | string | null
-    fechaCreacion?: DateTimeFilter<"BusquedaGuardada"> | Date | string
-    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    userId?: UuidFilter<"BusquedaGuardada"> | string
+    searchParameters?: JsonFilter<"BusquedaGuardada">
+    searchName?: StringNullableFilter<"BusquedaGuardada"> | string | null
+    createdAt?: DateTimeFilter<"BusquedaGuardada"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }
 
   export type BusquedaGuardadaOrderByWithRelationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    parametrosBusqueda?: SortOrder
-    nombreBusqueda?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
-    usuario?: UsuarioOrderByWithRelationInput
+    userId?: SortOrder
+    searchParameters?: SortOrder
+    searchName?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    user?: UsuarioOrderByWithRelationInput
   }
 
   export type BusquedaGuardadaWhereUniqueInput = Prisma.AtLeast<{
@@ -15545,19 +16222,19 @@ export namespace Prisma {
     AND?: BusquedaGuardadaWhereInput | BusquedaGuardadaWhereInput[]
     OR?: BusquedaGuardadaWhereInput[]
     NOT?: BusquedaGuardadaWhereInput | BusquedaGuardadaWhereInput[]
-    usuarioId?: UuidFilter<"BusquedaGuardada"> | string
-    parametrosBusqueda?: JsonFilter<"BusquedaGuardada">
-    nombreBusqueda?: StringNullableFilter<"BusquedaGuardada"> | string | null
-    fechaCreacion?: DateTimeFilter<"BusquedaGuardada"> | Date | string
-    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    userId?: UuidFilter<"BusquedaGuardada"> | string
+    searchParameters?: JsonFilter<"BusquedaGuardada">
+    searchName?: StringNullableFilter<"BusquedaGuardada"> | string | null
+    createdAt?: DateTimeFilter<"BusquedaGuardada"> | Date | string
+    user?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }, "id">
 
   export type BusquedaGuardadaOrderByWithAggregationInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    parametrosBusqueda?: SortOrder
-    nombreBusqueda?: SortOrderInput | SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    searchParameters?: SortOrder
+    searchName?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     _count?: BusquedaGuardadaCountOrderByAggregateInput
     _max?: BusquedaGuardadaMaxOrderByAggregateInput
     _min?: BusquedaGuardadaMinOrderByAggregateInput
@@ -15568,10 +16245,10 @@ export namespace Prisma {
     OR?: BusquedaGuardadaScalarWhereWithAggregatesInput[]
     NOT?: BusquedaGuardadaScalarWhereWithAggregatesInput | BusquedaGuardadaScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"BusquedaGuardada"> | string
-    usuarioId?: UuidWithAggregatesFilter<"BusquedaGuardada"> | string
-    parametrosBusqueda?: JsonWithAggregatesFilter<"BusquedaGuardada">
-    nombreBusqueda?: StringNullableWithAggregatesFilter<"BusquedaGuardada"> | string | null
-    fechaCreacion?: DateTimeWithAggregatesFilter<"BusquedaGuardada"> | Date | string
+    userId?: UuidWithAggregatesFilter<"BusquedaGuardada"> | string
+    searchParameters?: JsonWithAggregatesFilter<"BusquedaGuardada">
+    searchName?: StringNullableWithAggregatesFilter<"BusquedaGuardada"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"BusquedaGuardada"> | Date | string
   }
 
   export type UserPreferenceWhereInput = {
@@ -15642,14 +16319,15 @@ export namespace Prisma {
   export type UsuarioCreateInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaCreateNestedManyWithoutUsuarioInput
@@ -15662,19 +16340,33 @@ export namespace Prisma {
     reportes?: ReporteCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
   export type UsuarioUncheckedCreateInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUsuarioInput
@@ -15687,19 +16379,33 @@ export namespace Prisma {
     reportes?: ReporteUncheckedCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
   export type UsuarioUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUpdateManyWithoutUsuarioNestedInput
@@ -15712,19 +16418,33 @@ export namespace Prisma {
     reportes?: ReporteUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
   export type UsuarioUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -15737,62 +16457,76 @@ export namespace Prisma {
     reportes?: ReporteUncheckedUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
   export type UsuarioCreateManyInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
-    fechaCreacion?: Date | string
-    fechaActualizacion?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UsuarioUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UsuarioUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InmuebleCreateInput = {
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -15803,18 +16537,31 @@ export namespace Prisma {
     propietario: UsuarioCreateNestedOneWithoutInmueblesPropietarioInput
     intereses?: InteresCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UsuarioCreateNestedOneWithoutOwnedPropertiesInput
+    interests?: InteresCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
   export type InmuebleUncheckedCreateInput = {
     id?: string
-    propietarioId: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -15824,17 +16571,29 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUncheckedCreateNestedManyWithoutInmuebleInput
     intereses?: InteresUncheckedCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
   export type InmuebleUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -15845,18 +16604,31 @@ export namespace Prisma {
     propietario?: UsuarioUpdateOneRequiredWithoutInmueblesPropietarioNestedInput
     intereses?: InteresUpdateManyWithoutInmuebleNestedInput
     resenas?: ResenaUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UsuarioUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    interests?: InteresUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
   export type InmuebleUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propietarioId?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -15866,544 +16638,619 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUncheckedUpdateManyWithoutInmuebleNestedInput
     intereses?: InteresUncheckedUpdateManyWithoutInmuebleNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
   export type InmuebleCreateManyInput = {
     id?: string
-    propietarioId: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
-    precio: Decimal | DecimalJsLike | number | string
-    tipoOperacion: string
-    estado?: string
-    fechaCreacion?: Date | string
-    fechaActualizacion?: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type InmuebleUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    tipoOperacion?: StringFieldUpdateOperationsInput | string
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InmuebleUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propietarioId?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    tipoOperacion?: StringFieldUpdateOperationsInput | string
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InteresCreateInput = {
     id?: string
+<<<<<<< Updated upstream
     mensaje?: string | null
     estado?: string
     fechaCreacion?: Date | string
     inmueble: InmuebleCreateNestedOneWithoutInteresesInput
     usuario: UsuarioCreateNestedOneWithoutInteresesInput
     mensajes?: MensajeCreateNestedManyWithoutInteresInput
+=======
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutInterestsInput
+    property: InmuebleCreateNestedOneWithoutInterestsInput
+    messages?: MensajeCreateNestedManyWithoutInterestInput
+>>>>>>> Stashed changes
   }
 
   export type InteresUncheckedCreateInput = {
     id?: string
-    usuarioId: string
-    inmuebleId: string
-    mensaje?: string | null
-    estado?: string
-    fechaCreacion?: Date | string
-    mensajes?: MensajeUncheckedCreateNestedManyWithoutInteresInput
+    userId: string
+    propertyId: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    messages?: MensajeUncheckedCreateNestedManyWithoutInterestInput
   }
 
   export type InteresUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+<<<<<<< Updated upstream
     mensaje?: NullableStringFieldUpdateOperationsInput | string | null
     estado?: StringFieldUpdateOperationsInput | string
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueble?: InmuebleUpdateOneRequiredWithoutInteresesNestedInput
     usuario?: UsuarioUpdateOneRequiredWithoutInteresesNestedInput
     mensajes?: MensajeUpdateManyWithoutInteresNestedInput
+=======
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutInterestsNestedInput
+    property?: InmuebleUpdateOneRequiredWithoutInterestsNestedInput
+    messages?: MensajeUpdateManyWithoutInterestNestedInput
+>>>>>>> Stashed changes
   }
 
   export type InteresUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    mensajes?: MensajeUncheckedUpdateManyWithoutInteresNestedInput
+    userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MensajeUncheckedUpdateManyWithoutInterestNestedInput
   }
 
   export type InteresCreateManyInput = {
     id?: string
-    usuarioId: string
-    inmuebleId: string
-    mensaje?: string | null
-    estado?: string
-    fechaCreacion?: Date | string
+    userId: string
+    propertyId: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
   }
 
   export type InteresUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InteresUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MensajeCreateInput = {
     id?: bigint | number
+<<<<<<< Updated upstream
     contenido: string
     leido?: boolean
     fechaCreacion?: Date | string
     emisor: UsuarioCreateNestedOneWithoutMensajesEmitidosInput
     interes?: InteresCreateNestedOneWithoutMensajesInput
     receptor: UsuarioCreateNestedOneWithoutMensajesRecibidosInput
+=======
+    content: string
+    read?: boolean
+    createdAt?: Date | string
+    sender: UsuarioCreateNestedOneWithoutSentMessagesInput
+    receiver: UsuarioCreateNestedOneWithoutReceivedMessagesInput
+    interest?: InteresCreateNestedOneWithoutMessagesInput
+>>>>>>> Stashed changes
   }
 
   export type MensajeUncheckedCreateInput = {
     id?: bigint | number
-    emisorId: string
-    receptorId: string
-    interesId?: string | null
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    senderId: string
+    receiverId: string
+    interestId?: string | null
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
   export type MensajeUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+<<<<<<< Updated upstream
     contenido?: StringFieldUpdateOperationsInput | string
     leido?: BoolFieldUpdateOperationsInput | boolean
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     emisor?: UsuarioUpdateOneRequiredWithoutMensajesEmitidosNestedInput
     interes?: InteresUpdateOneWithoutMensajesNestedInput
     receptor?: UsuarioUpdateOneRequiredWithoutMensajesRecibidosNestedInput
+=======
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UsuarioUpdateOneRequiredWithoutSentMessagesNestedInput
+    receiver?: UsuarioUpdateOneRequiredWithoutReceivedMessagesNestedInput
+    interest?: InteresUpdateOneWithoutMessagesNestedInput
+>>>>>>> Stashed changes
   }
 
   export type MensajeUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    emisorId?: StringFieldUpdateOperationsInput | string
-    receptorId?: StringFieldUpdateOperationsInput | string
-    interesId?: NullableStringFieldUpdateOperationsInput | string | null
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    interestId?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MensajeCreateManyInput = {
     id?: bigint | number
-    emisorId: string
-    receptorId: string
-    interesId?: string | null
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    senderId: string
+    receiverId: string
+    interestId?: string | null
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
   export type MensajeUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MensajeUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    emisorId?: StringFieldUpdateOperationsInput | string
-    receptorId?: StringFieldUpdateOperationsInput | string
-    interesId?: NullableStringFieldUpdateOperationsInput | string | null
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    interestId?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoInmuebleCreateInput = {
     id?: bigint | number
     url: string
-    orden?: number | null
-    fechaCreacion?: Date | string
-    inmueble: InmuebleCreateNestedOneWithoutFotosInmuebleInput
+    order?: number | null
+    createdAt?: Date | string
+    property: InmuebleCreateNestedOneWithoutPropertyPhotosInput
   }
 
   export type FotoInmuebleUncheckedCreateInput = {
     id?: bigint | number
-    inmuebleId: string
+    propertyId: string
     url: string
-    orden?: number | null
-    fechaCreacion?: Date | string
+    order?: number | null
+    createdAt?: Date | string
   }
 
   export type FotoInmuebleUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     url?: StringFieldUpdateOperationsInput | string
-    orden?: NullableIntFieldUpdateOperationsInput | number | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    inmueble?: InmuebleUpdateOneRequiredWithoutFotosInmuebleNestedInput
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    property?: InmuebleUpdateOneRequiredWithoutPropertyPhotosNestedInput
   }
 
   export type FotoInmuebleUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    inmuebleId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    orden?: NullableIntFieldUpdateOperationsInput | number | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoInmuebleCreateManyInput = {
     id?: bigint | number
-    inmuebleId: string
+    propertyId: string
     url: string
-    orden?: number | null
-    fechaCreacion?: Date | string
+    order?: number | null
+    createdAt?: Date | string
   }
 
   export type FotoInmuebleUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     url?: StringFieldUpdateOperationsInput | string
-    orden?: NullableIntFieldUpdateOperationsInput | number | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoInmuebleUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    inmuebleId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    orden?: NullableIntFieldUpdateOperationsInput | number | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ResenaCreateInput = {
     id?: bigint | number
+<<<<<<< Updated upstream
     contenido: string
     calificacion: number
     fechaCreacion?: Date | string
     inmueble: InmuebleCreateNestedOneWithoutResenasInput
     usuario: UsuarioCreateNestedOneWithoutResenasInput
+=======
+    content: string
+    rating: number
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutReviewsInput
+    property: InmuebleCreateNestedOneWithoutReviewsInput
+>>>>>>> Stashed changes
   }
 
   export type ResenaUncheckedCreateInput = {
     id?: bigint | number
-    usuarioId: string
-    inmuebleId: string
-    contenido: string
-    calificacion: number
-    fechaCreacion?: Date | string
+    userId: string
+    propertyId: string
+    content: string
+    rating: number
+    createdAt?: Date | string
   }
 
   export type ResenaUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+<<<<<<< Updated upstream
     contenido?: StringFieldUpdateOperationsInput | string
     calificacion?: IntFieldUpdateOperationsInput | number
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueble?: InmuebleUpdateOneRequiredWithoutResenasNestedInput
     usuario?: UsuarioUpdateOneRequiredWithoutResenasNestedInput
+=======
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutReviewsNestedInput
+    property?: InmuebleUpdateOneRequiredWithoutReviewsNestedInput
+>>>>>>> Stashed changes
   }
 
   export type ResenaUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    calificacion?: IntFieldUpdateOperationsInput | number
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ResenaCreateManyInput = {
     id?: bigint | number
-    usuarioId: string
-    inmuebleId: string
-    contenido: string
-    calificacion: number
-    fechaCreacion?: Date | string
+    userId: string
+    propertyId: string
+    content: string
+    rating: number
+    createdAt?: Date | string
   }
 
   export type ResenaUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    contenido?: StringFieldUpdateOperationsInput | string
-    calificacion?: IntFieldUpdateOperationsInput | number
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ResenaUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    calificacion?: IntFieldUpdateOperationsInput | number
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificacionCreateInput = {
     id?: string
-    tipo: string
-    titulo: string
-    contenido: string
-    leido?: boolean
+    type: string
+    title: string
+    content: string
+    read?: boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: Date | string
-    usuario: UsuarioCreateNestedOneWithoutNotificacionesInput
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutNotificationsInput
   }
 
   export type NotificacionUncheckedCreateInput = {
     id?: string
-    usuarioId: string
-    tipo: string
-    titulo: string
-    contenido: string
-    leido?: boolean
+    userId: string
+    type: string
+    title: string
+    content: string
+    read?: boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: Date | string
+    createdAt?: Date | string
   }
 
   export type NotificacionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuario?: UsuarioUpdateOneRequiredWithoutNotificacionesNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutNotificationsNestedInput
   }
 
   export type NotificacionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificacionCreateManyInput = {
     id?: string
-    usuarioId: string
-    tipo: string
-    titulo: string
-    contenido: string
-    leido?: boolean
+    userId: string
+    type: string
+    title: string
+    content: string
+    read?: boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: Date | string
+    createdAt?: Date | string
   }
 
   export type NotificacionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificacionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReporteCreateInput = {
     id?: string
-    tipo: string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: string | null
-    fechaCreacion?: Date | string
-    usuario: UsuarioCreateNestedOneWithoutReportesInput
+    type: string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutReportsInput
   }
 
   export type ReporteUncheckedCreateInput = {
     id?: string
-    usuarioId: string
-    tipo: string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: string | null
-    fechaCreacion?: Date | string
+    userId: string
+    type: string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
   }
 
   export type ReporteUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuario?: UsuarioUpdateOneRequiredWithoutReportesNestedInput
+    type?: StringFieldUpdateOperationsInput | string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutReportsNestedInput
   }
 
   export type ReporteUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReporteCreateManyInput = {
     id?: string
-    usuarioId: string
-    tipo: string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: string | null
-    fechaCreacion?: Date | string
+    userId: string
+    type: string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
   }
 
   export type ReporteUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReporteUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FavoritoCreateInput = {
     id?: string
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     inmueble: InmuebleCreateNestedOneWithoutFavoritosInput
     usuario: UsuarioCreateNestedOneWithoutFavoritosInput
+=======
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutFavoritesInput
+    property: InmuebleCreateNestedOneWithoutFavoritesInput
+>>>>>>> Stashed changes
   }
 
   export type FavoritoUncheckedCreateInput = {
     id?: string
-    usuarioId: string
-    inmuebleId: string
-    fechaCreacion?: Date | string
+    userId: string
+    propertyId: string
+    createdAt?: Date | string
   }
 
   export type FavoritoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueble?: InmuebleUpdateOneRequiredWithoutFavoritosNestedInput
     usuario?: UsuarioUpdateOneRequiredWithoutFavoritosNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutFavoritesNestedInput
+    property?: InmuebleUpdateOneRequiredWithoutFavoritesNestedInput
+>>>>>>> Stashed changes
   }
 
   export type FavoritoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FavoritoCreateManyInput = {
     id?: string
-    usuarioId: string
-    inmuebleId: string
-    fechaCreacion?: Date | string
+    userId: string
+    propertyId: string
+    createdAt?: Date | string
   }
 
   export type FavoritoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FavoritoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BusquedaGuardadaCreateInput = {
     id?: string
-    parametrosBusqueda: JsonNullValueInput | InputJsonValue
-    nombreBusqueda?: string | null
-    fechaCreacion?: Date | string
-    usuario: UsuarioCreateNestedOneWithoutBusquedasGuardadasInput
+    searchParameters: JsonNullValueInput | InputJsonValue
+    searchName?: string | null
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutSavedSearchesInput
   }
 
   export type BusquedaGuardadaUncheckedCreateInput = {
     id?: string
-    usuarioId: string
-    parametrosBusqueda: JsonNullValueInput | InputJsonValue
-    nombreBusqueda?: string | null
-    fechaCreacion?: Date | string
+    userId: string
+    searchParameters: JsonNullValueInput | InputJsonValue
+    searchName?: string | null
+    createdAt?: Date | string
   }
 
   export type BusquedaGuardadaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    parametrosBusqueda?: JsonNullValueInput | InputJsonValue
-    nombreBusqueda?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuario?: UsuarioUpdateOneRequiredWithoutBusquedasGuardadasNestedInput
+    searchParameters?: JsonNullValueInput | InputJsonValue
+    searchName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutSavedSearchesNestedInput
   }
 
   export type BusquedaGuardadaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    parametrosBusqueda?: JsonNullValueInput | InputJsonValue
-    nombreBusqueda?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    searchParameters?: JsonNullValueInput | InputJsonValue
+    searchName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BusquedaGuardadaCreateManyInput = {
     id?: string
-    usuarioId: string
-    parametrosBusqueda: JsonNullValueInput | InputJsonValue
-    nombreBusqueda?: string | null
-    fechaCreacion?: Date | string
+    userId: string
+    searchParameters: JsonNullValueInput | InputJsonValue
+    searchName?: string | null
+    createdAt?: Date | string
   }
 
   export type BusquedaGuardadaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    parametrosBusqueda?: JsonNullValueInput | InputJsonValue
-    nombreBusqueda?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    searchParameters?: JsonNullValueInput | InputJsonValue
+    searchName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BusquedaGuardadaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    parametrosBusqueda?: JsonNullValueInput | InputJsonValue
-    nombreBusqueda?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    searchParameters?: JsonNullValueInput | InputJsonValue
+    searchName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserPreferenceCreateInput = {
@@ -16621,46 +17468,46 @@ export namespace Prisma {
   export type UsuarioCountOrderByAggregateInput = {
     id?: SortOrder
     googleId?: SortOrder
-    fotoPerfil?: SortOrder
-    correoElectronico?: SortOrder
-    contrasenaHash?: SortOrder
-    nombreCompleto?: SortOrder
-    telefono?: SortOrder
-    rol?: SortOrder
-    estadoVerificacion?: SortOrder
+    profilePhoto?: SortOrder
+    email?: SortOrder
+    passwordHash?: SortOrder
+    fullName?: SortOrder
+    phone?: SortOrder
+    role?: SortOrder
+    verificationStatus?: SortOrder
     refreshToken?: SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UsuarioMaxOrderByAggregateInput = {
     id?: SortOrder
     googleId?: SortOrder
-    fotoPerfil?: SortOrder
-    correoElectronico?: SortOrder
-    contrasenaHash?: SortOrder
-    nombreCompleto?: SortOrder
-    telefono?: SortOrder
-    rol?: SortOrder
-    estadoVerificacion?: SortOrder
+    profilePhoto?: SortOrder
+    email?: SortOrder
+    passwordHash?: SortOrder
+    fullName?: SortOrder
+    phone?: SortOrder
+    role?: SortOrder
+    verificationStatus?: SortOrder
     refreshToken?: SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UsuarioMinOrderByAggregateInput = {
     id?: SortOrder
     googleId?: SortOrder
-    fotoPerfil?: SortOrder
-    correoElectronico?: SortOrder
-    contrasenaHash?: SortOrder
-    nombreCompleto?: SortOrder
-    telefono?: SortOrder
-    rol?: SortOrder
-    estadoVerificacion?: SortOrder
+    profilePhoto?: SortOrder
+    email?: SortOrder
+    passwordHash?: SortOrder
+    fullName?: SortOrder
+    phone?: SortOrder
+    role?: SortOrder
+    verificationStatus?: SortOrder
     refreshToken?: SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -16778,67 +17625,67 @@ export namespace Prisma {
 
   export type InmuebleCountOrderByAggregateInput = {
     id?: SortOrder
-    propietarioId?: SortOrder
-    titulo?: SortOrder
-    descripcion?: SortOrder
-    direccion?: SortOrder
-    ciudad?: SortOrder
-    dormitorios?: SortOrder
-    banos?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    bedrooms?: SortOrder
+    bathrooms?: SortOrder
     areaM2?: SortOrder
-    precio?: SortOrder
-    tipoOperacion?: SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    price?: SortOrder
+    operationType?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type InmuebleAvgOrderByAggregateInput = {
-    dormitorios?: SortOrder
-    banos?: SortOrder
+    bedrooms?: SortOrder
+    bathrooms?: SortOrder
     areaM2?: SortOrder
-    precio?: SortOrder
+    price?: SortOrder
   }
 
   export type InmuebleMaxOrderByAggregateInput = {
     id?: SortOrder
-    propietarioId?: SortOrder
-    titulo?: SortOrder
-    descripcion?: SortOrder
-    direccion?: SortOrder
-    ciudad?: SortOrder
-    dormitorios?: SortOrder
-    banos?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    bedrooms?: SortOrder
+    bathrooms?: SortOrder
     areaM2?: SortOrder
-    precio?: SortOrder
-    tipoOperacion?: SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    price?: SortOrder
+    operationType?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type InmuebleMinOrderByAggregateInput = {
     id?: SortOrder
-    propietarioId?: SortOrder
-    titulo?: SortOrder
-    descripcion?: SortOrder
-    direccion?: SortOrder
-    ciudad?: SortOrder
-    dormitorios?: SortOrder
-    banos?: SortOrder
+    ownerId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    bedrooms?: SortOrder
+    bathrooms?: SortOrder
     areaM2?: SortOrder
-    precio?: SortOrder
-    tipoOperacion?: SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
-    fechaActualizacion?: SortOrder
+    price?: SortOrder
+    operationType?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type InmuebleSumOrderByAggregateInput = {
-    dormitorios?: SortOrder
-    banos?: SortOrder
+    bedrooms?: SortOrder
+    bathrooms?: SortOrder
     areaM2?: SortOrder
-    precio?: SortOrder
+    price?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16896,29 +17743,29 @@ export namespace Prisma {
 
   export type InteresCountOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    mensaje?: SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InteresMaxOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    mensaje?: SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InteresMinOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    mensaje?: SortOrder
-    estado?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -16956,12 +17803,12 @@ export namespace Prisma {
 
   export type MensajeCountOrderByAggregateInput = {
     id?: SortOrder
-    emisorId?: SortOrder
-    receptorId?: SortOrder
-    interesId?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
-    fechaCreacion?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    interestId?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type MensajeAvgOrderByAggregateInput = {
@@ -16970,22 +17817,22 @@ export namespace Prisma {
 
   export type MensajeMaxOrderByAggregateInput = {
     id?: SortOrder
-    emisorId?: SortOrder
-    receptorId?: SortOrder
-    interesId?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
-    fechaCreacion?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    interestId?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type MensajeMinOrderByAggregateInput = {
     id?: SortOrder
-    emisorId?: SortOrder
-    receptorId?: SortOrder
-    interesId?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
-    fechaCreacion?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    interestId?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type MensajeSumOrderByAggregateInput = {
@@ -17033,36 +17880,36 @@ export namespace Prisma {
 
   export type FotoInmuebleCountOrderByAggregateInput = {
     id?: SortOrder
-    inmuebleId?: SortOrder
+    propertyId?: SortOrder
     url?: SortOrder
-    orden?: SortOrder
-    fechaCreacion?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FotoInmuebleAvgOrderByAggregateInput = {
     id?: SortOrder
-    orden?: SortOrder
+    order?: SortOrder
   }
 
   export type FotoInmuebleMaxOrderByAggregateInput = {
     id?: SortOrder
-    inmuebleId?: SortOrder
+    propertyId?: SortOrder
     url?: SortOrder
-    orden?: SortOrder
-    fechaCreacion?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FotoInmuebleMinOrderByAggregateInput = {
     id?: SortOrder
-    inmuebleId?: SortOrder
+    propertyId?: SortOrder
     url?: SortOrder
-    orden?: SortOrder
-    fechaCreacion?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FotoInmuebleSumOrderByAggregateInput = {
     id?: SortOrder
-    orden?: SortOrder
+    order?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -17078,39 +17925,39 @@ export namespace Prisma {
 
   export type ResenaCountOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    contenido?: SortOrder
-    calificacion?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    content?: SortOrder
+    rating?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ResenaAvgOrderByAggregateInput = {
     id?: SortOrder
-    calificacion?: SortOrder
+    rating?: SortOrder
   }
 
   export type ResenaMaxOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    contenido?: SortOrder
-    calificacion?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    content?: SortOrder
+    rating?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ResenaMinOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    contenido?: SortOrder
-    calificacion?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    content?: SortOrder
+    rating?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ResenaSumOrderByAggregateInput = {
     id?: SortOrder
-    calificacion?: SortOrder
+    rating?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -17154,33 +18001,33 @@ export namespace Prisma {
 
   export type NotificacionCountOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    titulo?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
     metadata?: SortOrder
-    fechaCreacion?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type NotificacionMaxOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    titulo?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type NotificacionMinOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    titulo?: SortOrder
-    contenido?: SortOrder
-    leido?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    read?: SortOrder
+    createdAt?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -17211,53 +18058,53 @@ export namespace Prisma {
 
   export type ReporteCountOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    parametros?: SortOrder
-    archivoUrl?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    parameters?: SortOrder
+    fileUrl?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ReporteMaxOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    archivoUrl?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    fileUrl?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ReporteMinOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    tipo?: SortOrder
-    archivoUrl?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    fileUrl?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type FavoritoUsuarioIdInmuebleIdCompoundUniqueInput = {
-    usuarioId: string
-    inmuebleId: string
+  export type FavoritoUserIdPropertyIdCompoundUniqueInput = {
+    userId: string
+    propertyId: string
   }
 
   export type FavoritoCountOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FavoritoMaxOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FavoritoMinOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    inmuebleId?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    propertyId?: SortOrder
+    createdAt?: SortOrder
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -17285,24 +18132,24 @@ export namespace Prisma {
 
   export type BusquedaGuardadaCountOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    parametrosBusqueda?: SortOrder
-    nombreBusqueda?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    searchParameters?: SortOrder
+    searchName?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type BusquedaGuardadaMaxOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    nombreBusqueda?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    searchName?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type BusquedaGuardadaMinOrderByAggregateInput = {
     id?: SortOrder
-    usuarioId?: SortOrder
-    nombreBusqueda?: SortOrder
-    fechaCreacion?: SortOrder
+    userId?: SortOrder
+    searchName?: SortOrder
+    createdAt?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -17331,6 +18178,7 @@ export namespace Prisma {
     _max?: NestedJsonFilter<$PrismaModel>
   }
 
+<<<<<<< Updated upstream
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
@@ -17383,44 +18231,65 @@ export namespace Prisma {
     create?: XOR<InmuebleCreateWithoutPropietarioInput, InmuebleUncheckedCreateWithoutPropietarioInput> | InmuebleCreateWithoutPropietarioInput[] | InmuebleUncheckedCreateWithoutPropietarioInput[]
     connectOrCreate?: InmuebleCreateOrConnectWithoutPropietarioInput | InmuebleCreateOrConnectWithoutPropietarioInput[]
     createMany?: InmuebleCreateManyPropietarioInputEnvelope
+=======
+  export type InmuebleCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<InmuebleCreateWithoutOwnerInput, InmuebleUncheckedCreateWithoutOwnerInput> | InmuebleCreateWithoutOwnerInput[] | InmuebleUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: InmuebleCreateOrConnectWithoutOwnerInput | InmuebleCreateOrConnectWithoutOwnerInput[]
+    createMany?: InmuebleCreateManyOwnerInputEnvelope
+>>>>>>> Stashed changes
     connect?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
   }
 
-  export type InteresCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<InteresCreateWithoutUsuarioInput, InteresUncheckedCreateWithoutUsuarioInput> | InteresCreateWithoutUsuarioInput[] | InteresUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: InteresCreateOrConnectWithoutUsuarioInput | InteresCreateOrConnectWithoutUsuarioInput[]
-    createMany?: InteresCreateManyUsuarioInputEnvelope
+  export type InteresCreateNestedManyWithoutUserInput = {
+    create?: XOR<InteresCreateWithoutUserInput, InteresUncheckedCreateWithoutUserInput> | InteresCreateWithoutUserInput[] | InteresUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutUserInput | InteresCreateOrConnectWithoutUserInput[]
+    createMany?: InteresCreateManyUserInputEnvelope
     connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
   }
 
-  export type MensajeCreateNestedManyWithoutEmisorInput = {
-    create?: XOR<MensajeCreateWithoutEmisorInput, MensajeUncheckedCreateWithoutEmisorInput> | MensajeCreateWithoutEmisorInput[] | MensajeUncheckedCreateWithoutEmisorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutEmisorInput | MensajeCreateOrConnectWithoutEmisorInput[]
-    createMany?: MensajeCreateManyEmisorInputEnvelope
+  export type MensajeCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MensajeCreateWithoutSenderInput, MensajeUncheckedCreateWithoutSenderInput> | MensajeCreateWithoutSenderInput[] | MensajeUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutSenderInput | MensajeCreateOrConnectWithoutSenderInput[]
+    createMany?: MensajeCreateManySenderInputEnvelope
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
   }
 
-  export type MensajeCreateNestedManyWithoutReceptorInput = {
-    create?: XOR<MensajeCreateWithoutReceptorInput, MensajeUncheckedCreateWithoutReceptorInput> | MensajeCreateWithoutReceptorInput[] | MensajeUncheckedCreateWithoutReceptorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutReceptorInput | MensajeCreateOrConnectWithoutReceptorInput[]
-    createMany?: MensajeCreateManyReceptorInputEnvelope
+  export type MensajeCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<MensajeCreateWithoutReceiverInput, MensajeUncheckedCreateWithoutReceiverInput> | MensajeCreateWithoutReceiverInput[] | MensajeUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutReceiverInput | MensajeCreateOrConnectWithoutReceiverInput[]
+    createMany?: MensajeCreateManyReceiverInputEnvelope
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
   }
 
+<<<<<<< Updated upstream
   export type NotificacionCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<NotificacionCreateWithoutUsuarioInput, NotificacionUncheckedCreateWithoutUsuarioInput> | NotificacionCreateWithoutUsuarioInput[] | NotificacionUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: NotificacionCreateOrConnectWithoutUsuarioInput | NotificacionCreateOrConnectWithoutUsuarioInput[]
     createMany?: NotificacionCreateManyUsuarioInputEnvelope
+=======
+  export type ResenaCreateNestedManyWithoutUserInput = {
+    create?: XOR<ResenaCreateWithoutUserInput, ResenaUncheckedCreateWithoutUserInput> | ResenaCreateWithoutUserInput[] | ResenaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUserInput | ResenaCreateOrConnectWithoutUserInput[]
+    createMany?: ResenaCreateManyUserInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+  }
+
+  export type NotificacionCreateNestedManyWithoutUserInput = {
+    create?: XOR<NotificacionCreateWithoutUserInput, NotificacionUncheckedCreateWithoutUserInput> | NotificacionCreateWithoutUserInput[] | NotificacionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificacionCreateOrConnectWithoutUserInput | NotificacionCreateOrConnectWithoutUserInput[]
+    createMany?: NotificacionCreateManyUserInputEnvelope
+>>>>>>> Stashed changes
     connect?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
   }
 
-  export type ReporteCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<ReporteCreateWithoutUsuarioInput, ReporteUncheckedCreateWithoutUsuarioInput> | ReporteCreateWithoutUsuarioInput[] | ReporteUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutUsuarioInput | ReporteCreateOrConnectWithoutUsuarioInput[]
-    createMany?: ReporteCreateManyUsuarioInputEnvelope
+  export type ReporteCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReporteCreateWithoutUserInput, ReporteUncheckedCreateWithoutUserInput> | ReporteCreateWithoutUserInput[] | ReporteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutUserInput | ReporteCreateOrConnectWithoutUserInput[]
+    createMany?: ReporteCreateManyUserInputEnvelope
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
   }
 
+<<<<<<< Updated upstream
   export type ResenaCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
@@ -17452,44 +18321,79 @@ export namespace Prisma {
     create?: XOR<InmuebleCreateWithoutPropietarioInput, InmuebleUncheckedCreateWithoutPropietarioInput> | InmuebleCreateWithoutPropietarioInput[] | InmuebleUncheckedCreateWithoutPropietarioInput[]
     connectOrCreate?: InmuebleCreateOrConnectWithoutPropietarioInput | InmuebleCreateOrConnectWithoutPropietarioInput[]
     createMany?: InmuebleCreateManyPropietarioInputEnvelope
+=======
+  export type FavoritoCreateNestedManyWithoutUserInput = {
+    create?: XOR<FavoritoCreateWithoutUserInput, FavoritoUncheckedCreateWithoutUserInput> | FavoritoCreateWithoutUserInput[] | FavoritoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUserInput | FavoritoCreateOrConnectWithoutUserInput[]
+    createMany?: FavoritoCreateManyUserInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
+  export type BusquedaGuardadaCreateNestedManyWithoutUserInput = {
+    create?: XOR<BusquedaGuardadaCreateWithoutUserInput, BusquedaGuardadaUncheckedCreateWithoutUserInput> | BusquedaGuardadaCreateWithoutUserInput[] | BusquedaGuardadaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BusquedaGuardadaCreateOrConnectWithoutUserInput | BusquedaGuardadaCreateOrConnectWithoutUserInput[]
+    createMany?: BusquedaGuardadaCreateManyUserInputEnvelope
+    connect?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
+  }
+
+  export type InmuebleUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<InmuebleCreateWithoutOwnerInput, InmuebleUncheckedCreateWithoutOwnerInput> | InmuebleCreateWithoutOwnerInput[] | InmuebleUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: InmuebleCreateOrConnectWithoutOwnerInput | InmuebleCreateOrConnectWithoutOwnerInput[]
+    createMany?: InmuebleCreateManyOwnerInputEnvelope
+>>>>>>> Stashed changes
     connect?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
   }
 
-  export type InteresUncheckedCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<InteresCreateWithoutUsuarioInput, InteresUncheckedCreateWithoutUsuarioInput> | InteresCreateWithoutUsuarioInput[] | InteresUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: InteresCreateOrConnectWithoutUsuarioInput | InteresCreateOrConnectWithoutUsuarioInput[]
-    createMany?: InteresCreateManyUsuarioInputEnvelope
+  export type InteresUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<InteresCreateWithoutUserInput, InteresUncheckedCreateWithoutUserInput> | InteresCreateWithoutUserInput[] | InteresUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutUserInput | InteresCreateOrConnectWithoutUserInput[]
+    createMany?: InteresCreateManyUserInputEnvelope
     connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
   }
 
-  export type MensajeUncheckedCreateNestedManyWithoutEmisorInput = {
-    create?: XOR<MensajeCreateWithoutEmisorInput, MensajeUncheckedCreateWithoutEmisorInput> | MensajeCreateWithoutEmisorInput[] | MensajeUncheckedCreateWithoutEmisorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutEmisorInput | MensajeCreateOrConnectWithoutEmisorInput[]
-    createMany?: MensajeCreateManyEmisorInputEnvelope
+  export type MensajeUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MensajeCreateWithoutSenderInput, MensajeUncheckedCreateWithoutSenderInput> | MensajeCreateWithoutSenderInput[] | MensajeUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutSenderInput | MensajeCreateOrConnectWithoutSenderInput[]
+    createMany?: MensajeCreateManySenderInputEnvelope
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
   }
 
-  export type MensajeUncheckedCreateNestedManyWithoutReceptorInput = {
-    create?: XOR<MensajeCreateWithoutReceptorInput, MensajeUncheckedCreateWithoutReceptorInput> | MensajeCreateWithoutReceptorInput[] | MensajeUncheckedCreateWithoutReceptorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutReceptorInput | MensajeCreateOrConnectWithoutReceptorInput[]
-    createMany?: MensajeCreateManyReceptorInputEnvelope
+  export type MensajeUncheckedCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<MensajeCreateWithoutReceiverInput, MensajeUncheckedCreateWithoutReceiverInput> | MensajeCreateWithoutReceiverInput[] | MensajeUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutReceiverInput | MensajeCreateOrConnectWithoutReceiverInput[]
+    createMany?: MensajeCreateManyReceiverInputEnvelope
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
   }
 
+<<<<<<< Updated upstream
   export type NotificacionUncheckedCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<NotificacionCreateWithoutUsuarioInput, NotificacionUncheckedCreateWithoutUsuarioInput> | NotificacionCreateWithoutUsuarioInput[] | NotificacionUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: NotificacionCreateOrConnectWithoutUsuarioInput | NotificacionCreateOrConnectWithoutUsuarioInput[]
     createMany?: NotificacionCreateManyUsuarioInputEnvelope
+=======
+  export type ResenaUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ResenaCreateWithoutUserInput, ResenaUncheckedCreateWithoutUserInput> | ResenaCreateWithoutUserInput[] | ResenaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUserInput | ResenaCreateOrConnectWithoutUserInput[]
+    createMany?: ResenaCreateManyUserInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+  }
+
+  export type NotificacionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<NotificacionCreateWithoutUserInput, NotificacionUncheckedCreateWithoutUserInput> | NotificacionCreateWithoutUserInput[] | NotificacionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificacionCreateOrConnectWithoutUserInput | NotificacionCreateOrConnectWithoutUserInput[]
+    createMany?: NotificacionCreateManyUserInputEnvelope
+>>>>>>> Stashed changes
     connect?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
   }
 
-  export type ReporteUncheckedCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<ReporteCreateWithoutUsuarioInput, ReporteUncheckedCreateWithoutUsuarioInput> | ReporteCreateWithoutUsuarioInput[] | ReporteUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutUsuarioInput | ReporteCreateOrConnectWithoutUsuarioInput[]
-    createMany?: ReporteCreateManyUsuarioInputEnvelope
+  export type ReporteUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReporteCreateWithoutUserInput, ReporteUncheckedCreateWithoutUserInput> | ReporteCreateWithoutUserInput[] | ReporteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutUserInput | ReporteCreateOrConnectWithoutUserInput[]
+    createMany?: ReporteCreateManyUserInputEnvelope
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
   }
 
+<<<<<<< Updated upstream
   export type ResenaUncheckedCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
@@ -17501,6 +18405,20 @@ export namespace Prisma {
     create?: XOR<UserPreferenceCreateWithoutUserInput, UserPreferenceUncheckedCreateWithoutUserInput>
     connectOrCreate?: UserPreferenceCreateOrConnectWithoutUserInput
     connect?: UserPreferenceWhereUniqueInput
+=======
+  export type FavoritoUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<FavoritoCreateWithoutUserInput, FavoritoUncheckedCreateWithoutUserInput> | FavoritoCreateWithoutUserInput[] | FavoritoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUserInput | FavoritoCreateOrConnectWithoutUserInput[]
+    createMany?: FavoritoCreateManyUserInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
+  export type BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BusquedaGuardadaCreateWithoutUserInput, BusquedaGuardadaUncheckedCreateWithoutUserInput> | BusquedaGuardadaCreateWithoutUserInput[] | BusquedaGuardadaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BusquedaGuardadaCreateOrConnectWithoutUserInput | BusquedaGuardadaCreateOrConnectWithoutUserInput[]
+    createMany?: BusquedaGuardadaCreateManyUserInputEnvelope
+    connect?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
+>>>>>>> Stashed changes
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -17515,6 +18433,7 @@ export namespace Prisma {
     set?: Date | string
   }
 
+<<<<<<< Updated upstream
   export type BusquedaGuardadaUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<BusquedaGuardadaCreateWithoutUsuarioInput, BusquedaGuardadaUncheckedCreateWithoutUsuarioInput> | BusquedaGuardadaCreateWithoutUsuarioInput[] | BusquedaGuardadaUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: BusquedaGuardadaCreateOrConnectWithoutUsuarioInput | BusquedaGuardadaCreateOrConnectWithoutUsuarioInput[]
@@ -17548,85 +18467,115 @@ export namespace Prisma {
     connectOrCreate?: InmuebleCreateOrConnectWithoutPropietarioInput | InmuebleCreateOrConnectWithoutPropietarioInput[]
     upsert?: InmuebleUpsertWithWhereUniqueWithoutPropietarioInput | InmuebleUpsertWithWhereUniqueWithoutPropietarioInput[]
     createMany?: InmuebleCreateManyPropietarioInputEnvelope
+=======
+  export type InmuebleUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<InmuebleCreateWithoutOwnerInput, InmuebleUncheckedCreateWithoutOwnerInput> | InmuebleCreateWithoutOwnerInput[] | InmuebleUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: InmuebleCreateOrConnectWithoutOwnerInput | InmuebleCreateOrConnectWithoutOwnerInput[]
+    upsert?: InmuebleUpsertWithWhereUniqueWithoutOwnerInput | InmuebleUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: InmuebleCreateManyOwnerInputEnvelope
+>>>>>>> Stashed changes
     set?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
     disconnect?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
     delete?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
     connect?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
-    update?: InmuebleUpdateWithWhereUniqueWithoutPropietarioInput | InmuebleUpdateWithWhereUniqueWithoutPropietarioInput[]
-    updateMany?: InmuebleUpdateManyWithWhereWithoutPropietarioInput | InmuebleUpdateManyWithWhereWithoutPropietarioInput[]
+    update?: InmuebleUpdateWithWhereUniqueWithoutOwnerInput | InmuebleUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: InmuebleUpdateManyWithWhereWithoutOwnerInput | InmuebleUpdateManyWithWhereWithoutOwnerInput[]
     deleteMany?: InmuebleScalarWhereInput | InmuebleScalarWhereInput[]
   }
 
-  export type InteresUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<InteresCreateWithoutUsuarioInput, InteresUncheckedCreateWithoutUsuarioInput> | InteresCreateWithoutUsuarioInput[] | InteresUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: InteresCreateOrConnectWithoutUsuarioInput | InteresCreateOrConnectWithoutUsuarioInput[]
-    upsert?: InteresUpsertWithWhereUniqueWithoutUsuarioInput | InteresUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: InteresCreateManyUsuarioInputEnvelope
+  export type InteresUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InteresCreateWithoutUserInput, InteresUncheckedCreateWithoutUserInput> | InteresCreateWithoutUserInput[] | InteresUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutUserInput | InteresCreateOrConnectWithoutUserInput[]
+    upsert?: InteresUpsertWithWhereUniqueWithoutUserInput | InteresUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InteresCreateManyUserInputEnvelope
     set?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     disconnect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     delete?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
-    update?: InteresUpdateWithWhereUniqueWithoutUsuarioInput | InteresUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: InteresUpdateManyWithWhereWithoutUsuarioInput | InteresUpdateManyWithWhereWithoutUsuarioInput[]
+    update?: InteresUpdateWithWhereUniqueWithoutUserInput | InteresUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InteresUpdateManyWithWhereWithoutUserInput | InteresUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: InteresScalarWhereInput | InteresScalarWhereInput[]
   }
 
-  export type MensajeUpdateManyWithoutEmisorNestedInput = {
-    create?: XOR<MensajeCreateWithoutEmisorInput, MensajeUncheckedCreateWithoutEmisorInput> | MensajeCreateWithoutEmisorInput[] | MensajeUncheckedCreateWithoutEmisorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutEmisorInput | MensajeCreateOrConnectWithoutEmisorInput[]
-    upsert?: MensajeUpsertWithWhereUniqueWithoutEmisorInput | MensajeUpsertWithWhereUniqueWithoutEmisorInput[]
-    createMany?: MensajeCreateManyEmisorInputEnvelope
+  export type MensajeUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MensajeCreateWithoutSenderInput, MensajeUncheckedCreateWithoutSenderInput> | MensajeCreateWithoutSenderInput[] | MensajeUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutSenderInput | MensajeCreateOrConnectWithoutSenderInput[]
+    upsert?: MensajeUpsertWithWhereUniqueWithoutSenderInput | MensajeUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MensajeCreateManySenderInputEnvelope
     set?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     disconnect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     delete?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
-    update?: MensajeUpdateWithWhereUniqueWithoutEmisorInput | MensajeUpdateWithWhereUniqueWithoutEmisorInput[]
-    updateMany?: MensajeUpdateManyWithWhereWithoutEmisorInput | MensajeUpdateManyWithWhereWithoutEmisorInput[]
+    update?: MensajeUpdateWithWhereUniqueWithoutSenderInput | MensajeUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MensajeUpdateManyWithWhereWithoutSenderInput | MensajeUpdateManyWithWhereWithoutSenderInput[]
     deleteMany?: MensajeScalarWhereInput | MensajeScalarWhereInput[]
   }
 
-  export type MensajeUpdateManyWithoutReceptorNestedInput = {
-    create?: XOR<MensajeCreateWithoutReceptorInput, MensajeUncheckedCreateWithoutReceptorInput> | MensajeCreateWithoutReceptorInput[] | MensajeUncheckedCreateWithoutReceptorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutReceptorInput | MensajeCreateOrConnectWithoutReceptorInput[]
-    upsert?: MensajeUpsertWithWhereUniqueWithoutReceptorInput | MensajeUpsertWithWhereUniqueWithoutReceptorInput[]
-    createMany?: MensajeCreateManyReceptorInputEnvelope
+  export type MensajeUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<MensajeCreateWithoutReceiverInput, MensajeUncheckedCreateWithoutReceiverInput> | MensajeCreateWithoutReceiverInput[] | MensajeUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutReceiverInput | MensajeCreateOrConnectWithoutReceiverInput[]
+    upsert?: MensajeUpsertWithWhereUniqueWithoutReceiverInput | MensajeUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: MensajeCreateManyReceiverInputEnvelope
     set?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     disconnect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     delete?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
-    update?: MensajeUpdateWithWhereUniqueWithoutReceptorInput | MensajeUpdateWithWhereUniqueWithoutReceptorInput[]
-    updateMany?: MensajeUpdateManyWithWhereWithoutReceptorInput | MensajeUpdateManyWithWhereWithoutReceptorInput[]
+    update?: MensajeUpdateWithWhereUniqueWithoutReceiverInput | MensajeUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: MensajeUpdateManyWithWhereWithoutReceiverInput | MensajeUpdateManyWithWhereWithoutReceiverInput[]
     deleteMany?: MensajeScalarWhereInput | MensajeScalarWhereInput[]
   }
 
+<<<<<<< Updated upstream
   export type NotificacionUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<NotificacionCreateWithoutUsuarioInput, NotificacionUncheckedCreateWithoutUsuarioInput> | NotificacionCreateWithoutUsuarioInput[] | NotificacionUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: NotificacionCreateOrConnectWithoutUsuarioInput | NotificacionCreateOrConnectWithoutUsuarioInput[]
     upsert?: NotificacionUpsertWithWhereUniqueWithoutUsuarioInput | NotificacionUpsertWithWhereUniqueWithoutUsuarioInput[]
     createMany?: NotificacionCreateManyUsuarioInputEnvelope
+=======
+  export type ResenaUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ResenaCreateWithoutUserInput, ResenaUncheckedCreateWithoutUserInput> | ResenaCreateWithoutUserInput[] | ResenaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUserInput | ResenaCreateOrConnectWithoutUserInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutUserInput | ResenaUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ResenaCreateManyUserInputEnvelope
+    set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutUserInput | ResenaUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutUserInput | ResenaUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+  }
+
+  export type NotificacionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NotificacionCreateWithoutUserInput, NotificacionUncheckedCreateWithoutUserInput> | NotificacionCreateWithoutUserInput[] | NotificacionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificacionCreateOrConnectWithoutUserInput | NotificacionCreateOrConnectWithoutUserInput[]
+    upsert?: NotificacionUpsertWithWhereUniqueWithoutUserInput | NotificacionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NotificacionCreateManyUserInputEnvelope
+>>>>>>> Stashed changes
     set?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
     disconnect?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
     delete?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
     connect?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
-    update?: NotificacionUpdateWithWhereUniqueWithoutUsuarioInput | NotificacionUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: NotificacionUpdateManyWithWhereWithoutUsuarioInput | NotificacionUpdateManyWithWhereWithoutUsuarioInput[]
+    update?: NotificacionUpdateWithWhereUniqueWithoutUserInput | NotificacionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NotificacionUpdateManyWithWhereWithoutUserInput | NotificacionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: NotificacionScalarWhereInput | NotificacionScalarWhereInput[]
   }
 
-  export type ReporteUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<ReporteCreateWithoutUsuarioInput, ReporteUncheckedCreateWithoutUsuarioInput> | ReporteCreateWithoutUsuarioInput[] | ReporteUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutUsuarioInput | ReporteCreateOrConnectWithoutUsuarioInput[]
-    upsert?: ReporteUpsertWithWhereUniqueWithoutUsuarioInput | ReporteUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: ReporteCreateManyUsuarioInputEnvelope
+  export type ReporteUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReporteCreateWithoutUserInput, ReporteUncheckedCreateWithoutUserInput> | ReporteCreateWithoutUserInput[] | ReporteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutUserInput | ReporteCreateOrConnectWithoutUserInput[]
+    upsert?: ReporteUpsertWithWhereUniqueWithoutUserInput | ReporteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReporteCreateManyUserInputEnvelope
     set?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     disconnect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     delete?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
-    update?: ReporteUpdateWithWhereUniqueWithoutUsuarioInput | ReporteUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: ReporteUpdateManyWithWhereWithoutUsuarioInput | ReporteUpdateManyWithWhereWithoutUsuarioInput[]
+    update?: ReporteUpdateWithWhereUniqueWithoutUserInput | ReporteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReporteUpdateManyWithWhereWithoutUserInput | ReporteUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ReporteScalarWhereInput | ReporteScalarWhereInput[]
   }
 
+<<<<<<< Updated upstream
   export type ResenaUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
@@ -17656,15 +18605,37 @@ export namespace Prisma {
     connectOrCreate?: BusquedaGuardadaCreateOrConnectWithoutUsuarioInput | BusquedaGuardadaCreateOrConnectWithoutUsuarioInput[]
     upsert?: BusquedaGuardadaUpsertWithWhereUniqueWithoutUsuarioInput | BusquedaGuardadaUpsertWithWhereUniqueWithoutUsuarioInput[]
     createMany?: BusquedaGuardadaCreateManyUsuarioInputEnvelope
+=======
+  export type FavoritoUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FavoritoCreateWithoutUserInput, FavoritoUncheckedCreateWithoutUserInput> | FavoritoCreateWithoutUserInput[] | FavoritoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUserInput | FavoritoCreateOrConnectWithoutUserInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutUserInput | FavoritoUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FavoritoCreateManyUserInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutUserInput | FavoritoUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutUserInput | FavoritoUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
+  export type BusquedaGuardadaUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BusquedaGuardadaCreateWithoutUserInput, BusquedaGuardadaUncheckedCreateWithoutUserInput> | BusquedaGuardadaCreateWithoutUserInput[] | BusquedaGuardadaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BusquedaGuardadaCreateOrConnectWithoutUserInput | BusquedaGuardadaCreateOrConnectWithoutUserInput[]
+    upsert?: BusquedaGuardadaUpsertWithWhereUniqueWithoutUserInput | BusquedaGuardadaUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BusquedaGuardadaCreateManyUserInputEnvelope
+>>>>>>> Stashed changes
     set?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
     disconnect?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
     delete?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
     connect?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
-    update?: BusquedaGuardadaUpdateWithWhereUniqueWithoutUsuarioInput | BusquedaGuardadaUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: BusquedaGuardadaUpdateManyWithWhereWithoutUsuarioInput | BusquedaGuardadaUpdateManyWithWhereWithoutUsuarioInput[]
+    update?: BusquedaGuardadaUpdateWithWhereUniqueWithoutUserInput | BusquedaGuardadaUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BusquedaGuardadaUpdateManyWithWhereWithoutUserInput | BusquedaGuardadaUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: BusquedaGuardadaScalarWhereInput | BusquedaGuardadaScalarWhereInput[]
   }
 
+<<<<<<< Updated upstream
   export type FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<FavoritoCreateWithoutUsuarioInput, FavoritoUncheckedCreateWithoutUsuarioInput> | FavoritoCreateWithoutUsuarioInput[] | FavoritoUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: FavoritoCreateOrConnectWithoutUsuarioInput | FavoritoCreateOrConnectWithoutUsuarioInput[]
@@ -17684,85 +18655,115 @@ export namespace Prisma {
     connectOrCreate?: InmuebleCreateOrConnectWithoutPropietarioInput | InmuebleCreateOrConnectWithoutPropietarioInput[]
     upsert?: InmuebleUpsertWithWhereUniqueWithoutPropietarioInput | InmuebleUpsertWithWhereUniqueWithoutPropietarioInput[]
     createMany?: InmuebleCreateManyPropietarioInputEnvelope
+=======
+  export type InmuebleUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<InmuebleCreateWithoutOwnerInput, InmuebleUncheckedCreateWithoutOwnerInput> | InmuebleCreateWithoutOwnerInput[] | InmuebleUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: InmuebleCreateOrConnectWithoutOwnerInput | InmuebleCreateOrConnectWithoutOwnerInput[]
+    upsert?: InmuebleUpsertWithWhereUniqueWithoutOwnerInput | InmuebleUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: InmuebleCreateManyOwnerInputEnvelope
+>>>>>>> Stashed changes
     set?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
     disconnect?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
     delete?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
     connect?: InmuebleWhereUniqueInput | InmuebleWhereUniqueInput[]
-    update?: InmuebleUpdateWithWhereUniqueWithoutPropietarioInput | InmuebleUpdateWithWhereUniqueWithoutPropietarioInput[]
-    updateMany?: InmuebleUpdateManyWithWhereWithoutPropietarioInput | InmuebleUpdateManyWithWhereWithoutPropietarioInput[]
+    update?: InmuebleUpdateWithWhereUniqueWithoutOwnerInput | InmuebleUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: InmuebleUpdateManyWithWhereWithoutOwnerInput | InmuebleUpdateManyWithWhereWithoutOwnerInput[]
     deleteMany?: InmuebleScalarWhereInput | InmuebleScalarWhereInput[]
   }
 
-  export type InteresUncheckedUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<InteresCreateWithoutUsuarioInput, InteresUncheckedCreateWithoutUsuarioInput> | InteresCreateWithoutUsuarioInput[] | InteresUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: InteresCreateOrConnectWithoutUsuarioInput | InteresCreateOrConnectWithoutUsuarioInput[]
-    upsert?: InteresUpsertWithWhereUniqueWithoutUsuarioInput | InteresUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: InteresCreateManyUsuarioInputEnvelope
+  export type InteresUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InteresCreateWithoutUserInput, InteresUncheckedCreateWithoutUserInput> | InteresCreateWithoutUserInput[] | InteresUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutUserInput | InteresCreateOrConnectWithoutUserInput[]
+    upsert?: InteresUpsertWithWhereUniqueWithoutUserInput | InteresUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InteresCreateManyUserInputEnvelope
     set?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     disconnect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     delete?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
-    update?: InteresUpdateWithWhereUniqueWithoutUsuarioInput | InteresUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: InteresUpdateManyWithWhereWithoutUsuarioInput | InteresUpdateManyWithWhereWithoutUsuarioInput[]
+    update?: InteresUpdateWithWhereUniqueWithoutUserInput | InteresUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InteresUpdateManyWithWhereWithoutUserInput | InteresUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: InteresScalarWhereInput | InteresScalarWhereInput[]
   }
 
-  export type MensajeUncheckedUpdateManyWithoutEmisorNestedInput = {
-    create?: XOR<MensajeCreateWithoutEmisorInput, MensajeUncheckedCreateWithoutEmisorInput> | MensajeCreateWithoutEmisorInput[] | MensajeUncheckedCreateWithoutEmisorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutEmisorInput | MensajeCreateOrConnectWithoutEmisorInput[]
-    upsert?: MensajeUpsertWithWhereUniqueWithoutEmisorInput | MensajeUpsertWithWhereUniqueWithoutEmisorInput[]
-    createMany?: MensajeCreateManyEmisorInputEnvelope
+  export type MensajeUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MensajeCreateWithoutSenderInput, MensajeUncheckedCreateWithoutSenderInput> | MensajeCreateWithoutSenderInput[] | MensajeUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutSenderInput | MensajeCreateOrConnectWithoutSenderInput[]
+    upsert?: MensajeUpsertWithWhereUniqueWithoutSenderInput | MensajeUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MensajeCreateManySenderInputEnvelope
     set?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     disconnect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     delete?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
-    update?: MensajeUpdateWithWhereUniqueWithoutEmisorInput | MensajeUpdateWithWhereUniqueWithoutEmisorInput[]
-    updateMany?: MensajeUpdateManyWithWhereWithoutEmisorInput | MensajeUpdateManyWithWhereWithoutEmisorInput[]
+    update?: MensajeUpdateWithWhereUniqueWithoutSenderInput | MensajeUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MensajeUpdateManyWithWhereWithoutSenderInput | MensajeUpdateManyWithWhereWithoutSenderInput[]
     deleteMany?: MensajeScalarWhereInput | MensajeScalarWhereInput[]
   }
 
-  export type MensajeUncheckedUpdateManyWithoutReceptorNestedInput = {
-    create?: XOR<MensajeCreateWithoutReceptorInput, MensajeUncheckedCreateWithoutReceptorInput> | MensajeCreateWithoutReceptorInput[] | MensajeUncheckedCreateWithoutReceptorInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutReceptorInput | MensajeCreateOrConnectWithoutReceptorInput[]
-    upsert?: MensajeUpsertWithWhereUniqueWithoutReceptorInput | MensajeUpsertWithWhereUniqueWithoutReceptorInput[]
-    createMany?: MensajeCreateManyReceptorInputEnvelope
+  export type MensajeUncheckedUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<MensajeCreateWithoutReceiverInput, MensajeUncheckedCreateWithoutReceiverInput> | MensajeCreateWithoutReceiverInput[] | MensajeUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutReceiverInput | MensajeCreateOrConnectWithoutReceiverInput[]
+    upsert?: MensajeUpsertWithWhereUniqueWithoutReceiverInput | MensajeUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: MensajeCreateManyReceiverInputEnvelope
     set?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     disconnect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     delete?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
-    update?: MensajeUpdateWithWhereUniqueWithoutReceptorInput | MensajeUpdateWithWhereUniqueWithoutReceptorInput[]
-    updateMany?: MensajeUpdateManyWithWhereWithoutReceptorInput | MensajeUpdateManyWithWhereWithoutReceptorInput[]
+    update?: MensajeUpdateWithWhereUniqueWithoutReceiverInput | MensajeUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: MensajeUpdateManyWithWhereWithoutReceiverInput | MensajeUpdateManyWithWhereWithoutReceiverInput[]
     deleteMany?: MensajeScalarWhereInput | MensajeScalarWhereInput[]
   }
 
+<<<<<<< Updated upstream
   export type NotificacionUncheckedUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<NotificacionCreateWithoutUsuarioInput, NotificacionUncheckedCreateWithoutUsuarioInput> | NotificacionCreateWithoutUsuarioInput[] | NotificacionUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: NotificacionCreateOrConnectWithoutUsuarioInput | NotificacionCreateOrConnectWithoutUsuarioInput[]
     upsert?: NotificacionUpsertWithWhereUniqueWithoutUsuarioInput | NotificacionUpsertWithWhereUniqueWithoutUsuarioInput[]
     createMany?: NotificacionCreateManyUsuarioInputEnvelope
+=======
+  export type ResenaUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ResenaCreateWithoutUserInput, ResenaUncheckedCreateWithoutUserInput> | ResenaCreateWithoutUserInput[] | ResenaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUserInput | ResenaCreateOrConnectWithoutUserInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutUserInput | ResenaUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ResenaCreateManyUserInputEnvelope
+    set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutUserInput | ResenaUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutUserInput | ResenaUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+  }
+
+  export type NotificacionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NotificacionCreateWithoutUserInput, NotificacionUncheckedCreateWithoutUserInput> | NotificacionCreateWithoutUserInput[] | NotificacionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NotificacionCreateOrConnectWithoutUserInput | NotificacionCreateOrConnectWithoutUserInput[]
+    upsert?: NotificacionUpsertWithWhereUniqueWithoutUserInput | NotificacionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NotificacionCreateManyUserInputEnvelope
+>>>>>>> Stashed changes
     set?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
     disconnect?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
     delete?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
     connect?: NotificacionWhereUniqueInput | NotificacionWhereUniqueInput[]
-    update?: NotificacionUpdateWithWhereUniqueWithoutUsuarioInput | NotificacionUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: NotificacionUpdateManyWithWhereWithoutUsuarioInput | NotificacionUpdateManyWithWhereWithoutUsuarioInput[]
+    update?: NotificacionUpdateWithWhereUniqueWithoutUserInput | NotificacionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NotificacionUpdateManyWithWhereWithoutUserInput | NotificacionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: NotificacionScalarWhereInput | NotificacionScalarWhereInput[]
   }
 
-  export type ReporteUncheckedUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<ReporteCreateWithoutUsuarioInput, ReporteUncheckedCreateWithoutUsuarioInput> | ReporteCreateWithoutUsuarioInput[] | ReporteUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutUsuarioInput | ReporteCreateOrConnectWithoutUsuarioInput[]
-    upsert?: ReporteUpsertWithWhereUniqueWithoutUsuarioInput | ReporteUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: ReporteCreateManyUsuarioInputEnvelope
+  export type ReporteUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReporteCreateWithoutUserInput, ReporteUncheckedCreateWithoutUserInput> | ReporteCreateWithoutUserInput[] | ReporteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutUserInput | ReporteCreateOrConnectWithoutUserInput[]
+    upsert?: ReporteUpsertWithWhereUniqueWithoutUserInput | ReporteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReporteCreateManyUserInputEnvelope
     set?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     disconnect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     delete?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
-    update?: ReporteUpdateWithWhereUniqueWithoutUsuarioInput | ReporteUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: ReporteUpdateManyWithWhereWithoutUsuarioInput | ReporteUpdateManyWithWhereWithoutUsuarioInput[]
+    update?: ReporteUpdateWithWhereUniqueWithoutUserInput | ReporteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReporteUpdateManyWithWhereWithoutUserInput | ReporteUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ReporteScalarWhereInput | ReporteScalarWhereInput[]
   }
 
+<<<<<<< Updated upstream
   export type ResenaUncheckedUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
@@ -17799,21 +18800,50 @@ export namespace Prisma {
     connectOrCreate?: FotoInmuebleCreateOrConnectWithoutInmuebleInput | FotoInmuebleCreateOrConnectWithoutInmuebleInput[]
     createMany?: FotoInmuebleCreateManyInmuebleInputEnvelope
     connect?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+=======
+  export type FavoritoUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FavoritoCreateWithoutUserInput, FavoritoUncheckedCreateWithoutUserInput> | FavoritoCreateWithoutUserInput[] | FavoritoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUserInput | FavoritoCreateOrConnectWithoutUserInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutUserInput | FavoritoUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FavoritoCreateManyUserInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutUserInput | FavoritoUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutUserInput | FavoritoUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
   }
 
-  export type UsuarioCreateNestedOneWithoutInmueblesPropietarioInput = {
-    create?: XOR<UsuarioCreateWithoutInmueblesPropietarioInput, UsuarioUncheckedCreateWithoutInmueblesPropietarioInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutInmueblesPropietarioInput
+  export type BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BusquedaGuardadaCreateWithoutUserInput, BusquedaGuardadaUncheckedCreateWithoutUserInput> | BusquedaGuardadaCreateWithoutUserInput[] | BusquedaGuardadaUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BusquedaGuardadaCreateOrConnectWithoutUserInput | BusquedaGuardadaCreateOrConnectWithoutUserInput[]
+    upsert?: BusquedaGuardadaUpsertWithWhereUniqueWithoutUserInput | BusquedaGuardadaUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BusquedaGuardadaCreateManyUserInputEnvelope
+    set?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
+    disconnect?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
+    delete?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
+    connect?: BusquedaGuardadaWhereUniqueInput | BusquedaGuardadaWhereUniqueInput[]
+    update?: BusquedaGuardadaUpdateWithWhereUniqueWithoutUserInput | BusquedaGuardadaUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BusquedaGuardadaUpdateManyWithWhereWithoutUserInput | BusquedaGuardadaUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BusquedaGuardadaScalarWhereInput | BusquedaGuardadaScalarWhereInput[]
+>>>>>>> Stashed changes
+  }
+
+  export type UsuarioCreateNestedOneWithoutOwnedPropertiesInput = {
+    create?: XOR<UsuarioCreateWithoutOwnedPropertiesInput, UsuarioUncheckedCreateWithoutOwnedPropertiesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutOwnedPropertiesInput
     connect?: UsuarioWhereUniqueInput
   }
 
-  export type InteresCreateNestedManyWithoutInmuebleInput = {
-    create?: XOR<InteresCreateWithoutInmuebleInput, InteresUncheckedCreateWithoutInmuebleInput> | InteresCreateWithoutInmuebleInput[] | InteresUncheckedCreateWithoutInmuebleInput[]
-    connectOrCreate?: InteresCreateOrConnectWithoutInmuebleInput | InteresCreateOrConnectWithoutInmuebleInput[]
-    createMany?: InteresCreateManyInmuebleInputEnvelope
+  export type InteresCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<InteresCreateWithoutPropertyInput, InteresUncheckedCreateWithoutPropertyInput> | InteresCreateWithoutPropertyInput[] | InteresUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutPropertyInput | InteresCreateOrConnectWithoutPropertyInput[]
+    createMany?: InteresCreateManyPropertyInputEnvelope
     connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
   }
 
+<<<<<<< Updated upstream
   export type ResenaCreateNestedManyWithoutInmuebleInput = {
     create?: XOR<ResenaCreateWithoutInmuebleInput, ResenaUncheckedCreateWithoutInmuebleInput> | ResenaCreateWithoutInmuebleInput[] | ResenaUncheckedCreateWithoutInmuebleInput[]
     connectOrCreate?: ResenaCreateOrConnectWithoutInmuebleInput | ResenaCreateOrConnectWithoutInmuebleInput[]
@@ -17825,6 +18855,54 @@ export namespace Prisma {
     create?: XOR<FavoritoCreateWithoutInmuebleInput, FavoritoUncheckedCreateWithoutInmuebleInput> | FavoritoCreateWithoutInmuebleInput[] | FavoritoUncheckedCreateWithoutInmuebleInput[]
     connectOrCreate?: FavoritoCreateOrConnectWithoutInmuebleInput | FavoritoCreateOrConnectWithoutInmuebleInput[]
     createMany?: FavoritoCreateManyInmuebleInputEnvelope
+=======
+  export type FotoInmuebleCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<FotoInmuebleCreateWithoutPropertyInput, FotoInmuebleUncheckedCreateWithoutPropertyInput> | FotoInmuebleCreateWithoutPropertyInput[] | FotoInmuebleUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FotoInmuebleCreateOrConnectWithoutPropertyInput | FotoInmuebleCreateOrConnectWithoutPropertyInput[]
+    createMany?: FotoInmuebleCreateManyPropertyInputEnvelope
+    connect?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+  }
+
+  export type ResenaCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ResenaCreateWithoutPropertyInput, ResenaUncheckedCreateWithoutPropertyInput> | ResenaCreateWithoutPropertyInput[] | ResenaUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutPropertyInput | ResenaCreateOrConnectWithoutPropertyInput[]
+    createMany?: ResenaCreateManyPropertyInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+  }
+
+  export type FavoritoCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<FavoritoCreateWithoutPropertyInput, FavoritoUncheckedCreateWithoutPropertyInput> | FavoritoCreateWithoutPropertyInput[] | FavoritoUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutPropertyInput | FavoritoCreateOrConnectWithoutPropertyInput[]
+    createMany?: FavoritoCreateManyPropertyInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
+  export type InteresUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<InteresCreateWithoutPropertyInput, InteresUncheckedCreateWithoutPropertyInput> | InteresCreateWithoutPropertyInput[] | InteresUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutPropertyInput | InteresCreateOrConnectWithoutPropertyInput[]
+    createMany?: InteresCreateManyPropertyInputEnvelope
+    connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
+  }
+
+  export type FotoInmuebleUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<FotoInmuebleCreateWithoutPropertyInput, FotoInmuebleUncheckedCreateWithoutPropertyInput> | FotoInmuebleCreateWithoutPropertyInput[] | FotoInmuebleUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FotoInmuebleCreateOrConnectWithoutPropertyInput | FotoInmuebleCreateOrConnectWithoutPropertyInput[]
+    createMany?: FotoInmuebleCreateManyPropertyInputEnvelope
+    connect?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+  }
+
+  export type ResenaUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ResenaCreateWithoutPropertyInput, ResenaUncheckedCreateWithoutPropertyInput> | ResenaCreateWithoutPropertyInput[] | ResenaUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutPropertyInput | ResenaCreateOrConnectWithoutPropertyInput[]
+    createMany?: ResenaCreateManyPropertyInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+  }
+
+  export type FavoritoUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<FavoritoCreateWithoutPropertyInput, FavoritoUncheckedCreateWithoutPropertyInput> | FavoritoCreateWithoutPropertyInput[] | FavoritoUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutPropertyInput | FavoritoCreateOrConnectWithoutPropertyInput[]
+    createMany?: FavoritoCreateManyPropertyInputEnvelope
+>>>>>>> Stashed changes
     connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
   }
 
@@ -17873,6 +18951,7 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
+<<<<<<< Updated upstream
   export type FavoritoUpdateManyWithoutInmuebleNestedInput = {
     create?: XOR<FavoritoCreateWithoutInmuebleInput, FavoritoUncheckedCreateWithoutInmuebleInput> | FavoritoCreateWithoutInmuebleInput[] | FavoritoUncheckedCreateWithoutInmuebleInput[]
     connectOrCreate?: FavoritoCreateOrConnectWithoutInmuebleInput | FavoritoCreateOrConnectWithoutInmuebleInput[]
@@ -17905,52 +18984,145 @@ export namespace Prisma {
     create?: XOR<UsuarioCreateWithoutInmueblesPropietarioInput, UsuarioUncheckedCreateWithoutInmueblesPropietarioInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutInmueblesPropietarioInput
     upsert?: UsuarioUpsertWithoutInmueblesPropietarioInput
+=======
+  export type UsuarioUpdateOneRequiredWithoutOwnedPropertiesNestedInput = {
+    create?: XOR<UsuarioCreateWithoutOwnedPropertiesInput, UsuarioUncheckedCreateWithoutOwnedPropertiesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutOwnedPropertiesInput
+    upsert?: UsuarioUpsertWithoutOwnedPropertiesInput
+>>>>>>> Stashed changes
     connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutInmueblesPropietarioInput, UsuarioUpdateWithoutInmueblesPropietarioInput>, UsuarioUncheckedUpdateWithoutInmueblesPropietarioInput>
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutOwnedPropertiesInput, UsuarioUpdateWithoutOwnedPropertiesInput>, UsuarioUncheckedUpdateWithoutOwnedPropertiesInput>
   }
 
-  export type InteresUpdateManyWithoutInmuebleNestedInput = {
-    create?: XOR<InteresCreateWithoutInmuebleInput, InteresUncheckedCreateWithoutInmuebleInput> | InteresCreateWithoutInmuebleInput[] | InteresUncheckedCreateWithoutInmuebleInput[]
-    connectOrCreate?: InteresCreateOrConnectWithoutInmuebleInput | InteresCreateOrConnectWithoutInmuebleInput[]
-    upsert?: InteresUpsertWithWhereUniqueWithoutInmuebleInput | InteresUpsertWithWhereUniqueWithoutInmuebleInput[]
-    createMany?: InteresCreateManyInmuebleInputEnvelope
+  export type InteresUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<InteresCreateWithoutPropertyInput, InteresUncheckedCreateWithoutPropertyInput> | InteresCreateWithoutPropertyInput[] | InteresUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutPropertyInput | InteresCreateOrConnectWithoutPropertyInput[]
+    upsert?: InteresUpsertWithWhereUniqueWithoutPropertyInput | InteresUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: InteresCreateManyPropertyInputEnvelope
     set?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     disconnect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     delete?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
     connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
-    update?: InteresUpdateWithWhereUniqueWithoutInmuebleInput | InteresUpdateWithWhereUniqueWithoutInmuebleInput[]
-    updateMany?: InteresUpdateManyWithWhereWithoutInmuebleInput | InteresUpdateManyWithWhereWithoutInmuebleInput[]
+    update?: InteresUpdateWithWhereUniqueWithoutPropertyInput | InteresUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: InteresUpdateManyWithWhereWithoutPropertyInput | InteresUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: InteresScalarWhereInput | InteresScalarWhereInput[]
   }
 
+<<<<<<< Updated upstream
   export type ResenaUpdateManyWithoutInmuebleNestedInput = {
     create?: XOR<ResenaCreateWithoutInmuebleInput, ResenaUncheckedCreateWithoutInmuebleInput> | ResenaCreateWithoutInmuebleInput[] | ResenaUncheckedCreateWithoutInmuebleInput[]
     connectOrCreate?: ResenaCreateOrConnectWithoutInmuebleInput | ResenaCreateOrConnectWithoutInmuebleInput[]
     upsert?: ResenaUpsertWithWhereUniqueWithoutInmuebleInput | ResenaUpsertWithWhereUniqueWithoutInmuebleInput[]
     createMany?: ResenaCreateManyInmuebleInputEnvelope
+=======
+  export type FotoInmuebleUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<FotoInmuebleCreateWithoutPropertyInput, FotoInmuebleUncheckedCreateWithoutPropertyInput> | FotoInmuebleCreateWithoutPropertyInput[] | FotoInmuebleUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FotoInmuebleCreateOrConnectWithoutPropertyInput | FotoInmuebleCreateOrConnectWithoutPropertyInput[]
+    upsert?: FotoInmuebleUpsertWithWhereUniqueWithoutPropertyInput | FotoInmuebleUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: FotoInmuebleCreateManyPropertyInputEnvelope
+    set?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    disconnect?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    delete?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    connect?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    update?: FotoInmuebleUpdateWithWhereUniqueWithoutPropertyInput | FotoInmuebleUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: FotoInmuebleUpdateManyWithWhereWithoutPropertyInput | FotoInmuebleUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: FotoInmuebleScalarWhereInput | FotoInmuebleScalarWhereInput[]
+  }
+
+  export type ResenaUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ResenaCreateWithoutPropertyInput, ResenaUncheckedCreateWithoutPropertyInput> | ResenaCreateWithoutPropertyInput[] | ResenaUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutPropertyInput | ResenaCreateOrConnectWithoutPropertyInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutPropertyInput | ResenaUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ResenaCreateManyPropertyInputEnvelope
+>>>>>>> Stashed changes
     set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
     disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
     delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
     connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
-    update?: ResenaUpdateWithWhereUniqueWithoutInmuebleInput | ResenaUpdateWithWhereUniqueWithoutInmuebleInput[]
-    updateMany?: ResenaUpdateManyWithWhereWithoutInmuebleInput | ResenaUpdateManyWithWhereWithoutInmuebleInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutPropertyInput | ResenaUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutPropertyInput | ResenaUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
   }
 
+<<<<<<< Updated upstream
   export type FavoritoUncheckedUpdateManyWithoutInmuebleNestedInput = {
     create?: XOR<FavoritoCreateWithoutInmuebleInput, FavoritoUncheckedCreateWithoutInmuebleInput> | FavoritoCreateWithoutInmuebleInput[] | FavoritoUncheckedCreateWithoutInmuebleInput[]
     connectOrCreate?: FavoritoCreateOrConnectWithoutInmuebleInput | FavoritoCreateOrConnectWithoutInmuebleInput[]
     upsert?: FavoritoUpsertWithWhereUniqueWithoutInmuebleInput | FavoritoUpsertWithWhereUniqueWithoutInmuebleInput[]
     createMany?: FavoritoCreateManyInmuebleInputEnvelope
+=======
+  export type FavoritoUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<FavoritoCreateWithoutPropertyInput, FavoritoUncheckedCreateWithoutPropertyInput> | FavoritoCreateWithoutPropertyInput[] | FavoritoUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutPropertyInput | FavoritoCreateOrConnectWithoutPropertyInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutPropertyInput | FavoritoUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: FavoritoCreateManyPropertyInputEnvelope
     set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
     disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
     delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
     connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
-    update?: FavoritoUpdateWithWhereUniqueWithoutInmuebleInput | FavoritoUpdateWithWhereUniqueWithoutInmuebleInput[]
-    updateMany?: FavoritoUpdateManyWithWhereWithoutInmuebleInput | FavoritoUpdateManyWithWhereWithoutInmuebleInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutPropertyInput | FavoritoUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutPropertyInput | FavoritoUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
   }
 
+  export type InteresUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<InteresCreateWithoutPropertyInput, InteresUncheckedCreateWithoutPropertyInput> | InteresCreateWithoutPropertyInput[] | InteresUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: InteresCreateOrConnectWithoutPropertyInput | InteresCreateOrConnectWithoutPropertyInput[]
+    upsert?: InteresUpsertWithWhereUniqueWithoutPropertyInput | InteresUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: InteresCreateManyPropertyInputEnvelope
+    set?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
+    disconnect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
+    delete?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
+    connect?: InteresWhereUniqueInput | InteresWhereUniqueInput[]
+    update?: InteresUpdateWithWhereUniqueWithoutPropertyInput | InteresUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: InteresUpdateManyWithWhereWithoutPropertyInput | InteresUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: InteresScalarWhereInput | InteresScalarWhereInput[]
+  }
+
+  export type FotoInmuebleUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<FotoInmuebleCreateWithoutPropertyInput, FotoInmuebleUncheckedCreateWithoutPropertyInput> | FotoInmuebleCreateWithoutPropertyInput[] | FotoInmuebleUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FotoInmuebleCreateOrConnectWithoutPropertyInput | FotoInmuebleCreateOrConnectWithoutPropertyInput[]
+    upsert?: FotoInmuebleUpsertWithWhereUniqueWithoutPropertyInput | FotoInmuebleUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: FotoInmuebleCreateManyPropertyInputEnvelope
+    set?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    disconnect?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    delete?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    connect?: FotoInmuebleWhereUniqueInput | FotoInmuebleWhereUniqueInput[]
+    update?: FotoInmuebleUpdateWithWhereUniqueWithoutPropertyInput | FotoInmuebleUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: FotoInmuebleUpdateManyWithWhereWithoutPropertyInput | FotoInmuebleUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: FotoInmuebleScalarWhereInput | FotoInmuebleScalarWhereInput[]
+  }
+
+  export type ResenaUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ResenaCreateWithoutPropertyInput, ResenaUncheckedCreateWithoutPropertyInput> | ResenaCreateWithoutPropertyInput[] | ResenaUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutPropertyInput | ResenaCreateOrConnectWithoutPropertyInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutPropertyInput | ResenaUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ResenaCreateManyPropertyInputEnvelope
+    set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutPropertyInput | ResenaUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutPropertyInput | ResenaUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+  }
+
+  export type FavoritoUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<FavoritoCreateWithoutPropertyInput, FavoritoUncheckedCreateWithoutPropertyInput> | FavoritoCreateWithoutPropertyInput[] | FavoritoUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutPropertyInput | FavoritoCreateOrConnectWithoutPropertyInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutPropertyInput | FavoritoUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: FavoritoCreateManyPropertyInputEnvelope
+>>>>>>> Stashed changes
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutPropertyInput | FavoritoUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutPropertyInput | FavoritoUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
+<<<<<<< Updated upstream
   export type FotoInmuebleUncheckedUpdateManyWithoutInmuebleNestedInput = {
     create?: XOR<FotoInmuebleCreateWithoutInmuebleInput, FotoInmuebleUncheckedCreateWithoutInmuebleInput> | FotoInmuebleCreateWithoutInmuebleInput[] | FotoInmuebleUncheckedCreateWithoutInmuebleInput[]
     connectOrCreate?: FotoInmuebleCreateOrConnectWithoutInmuebleInput | FotoInmuebleCreateOrConnectWithoutInmuebleInput[]
@@ -17991,14 +19163,21 @@ export namespace Prisma {
     update?: ResenaUpdateWithWhereUniqueWithoutInmuebleInput | ResenaUpdateWithWhereUniqueWithoutInmuebleInput[]
     updateMany?: ResenaUpdateManyWithWhereWithoutInmuebleInput | ResenaUpdateManyWithWhereWithoutInmuebleInput[]
     deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+=======
+  export type UsuarioCreateNestedOneWithoutInterestsInput = {
+    create?: XOR<UsuarioCreateWithoutInterestsInput, UsuarioUncheckedCreateWithoutInterestsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutInterestsInput
+    connect?: UsuarioWhereUniqueInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleCreateNestedOneWithoutInteresesInput = {
-    create?: XOR<InmuebleCreateWithoutInteresesInput, InmuebleUncheckedCreateWithoutInteresesInput>
-    connectOrCreate?: InmuebleCreateOrConnectWithoutInteresesInput
+  export type InmuebleCreateNestedOneWithoutInterestsInput = {
+    create?: XOR<InmuebleCreateWithoutInterestsInput, InmuebleUncheckedCreateWithoutInterestsInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutInterestsInput
     connect?: InmuebleWhereUniqueInput
   }
 
+<<<<<<< Updated upstream
   export type UsuarioCreateNestedOneWithoutInteresesInput = {
     create?: XOR<UsuarioCreateWithoutInteresesInput, UsuarioUncheckedCreateWithoutInteresesInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutInteresesInput
@@ -18009,24 +19188,46 @@ export namespace Prisma {
     create?: XOR<MensajeCreateWithoutInteresInput, MensajeUncheckedCreateWithoutInteresInput> | MensajeCreateWithoutInteresInput[] | MensajeUncheckedCreateWithoutInteresInput[]
     connectOrCreate?: MensajeCreateOrConnectWithoutInteresInput | MensajeCreateOrConnectWithoutInteresInput[]
     createMany?: MensajeCreateManyInteresInputEnvelope
+=======
+  export type MensajeCreateNestedManyWithoutInterestInput = {
+    create?: XOR<MensajeCreateWithoutInterestInput, MensajeUncheckedCreateWithoutInterestInput> | MensajeCreateWithoutInterestInput[] | MensajeUncheckedCreateWithoutInterestInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutInterestInput | MensajeCreateOrConnectWithoutInterestInput[]
+    createMany?: MensajeCreateManyInterestInputEnvelope
+>>>>>>> Stashed changes
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
   }
 
-  export type MensajeUncheckedCreateNestedManyWithoutInteresInput = {
-    create?: XOR<MensajeCreateWithoutInteresInput, MensajeUncheckedCreateWithoutInteresInput> | MensajeCreateWithoutInteresInput[] | MensajeUncheckedCreateWithoutInteresInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutInteresInput | MensajeCreateOrConnectWithoutInteresInput[]
-    createMany?: MensajeCreateManyInteresInputEnvelope
+  export type MensajeUncheckedCreateNestedManyWithoutInterestInput = {
+    create?: XOR<MensajeCreateWithoutInterestInput, MensajeUncheckedCreateWithoutInterestInput> | MensajeCreateWithoutInterestInput[] | MensajeUncheckedCreateWithoutInterestInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutInterestInput | MensajeCreateOrConnectWithoutInterestInput[]
+    createMany?: MensajeCreateManyInterestInputEnvelope
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
   }
 
+<<<<<<< Updated upstream
   export type InmuebleUpdateOneRequiredWithoutInteresesNestedInput = {
     create?: XOR<InmuebleCreateWithoutInteresesInput, InmuebleUncheckedCreateWithoutInteresesInput>
     connectOrCreate?: InmuebleCreateOrConnectWithoutInteresesInput
     upsert?: InmuebleUpsertWithoutInteresesInput
-    connect?: InmuebleWhereUniqueInput
-    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutInteresesInput, InmuebleUpdateWithoutInteresesInput>, InmuebleUncheckedUpdateWithoutInteresesInput>
+=======
+  export type UsuarioUpdateOneRequiredWithoutInterestsNestedInput = {
+    create?: XOR<UsuarioCreateWithoutInterestsInput, UsuarioUncheckedCreateWithoutInterestsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutInterestsInput
+    upsert?: UsuarioUpsertWithoutInterestsInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutInterestsInput, UsuarioUpdateWithoutInterestsInput>, UsuarioUncheckedUpdateWithoutInterestsInput>
   }
 
+  export type InmuebleUpdateOneRequiredWithoutInterestsNestedInput = {
+    create?: XOR<InmuebleCreateWithoutInterestsInput, InmuebleUncheckedCreateWithoutInterestsInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutInterestsInput
+    upsert?: InmuebleUpsertWithoutInterestsInput
+>>>>>>> Stashed changes
+    connect?: InmuebleWhereUniqueInput
+    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutInterestsInput, InmuebleUpdateWithoutInterestsInput>, InmuebleUncheckedUpdateWithoutInterestsInput>
+  }
+
+<<<<<<< Updated upstream
   export type UsuarioUpdateOneRequiredWithoutInteresesNestedInput = {
     create?: XOR<UsuarioCreateWithoutInteresesInput, UsuarioUncheckedCreateWithoutInteresesInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutInteresesInput
@@ -18040,38 +19241,57 @@ export namespace Prisma {
     connectOrCreate?: MensajeCreateOrConnectWithoutInteresInput | MensajeCreateOrConnectWithoutInteresInput[]
     upsert?: MensajeUpsertWithWhereUniqueWithoutInteresInput | MensajeUpsertWithWhereUniqueWithoutInteresInput[]
     createMany?: MensajeCreateManyInteresInputEnvelope
+=======
+  export type MensajeUpdateManyWithoutInterestNestedInput = {
+    create?: XOR<MensajeCreateWithoutInterestInput, MensajeUncheckedCreateWithoutInterestInput> | MensajeCreateWithoutInterestInput[] | MensajeUncheckedCreateWithoutInterestInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutInterestInput | MensajeCreateOrConnectWithoutInterestInput[]
+    upsert?: MensajeUpsertWithWhereUniqueWithoutInterestInput | MensajeUpsertWithWhereUniqueWithoutInterestInput[]
+    createMany?: MensajeCreateManyInterestInputEnvelope
+>>>>>>> Stashed changes
     set?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     disconnect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     delete?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
-    update?: MensajeUpdateWithWhereUniqueWithoutInteresInput | MensajeUpdateWithWhereUniqueWithoutInteresInput[]
-    updateMany?: MensajeUpdateManyWithWhereWithoutInteresInput | MensajeUpdateManyWithWhereWithoutInteresInput[]
+    update?: MensajeUpdateWithWhereUniqueWithoutInterestInput | MensajeUpdateWithWhereUniqueWithoutInterestInput[]
+    updateMany?: MensajeUpdateManyWithWhereWithoutInterestInput | MensajeUpdateManyWithWhereWithoutInterestInput[]
     deleteMany?: MensajeScalarWhereInput | MensajeScalarWhereInput[]
   }
 
-  export type MensajeUncheckedUpdateManyWithoutInteresNestedInput = {
-    create?: XOR<MensajeCreateWithoutInteresInput, MensajeUncheckedCreateWithoutInteresInput> | MensajeCreateWithoutInteresInput[] | MensajeUncheckedCreateWithoutInteresInput[]
-    connectOrCreate?: MensajeCreateOrConnectWithoutInteresInput | MensajeCreateOrConnectWithoutInteresInput[]
-    upsert?: MensajeUpsertWithWhereUniqueWithoutInteresInput | MensajeUpsertWithWhereUniqueWithoutInteresInput[]
-    createMany?: MensajeCreateManyInteresInputEnvelope
+  export type MensajeUncheckedUpdateManyWithoutInterestNestedInput = {
+    create?: XOR<MensajeCreateWithoutInterestInput, MensajeUncheckedCreateWithoutInterestInput> | MensajeCreateWithoutInterestInput[] | MensajeUncheckedCreateWithoutInterestInput[]
+    connectOrCreate?: MensajeCreateOrConnectWithoutInterestInput | MensajeCreateOrConnectWithoutInterestInput[]
+    upsert?: MensajeUpsertWithWhereUniqueWithoutInterestInput | MensajeUpsertWithWhereUniqueWithoutInterestInput[]
+    createMany?: MensajeCreateManyInterestInputEnvelope
     set?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     disconnect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     delete?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
     connect?: MensajeWhereUniqueInput | MensajeWhereUniqueInput[]
-    update?: MensajeUpdateWithWhereUniqueWithoutInteresInput | MensajeUpdateWithWhereUniqueWithoutInteresInput[]
-    updateMany?: MensajeUpdateManyWithWhereWithoutInteresInput | MensajeUpdateManyWithWhereWithoutInteresInput[]
+    update?: MensajeUpdateWithWhereUniqueWithoutInterestInput | MensajeUpdateWithWhereUniqueWithoutInterestInput[]
+    updateMany?: MensajeUpdateManyWithWhereWithoutInterestInput | MensajeUpdateManyWithWhereWithoutInterestInput[]
     deleteMany?: MensajeScalarWhereInput | MensajeScalarWhereInput[]
   }
 
-  export type UsuarioCreateNestedOneWithoutMensajesEmitidosInput = {
-    create?: XOR<UsuarioCreateWithoutMensajesEmitidosInput, UsuarioUncheckedCreateWithoutMensajesEmitidosInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutMensajesEmitidosInput
+  export type UsuarioCreateNestedOneWithoutSentMessagesInput = {
+    create?: XOR<UsuarioCreateWithoutSentMessagesInput, UsuarioUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutSentMessagesInput
     connect?: UsuarioWhereUniqueInput
   }
 
+<<<<<<< Updated upstream
   export type InteresCreateNestedOneWithoutMensajesInput = {
     create?: XOR<InteresCreateWithoutMensajesInput, InteresUncheckedCreateWithoutMensajesInput>
     connectOrCreate?: InteresCreateOrConnectWithoutMensajesInput
+=======
+  export type UsuarioCreateNestedOneWithoutReceivedMessagesInput = {
+    create?: XOR<UsuarioCreateWithoutReceivedMessagesInput, UsuarioUncheckedCreateWithoutReceivedMessagesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutReceivedMessagesInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type InteresCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<InteresCreateWithoutMessagesInput, InteresUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: InteresCreateOrConnectWithoutMessagesInput
+>>>>>>> Stashed changes
     connect?: InteresWhereUniqueInput
   }
 
@@ -18093,24 +19313,40 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type UsuarioUpdateOneRequiredWithoutMensajesEmitidosNestedInput = {
-    create?: XOR<UsuarioCreateWithoutMensajesEmitidosInput, UsuarioUncheckedCreateWithoutMensajesEmitidosInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutMensajesEmitidosInput
-    upsert?: UsuarioUpsertWithoutMensajesEmitidosInput
+  export type UsuarioUpdateOneRequiredWithoutSentMessagesNestedInput = {
+    create?: XOR<UsuarioCreateWithoutSentMessagesInput, UsuarioUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutSentMessagesInput
+    upsert?: UsuarioUpsertWithoutSentMessagesInput
     connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutMensajesEmitidosInput, UsuarioUpdateWithoutMensajesEmitidosInput>, UsuarioUncheckedUpdateWithoutMensajesEmitidosInput>
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutSentMessagesInput, UsuarioUpdateWithoutSentMessagesInput>, UsuarioUncheckedUpdateWithoutSentMessagesInput>
   }
 
+<<<<<<< Updated upstream
   export type InteresUpdateOneWithoutMensajesNestedInput = {
     create?: XOR<InteresCreateWithoutMensajesInput, InteresUncheckedCreateWithoutMensajesInput>
     connectOrCreate?: InteresCreateOrConnectWithoutMensajesInput
     upsert?: InteresUpsertWithoutMensajesInput
+=======
+  export type UsuarioUpdateOneRequiredWithoutReceivedMessagesNestedInput = {
+    create?: XOR<UsuarioCreateWithoutReceivedMessagesInput, UsuarioUncheckedCreateWithoutReceivedMessagesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutReceivedMessagesInput
+    upsert?: UsuarioUpsertWithoutReceivedMessagesInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutReceivedMessagesInput, UsuarioUpdateWithoutReceivedMessagesInput>, UsuarioUncheckedUpdateWithoutReceivedMessagesInput>
+  }
+
+  export type InteresUpdateOneWithoutMessagesNestedInput = {
+    create?: XOR<InteresCreateWithoutMessagesInput, InteresUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: InteresCreateOrConnectWithoutMessagesInput
+    upsert?: InteresUpsertWithoutMessagesInput
+>>>>>>> Stashed changes
     disconnect?: InteresWhereInput | boolean
     delete?: InteresWhereInput | boolean
     connect?: InteresWhereUniqueInput
-    update?: XOR<XOR<InteresUpdateToOneWithWhereWithoutMensajesInput, InteresUpdateWithoutMensajesInput>, InteresUncheckedUpdateWithoutMensajesInput>
+    update?: XOR<XOR<InteresUpdateToOneWithWhereWithoutMessagesInput, InteresUpdateWithoutMessagesInput>, InteresUncheckedUpdateWithoutMessagesInput>
   }
 
+<<<<<<< Updated upstream
   export type UsuarioUpdateOneRequiredWithoutMensajesRecibidosNestedInput = {
     create?: XOR<UsuarioCreateWithoutMensajesRecibidosInput, UsuarioUncheckedCreateWithoutMensajesRecibidosInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutMensajesRecibidosInput
@@ -18122,20 +19358,37 @@ export namespace Prisma {
   export type InmuebleCreateNestedOneWithoutFotosInmuebleInput = {
     create?: XOR<InmuebleCreateWithoutFotosInmuebleInput, InmuebleUncheckedCreateWithoutFotosInmuebleInput>
     connectOrCreate?: InmuebleCreateOrConnectWithoutFotosInmuebleInput
+=======
+  export type InmuebleCreateNestedOneWithoutPropertyPhotosInput = {
+    create?: XOR<InmuebleCreateWithoutPropertyPhotosInput, InmuebleUncheckedCreateWithoutPropertyPhotosInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutPropertyPhotosInput
+>>>>>>> Stashed changes
     connect?: InmuebleWhereUniqueInput
   }
 
-  export type InmuebleUpdateOneRequiredWithoutFotosInmuebleNestedInput = {
-    create?: XOR<InmuebleCreateWithoutFotosInmuebleInput, InmuebleUncheckedCreateWithoutFotosInmuebleInput>
-    connectOrCreate?: InmuebleCreateOrConnectWithoutFotosInmuebleInput
-    upsert?: InmuebleUpsertWithoutFotosInmuebleInput
+  export type InmuebleUpdateOneRequiredWithoutPropertyPhotosNestedInput = {
+    create?: XOR<InmuebleCreateWithoutPropertyPhotosInput, InmuebleUncheckedCreateWithoutPropertyPhotosInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutPropertyPhotosInput
+    upsert?: InmuebleUpsertWithoutPropertyPhotosInput
     connect?: InmuebleWhereUniqueInput
-    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutFotosInmuebleInput, InmuebleUpdateWithoutFotosInmuebleInput>, InmuebleUncheckedUpdateWithoutFotosInmuebleInput>
+    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutPropertyPhotosInput, InmuebleUpdateWithoutPropertyPhotosInput>, InmuebleUncheckedUpdateWithoutPropertyPhotosInput>
   }
 
+<<<<<<< Updated upstream
   export type InmuebleCreateNestedOneWithoutResenasInput = {
     create?: XOR<InmuebleCreateWithoutResenasInput, InmuebleUncheckedCreateWithoutResenasInput>
     connectOrCreate?: InmuebleCreateOrConnectWithoutResenasInput
+=======
+  export type UsuarioCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<UsuarioCreateWithoutReviewsInput, UsuarioUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutReviewsInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type InmuebleCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<InmuebleCreateWithoutReviewsInput, InmuebleUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutReviewsInput
+>>>>>>> Stashed changes
     connect?: InmuebleWhereUniqueInput
   }
 
@@ -18153,14 +19406,30 @@ export namespace Prisma {
     divide?: number
   }
 
+<<<<<<< Updated upstream
   export type InmuebleUpdateOneRequiredWithoutResenasNestedInput = {
     create?: XOR<InmuebleCreateWithoutResenasInput, InmuebleUncheckedCreateWithoutResenasInput>
     connectOrCreate?: InmuebleCreateOrConnectWithoutResenasInput
     upsert?: InmuebleUpsertWithoutResenasInput
-    connect?: InmuebleWhereUniqueInput
-    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutResenasInput, InmuebleUpdateWithoutResenasInput>, InmuebleUncheckedUpdateWithoutResenasInput>
+=======
+  export type UsuarioUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<UsuarioCreateWithoutReviewsInput, UsuarioUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutReviewsInput
+    upsert?: UsuarioUpsertWithoutReviewsInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutReviewsInput, UsuarioUpdateWithoutReviewsInput>, UsuarioUncheckedUpdateWithoutReviewsInput>
   }
 
+  export type InmuebleUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<InmuebleCreateWithoutReviewsInput, InmuebleUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutReviewsInput
+    upsert?: InmuebleUpsertWithoutReviewsInput
+>>>>>>> Stashed changes
+    connect?: InmuebleWhereUniqueInput
+    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutReviewsInput, InmuebleUpdateWithoutReviewsInput>, InmuebleUncheckedUpdateWithoutReviewsInput>
+  }
+
+<<<<<<< Updated upstream
   export type UsuarioUpdateOneRequiredWithoutResenasNestedInput = {
     create?: XOR<UsuarioCreateWithoutResenasInput, UsuarioUncheckedCreateWithoutResenasInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutResenasInput
@@ -18172,31 +19441,37 @@ export namespace Prisma {
   export type UsuarioCreateNestedOneWithoutNotificacionesInput = {
     create?: XOR<UsuarioCreateWithoutNotificacionesInput, UsuarioUncheckedCreateWithoutNotificacionesInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutNotificacionesInput
+=======
+  export type UsuarioCreateNestedOneWithoutNotificationsInput = {
+    create?: XOR<UsuarioCreateWithoutNotificationsInput, UsuarioUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutNotificationsInput
+>>>>>>> Stashed changes
     connect?: UsuarioWhereUniqueInput
   }
 
-  export type UsuarioUpdateOneRequiredWithoutNotificacionesNestedInput = {
-    create?: XOR<UsuarioCreateWithoutNotificacionesInput, UsuarioUncheckedCreateWithoutNotificacionesInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutNotificacionesInput
-    upsert?: UsuarioUpsertWithoutNotificacionesInput
+  export type UsuarioUpdateOneRequiredWithoutNotificationsNestedInput = {
+    create?: XOR<UsuarioCreateWithoutNotificationsInput, UsuarioUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutNotificationsInput
+    upsert?: UsuarioUpsertWithoutNotificationsInput
     connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutNotificacionesInput, UsuarioUpdateWithoutNotificacionesInput>, UsuarioUncheckedUpdateWithoutNotificacionesInput>
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutNotificationsInput, UsuarioUpdateWithoutNotificationsInput>, UsuarioUncheckedUpdateWithoutNotificationsInput>
   }
 
-  export type UsuarioCreateNestedOneWithoutReportesInput = {
-    create?: XOR<UsuarioCreateWithoutReportesInput, UsuarioUncheckedCreateWithoutReportesInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutReportesInput
+  export type UsuarioCreateNestedOneWithoutReportsInput = {
+    create?: XOR<UsuarioCreateWithoutReportsInput, UsuarioUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutReportsInput
     connect?: UsuarioWhereUniqueInput
   }
 
-  export type UsuarioUpdateOneRequiredWithoutReportesNestedInput = {
-    create?: XOR<UsuarioCreateWithoutReportesInput, UsuarioUncheckedCreateWithoutReportesInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutReportesInput
-    upsert?: UsuarioUpsertWithoutReportesInput
+  export type UsuarioUpdateOneRequiredWithoutReportsNestedInput = {
+    create?: XOR<UsuarioCreateWithoutReportsInput, UsuarioUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutReportsInput
+    upsert?: UsuarioUpsertWithoutReportsInput
     connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutReportesInput, UsuarioUpdateWithoutReportesInput>, UsuarioUncheckedUpdateWithoutReportesInput>
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutReportsInput, UsuarioUpdateWithoutReportsInput>, UsuarioUncheckedUpdateWithoutReportsInput>
   }
 
+<<<<<<< Updated upstream
   export type InmuebleCreateNestedOneWithoutFavoritosInput = {
     create?: XOR<InmuebleCreateWithoutFavoritosInput, InmuebleUncheckedCreateWithoutFavoritosInput>
     connectOrCreate?: InmuebleCreateOrConnectWithoutFavoritosInput
@@ -18207,16 +19482,37 @@ export namespace Prisma {
     create?: XOR<UsuarioCreateWithoutFavoritosInput, UsuarioUncheckedCreateWithoutFavoritosInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutFavoritosInput
     connect?: UsuarioWhereUniqueInput
+=======
+  export type UsuarioCreateNestedOneWithoutFavoritesInput = {
+    create?: XOR<UsuarioCreateWithoutFavoritesInput, UsuarioUncheckedCreateWithoutFavoritesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutFavoritesInput
+    connect?: UsuarioWhereUniqueInput
   }
 
-  export type InmuebleUpdateOneRequiredWithoutFavoritosNestedInput = {
-    create?: XOR<InmuebleCreateWithoutFavoritosInput, InmuebleUncheckedCreateWithoutFavoritosInput>
-    connectOrCreate?: InmuebleCreateOrConnectWithoutFavoritosInput
-    upsert?: InmuebleUpsertWithoutFavoritosInput
+  export type InmuebleCreateNestedOneWithoutFavoritesInput = {
+    create?: XOR<InmuebleCreateWithoutFavoritesInput, InmuebleUncheckedCreateWithoutFavoritesInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutFavoritesInput
     connect?: InmuebleWhereUniqueInput
-    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutFavoritosInput, InmuebleUpdateWithoutFavoritosInput>, InmuebleUncheckedUpdateWithoutFavoritosInput>
   }
 
+  export type UsuarioUpdateOneRequiredWithoutFavoritesNestedInput = {
+    create?: XOR<UsuarioCreateWithoutFavoritesInput, UsuarioUncheckedCreateWithoutFavoritesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutFavoritesInput
+    upsert?: UsuarioUpsertWithoutFavoritesInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutFavoritesInput, UsuarioUpdateWithoutFavoritesInput>, UsuarioUncheckedUpdateWithoutFavoritesInput>
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleUpdateOneRequiredWithoutFavoritesNestedInput = {
+    create?: XOR<InmuebleCreateWithoutFavoritesInput, InmuebleUncheckedCreateWithoutFavoritesInput>
+    connectOrCreate?: InmuebleCreateOrConnectWithoutFavoritesInput
+    upsert?: InmuebleUpsertWithoutFavoritesInput
+    connect?: InmuebleWhereUniqueInput
+    update?: XOR<XOR<InmuebleUpdateToOneWithWhereWithoutFavoritesInput, InmuebleUpdateWithoutFavoritesInput>, InmuebleUncheckedUpdateWithoutFavoritesInput>
+  }
+
+<<<<<<< Updated upstream
   export type UsuarioUpdateOneRequiredWithoutFavoritosNestedInput = {
     create?: XOR<UsuarioCreateWithoutFavoritosInput, UsuarioUncheckedCreateWithoutFavoritosInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutFavoritosInput
@@ -18228,15 +19524,20 @@ export namespace Prisma {
   export type UsuarioCreateNestedOneWithoutBusquedasGuardadasInput = {
     create?: XOR<UsuarioCreateWithoutBusquedasGuardadasInput, UsuarioUncheckedCreateWithoutBusquedasGuardadasInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutBusquedasGuardadasInput
+=======
+  export type UsuarioCreateNestedOneWithoutSavedSearchesInput = {
+    create?: XOR<UsuarioCreateWithoutSavedSearchesInput, UsuarioUncheckedCreateWithoutSavedSearchesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutSavedSearchesInput
+>>>>>>> Stashed changes
     connect?: UsuarioWhereUniqueInput
   }
 
-  export type UsuarioUpdateOneRequiredWithoutBusquedasGuardadasNestedInput = {
-    create?: XOR<UsuarioCreateWithoutBusquedasGuardadasInput, UsuarioUncheckedCreateWithoutBusquedasGuardadasInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutBusquedasGuardadasInput
-    upsert?: UsuarioUpsertWithoutBusquedasGuardadasInput
+  export type UsuarioUpdateOneRequiredWithoutSavedSearchesNestedInput = {
+    create?: XOR<UsuarioCreateWithoutSavedSearchesInput, UsuarioUncheckedCreateWithoutSavedSearchesInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutSavedSearchesInput
+    upsert?: UsuarioUpsertWithoutSavedSearchesInput
     connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutBusquedasGuardadasInput, UsuarioUpdateWithoutBusquedasGuardadasInput>, UsuarioUncheckedUpdateWithoutBusquedasGuardadasInput>
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutSavedSearchesInput, UsuarioUpdateWithoutSavedSearchesInput>, UsuarioUncheckedUpdateWithoutSavedSearchesInput>
   }
 
   export type UserPreferenceCreatepropertyTypesInput = {
@@ -18624,6 +19925,7 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+<<<<<<< Updated upstream
   export type BusquedaGuardadaCreateWithoutUsuarioInput = {
     id?: string
     parametrosBusqueda: JsonNullValueInput | InputJsonValue
@@ -18671,14 +19973,18 @@ export namespace Prisma {
   }
 
   export type InmuebleCreateWithoutPropietarioInput = {
+=======
+  export type InmuebleCreateWithoutOwnerInput = {
+>>>>>>> Stashed changes
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -18688,17 +19994,29 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleCreateNestedManyWithoutInmuebleInput
     intereses?: InteresCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedCreateWithoutPropietarioInput = {
+  export type InmuebleUncheckedCreateWithoutOwnerInput = {
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -18708,158 +20026,208 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUncheckedCreateNestedManyWithoutInmuebleInput
     intereses?: InteresUncheckedCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleCreateOrConnectWithoutPropietarioInput = {
+  export type InmuebleCreateOrConnectWithoutOwnerInput = {
     where: InmuebleWhereUniqueInput
-    create: XOR<InmuebleCreateWithoutPropietarioInput, InmuebleUncheckedCreateWithoutPropietarioInput>
+    create: XOR<InmuebleCreateWithoutOwnerInput, InmuebleUncheckedCreateWithoutOwnerInput>
   }
 
-  export type InmuebleCreateManyPropietarioInputEnvelope = {
-    data: InmuebleCreateManyPropietarioInput | InmuebleCreateManyPropietarioInput[]
+  export type InmuebleCreateManyOwnerInputEnvelope = {
+    data: InmuebleCreateManyOwnerInput | InmuebleCreateManyOwnerInput[]
     skipDuplicates?: boolean
   }
 
-  export type InteresCreateWithoutUsuarioInput = {
+  export type InteresCreateWithoutUserInput = {
     id?: string
-    mensaje?: string | null
-    estado?: string
-    fechaCreacion?: Date | string
-    inmueble: InmuebleCreateNestedOneWithoutInteresesInput
-    mensajes?: MensajeCreateNestedManyWithoutInteresInput
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    property: InmuebleCreateNestedOneWithoutInterestsInput
+    messages?: MensajeCreateNestedManyWithoutInterestInput
   }
 
-  export type InteresUncheckedCreateWithoutUsuarioInput = {
+  export type InteresUncheckedCreateWithoutUserInput = {
     id?: string
-    inmuebleId: string
-    mensaje?: string | null
-    estado?: string
-    fechaCreacion?: Date | string
-    mensajes?: MensajeUncheckedCreateNestedManyWithoutInteresInput
+    propertyId: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    messages?: MensajeUncheckedCreateNestedManyWithoutInterestInput
   }
 
-  export type InteresCreateOrConnectWithoutUsuarioInput = {
+  export type InteresCreateOrConnectWithoutUserInput = {
     where: InteresWhereUniqueInput
-    create: XOR<InteresCreateWithoutUsuarioInput, InteresUncheckedCreateWithoutUsuarioInput>
+    create: XOR<InteresCreateWithoutUserInput, InteresUncheckedCreateWithoutUserInput>
   }
 
-  export type InteresCreateManyUsuarioInputEnvelope = {
-    data: InteresCreateManyUsuarioInput | InteresCreateManyUsuarioInput[]
+  export type InteresCreateManyUserInputEnvelope = {
+    data: InteresCreateManyUserInput | InteresCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type MensajeCreateWithoutEmisorInput = {
+  export type MensajeCreateWithoutSenderInput = {
     id?: bigint | number
+<<<<<<< Updated upstream
     contenido: string
     leido?: boolean
     fechaCreacion?: Date | string
     interes?: InteresCreateNestedOneWithoutMensajesInput
     receptor: UsuarioCreateNestedOneWithoutMensajesRecibidosInput
+=======
+    content: string
+    read?: boolean
+    createdAt?: Date | string
+    receiver: UsuarioCreateNestedOneWithoutReceivedMessagesInput
+    interest?: InteresCreateNestedOneWithoutMessagesInput
+>>>>>>> Stashed changes
   }
 
-  export type MensajeUncheckedCreateWithoutEmisorInput = {
+  export type MensajeUncheckedCreateWithoutSenderInput = {
     id?: bigint | number
-    receptorId: string
-    interesId?: string | null
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    receiverId: string
+    interestId?: string | null
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
-  export type MensajeCreateOrConnectWithoutEmisorInput = {
+  export type MensajeCreateOrConnectWithoutSenderInput = {
     where: MensajeWhereUniqueInput
-    create: XOR<MensajeCreateWithoutEmisorInput, MensajeUncheckedCreateWithoutEmisorInput>
+    create: XOR<MensajeCreateWithoutSenderInput, MensajeUncheckedCreateWithoutSenderInput>
   }
 
-  export type MensajeCreateManyEmisorInputEnvelope = {
-    data: MensajeCreateManyEmisorInput | MensajeCreateManyEmisorInput[]
+  export type MensajeCreateManySenderInputEnvelope = {
+    data: MensajeCreateManySenderInput | MensajeCreateManySenderInput[]
     skipDuplicates?: boolean
   }
 
-  export type MensajeCreateWithoutReceptorInput = {
+  export type MensajeCreateWithoutReceiverInput = {
     id?: bigint | number
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
-    emisor: UsuarioCreateNestedOneWithoutMensajesEmitidosInput
-    interes?: InteresCreateNestedOneWithoutMensajesInput
+    content: string
+    read?: boolean
+    createdAt?: Date | string
+    sender: UsuarioCreateNestedOneWithoutSentMessagesInput
+    interest?: InteresCreateNestedOneWithoutMessagesInput
   }
 
-  export type MensajeUncheckedCreateWithoutReceptorInput = {
+  export type MensajeUncheckedCreateWithoutReceiverInput = {
     id?: bigint | number
-    emisorId: string
-    interesId?: string | null
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    senderId: string
+    interestId?: string | null
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
-  export type MensajeCreateOrConnectWithoutReceptorInput = {
+  export type MensajeCreateOrConnectWithoutReceiverInput = {
     where: MensajeWhereUniqueInput
-    create: XOR<MensajeCreateWithoutReceptorInput, MensajeUncheckedCreateWithoutReceptorInput>
+    create: XOR<MensajeCreateWithoutReceiverInput, MensajeUncheckedCreateWithoutReceiverInput>
   }
 
-  export type MensajeCreateManyReceptorInputEnvelope = {
-    data: MensajeCreateManyReceptorInput | MensajeCreateManyReceptorInput[]
+  export type MensajeCreateManyReceiverInputEnvelope = {
+    data: MensajeCreateManyReceiverInput | MensajeCreateManyReceiverInput[]
     skipDuplicates?: boolean
   }
 
+<<<<<<< Updated upstream
   export type NotificacionCreateWithoutUsuarioInput = {
-    id?: string
-    tipo: string
-    titulo: string
-    contenido: string
-    leido?: boolean
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: Date | string
+=======
+  export type ResenaCreateWithoutUserInput = {
+    id?: bigint | number
+    content: string
+    rating: number
+    createdAt?: Date | string
+    property: InmuebleCreateNestedOneWithoutReviewsInput
   }
 
-  export type NotificacionUncheckedCreateWithoutUsuarioInput = {
-    id?: string
-    tipo: string
-    titulo: string
-    contenido: string
-    leido?: boolean
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: Date | string
+  export type ResenaUncheckedCreateWithoutUserInput = {
+    id?: bigint | number
+    propertyId: string
+    content: string
+    rating: number
+    createdAt?: Date | string
   }
 
-  export type NotificacionCreateOrConnectWithoutUsuarioInput = {
+  export type ResenaCreateOrConnectWithoutUserInput = {
+    where: ResenaWhereUniqueInput
+    create: XOR<ResenaCreateWithoutUserInput, ResenaUncheckedCreateWithoutUserInput>
+  }
+
+  export type ResenaCreateManyUserInputEnvelope = {
+    data: ResenaCreateManyUserInput | ResenaCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NotificacionCreateWithoutUserInput = {
+>>>>>>> Stashed changes
+    id?: string
+    type: string
+    title: string
+    content: string
+    read?: boolean
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type NotificacionUncheckedCreateWithoutUserInput = {
+    id?: string
+    type: string
+    title: string
+    content: string
+    read?: boolean
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type NotificacionCreateOrConnectWithoutUserInput = {
     where: NotificacionWhereUniqueInput
-    create: XOR<NotificacionCreateWithoutUsuarioInput, NotificacionUncheckedCreateWithoutUsuarioInput>
+    create: XOR<NotificacionCreateWithoutUserInput, NotificacionUncheckedCreateWithoutUserInput>
   }
 
-  export type NotificacionCreateManyUsuarioInputEnvelope = {
-    data: NotificacionCreateManyUsuarioInput | NotificacionCreateManyUsuarioInput[]
+  export type NotificacionCreateManyUserInputEnvelope = {
+    data: NotificacionCreateManyUserInput | NotificacionCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type ReporteCreateWithoutUsuarioInput = {
+  export type ReporteCreateWithoutUserInput = {
     id?: string
-    tipo: string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: string | null
-    fechaCreacion?: Date | string
+    type: string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
   }
 
-  export type ReporteUncheckedCreateWithoutUsuarioInput = {
+  export type ReporteUncheckedCreateWithoutUserInput = {
     id?: string
-    tipo: string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: string | null
-    fechaCreacion?: Date | string
+    type: string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
   }
 
-  export type ReporteCreateOrConnectWithoutUsuarioInput = {
+  export type ReporteCreateOrConnectWithoutUserInput = {
     where: ReporteWhereUniqueInput
-    create: XOR<ReporteCreateWithoutUsuarioInput, ReporteUncheckedCreateWithoutUsuarioInput>
+    create: XOR<ReporteCreateWithoutUserInput, ReporteUncheckedCreateWithoutUserInput>
   }
 
-  export type ReporteCreateManyUsuarioInputEnvelope = {
-    data: ReporteCreateManyUsuarioInput | ReporteCreateManyUsuarioInput[]
+  export type ReporteCreateManyUserInputEnvelope = {
+    data: ReporteCreateManyUserInput | ReporteCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
+<<<<<<< Updated upstream
   export type ResenaCreateWithoutUsuarioInput = {
     id?: bigint | number
     contenido: string
@@ -18960,22 +20328,68 @@ export namespace Prisma {
     usuarioId?: UuidFilter<"Favorito"> | string
     inmuebleId?: UuidFilter<"Favorito"> | string
     fechaCreacion?: DateTimeFilter<"Favorito"> | Date | string
+=======
+  export type FavoritoCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    property: InmuebleCreateNestedOneWithoutFavoritesInput
   }
 
-  export type InmuebleUpsertWithWhereUniqueWithoutPropietarioInput = {
+  export type FavoritoUncheckedCreateWithoutUserInput = {
+    id?: string
+    propertyId: string
+    createdAt?: Date | string
+  }
+
+  export type FavoritoCreateOrConnectWithoutUserInput = {
+    where: FavoritoWhereUniqueInput
+    create: XOR<FavoritoCreateWithoutUserInput, FavoritoUncheckedCreateWithoutUserInput>
+  }
+
+  export type FavoritoCreateManyUserInputEnvelope = {
+    data: FavoritoCreateManyUserInput | FavoritoCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BusquedaGuardadaCreateWithoutUserInput = {
+    id?: string
+    searchParameters: JsonNullValueInput | InputJsonValue
+    searchName?: string | null
+    createdAt?: Date | string
+  }
+
+  export type BusquedaGuardadaUncheckedCreateWithoutUserInput = {
+    id?: string
+    searchParameters: JsonNullValueInput | InputJsonValue
+    searchName?: string | null
+    createdAt?: Date | string
+  }
+
+  export type BusquedaGuardadaCreateOrConnectWithoutUserInput = {
+    where: BusquedaGuardadaWhereUniqueInput
+    create: XOR<BusquedaGuardadaCreateWithoutUserInput, BusquedaGuardadaUncheckedCreateWithoutUserInput>
+  }
+
+  export type BusquedaGuardadaCreateManyUserInputEnvelope = {
+    data: BusquedaGuardadaCreateManyUserInput | BusquedaGuardadaCreateManyUserInput[]
+    skipDuplicates?: boolean
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleUpsertWithWhereUniqueWithoutOwnerInput = {
     where: InmuebleWhereUniqueInput
-    update: XOR<InmuebleUpdateWithoutPropietarioInput, InmuebleUncheckedUpdateWithoutPropietarioInput>
-    create: XOR<InmuebleCreateWithoutPropietarioInput, InmuebleUncheckedCreateWithoutPropietarioInput>
+    update: XOR<InmuebleUpdateWithoutOwnerInput, InmuebleUncheckedUpdateWithoutOwnerInput>
+    create: XOR<InmuebleCreateWithoutOwnerInput, InmuebleUncheckedCreateWithoutOwnerInput>
   }
 
-  export type InmuebleUpdateWithWhereUniqueWithoutPropietarioInput = {
+  export type InmuebleUpdateWithWhereUniqueWithoutOwnerInput = {
     where: InmuebleWhereUniqueInput
-    data: XOR<InmuebleUpdateWithoutPropietarioInput, InmuebleUncheckedUpdateWithoutPropietarioInput>
+    data: XOR<InmuebleUpdateWithoutOwnerInput, InmuebleUncheckedUpdateWithoutOwnerInput>
   }
 
-  export type InmuebleUpdateManyWithWhereWithoutPropietarioInput = {
+  export type InmuebleUpdateManyWithWhereWithoutOwnerInput = {
     where: InmuebleScalarWhereInput
-    data: XOR<InmuebleUpdateManyMutationInput, InmuebleUncheckedUpdateManyWithoutPropietarioInput>
+    data: XOR<InmuebleUpdateManyMutationInput, InmuebleUncheckedUpdateManyWithoutOwnerInput>
   }
 
   export type InmuebleScalarWhereInput = {
@@ -18983,35 +20397,35 @@ export namespace Prisma {
     OR?: InmuebleScalarWhereInput[]
     NOT?: InmuebleScalarWhereInput | InmuebleScalarWhereInput[]
     id?: UuidFilter<"Inmueble"> | string
-    propietarioId?: UuidFilter<"Inmueble"> | string
-    titulo?: StringFilter<"Inmueble"> | string
-    descripcion?: StringNullableFilter<"Inmueble"> | string | null
-    direccion?: StringNullableFilter<"Inmueble"> | string | null
-    ciudad?: StringFilter<"Inmueble"> | string
-    dormitorios?: IntNullableFilter<"Inmueble"> | number | null
-    banos?: IntNullableFilter<"Inmueble"> | number | null
+    ownerId?: UuidFilter<"Inmueble"> | string
+    title?: StringFilter<"Inmueble"> | string
+    description?: StringNullableFilter<"Inmueble"> | string | null
+    address?: StringNullableFilter<"Inmueble"> | string | null
+    city?: StringFilter<"Inmueble"> | string
+    bedrooms?: IntNullableFilter<"Inmueble"> | number | null
+    bathrooms?: IntNullableFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
-    precio?: DecimalFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
-    tipoOperacion?: StringFilter<"Inmueble"> | string
-    estado?: StringFilter<"Inmueble"> | string
-    fechaCreacion?: DateTimeFilter<"Inmueble"> | Date | string
-    fechaActualizacion?: DateTimeFilter<"Inmueble"> | Date | string
+    price?: DecimalFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string
+    operationType?: StringFilter<"Inmueble"> | string
+    status?: StringFilter<"Inmueble"> | string
+    createdAt?: DateTimeFilter<"Inmueble"> | Date | string
+    updatedAt?: DateTimeFilter<"Inmueble"> | Date | string
   }
 
-  export type InteresUpsertWithWhereUniqueWithoutUsuarioInput = {
+  export type InteresUpsertWithWhereUniqueWithoutUserInput = {
     where: InteresWhereUniqueInput
-    update: XOR<InteresUpdateWithoutUsuarioInput, InteresUncheckedUpdateWithoutUsuarioInput>
-    create: XOR<InteresCreateWithoutUsuarioInput, InteresUncheckedCreateWithoutUsuarioInput>
+    update: XOR<InteresUpdateWithoutUserInput, InteresUncheckedUpdateWithoutUserInput>
+    create: XOR<InteresCreateWithoutUserInput, InteresUncheckedCreateWithoutUserInput>
   }
 
-  export type InteresUpdateWithWhereUniqueWithoutUsuarioInput = {
+  export type InteresUpdateWithWhereUniqueWithoutUserInput = {
     where: InteresWhereUniqueInput
-    data: XOR<InteresUpdateWithoutUsuarioInput, InteresUncheckedUpdateWithoutUsuarioInput>
+    data: XOR<InteresUpdateWithoutUserInput, InteresUncheckedUpdateWithoutUserInput>
   }
 
-  export type InteresUpdateManyWithWhereWithoutUsuarioInput = {
+  export type InteresUpdateManyWithWhereWithoutUserInput = {
     where: InteresScalarWhereInput
-    data: XOR<InteresUpdateManyMutationInput, InteresUncheckedUpdateManyWithoutUsuarioInput>
+    data: XOR<InteresUpdateManyMutationInput, InteresUncheckedUpdateManyWithoutUserInput>
   }
 
   export type InteresScalarWhereInput = {
@@ -19019,27 +20433,27 @@ export namespace Prisma {
     OR?: InteresScalarWhereInput[]
     NOT?: InteresScalarWhereInput | InteresScalarWhereInput[]
     id?: UuidFilter<"Interes"> | string
-    usuarioId?: UuidFilter<"Interes"> | string
-    inmuebleId?: UuidFilter<"Interes"> | string
-    mensaje?: StringNullableFilter<"Interes"> | string | null
-    estado?: StringFilter<"Interes"> | string
-    fechaCreacion?: DateTimeFilter<"Interes"> | Date | string
+    userId?: UuidFilter<"Interes"> | string
+    propertyId?: UuidFilter<"Interes"> | string
+    message?: StringNullableFilter<"Interes"> | string | null
+    status?: StringFilter<"Interes"> | string
+    createdAt?: DateTimeFilter<"Interes"> | Date | string
   }
 
-  export type MensajeUpsertWithWhereUniqueWithoutEmisorInput = {
+  export type MensajeUpsertWithWhereUniqueWithoutSenderInput = {
     where: MensajeWhereUniqueInput
-    update: XOR<MensajeUpdateWithoutEmisorInput, MensajeUncheckedUpdateWithoutEmisorInput>
-    create: XOR<MensajeCreateWithoutEmisorInput, MensajeUncheckedCreateWithoutEmisorInput>
+    update: XOR<MensajeUpdateWithoutSenderInput, MensajeUncheckedUpdateWithoutSenderInput>
+    create: XOR<MensajeCreateWithoutSenderInput, MensajeUncheckedCreateWithoutSenderInput>
   }
 
-  export type MensajeUpdateWithWhereUniqueWithoutEmisorInput = {
+  export type MensajeUpdateWithWhereUniqueWithoutSenderInput = {
     where: MensajeWhereUniqueInput
-    data: XOR<MensajeUpdateWithoutEmisorInput, MensajeUncheckedUpdateWithoutEmisorInput>
+    data: XOR<MensajeUpdateWithoutSenderInput, MensajeUncheckedUpdateWithoutSenderInput>
   }
 
-  export type MensajeUpdateManyWithWhereWithoutEmisorInput = {
+  export type MensajeUpdateManyWithWhereWithoutSenderInput = {
     where: MensajeScalarWhereInput
-    data: XOR<MensajeUpdateManyMutationInput, MensajeUncheckedUpdateManyWithoutEmisorInput>
+    data: XOR<MensajeUpdateManyMutationInput, MensajeUncheckedUpdateManyWithoutSenderInput>
   }
 
   export type MensajeScalarWhereInput = {
@@ -19047,44 +20461,76 @@ export namespace Prisma {
     OR?: MensajeScalarWhereInput[]
     NOT?: MensajeScalarWhereInput | MensajeScalarWhereInput[]
     id?: BigIntFilter<"Mensaje"> | bigint | number
-    emisorId?: UuidFilter<"Mensaje"> | string
-    receptorId?: UuidFilter<"Mensaje"> | string
-    interesId?: UuidNullableFilter<"Mensaje"> | string | null
-    contenido?: StringFilter<"Mensaje"> | string
-    leido?: BoolFilter<"Mensaje"> | boolean
-    fechaCreacion?: DateTimeFilter<"Mensaje"> | Date | string
+    senderId?: UuidFilter<"Mensaje"> | string
+    receiverId?: UuidFilter<"Mensaje"> | string
+    interestId?: UuidNullableFilter<"Mensaje"> | string | null
+    content?: StringFilter<"Mensaje"> | string
+    read?: BoolFilter<"Mensaje"> | boolean
+    createdAt?: DateTimeFilter<"Mensaje"> | Date | string
   }
 
-  export type MensajeUpsertWithWhereUniqueWithoutReceptorInput = {
+  export type MensajeUpsertWithWhereUniqueWithoutReceiverInput = {
     where: MensajeWhereUniqueInput
-    update: XOR<MensajeUpdateWithoutReceptorInput, MensajeUncheckedUpdateWithoutReceptorInput>
-    create: XOR<MensajeCreateWithoutReceptorInput, MensajeUncheckedCreateWithoutReceptorInput>
+    update: XOR<MensajeUpdateWithoutReceiverInput, MensajeUncheckedUpdateWithoutReceiverInput>
+    create: XOR<MensajeCreateWithoutReceiverInput, MensajeUncheckedCreateWithoutReceiverInput>
   }
 
-  export type MensajeUpdateWithWhereUniqueWithoutReceptorInput = {
+  export type MensajeUpdateWithWhereUniqueWithoutReceiverInput = {
     where: MensajeWhereUniqueInput
-    data: XOR<MensajeUpdateWithoutReceptorInput, MensajeUncheckedUpdateWithoutReceptorInput>
+    data: XOR<MensajeUpdateWithoutReceiverInput, MensajeUncheckedUpdateWithoutReceiverInput>
   }
 
-  export type MensajeUpdateManyWithWhereWithoutReceptorInput = {
+  export type MensajeUpdateManyWithWhereWithoutReceiverInput = {
     where: MensajeScalarWhereInput
-    data: XOR<MensajeUpdateManyMutationInput, MensajeUncheckedUpdateManyWithoutReceptorInput>
+    data: XOR<MensajeUpdateManyMutationInput, MensajeUncheckedUpdateManyWithoutReceiverInput>
   }
 
+<<<<<<< Updated upstream
   export type NotificacionUpsertWithWhereUniqueWithoutUsuarioInput = {
-    where: NotificacionWhereUniqueInput
-    update: XOR<NotificacionUpdateWithoutUsuarioInput, NotificacionUncheckedUpdateWithoutUsuarioInput>
-    create: XOR<NotificacionCreateWithoutUsuarioInput, NotificacionUncheckedCreateWithoutUsuarioInput>
+=======
+  export type ResenaUpsertWithWhereUniqueWithoutUserInput = {
+    where: ResenaWhereUniqueInput
+    update: XOR<ResenaUpdateWithoutUserInput, ResenaUncheckedUpdateWithoutUserInput>
+    create: XOR<ResenaCreateWithoutUserInput, ResenaUncheckedCreateWithoutUserInput>
   }
 
-  export type NotificacionUpdateWithWhereUniqueWithoutUsuarioInput = {
-    where: NotificacionWhereUniqueInput
-    data: XOR<NotificacionUpdateWithoutUsuarioInput, NotificacionUncheckedUpdateWithoutUsuarioInput>
+  export type ResenaUpdateWithWhereUniqueWithoutUserInput = {
+    where: ResenaWhereUniqueInput
+    data: XOR<ResenaUpdateWithoutUserInput, ResenaUncheckedUpdateWithoutUserInput>
   }
 
-  export type NotificacionUpdateManyWithWhereWithoutUsuarioInput = {
+  export type ResenaUpdateManyWithWhereWithoutUserInput = {
+    where: ResenaScalarWhereInput
+    data: XOR<ResenaUpdateManyMutationInput, ResenaUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ResenaScalarWhereInput = {
+    AND?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+    OR?: ResenaScalarWhereInput[]
+    NOT?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+    id?: BigIntFilter<"Resena"> | bigint | number
+    userId?: UuidFilter<"Resena"> | string
+    propertyId?: UuidFilter<"Resena"> | string
+    content?: StringFilter<"Resena"> | string
+    rating?: IntFilter<"Resena"> | number
+    createdAt?: DateTimeFilter<"Resena"> | Date | string
+  }
+
+  export type NotificacionUpsertWithWhereUniqueWithoutUserInput = {
+>>>>>>> Stashed changes
+    where: NotificacionWhereUniqueInput
+    update: XOR<NotificacionUpdateWithoutUserInput, NotificacionUncheckedUpdateWithoutUserInput>
+    create: XOR<NotificacionCreateWithoutUserInput, NotificacionUncheckedCreateWithoutUserInput>
+  }
+
+  export type NotificacionUpdateWithWhereUniqueWithoutUserInput = {
+    where: NotificacionWhereUniqueInput
+    data: XOR<NotificacionUpdateWithoutUserInput, NotificacionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NotificacionUpdateManyWithWhereWithoutUserInput = {
     where: NotificacionScalarWhereInput
-    data: XOR<NotificacionUpdateManyMutationInput, NotificacionUncheckedUpdateManyWithoutUsuarioInput>
+    data: XOR<NotificacionUpdateManyMutationInput, NotificacionUncheckedUpdateManyWithoutUserInput>
   }
 
   export type NotificacionScalarWhereInput = {
@@ -19092,29 +20538,29 @@ export namespace Prisma {
     OR?: NotificacionScalarWhereInput[]
     NOT?: NotificacionScalarWhereInput | NotificacionScalarWhereInput[]
     id?: UuidFilter<"Notificacion"> | string
-    usuarioId?: UuidFilter<"Notificacion"> | string
-    tipo?: StringFilter<"Notificacion"> | string
-    titulo?: StringFilter<"Notificacion"> | string
-    contenido?: StringFilter<"Notificacion"> | string
-    leido?: BoolFilter<"Notificacion"> | boolean
+    userId?: UuidFilter<"Notificacion"> | string
+    type?: StringFilter<"Notificacion"> | string
+    title?: StringFilter<"Notificacion"> | string
+    content?: StringFilter<"Notificacion"> | string
+    read?: BoolFilter<"Notificacion"> | boolean
     metadata?: JsonNullableFilter<"Notificacion">
-    fechaCreacion?: DateTimeFilter<"Notificacion"> | Date | string
+    createdAt?: DateTimeFilter<"Notificacion"> | Date | string
   }
 
-  export type ReporteUpsertWithWhereUniqueWithoutUsuarioInput = {
+  export type ReporteUpsertWithWhereUniqueWithoutUserInput = {
     where: ReporteWhereUniqueInput
-    update: XOR<ReporteUpdateWithoutUsuarioInput, ReporteUncheckedUpdateWithoutUsuarioInput>
-    create: XOR<ReporteCreateWithoutUsuarioInput, ReporteUncheckedCreateWithoutUsuarioInput>
+    update: XOR<ReporteUpdateWithoutUserInput, ReporteUncheckedUpdateWithoutUserInput>
+    create: XOR<ReporteCreateWithoutUserInput, ReporteUncheckedCreateWithoutUserInput>
   }
 
-  export type ReporteUpdateWithWhereUniqueWithoutUsuarioInput = {
+  export type ReporteUpdateWithWhereUniqueWithoutUserInput = {
     where: ReporteWhereUniqueInput
-    data: XOR<ReporteUpdateWithoutUsuarioInput, ReporteUncheckedUpdateWithoutUsuarioInput>
+    data: XOR<ReporteUpdateWithoutUserInput, ReporteUncheckedUpdateWithoutUserInput>
   }
 
-  export type ReporteUpdateManyWithWhereWithoutUsuarioInput = {
+  export type ReporteUpdateManyWithWhereWithoutUserInput = {
     where: ReporteScalarWhereInput
-    data: XOR<ReporteUpdateManyMutationInput, ReporteUncheckedUpdateManyWithoutUsuarioInput>
+    data: XOR<ReporteUpdateManyMutationInput, ReporteUncheckedUpdateManyWithoutUserInput>
   }
 
   export type ReporteScalarWhereInput = {
@@ -19122,13 +20568,14 @@ export namespace Prisma {
     OR?: ReporteScalarWhereInput[]
     NOT?: ReporteScalarWhereInput | ReporteScalarWhereInput[]
     id?: UuidFilter<"Reporte"> | string
-    usuarioId?: UuidFilter<"Reporte"> | string
-    tipo?: StringFilter<"Reporte"> | string
-    parametros?: JsonNullableFilter<"Reporte">
-    archivoUrl?: StringNullableFilter<"Reporte"> | string | null
-    fechaCreacion?: DateTimeFilter<"Reporte"> | Date | string
+    userId?: UuidFilter<"Reporte"> | string
+    type?: StringFilter<"Reporte"> | string
+    parameters?: JsonNullableFilter<"Reporte">
+    fileUrl?: StringNullableFilter<"Reporte"> | string | null
+    createdAt?: DateTimeFilter<"Reporte"> | Date | string
   }
 
+<<<<<<< Updated upstream
   export type ResenaUpsertWithWhereUniqueWithoutUsuarioInput = {
     where: ResenaWhereUniqueInput
     update: XOR<ResenaUpdateWithoutUsuarioInput, ResenaUncheckedUpdateWithoutUsuarioInput>
@@ -19230,19 +20677,73 @@ export namespace Prisma {
   export type FotoInmuebleCreateManyInmuebleInputEnvelope = {
     data: FotoInmuebleCreateManyInmuebleInput | FotoInmuebleCreateManyInmuebleInput[]
     skipDuplicates?: boolean
+=======
+  export type FavoritoUpsertWithWhereUniqueWithoutUserInput = {
+    where: FavoritoWhereUniqueInput
+    update: XOR<FavoritoUpdateWithoutUserInput, FavoritoUncheckedUpdateWithoutUserInput>
+    create: XOR<FavoritoCreateWithoutUserInput, FavoritoUncheckedCreateWithoutUserInput>
   }
 
-  export type UsuarioCreateWithoutInmueblesPropietarioInput = {
+  export type FavoritoUpdateWithWhereUniqueWithoutUserInput = {
+    where: FavoritoWhereUniqueInput
+    data: XOR<FavoritoUpdateWithoutUserInput, FavoritoUncheckedUpdateWithoutUserInput>
+  }
+
+  export type FavoritoUpdateManyWithWhereWithoutUserInput = {
+    where: FavoritoScalarWhereInput
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type FavoritoScalarWhereInput = {
+    AND?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+    OR?: FavoritoScalarWhereInput[]
+    NOT?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+    id?: UuidFilter<"Favorito"> | string
+    userId?: UuidFilter<"Favorito"> | string
+    propertyId?: UuidFilter<"Favorito"> | string
+    createdAt?: DateTimeFilter<"Favorito"> | Date | string
+  }
+
+  export type BusquedaGuardadaUpsertWithWhereUniqueWithoutUserInput = {
+    where: BusquedaGuardadaWhereUniqueInput
+    update: XOR<BusquedaGuardadaUpdateWithoutUserInput, BusquedaGuardadaUncheckedUpdateWithoutUserInput>
+    create: XOR<BusquedaGuardadaCreateWithoutUserInput, BusquedaGuardadaUncheckedCreateWithoutUserInput>
+  }
+
+  export type BusquedaGuardadaUpdateWithWhereUniqueWithoutUserInput = {
+    where: BusquedaGuardadaWhereUniqueInput
+    data: XOR<BusquedaGuardadaUpdateWithoutUserInput, BusquedaGuardadaUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BusquedaGuardadaUpdateManyWithWhereWithoutUserInput = {
+    where: BusquedaGuardadaScalarWhereInput
+    data: XOR<BusquedaGuardadaUpdateManyMutationInput, BusquedaGuardadaUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BusquedaGuardadaScalarWhereInput = {
+    AND?: BusquedaGuardadaScalarWhereInput | BusquedaGuardadaScalarWhereInput[]
+    OR?: BusquedaGuardadaScalarWhereInput[]
+    NOT?: BusquedaGuardadaScalarWhereInput | BusquedaGuardadaScalarWhereInput[]
+    id?: UuidFilter<"BusquedaGuardada"> | string
+    userId?: UuidFilter<"BusquedaGuardada"> | string
+    searchParameters?: JsonFilter<"BusquedaGuardada">
+    searchName?: StringNullableFilter<"BusquedaGuardada"> | string | null
+    createdAt?: DateTimeFilter<"BusquedaGuardada"> | Date | string
+>>>>>>> Stashed changes
+  }
+
+  export type UsuarioCreateWithoutOwnedPropertiesInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaCreateNestedManyWithoutUsuarioInput
@@ -19254,19 +20755,32 @@ export namespace Prisma {
     reportes?: ReporteCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedCreateWithoutInmueblesPropietarioInput = {
+  export type UsuarioUncheckedCreateWithoutOwnedPropertiesInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUsuarioInput
@@ -19278,67 +20792,108 @@ export namespace Prisma {
     reportes?: ReporteUncheckedCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateOrConnectWithoutInmueblesPropietarioInput = {
+  export type UsuarioCreateOrConnectWithoutOwnedPropertiesInput = {
     where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutInmueblesPropietarioInput, UsuarioUncheckedCreateWithoutInmueblesPropietarioInput>
+    create: XOR<UsuarioCreateWithoutOwnedPropertiesInput, UsuarioUncheckedCreateWithoutOwnedPropertiesInput>
   }
 
-  export type InteresCreateWithoutInmuebleInput = {
+  export type InteresCreateWithoutPropertyInput = {
     id?: string
-    mensaje?: string | null
-    estado?: string
-    fechaCreacion?: Date | string
-    usuario: UsuarioCreateNestedOneWithoutInteresesInput
-    mensajes?: MensajeCreateNestedManyWithoutInteresInput
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutInterestsInput
+    messages?: MensajeCreateNestedManyWithoutInterestInput
   }
 
-  export type InteresUncheckedCreateWithoutInmuebleInput = {
+  export type InteresUncheckedCreateWithoutPropertyInput = {
     id?: string
-    usuarioId: string
-    mensaje?: string | null
-    estado?: string
-    fechaCreacion?: Date | string
-    mensajes?: MensajeUncheckedCreateNestedManyWithoutInteresInput
+    userId: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    messages?: MensajeUncheckedCreateNestedManyWithoutInterestInput
   }
 
-  export type InteresCreateOrConnectWithoutInmuebleInput = {
+  export type InteresCreateOrConnectWithoutPropertyInput = {
     where: InteresWhereUniqueInput
-    create: XOR<InteresCreateWithoutInmuebleInput, InteresUncheckedCreateWithoutInmuebleInput>
+    create: XOR<InteresCreateWithoutPropertyInput, InteresUncheckedCreateWithoutPropertyInput>
   }
 
-  export type InteresCreateManyInmuebleInputEnvelope = {
-    data: InteresCreateManyInmuebleInput | InteresCreateManyInmuebleInput[]
+  export type InteresCreateManyPropertyInputEnvelope = {
+    data: InteresCreateManyPropertyInput | InteresCreateManyPropertyInput[]
     skipDuplicates?: boolean
   }
 
+<<<<<<< Updated upstream
   export type ResenaCreateWithoutInmuebleInput = {
+=======
+  export type FotoInmuebleCreateWithoutPropertyInput = {
     id?: bigint | number
-    contenido: string
-    calificacion: number
-    fechaCreacion?: Date | string
-    usuario: UsuarioCreateNestedOneWithoutResenasInput
+    url: string
+    order?: number | null
+    createdAt?: Date | string
   }
 
-  export type ResenaUncheckedCreateWithoutInmuebleInput = {
+  export type FotoInmuebleUncheckedCreateWithoutPropertyInput = {
     id?: bigint | number
-    usuarioId: string
-    contenido: string
-    calificacion: number
-    fechaCreacion?: Date | string
+    url: string
+    order?: number | null
+    createdAt?: Date | string
   }
 
-  export type ResenaCreateOrConnectWithoutInmuebleInput = {
-    where: ResenaWhereUniqueInput
-    create: XOR<ResenaCreateWithoutInmuebleInput, ResenaUncheckedCreateWithoutInmuebleInput>
+  export type FotoInmuebleCreateOrConnectWithoutPropertyInput = {
+    where: FotoInmuebleWhereUniqueInput
+    create: XOR<FotoInmuebleCreateWithoutPropertyInput, FotoInmuebleUncheckedCreateWithoutPropertyInput>
   }
 
-  export type ResenaCreateManyInmuebleInputEnvelope = {
-    data: ResenaCreateManyInmuebleInput | ResenaCreateManyInmuebleInput[]
+  export type FotoInmuebleCreateManyPropertyInputEnvelope = {
+    data: FotoInmuebleCreateManyPropertyInput | FotoInmuebleCreateManyPropertyInput[]
     skipDuplicates?: boolean
   }
 
+  export type ResenaCreateWithoutPropertyInput = {
+>>>>>>> Stashed changes
+    id?: bigint | number
+    content: string
+    rating: number
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ResenaUncheckedCreateWithoutPropertyInput = {
+    id?: bigint | number
+    userId: string
+    content: string
+    rating: number
+    createdAt?: Date | string
+  }
+
+  export type ResenaCreateOrConnectWithoutPropertyInput = {
+    where: ResenaWhereUniqueInput
+    create: XOR<ResenaCreateWithoutPropertyInput, ResenaUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ResenaCreateManyPropertyInputEnvelope = {
+    data: ResenaCreateManyPropertyInput | ResenaCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
+<<<<<<< Updated upstream
   export type FavoritoUpsertWithWhereUniqueWithoutInmuebleInput = {
     where: FavoritoWhereUniqueInput
     update: XOR<FavoritoUpdateWithoutInmuebleInput, FavoritoUncheckedUpdateWithoutInmuebleInput>
@@ -19353,22 +20908,117 @@ export namespace Prisma {
   export type FavoritoUpdateManyWithWhereWithoutInmuebleInput = {
     where: FavoritoScalarWhereInput
     data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyWithoutInmuebleInput>
+=======
+  export type FavoritoCreateWithoutPropertyInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutFavoritesInput
   }
 
-  export type FotoInmuebleUpsertWithWhereUniqueWithoutInmuebleInput = {
+  export type FavoritoUncheckedCreateWithoutPropertyInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type FavoritoCreateOrConnectWithoutPropertyInput = {
+    where: FavoritoWhereUniqueInput
+    create: XOR<FavoritoCreateWithoutPropertyInput, FavoritoUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type FavoritoCreateManyPropertyInputEnvelope = {
+    data: FavoritoCreateManyPropertyInput | FavoritoCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UsuarioUpsertWithoutOwnedPropertiesInput = {
+    update: XOR<UsuarioUpdateWithoutOwnedPropertiesInput, UsuarioUncheckedUpdateWithoutOwnedPropertiesInput>
+    create: XOR<UsuarioCreateWithoutOwnedPropertiesInput, UsuarioUncheckedCreateWithoutOwnedPropertiesInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutOwnedPropertiesInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutOwnedPropertiesInput, UsuarioUncheckedUpdateWithoutOwnedPropertiesInput>
+  }
+
+  export type UsuarioUpdateWithoutOwnedPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutOwnedPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type InteresUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: InteresWhereUniqueInput
+    update: XOR<InteresUpdateWithoutPropertyInput, InteresUncheckedUpdateWithoutPropertyInput>
+    create: XOR<InteresCreateWithoutPropertyInput, InteresUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type InteresUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: InteresWhereUniqueInput
+    data: XOR<InteresUpdateWithoutPropertyInput, InteresUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type InteresUpdateManyWithWhereWithoutPropertyInput = {
+    where: InteresScalarWhereInput
+    data: XOR<InteresUpdateManyMutationInput, InteresUncheckedUpdateManyWithoutPropertyInput>
+>>>>>>> Stashed changes
+  }
+
+  export type FotoInmuebleUpsertWithWhereUniqueWithoutPropertyInput = {
     where: FotoInmuebleWhereUniqueInput
-    update: XOR<FotoInmuebleUpdateWithoutInmuebleInput, FotoInmuebleUncheckedUpdateWithoutInmuebleInput>
-    create: XOR<FotoInmuebleCreateWithoutInmuebleInput, FotoInmuebleUncheckedCreateWithoutInmuebleInput>
+    update: XOR<FotoInmuebleUpdateWithoutPropertyInput, FotoInmuebleUncheckedUpdateWithoutPropertyInput>
+    create: XOR<FotoInmuebleCreateWithoutPropertyInput, FotoInmuebleUncheckedCreateWithoutPropertyInput>
   }
 
-  export type FotoInmuebleUpdateWithWhereUniqueWithoutInmuebleInput = {
+  export type FotoInmuebleUpdateWithWhereUniqueWithoutPropertyInput = {
     where: FotoInmuebleWhereUniqueInput
-    data: XOR<FotoInmuebleUpdateWithoutInmuebleInput, FotoInmuebleUncheckedUpdateWithoutInmuebleInput>
+    data: XOR<FotoInmuebleUpdateWithoutPropertyInput, FotoInmuebleUncheckedUpdateWithoutPropertyInput>
   }
 
-  export type FotoInmuebleUpdateManyWithWhereWithoutInmuebleInput = {
+  export type FotoInmuebleUpdateManyWithWhereWithoutPropertyInput = {
     where: FotoInmuebleScalarWhereInput
-    data: XOR<FotoInmuebleUpdateManyMutationInput, FotoInmuebleUncheckedUpdateManyWithoutInmuebleInput>
+    data: XOR<FotoInmuebleUpdateManyMutationInput, FotoInmuebleUncheckedUpdateManyWithoutPropertyInput>
   }
 
   export type FotoInmuebleScalarWhereInput = {
@@ -19376,12 +21026,13 @@ export namespace Prisma {
     OR?: FotoInmuebleScalarWhereInput[]
     NOT?: FotoInmuebleScalarWhereInput | FotoInmuebleScalarWhereInput[]
     id?: BigIntFilter<"FotoInmueble"> | bigint | number
-    inmuebleId?: UuidFilter<"FotoInmueble"> | string
+    propertyId?: UuidFilter<"FotoInmueble"> | string
     url?: StringFilter<"FotoInmueble"> | string
-    orden?: IntNullableFilter<"FotoInmueble"> | number | null
-    fechaCreacion?: DateTimeFilter<"FotoInmueble"> | Date | string
+    order?: IntNullableFilter<"FotoInmueble"> | number | null
+    createdAt?: DateTimeFilter<"FotoInmueble"> | Date | string
   }
 
+<<<<<<< Updated upstream
   export type UsuarioUpsertWithoutInmueblesPropietarioInput = {
     update: XOR<UsuarioUpdateWithoutInmueblesPropietarioInput, UsuarioUncheckedUpdateWithoutInmueblesPropietarioInput>
     create: XOR<UsuarioCreateWithoutInmueblesPropietarioInput, UsuarioUncheckedCreateWithoutInmueblesPropietarioInput>
@@ -19458,30 +21109,105 @@ export namespace Prisma {
   }
 
   export type ResenaUpsertWithWhereUniqueWithoutInmuebleInput = {
+=======
+  export type ResenaUpsertWithWhereUniqueWithoutPropertyInput = {
+>>>>>>> Stashed changes
     where: ResenaWhereUniqueInput
-    update: XOR<ResenaUpdateWithoutInmuebleInput, ResenaUncheckedUpdateWithoutInmuebleInput>
-    create: XOR<ResenaCreateWithoutInmuebleInput, ResenaUncheckedCreateWithoutInmuebleInput>
+    update: XOR<ResenaUpdateWithoutPropertyInput, ResenaUncheckedUpdateWithoutPropertyInput>
+    create: XOR<ResenaCreateWithoutPropertyInput, ResenaUncheckedCreateWithoutPropertyInput>
   }
 
-  export type ResenaUpdateWithWhereUniqueWithoutInmuebleInput = {
+  export type ResenaUpdateWithWhereUniqueWithoutPropertyInput = {
     where: ResenaWhereUniqueInput
-    data: XOR<ResenaUpdateWithoutInmuebleInput, ResenaUncheckedUpdateWithoutInmuebleInput>
+    data: XOR<ResenaUpdateWithoutPropertyInput, ResenaUncheckedUpdateWithoutPropertyInput>
   }
 
-  export type ResenaUpdateManyWithWhereWithoutInmuebleInput = {
+  export type ResenaUpdateManyWithWhereWithoutPropertyInput = {
     where: ResenaScalarWhereInput
-    data: XOR<ResenaUpdateManyMutationInput, ResenaUncheckedUpdateManyWithoutInmuebleInput>
+    data: XOR<ResenaUpdateManyMutationInput, ResenaUncheckedUpdateManyWithoutPropertyInput>
   }
 
+<<<<<<< Updated upstream
   export type InmuebleCreateWithoutInteresesInput = {
+=======
+  export type FavoritoUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: FavoritoWhereUniqueInput
+    update: XOR<FavoritoUpdateWithoutPropertyInput, FavoritoUncheckedUpdateWithoutPropertyInput>
+    create: XOR<FavoritoCreateWithoutPropertyInput, FavoritoUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type FavoritoUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: FavoritoWhereUniqueInput
+    data: XOR<FavoritoUpdateWithoutPropertyInput, FavoritoUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type FavoritoUpdateManyWithWhereWithoutPropertyInput = {
+    where: FavoritoScalarWhereInput
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyWithoutPropertyInput>
+  }
+
+  export type UsuarioCreateWithoutInterestsInput = {
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    googleId?: string | null
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutInterestsInput = {
+    id?: string
+    googleId?: string | null
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutInterestsInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutInterestsInput, UsuarioUncheckedCreateWithoutInterestsInput>
+  }
+
+  export type InmuebleCreateWithoutInterestsInput = {
+>>>>>>> Stashed changes
+    id?: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -19491,18 +21217,30 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleCreateNestedManyWithoutInmuebleInput
     propietario: UsuarioCreateNestedOneWithoutInmueblesPropietarioInput
     resenas?: ResenaCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UsuarioCreateNestedOneWithoutOwnedPropertiesInput
+    propertyPhotos?: FotoInmuebleCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedCreateWithoutInteresesInput = {
+  export type InmuebleUncheckedCreateWithoutInterestsInput = {
     id?: string
-    propietarioId: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -19511,13 +21249,24 @@ export namespace Prisma {
     favoritos?: FavoritoUncheckedCreateNestedManyWithoutInmuebleInput
     fotosInmueble?: FotoInmuebleUncheckedCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    propertyPhotos?: FotoInmuebleUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleCreateOrConnectWithoutInteresesInput = {
+  export type InmuebleCreateOrConnectWithoutInterestsInput = {
     where: InmuebleWhereUniqueInput
-    create: XOR<InmuebleCreateWithoutInteresesInput, InmuebleUncheckedCreateWithoutInteresesInput>
+    create: XOR<InmuebleCreateWithoutInterestsInput, InmuebleUncheckedCreateWithoutInterestsInput>
   }
 
+<<<<<<< Updated upstream
   export type UsuarioCreateWithoutInteresesInput = {
     id?: string
     googleId?: string | null
@@ -19572,53 +21321,120 @@ export namespace Prisma {
   }
 
   export type MensajeCreateWithoutInteresInput = {
+=======
+  export type MensajeCreateWithoutInterestInput = {
+>>>>>>> Stashed changes
     id?: bigint | number
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
-    emisor: UsuarioCreateNestedOneWithoutMensajesEmitidosInput
-    receptor: UsuarioCreateNestedOneWithoutMensajesRecibidosInput
+    content: string
+    read?: boolean
+    createdAt?: Date | string
+    sender: UsuarioCreateNestedOneWithoutSentMessagesInput
+    receiver: UsuarioCreateNestedOneWithoutReceivedMessagesInput
   }
 
-  export type MensajeUncheckedCreateWithoutInteresInput = {
+  export type MensajeUncheckedCreateWithoutInterestInput = {
     id?: bigint | number
-    emisorId: string
-    receptorId: string
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    senderId: string
+    receiverId: string
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
-  export type MensajeCreateOrConnectWithoutInteresInput = {
+  export type MensajeCreateOrConnectWithoutInterestInput = {
     where: MensajeWhereUniqueInput
-    create: XOR<MensajeCreateWithoutInteresInput, MensajeUncheckedCreateWithoutInteresInput>
+    create: XOR<MensajeCreateWithoutInterestInput, MensajeUncheckedCreateWithoutInterestInput>
   }
 
-  export type MensajeCreateManyInteresInputEnvelope = {
-    data: MensajeCreateManyInteresInput | MensajeCreateManyInteresInput[]
+  export type MensajeCreateManyInterestInputEnvelope = {
+    data: MensajeCreateManyInterestInput | MensajeCreateManyInterestInput[]
     skipDuplicates?: boolean
   }
 
+<<<<<<< Updated upstream
   export type InmuebleUpsertWithoutInteresesInput = {
     update: XOR<InmuebleUpdateWithoutInteresesInput, InmuebleUncheckedUpdateWithoutInteresesInput>
     create: XOR<InmuebleCreateWithoutInteresesInput, InmuebleUncheckedCreateWithoutInteresesInput>
-    where?: InmuebleWhereInput
+=======
+  export type UsuarioUpsertWithoutInterestsInput = {
+    update: XOR<UsuarioUpdateWithoutInterestsInput, UsuarioUncheckedUpdateWithoutInterestsInput>
+    create: XOR<UsuarioCreateWithoutInterestsInput, UsuarioUncheckedCreateWithoutInterestsInput>
+    where?: UsuarioWhereInput
   }
 
-  export type InmuebleUpdateToOneWithWhereWithoutInteresesInput = {
-    where?: InmuebleWhereInput
-    data: XOR<InmuebleUpdateWithoutInteresesInput, InmuebleUncheckedUpdateWithoutInteresesInput>
+  export type UsuarioUpdateToOneWithWhereWithoutInterestsInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutInterestsInput, UsuarioUncheckedUpdateWithoutInterestsInput>
   }
 
-  export type InmuebleUpdateWithoutInteresesInput = {
+  export type UsuarioUpdateWithoutInterestsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutInterestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type InmuebleUpsertWithoutInterestsInput = {
+    update: XOR<InmuebleUpdateWithoutInterestsInput, InmuebleUncheckedUpdateWithoutInterestsInput>
+    create: XOR<InmuebleCreateWithoutInterestsInput, InmuebleUncheckedCreateWithoutInterestsInput>
+>>>>>>> Stashed changes
+    where?: InmuebleWhereInput
+  }
+
+  export type InmuebleUpdateToOneWithWhereWithoutInterestsInput = {
+    where?: InmuebleWhereInput
+    data: XOR<InmuebleUpdateWithoutInterestsInput, InmuebleUncheckedUpdateWithoutInterestsInput>
+  }
+
+  export type InmuebleUpdateWithoutInterestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -19628,18 +21444,30 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUpdateManyWithoutInmuebleNestedInput
     propietario?: UsuarioUpdateOneRequiredWithoutInmueblesPropietarioNestedInput
     resenas?: ResenaUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UsuarioUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    propertyPhotos?: FotoInmuebleUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedUpdateWithoutInteresesInput = {
+  export type InmuebleUncheckedUpdateWithoutInterestsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propietarioId?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -19707,35 +21535,46 @@ export namespace Prisma {
     reportes?: ReporteUncheckedUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    propertyPhotos?: FotoInmuebleUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type MensajeUpsertWithWhereUniqueWithoutInteresInput = {
+  export type MensajeUpsertWithWhereUniqueWithoutInterestInput = {
     where: MensajeWhereUniqueInput
-    update: XOR<MensajeUpdateWithoutInteresInput, MensajeUncheckedUpdateWithoutInteresInput>
-    create: XOR<MensajeCreateWithoutInteresInput, MensajeUncheckedCreateWithoutInteresInput>
+    update: XOR<MensajeUpdateWithoutInterestInput, MensajeUncheckedUpdateWithoutInterestInput>
+    create: XOR<MensajeCreateWithoutInterestInput, MensajeUncheckedCreateWithoutInterestInput>
   }
 
-  export type MensajeUpdateWithWhereUniqueWithoutInteresInput = {
+  export type MensajeUpdateWithWhereUniqueWithoutInterestInput = {
     where: MensajeWhereUniqueInput
-    data: XOR<MensajeUpdateWithoutInteresInput, MensajeUncheckedUpdateWithoutInteresInput>
+    data: XOR<MensajeUpdateWithoutInterestInput, MensajeUncheckedUpdateWithoutInterestInput>
   }
 
-  export type MensajeUpdateManyWithWhereWithoutInteresInput = {
+  export type MensajeUpdateManyWithWhereWithoutInterestInput = {
     where: MensajeScalarWhereInput
-    data: XOR<MensajeUpdateManyMutationInput, MensajeUncheckedUpdateManyWithoutInteresInput>
+    data: XOR<MensajeUpdateManyMutationInput, MensajeUncheckedUpdateManyWithoutInterestInput>
   }
 
-  export type UsuarioCreateWithoutMensajesEmitidosInput = {
+  export type UsuarioCreateWithoutSentMessagesInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaCreateNestedManyWithoutUsuarioInput
@@ -19747,19 +21586,32 @@ export namespace Prisma {
     reportes?: ReporteCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedCreateWithoutMensajesEmitidosInput = {
+  export type UsuarioUncheckedCreateWithoutSentMessagesInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUsuarioInput
@@ -19771,13 +21623,26 @@ export namespace Prisma {
     reportes?: ReporteUncheckedCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateOrConnectWithoutMensajesEmitidosInput = {
+  export type UsuarioCreateOrConnectWithoutSentMessagesInput = {
     where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutMensajesEmitidosInput, UsuarioUncheckedCreateWithoutMensajesEmitidosInput>
+    create: XOR<UsuarioCreateWithoutSentMessagesInput, UsuarioUncheckedCreateWithoutSentMessagesInput>
   }
 
+<<<<<<< Updated upstream
   export type InteresCreateWithoutMensajesInput = {
     id?: string
     mensaje?: string | null
@@ -19802,16 +21667,20 @@ export namespace Prisma {
   }
 
   export type UsuarioCreateWithoutMensajesRecibidosInput = {
+=======
+  export type UsuarioCreateWithoutReceivedMessagesInput = {
+>>>>>>> Stashed changes
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaCreateNestedManyWithoutUsuarioInput
@@ -19823,19 +21692,32 @@ export namespace Prisma {
     reportes?: ReporteCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedCreateWithoutMensajesRecibidosInput = {
+  export type UsuarioUncheckedCreateWithoutReceivedMessagesInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUsuarioInput
@@ -19847,35 +21729,77 @@ export namespace Prisma {
     reportes?: ReporteUncheckedCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateOrConnectWithoutMensajesRecibidosInput = {
+  export type UsuarioCreateOrConnectWithoutReceivedMessagesInput = {
     where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutMensajesRecibidosInput, UsuarioUncheckedCreateWithoutMensajesRecibidosInput>
+    create: XOR<UsuarioCreateWithoutReceivedMessagesInput, UsuarioUncheckedCreateWithoutReceivedMessagesInput>
   }
 
+<<<<<<< Updated upstream
   export type UsuarioUpsertWithoutMensajesEmitidosInput = {
     update: XOR<UsuarioUpdateWithoutMensajesEmitidosInput, UsuarioUncheckedUpdateWithoutMensajesEmitidosInput>
     create: XOR<UsuarioCreateWithoutMensajesEmitidosInput, UsuarioUncheckedCreateWithoutMensajesEmitidosInput>
+=======
+  export type InteresCreateWithoutMessagesInput = {
+    id?: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    user: UsuarioCreateNestedOneWithoutInterestsInput
+    property: InmuebleCreateNestedOneWithoutInterestsInput
+  }
+
+  export type InteresUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    userId: string
+    propertyId: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+  }
+
+  export type InteresCreateOrConnectWithoutMessagesInput = {
+    where: InteresWhereUniqueInput
+    create: XOR<InteresCreateWithoutMessagesInput, InteresUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UsuarioUpsertWithoutSentMessagesInput = {
+    update: XOR<UsuarioUpdateWithoutSentMessagesInput, UsuarioUncheckedUpdateWithoutSentMessagesInput>
+    create: XOR<UsuarioCreateWithoutSentMessagesInput, UsuarioUncheckedCreateWithoutSentMessagesInput>
+>>>>>>> Stashed changes
     where?: UsuarioWhereInput
   }
 
-  export type UsuarioUpdateToOneWithWhereWithoutMensajesEmitidosInput = {
+  export type UsuarioUpdateToOneWithWhereWithoutSentMessagesInput = {
     where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutMensajesEmitidosInput, UsuarioUncheckedUpdateWithoutMensajesEmitidosInput>
+    data: XOR<UsuarioUpdateWithoutSentMessagesInput, UsuarioUncheckedUpdateWithoutSentMessagesInput>
   }
 
-  export type UsuarioUpdateWithoutMensajesEmitidosInput = {
+  export type UsuarioUpdateWithoutSentMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUpdateManyWithoutUsuarioNestedInput
@@ -19887,19 +21811,32 @@ export namespace Prisma {
     reportes?: ReporteUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedUpdateWithoutMensajesEmitidosInput = {
+  export type UsuarioUncheckedUpdateWithoutSentMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -19940,30 +21877,43 @@ export namespace Prisma {
     mensaje?: NullableStringFieldUpdateOperationsInput | string | null
     estado?: StringFieldUpdateOperationsInput | string
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUpsertWithoutMensajesRecibidosInput = {
-    update: XOR<UsuarioUpdateWithoutMensajesRecibidosInput, UsuarioUncheckedUpdateWithoutMensajesRecibidosInput>
-    create: XOR<UsuarioCreateWithoutMensajesRecibidosInput, UsuarioUncheckedCreateWithoutMensajesRecibidosInput>
+  export type UsuarioUpsertWithoutReceivedMessagesInput = {
+    update: XOR<UsuarioUpdateWithoutReceivedMessagesInput, UsuarioUncheckedUpdateWithoutReceivedMessagesInput>
+    create: XOR<UsuarioCreateWithoutReceivedMessagesInput, UsuarioUncheckedCreateWithoutReceivedMessagesInput>
     where?: UsuarioWhereInput
   }
 
-  export type UsuarioUpdateToOneWithWhereWithoutMensajesRecibidosInput = {
+  export type UsuarioUpdateToOneWithWhereWithoutReceivedMessagesInput = {
     where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutMensajesRecibidosInput, UsuarioUncheckedUpdateWithoutMensajesRecibidosInput>
+    data: XOR<UsuarioUpdateWithoutReceivedMessagesInput, UsuarioUncheckedUpdateWithoutReceivedMessagesInput>
   }
 
-  export type UsuarioUpdateWithoutMensajesRecibidosInput = {
+  export type UsuarioUpdateWithoutReceivedMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUpdateManyWithoutUsuarioNestedInput
@@ -19975,19 +21925,32 @@ export namespace Prisma {
     reportes?: ReporteUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedUpdateWithoutMensajesRecibidosInput = {
+  export type UsuarioUncheckedUpdateWithoutReceivedMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -19999,17 +21962,59 @@ export namespace Prisma {
     reportes?: ReporteUncheckedUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type InmuebleCreateWithoutFotosInmuebleInput = {
+  export type InteresUpsertWithoutMessagesInput = {
+    update: XOR<InteresUpdateWithoutMessagesInput, InteresUncheckedUpdateWithoutMessagesInput>
+    create: XOR<InteresCreateWithoutMessagesInput, InteresUncheckedCreateWithoutMessagesInput>
+    where?: InteresWhereInput
+  }
+
+  export type InteresUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: InteresWhereInput
+    data: XOR<InteresUpdateWithoutMessagesInput, InteresUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type InteresUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutInterestsNestedInput
+    property?: InmuebleUpdateOneRequiredWithoutInterestsNestedInput
+  }
+
+  export type InteresUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleCreateWithoutPropertyPhotosInput = {
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -20019,18 +22024,30 @@ export namespace Prisma {
     propietario: UsuarioCreateNestedOneWithoutInmueblesPropietarioInput
     intereses?: InteresCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UsuarioCreateNestedOneWithoutOwnedPropertiesInput
+    interests?: InteresCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedCreateWithoutFotosInmuebleInput = {
+  export type InmuebleUncheckedCreateWithoutPropertyPhotosInput = {
     id?: string
-    propietarioId: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -20039,33 +22056,44 @@ export namespace Prisma {
     favoritos?: FavoritoUncheckedCreateNestedManyWithoutInmuebleInput
     intereses?: InteresUncheckedCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleCreateOrConnectWithoutFotosInmuebleInput = {
+  export type InmuebleCreateOrConnectWithoutPropertyPhotosInput = {
     where: InmuebleWhereUniqueInput
-    create: XOR<InmuebleCreateWithoutFotosInmuebleInput, InmuebleUncheckedCreateWithoutFotosInmuebleInput>
+    create: XOR<InmuebleCreateWithoutPropertyPhotosInput, InmuebleUncheckedCreateWithoutPropertyPhotosInput>
   }
 
-  export type InmuebleUpsertWithoutFotosInmuebleInput = {
-    update: XOR<InmuebleUpdateWithoutFotosInmuebleInput, InmuebleUncheckedUpdateWithoutFotosInmuebleInput>
-    create: XOR<InmuebleCreateWithoutFotosInmuebleInput, InmuebleUncheckedCreateWithoutFotosInmuebleInput>
+  export type InmuebleUpsertWithoutPropertyPhotosInput = {
+    update: XOR<InmuebleUpdateWithoutPropertyPhotosInput, InmuebleUncheckedUpdateWithoutPropertyPhotosInput>
+    create: XOR<InmuebleCreateWithoutPropertyPhotosInput, InmuebleUncheckedCreateWithoutPropertyPhotosInput>
     where?: InmuebleWhereInput
   }
 
-  export type InmuebleUpdateToOneWithWhereWithoutFotosInmuebleInput = {
+  export type InmuebleUpdateToOneWithWhereWithoutPropertyPhotosInput = {
     where?: InmuebleWhereInput
-    data: XOR<InmuebleUpdateWithoutFotosInmuebleInput, InmuebleUncheckedUpdateWithoutFotosInmuebleInput>
+    data: XOR<InmuebleUpdateWithoutPropertyPhotosInput, InmuebleUncheckedUpdateWithoutPropertyPhotosInput>
   }
 
-  export type InmuebleUpdateWithoutFotosInmuebleInput = {
+  export type InmuebleUpdateWithoutPropertyPhotosInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -20075,18 +22103,30 @@ export namespace Prisma {
     propietario?: UsuarioUpdateOneRequiredWithoutInmueblesPropietarioNestedInput
     intereses?: InteresUpdateManyWithoutInmuebleNestedInput
     resenas?: ResenaUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UsuarioUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    interests?: InteresUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedUpdateWithoutFotosInmuebleInput = {
+  export type InmuebleUncheckedUpdateWithoutPropertyPhotosInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propietarioId?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -20095,17 +22135,79 @@ export namespace Prisma {
     favoritos?: FavoritoUncheckedUpdateManyWithoutInmuebleNestedInput
     intereses?: InteresUncheckedUpdateManyWithoutInmuebleNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
-  export type InmuebleCreateWithoutResenasInput = {
+  export type UsuarioCreateWithoutReviewsInput = {
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    googleId?: string | null
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    googleId?: string | null
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutReviewsInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutReviewsInput, UsuarioUncheckedCreateWithoutReviewsInput>
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleCreateWithoutReviewsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -20115,18 +22217,30 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleCreateNestedManyWithoutInmuebleInput
     propietario: UsuarioCreateNestedOneWithoutInmueblesPropietarioInput
     intereses?: InteresCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UsuarioCreateNestedOneWithoutOwnedPropertiesInput
+    interests?: InteresCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedCreateWithoutResenasInput = {
+  export type InmuebleUncheckedCreateWithoutReviewsInput = {
     id?: string
-    propietarioId: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -20135,13 +22249,24 @@ export namespace Prisma {
     favoritos?: FavoritoUncheckedCreateNestedManyWithoutInmuebleInput
     fotosInmueble?: FotoInmuebleUncheckedCreateNestedManyWithoutInmuebleInput
     intereses?: InteresUncheckedCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleUncheckedCreateNestedManyWithoutPropertyInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleCreateOrConnectWithoutResenasInput = {
+  export type InmuebleCreateOrConnectWithoutReviewsInput = {
     where: InmuebleWhereUniqueInput
-    create: XOR<InmuebleCreateWithoutResenasInput, InmuebleUncheckedCreateWithoutResenasInput>
+    create: XOR<InmuebleCreateWithoutReviewsInput, InmuebleUncheckedCreateWithoutReviewsInput>
   }
 
+<<<<<<< Updated upstream
   export type UsuarioCreateWithoutResenasInput = {
     id?: string
     googleId?: string | null
@@ -20193,28 +22318,86 @@ export namespace Prisma {
   export type UsuarioCreateOrConnectWithoutResenasInput = {
     where: UsuarioWhereUniqueInput
     create: XOR<UsuarioCreateWithoutResenasInput, UsuarioUncheckedCreateWithoutResenasInput>
+=======
+  export type UsuarioUpsertWithoutReviewsInput = {
+    update: XOR<UsuarioUpdateWithoutReviewsInput, UsuarioUncheckedUpdateWithoutReviewsInput>
+    create: XOR<UsuarioCreateWithoutReviewsInput, UsuarioUncheckedCreateWithoutReviewsInput>
+    where?: UsuarioWhereInput
   }
 
-  export type InmuebleUpsertWithoutResenasInput = {
-    update: XOR<InmuebleUpdateWithoutResenasInput, InmuebleUncheckedUpdateWithoutResenasInput>
-    create: XOR<InmuebleCreateWithoutResenasInput, InmuebleUncheckedCreateWithoutResenasInput>
-    where?: InmuebleWhereInput
+  export type UsuarioUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutReviewsInput, UsuarioUncheckedUpdateWithoutReviewsInput>
   }
 
-  export type InmuebleUpdateToOneWithWhereWithoutResenasInput = {
-    where?: InmuebleWhereInput
-    data: XOR<InmuebleUpdateWithoutResenasInput, InmuebleUncheckedUpdateWithoutResenasInput>
-  }
-
-  export type InmuebleUpdateWithoutResenasInput = {
+  export type UsuarioUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleUpsertWithoutReviewsInput = {
+    update: XOR<InmuebleUpdateWithoutReviewsInput, InmuebleUncheckedUpdateWithoutReviewsInput>
+    create: XOR<InmuebleCreateWithoutReviewsInput, InmuebleUncheckedCreateWithoutReviewsInput>
+    where?: InmuebleWhereInput
+  }
+
+  export type InmuebleUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: InmuebleWhereInput
+    data: XOR<InmuebleUpdateWithoutReviewsInput, InmuebleUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type InmuebleUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -20224,18 +22407,30 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUpdateManyWithoutInmuebleNestedInput
     propietario?: UsuarioUpdateOneRequiredWithoutInmueblesPropietarioNestedInput
     intereses?: InteresUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UsuarioUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    interests?: InteresUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedUpdateWithoutResenasInput = {
+  export type InmuebleUncheckedUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propietarioId?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -20303,19 +22498,30 @@ export namespace Prisma {
     notificaciones?: NotificacionUncheckedUpdateManyWithoutUsuarioNestedInput
     reportes?: ReporteUncheckedUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUncheckedUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateWithoutNotificacionesInput = {
+  export type UsuarioCreateWithoutNotificationsInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaCreateNestedManyWithoutUsuarioInput
@@ -20327,19 +22533,32 @@ export namespace Prisma {
     reportes?: ReporteCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedCreateWithoutNotificacionesInput = {
+  export type UsuarioUncheckedCreateWithoutNotificationsInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUsuarioInput
@@ -20351,35 +22570,48 @@ export namespace Prisma {
     reportes?: ReporteUncheckedCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateOrConnectWithoutNotificacionesInput = {
+  export type UsuarioCreateOrConnectWithoutNotificationsInput = {
     where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutNotificacionesInput, UsuarioUncheckedCreateWithoutNotificacionesInput>
+    create: XOR<UsuarioCreateWithoutNotificationsInput, UsuarioUncheckedCreateWithoutNotificationsInput>
   }
 
-  export type UsuarioUpsertWithoutNotificacionesInput = {
-    update: XOR<UsuarioUpdateWithoutNotificacionesInput, UsuarioUncheckedUpdateWithoutNotificacionesInput>
-    create: XOR<UsuarioCreateWithoutNotificacionesInput, UsuarioUncheckedCreateWithoutNotificacionesInput>
+  export type UsuarioUpsertWithoutNotificationsInput = {
+    update: XOR<UsuarioUpdateWithoutNotificationsInput, UsuarioUncheckedUpdateWithoutNotificationsInput>
+    create: XOR<UsuarioCreateWithoutNotificationsInput, UsuarioUncheckedCreateWithoutNotificationsInput>
     where?: UsuarioWhereInput
   }
 
-  export type UsuarioUpdateToOneWithWhereWithoutNotificacionesInput = {
+  export type UsuarioUpdateToOneWithWhereWithoutNotificationsInput = {
     where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutNotificacionesInput, UsuarioUncheckedUpdateWithoutNotificacionesInput>
+    data: XOR<UsuarioUpdateWithoutNotificationsInput, UsuarioUncheckedUpdateWithoutNotificationsInput>
   }
 
-  export type UsuarioUpdateWithoutNotificacionesInput = {
+  export type UsuarioUpdateWithoutNotificationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUpdateManyWithoutUsuarioNestedInput
@@ -20391,19 +22623,32 @@ export namespace Prisma {
     reportes?: ReporteUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedUpdateWithoutNotificacionesInput = {
+  export type UsuarioUncheckedUpdateWithoutNotificationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -20415,19 +22660,32 @@ export namespace Prisma {
     reportes?: ReporteUncheckedUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateWithoutReportesInput = {
+  export type UsuarioCreateWithoutReportsInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaCreateNestedManyWithoutUsuarioInput
@@ -20439,19 +22697,32 @@ export namespace Prisma {
     notificaciones?: NotificacionCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedCreateWithoutReportesInput = {
+  export type UsuarioUncheckedCreateWithoutReportsInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUsuarioInput
@@ -20463,35 +22734,48 @@ export namespace Prisma {
     notificaciones?: NotificacionUncheckedCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateOrConnectWithoutReportesInput = {
+  export type UsuarioCreateOrConnectWithoutReportsInput = {
     where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutReportesInput, UsuarioUncheckedCreateWithoutReportesInput>
+    create: XOR<UsuarioCreateWithoutReportsInput, UsuarioUncheckedCreateWithoutReportsInput>
   }
 
-  export type UsuarioUpsertWithoutReportesInput = {
-    update: XOR<UsuarioUpdateWithoutReportesInput, UsuarioUncheckedUpdateWithoutReportesInput>
-    create: XOR<UsuarioCreateWithoutReportesInput, UsuarioUncheckedCreateWithoutReportesInput>
+  export type UsuarioUpsertWithoutReportsInput = {
+    update: XOR<UsuarioUpdateWithoutReportsInput, UsuarioUncheckedUpdateWithoutReportsInput>
+    create: XOR<UsuarioCreateWithoutReportsInput, UsuarioUncheckedCreateWithoutReportsInput>
     where?: UsuarioWhereInput
   }
 
-  export type UsuarioUpdateToOneWithWhereWithoutReportesInput = {
+  export type UsuarioUpdateToOneWithWhereWithoutReportsInput = {
     where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutReportesInput, UsuarioUncheckedUpdateWithoutReportesInput>
+    data: XOR<UsuarioUpdateWithoutReportsInput, UsuarioUncheckedUpdateWithoutReportsInput>
   }
 
-  export type UsuarioUpdateWithoutReportesInput = {
+  export type UsuarioUpdateWithoutReportsInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUpdateManyWithoutUsuarioNestedInput
@@ -20503,19 +22787,32 @@ export namespace Prisma {
     notificaciones?: NotificacionUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedUpdateWithoutReportesInput = {
+  export type UsuarioUncheckedUpdateWithoutReportsInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     busquedasGuardadas?: BusquedaGuardadaUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -20527,17 +22824,81 @@ export namespace Prisma {
     notificaciones?: NotificacionUncheckedUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type InmuebleCreateWithoutFavoritosInput = {
+  export type UsuarioCreateWithoutFavoritesInput = {
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    googleId?: string | null
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaCreateNestedManyWithoutUserInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutFavoritesInput = {
+    id?: string
+    googleId?: string | null
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    savedSearches?: BusquedaGuardadaUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutFavoritesInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutFavoritesInput, UsuarioUncheckedCreateWithoutFavoritesInput>
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleCreateWithoutFavoritesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -20547,18 +22908,30 @@ export namespace Prisma {
     propietario: UsuarioCreateNestedOneWithoutInmueblesPropietarioInput
     intereses?: InteresCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UsuarioCreateNestedOneWithoutOwnedPropertiesInput
+    interests?: InteresCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedCreateWithoutFavoritosInput = {
+  export type InmuebleUncheckedCreateWithoutFavoritesInput = {
     id?: string
-    propietarioId: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio: Decimal | DecimalJsLike | number | string
     tipoOperacion: string
     estado?: string
@@ -20567,13 +22940,24 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUncheckedCreateNestedManyWithoutInmuebleInput
     intereses?: InteresUncheckedCreateNestedManyWithoutInmuebleInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutInmuebleInput
+=======
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InteresUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: FotoInmuebleUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutPropertyInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleCreateOrConnectWithoutFavoritosInput = {
+  export type InmuebleCreateOrConnectWithoutFavoritesInput = {
     where: InmuebleWhereUniqueInput
-    create: XOR<InmuebleCreateWithoutFavoritosInput, InmuebleUncheckedCreateWithoutFavoritosInput>
+    create: XOR<InmuebleCreateWithoutFavoritesInput, InmuebleUncheckedCreateWithoutFavoritesInput>
   }
 
+<<<<<<< Updated upstream
   export type UsuarioCreateWithoutFavoritosInput = {
     id?: string
     googleId?: string | null
@@ -20625,28 +23009,86 @@ export namespace Prisma {
   export type UsuarioCreateOrConnectWithoutFavoritosInput = {
     where: UsuarioWhereUniqueInput
     create: XOR<UsuarioCreateWithoutFavoritosInput, UsuarioUncheckedCreateWithoutFavoritosInput>
+=======
+  export type UsuarioUpsertWithoutFavoritesInput = {
+    update: XOR<UsuarioUpdateWithoutFavoritesInput, UsuarioUncheckedUpdateWithoutFavoritesInput>
+    create: XOR<UsuarioCreateWithoutFavoritesInput, UsuarioUncheckedCreateWithoutFavoritesInput>
+    where?: UsuarioWhereInput
   }
 
-  export type InmuebleUpsertWithoutFavoritosInput = {
-    update: XOR<InmuebleUpdateWithoutFavoritosInput, InmuebleUncheckedUpdateWithoutFavoritosInput>
-    create: XOR<InmuebleCreateWithoutFavoritosInput, InmuebleUncheckedCreateWithoutFavoritosInput>
-    where?: InmuebleWhereInput
+  export type UsuarioUpdateToOneWithWhereWithoutFavoritesInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutFavoritesInput, UsuarioUncheckedUpdateWithoutFavoritesInput>
   }
 
-  export type InmuebleUpdateToOneWithWhereWithoutFavoritosInput = {
-    where?: InmuebleWhereInput
-    data: XOR<InmuebleUpdateWithoutFavoritosInput, InmuebleUncheckedUpdateWithoutFavoritosInput>
-  }
-
-  export type InmuebleUpdateWithoutFavoritosInput = {
+  export type UsuarioUpdateWithoutFavoritesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    savedSearches?: BusquedaGuardadaUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleUpsertWithoutFavoritesInput = {
+    update: XOR<InmuebleUpdateWithoutFavoritesInput, InmuebleUncheckedUpdateWithoutFavoritesInput>
+    create: XOR<InmuebleCreateWithoutFavoritesInput, InmuebleUncheckedCreateWithoutFavoritesInput>
+    where?: InmuebleWhereInput
+  }
+
+  export type InmuebleUpdateToOneWithWhereWithoutFavoritesInput = {
+    where?: InmuebleWhereInput
+    data: XOR<InmuebleUpdateWithoutFavoritesInput, InmuebleUncheckedUpdateWithoutFavoritesInput>
+  }
+
+  export type InmuebleUpdateWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -20656,18 +23098,30 @@ export namespace Prisma {
     propietario?: UsuarioUpdateOneRequiredWithoutInmueblesPropietarioNestedInput
     intereses?: InteresUpdateManyWithoutInmuebleNestedInput
     resenas?: ResenaUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UsuarioUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    interests?: InteresUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedUpdateWithoutFavoritosInput = {
+  export type InmuebleUncheckedUpdateWithoutFavoritesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propietarioId?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -20738,16 +23192,30 @@ export namespace Prisma {
   }
 
   export type UsuarioCreateWithoutBusquedasGuardadasInput = {
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type UsuarioCreateWithoutSavedSearchesInput = {
+>>>>>>> Stashed changes
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     favoritos?: FavoritoCreateNestedManyWithoutUsuarioInput
@@ -20759,19 +23227,32 @@ export namespace Prisma {
     reportes?: ReporteCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleCreateNestedManyWithoutOwnerInput
+    interests?: InteresCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaCreateNestedManyWithoutUserInput
+    notifications?: NotificacionCreateNestedManyWithoutUserInput
+    reports?: ReporteCreateNestedManyWithoutUserInput
+    favorites?: FavoritoCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedCreateWithoutBusquedasGuardadasInput = {
+  export type UsuarioUncheckedCreateWithoutSavedSearchesInput = {
     id?: string
     googleId?: string | null
-    fotoPerfil?: string | null
-    correoElectronico: string
-    contrasenaHash?: string | null
-    nombreCompleto?: string | null
-    telefono?: string | null
-    rol?: string
-    estadoVerificacion?: string
+    profilePhoto?: string | null
+    email: string
+    passwordHash?: string | null
+    fullName?: string | null
+    phone?: string | null
+    role?: string
+    verificationStatus?: string
     refreshToken?: string | null
+<<<<<<< Updated upstream
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string
     favoritos?: FavoritoUncheckedCreateNestedManyWithoutUsuarioInput
@@ -20783,35 +23264,48 @@ export namespace Prisma {
     reportes?: ReporteUncheckedCreateNestedManyWithoutUsuarioInput
     resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     preferences?: UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+=======
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownedProperties?: InmuebleUncheckedCreateNestedManyWithoutOwnerInput
+    interests?: InteresUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: MensajeUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: MensajeUncheckedCreateNestedManyWithoutReceiverInput
+    reviews?: ResenaUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificacionUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReporteUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoritoUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioCreateOrConnectWithoutBusquedasGuardadasInput = {
+  export type UsuarioCreateOrConnectWithoutSavedSearchesInput = {
     where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutBusquedasGuardadasInput, UsuarioUncheckedCreateWithoutBusquedasGuardadasInput>
+    create: XOR<UsuarioCreateWithoutSavedSearchesInput, UsuarioUncheckedCreateWithoutSavedSearchesInput>
   }
 
-  export type UsuarioUpsertWithoutBusquedasGuardadasInput = {
-    update: XOR<UsuarioUpdateWithoutBusquedasGuardadasInput, UsuarioUncheckedUpdateWithoutBusquedasGuardadasInput>
-    create: XOR<UsuarioCreateWithoutBusquedasGuardadasInput, UsuarioUncheckedCreateWithoutBusquedasGuardadasInput>
+  export type UsuarioUpsertWithoutSavedSearchesInput = {
+    update: XOR<UsuarioUpdateWithoutSavedSearchesInput, UsuarioUncheckedUpdateWithoutSavedSearchesInput>
+    create: XOR<UsuarioCreateWithoutSavedSearchesInput, UsuarioUncheckedCreateWithoutSavedSearchesInput>
     where?: UsuarioWhereInput
   }
 
-  export type UsuarioUpdateToOneWithWhereWithoutBusquedasGuardadasInput = {
+  export type UsuarioUpdateToOneWithWhereWithoutSavedSearchesInput = {
     where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutBusquedasGuardadasInput, UsuarioUncheckedUpdateWithoutBusquedasGuardadasInput>
+    data: XOR<UsuarioUpdateWithoutSavedSearchesInput, UsuarioUncheckedUpdateWithoutSavedSearchesInput>
   }
 
-  export type UsuarioUpdateWithoutBusquedasGuardadasInput = {
+  export type UsuarioUpdateWithoutSavedSearchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     favoritos?: FavoritoUpdateManyWithoutUsuarioNestedInput
@@ -20823,19 +23317,32 @@ export namespace Prisma {
     reportes?: ReporteUpdateManyWithoutUsuarioNestedInput
     resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     preferences?: UserPreferenceUpdateOneWithoutUserNestedInput
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUpdateManyWithoutUserNestedInput
+    reports?: ReporteUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type UsuarioUncheckedUpdateWithoutBusquedasGuardadasInput = {
+  export type UsuarioUncheckedUpdateWithoutSavedSearchesInput = {
     id?: StringFieldUpdateOperationsInput | string
     googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    fotoPerfil?: NullableStringFieldUpdateOperationsInput | string | null
-    correoElectronico?: StringFieldUpdateOperationsInput | string
-    contrasenaHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nombreCompleto?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    rol?: StringFieldUpdateOperationsInput | string
-    estadoVerificacion?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+<<<<<<< Updated upstream
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
     favoritos?: FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput
@@ -20972,68 +23479,93 @@ export namespace Prisma {
     id?: string
     inmuebleId: string
     fechaCreacion?: Date | string
+=======
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownedProperties?: InmuebleUncheckedUpdateManyWithoutOwnerNestedInput
+    interests?: InteresUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: MensajeUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: MensajeUncheckedUpdateManyWithoutReceiverNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificacionUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReporteUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleCreateManyPropietarioInput = {
+  export type InmuebleCreateManyOwnerInput = {
     id?: string
-    titulo: string
-    descripcion?: string | null
-    direccion?: string | null
-    ciudad?: string
-    dormitorios?: number | null
-    banos?: number | null
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
-    precio: Decimal | DecimalJsLike | number | string
-    tipoOperacion: string
-    estado?: string
-    fechaCreacion?: Date | string
-    fechaActualizacion?: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type InteresCreateManyUsuarioInput = {
+  export type InteresCreateManyUserInput = {
     id?: string
-    inmuebleId: string
-    mensaje?: string | null
-    estado?: string
-    fechaCreacion?: Date | string
+    propertyId: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
   }
 
-  export type MensajeCreateManyEmisorInput = {
+  export type MensajeCreateManySenderInput = {
     id?: bigint | number
-    receptorId: string
-    interesId?: string | null
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    receiverId: string
+    interestId?: string | null
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
-  export type MensajeCreateManyReceptorInput = {
+  export type MensajeCreateManyReceiverInput = {
     id?: bigint | number
-    emisorId: string
-    interesId?: string | null
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    senderId: string
+    interestId?: string | null
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
+<<<<<<< Updated upstream
   export type NotificacionCreateManyUsuarioInput = {
+=======
+  export type ResenaCreateManyUserInput = {
+    id?: bigint | number
+    propertyId: string
+    content: string
+    rating: number
+    createdAt?: Date | string
+  }
+
+  export type NotificacionCreateManyUserInput = {
+>>>>>>> Stashed changes
     id?: string
-    tipo: string
-    titulo: string
-    contenido: string
-    leido?: boolean
+    type: string
+    title: string
+    content: string
+    read?: boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: Date | string
+    createdAt?: Date | string
   }
 
-  export type ReporteCreateManyUsuarioInput = {
+  export type ReporteCreateManyUserInput = {
     id?: string
-    tipo: string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: string | null
-    fechaCreacion?: Date | string
+    type: string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
   }
 
+<<<<<<< Updated upstream
   export type ResenaCreateManyUsuarioInput = {
     id?: bigint | number
     inmuebleId: string
@@ -21079,17 +23611,31 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     inmuebleId?: StringFieldUpdateOperationsInput | string
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+  export type FavoritoCreateManyUserInput = {
+    id?: string
+    propertyId: string
+    createdAt?: Date | string
   }
 
-  export type InmuebleUpdateWithoutPropietarioInput = {
+  export type BusquedaGuardadaCreateManyUserInput = {
+    id?: string
+    searchParameters: JsonNullValueInput | InputJsonValue
+    searchName?: string | null
+    createdAt?: Date | string
+>>>>>>> Stashed changes
+  }
+
+  export type InmuebleUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -21099,17 +23645,29 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUpdateManyWithoutInmuebleNestedInput
     intereses?: InteresUpdateManyWithoutInmuebleNestedInput
     resenas?: ResenaUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedUpdateWithoutPropietarioInput = {
+  export type InmuebleUncheckedUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+<<<<<<< Updated upstream
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     tipoOperacion?: StringFieldUpdateOperationsInput | string
     estado?: StringFieldUpdateOperationsInput | string
@@ -21119,158 +23677,206 @@ export namespace Prisma {
     fotosInmueble?: FotoInmuebleUncheckedUpdateManyWithoutInmuebleNestedInput
     intereses?: InteresUncheckedUpdateManyWithoutInmuebleNestedInput
     resenas?: ResenaUncheckedUpdateManyWithoutInmuebleNestedInput
+=======
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InteresUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: FotoInmuebleUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ResenaUncheckedUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoritoUncheckedUpdateManyWithoutPropertyNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type InmuebleUncheckedUpdateManyWithoutPropietarioInput = {
+  export type InmuebleUncheckedUpdateManyWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    direccion?: NullableStringFieldUpdateOperationsInput | string | null
-    ciudad?: StringFieldUpdateOperationsInput | string
-    dormitorios?: NullableIntFieldUpdateOperationsInput | number | null
-    banos?: NullableIntFieldUpdateOperationsInput | number | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    tipoOperacion?: StringFieldUpdateOperationsInput | string
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    fechaActualizacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type InteresUpdateWithoutUsuarioInput = {
+  export type InteresUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    inmueble?: InmuebleUpdateOneRequiredWithoutInteresesNestedInput
-    mensajes?: MensajeUpdateManyWithoutInteresNestedInput
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    property?: InmuebleUpdateOneRequiredWithoutInterestsNestedInput
+    messages?: MensajeUpdateManyWithoutInterestNestedInput
   }
 
-  export type InteresUncheckedUpdateWithoutUsuarioInput = {
+  export type InteresUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    mensajes?: MensajeUncheckedUpdateManyWithoutInteresNestedInput
+    propertyId?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MensajeUncheckedUpdateManyWithoutInterestNestedInput
   }
 
-  export type InteresUncheckedUpdateManyWithoutUsuarioInput = {
+  export type InteresUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    inmuebleId?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MensajeUpdateWithoutEmisorInput = {
+  export type MensajeUpdateWithoutSenderInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+<<<<<<< Updated upstream
     contenido?: StringFieldUpdateOperationsInput | string
     leido?: BoolFieldUpdateOperationsInput | boolean
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     interes?: InteresUpdateOneWithoutMensajesNestedInput
     receptor?: UsuarioUpdateOneRequiredWithoutMensajesRecibidosNestedInput
+=======
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    receiver?: UsuarioUpdateOneRequiredWithoutReceivedMessagesNestedInput
+    interest?: InteresUpdateOneWithoutMessagesNestedInput
+>>>>>>> Stashed changes
   }
 
-  export type MensajeUncheckedUpdateWithoutEmisorInput = {
+  export type MensajeUncheckedUpdateWithoutSenderInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    receptorId?: StringFieldUpdateOperationsInput | string
-    interesId?: NullableStringFieldUpdateOperationsInput | string | null
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    interestId?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MensajeUncheckedUpdateManyWithoutEmisorInput = {
+  export type MensajeUncheckedUpdateManyWithoutSenderInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    receptorId?: StringFieldUpdateOperationsInput | string
-    interesId?: NullableStringFieldUpdateOperationsInput | string | null
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    interestId?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MensajeUpdateWithoutReceptorInput = {
+  export type MensajeUpdateWithoutReceiverInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    emisor?: UsuarioUpdateOneRequiredWithoutMensajesEmitidosNestedInput
-    interes?: InteresUpdateOneWithoutMensajesNestedInput
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UsuarioUpdateOneRequiredWithoutSentMessagesNestedInput
+    interest?: InteresUpdateOneWithoutMessagesNestedInput
   }
 
-  export type MensajeUncheckedUpdateWithoutReceptorInput = {
+  export type MensajeUncheckedUpdateWithoutReceiverInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    emisorId?: StringFieldUpdateOperationsInput | string
-    interesId?: NullableStringFieldUpdateOperationsInput | string | null
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    interestId?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MensajeUncheckedUpdateManyWithoutReceptorInput = {
+  export type MensajeUncheckedUpdateManyWithoutReceiverInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    emisorId?: StringFieldUpdateOperationsInput | string
-    interesId?: NullableStringFieldUpdateOperationsInput | string | null
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    interestId?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+<<<<<<< Updated upstream
   export type NotificacionUpdateWithoutUsuarioInput = {
+=======
+  export type ResenaUpdateWithoutUserInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    property?: InmuebleUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ResenaUncheckedUpdateWithoutUserInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    propertyId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResenaUncheckedUpdateManyWithoutUserInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    propertyId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacionUpdateWithoutUserInput = {
+>>>>>>> Stashed changes
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotificacionUncheckedUpdateWithoutUsuarioInput = {
+  export type NotificacionUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotificacionUncheckedUpdateManyWithoutUsuarioInput = {
+  export type NotificacionUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    titulo?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableJsonNullValueInput | InputJsonValue
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ReporteUpdateWithoutUsuarioInput = {
+  export type ReporteUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ReporteUncheckedUpdateWithoutUsuarioInput = {
+  export type ReporteUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ReporteUncheckedUpdateManyWithoutUsuarioInput = {
+  export type ReporteUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    tipo?: StringFieldUpdateOperationsInput | string
-    parametros?: NullableJsonNullValueInput | InputJsonValue
-    archivoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+<<<<<<< Updated upstream
   export type ResenaUpdateWithoutUsuarioInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     contenido?: StringFieldUpdateOperationsInput | string
@@ -21299,15 +23905,63 @@ export namespace Prisma {
     id?: string
     usuarioId: string
     fechaCreacion?: Date | string
+=======
+  export type FavoritoUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    property?: InmuebleUpdateOneRequiredWithoutFavoritesNestedInput
   }
 
-  export type FotoInmuebleCreateManyInmuebleInput = {
+  export type FavoritoUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FavoritoUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BusquedaGuardadaUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    searchParameters?: JsonNullValueInput | InputJsonValue
+    searchName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BusquedaGuardadaUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    searchParameters?: JsonNullValueInput | InputJsonValue
+    searchName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BusquedaGuardadaUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    searchParameters?: JsonNullValueInput | InputJsonValue
+    searchName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InteresCreateManyPropertyInput = {
+    id?: string
+    userId: string
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+>>>>>>> Stashed changes
+  }
+
+  export type FotoInmuebleCreateManyPropertyInput = {
     id?: bigint | number
     url: string
-    orden?: number | null
-    fechaCreacion?: Date | string
+    order?: number | null
+    createdAt?: Date | string
   }
 
+<<<<<<< Updated upstream
   export type InteresCreateManyInmuebleInput = {
     id?: string
     usuarioId: string
@@ -21317,13 +23971,17 @@ export namespace Prisma {
   }
 
   export type ResenaCreateManyInmuebleInput = {
+=======
+  export type ResenaCreateManyPropertyInput = {
+>>>>>>> Stashed changes
     id?: bigint | number
-    usuarioId: string
-    contenido: string
-    calificacion: number
-    fechaCreacion?: Date | string
+    userId: string
+    content: string
+    rating: number
+    createdAt?: Date | string
   }
 
+<<<<<<< Updated upstream
   export type FavoritoUpdateWithoutInmuebleInput = {
     id?: StringFieldUpdateOperationsInput | string
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21361,92 +24019,145 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     orden?: NullableIntFieldUpdateOperationsInput | number | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+  export type FavoritoCreateManyPropertyInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+>>>>>>> Stashed changes
   }
 
-  export type InteresUpdateWithoutInmuebleInput = {
+  export type InteresUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuario?: UsuarioUpdateOneRequiredWithoutInteresesNestedInput
-    mensajes?: MensajeUpdateManyWithoutInteresNestedInput
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutInterestsNestedInput
+    messages?: MensajeUpdateManyWithoutInterestNestedInput
   }
 
-  export type InteresUncheckedUpdateWithoutInmuebleInput = {
+  export type InteresUncheckedUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    mensajes?: MensajeUncheckedUpdateManyWithoutInteresNestedInput
+    userId?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MensajeUncheckedUpdateManyWithoutInterestNestedInput
   }
 
-  export type InteresUncheckedUpdateManyWithoutInmuebleInput = {
+  export type InteresUncheckedUpdateManyWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    mensaje?: NullableStringFieldUpdateOperationsInput | string | null
-    estado?: StringFieldUpdateOperationsInput | string
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+<<<<<<< Updated upstream
   export type ResenaUpdateWithoutInmuebleInput = {
+=======
+  export type FotoInmuebleUpdateWithoutPropertyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    contenido?: StringFieldUpdateOperationsInput | string
-    calificacion?: IntFieldUpdateOperationsInput | number
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    usuario?: UsuarioUpdateOneRequiredWithoutResenasNestedInput
+    url?: StringFieldUpdateOperationsInput | string
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ResenaUncheckedUpdateWithoutInmuebleInput = {
+  export type FotoInmuebleUncheckedUpdateWithoutPropertyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    calificacion?: IntFieldUpdateOperationsInput | number
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ResenaUncheckedUpdateManyWithoutInmuebleInput = {
+  export type FotoInmuebleUncheckedUpdateManyWithoutPropertyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    usuarioId?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    calificacion?: IntFieldUpdateOperationsInput | number
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: StringFieldUpdateOperationsInput | string
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ResenaUpdateWithoutPropertyInput = {
+>>>>>>> Stashed changes
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ResenaUncheckedUpdateWithoutPropertyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    userId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResenaUncheckedUpdateManyWithoutPropertyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    userId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+<<<<<<< Updated upstream
   export type MensajeCreateManyInteresInput = {
+=======
+  export type FavoritoUpdateWithoutPropertyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UsuarioUpdateOneRequiredWithoutFavoritesNestedInput
+  }
+
+  export type FavoritoUncheckedUpdateWithoutPropertyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FavoritoUncheckedUpdateManyWithoutPropertyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MensajeCreateManyInterestInput = {
+>>>>>>> Stashed changes
     id?: bigint | number
-    emisorId: string
-    receptorId: string
-    contenido: string
-    leido?: boolean
-    fechaCreacion?: Date | string
+    senderId: string
+    receiverId: string
+    content: string
+    read?: boolean
+    createdAt?: Date | string
   }
 
-  export type MensajeUpdateWithoutInteresInput = {
+  export type MensajeUpdateWithoutInterestInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    emisor?: UsuarioUpdateOneRequiredWithoutMensajesEmitidosNestedInput
-    receptor?: UsuarioUpdateOneRequiredWithoutMensajesRecibidosNestedInput
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UsuarioUpdateOneRequiredWithoutSentMessagesNestedInput
+    receiver?: UsuarioUpdateOneRequiredWithoutReceivedMessagesNestedInput
   }
 
-  export type MensajeUncheckedUpdateWithoutInteresInput = {
+  export type MensajeUncheckedUpdateWithoutInterestInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    emisorId?: StringFieldUpdateOperationsInput | string
-    receptorId?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MensajeUncheckedUpdateManyWithoutInteresInput = {
+  export type MensajeUncheckedUpdateManyWithoutInterestInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    emisorId?: StringFieldUpdateOperationsInput | string
-    receptorId?: StringFieldUpdateOperationsInput | string
-    contenido?: StringFieldUpdateOperationsInput | string
-    leido?: BoolFieldUpdateOperationsInput | boolean
-    fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

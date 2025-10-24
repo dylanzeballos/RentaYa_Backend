@@ -24,16 +24,16 @@ export class InmuebleController {
 
     listarInmuebles: RequestHandler = asyncHandler(async (req: Request, res: Response) => {
         const items = await prisma.inmueble.findMany({
-            include: { fotosInmueble: true },
-            orderBy: { fechaCreacion: 'desc' },
+            include: { propertyPhotos: true },
+            orderBy: { createdAt: 'desc' },
         });
 
         const safe = (items || []).map((item: any) => {
             const copy: any = { ...item };
-            if (copy.precio && typeof copy.precio.toString === 'function') copy.precio = copy.precio.toString();
+            if (copy.price && typeof copy.price.toString === 'function') copy.price = copy.price.toString();
             if (copy.areaM2 && typeof copy.areaM2.toString === 'function') copy.areaM2 = copy.areaM2.toString();
-            if (copy.fechaCreacion instanceof Date) copy.fechaCreacion = copy.fechaCreacion.toISOString();
-            if (copy.fechaActualizacion instanceof Date) copy.fechaActualizacion = copy.fechaActualizacion.toISOString();
+            if (copy.createdAt instanceof Date) copy.createdAt = copy.createdAt.toISOString();
+            if (copy.updatedAt instanceof Date) copy.updatedAt = copy.updatedAt.toISOString();
             return copy;
         });
 

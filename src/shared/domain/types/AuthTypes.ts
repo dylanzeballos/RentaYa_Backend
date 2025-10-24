@@ -5,25 +5,25 @@ export interface TokenPayload {
 }
 
 export interface LoginRequest {
-    correoElectronico: string;
-    contrasena: string;
+    email: string;
+    password: string;
 }
 
 export interface RegisterRequest {
-    correoElectronico: string;
-    contrasena: string;
-    nombreCompleto?: string;
-    telefono?: string;
+    email: string;
+    password: string;
+    fullName?: string;
+    phone?: string;
 }
 
 export interface AuthResponse {
     user: {
         id: string;
-        correoElectronico: string;
-        nombreCompleto?: string | null;
-        telefono?: string | null;
-        rol: string;
-        estadoVerificacion: string;
+        email: string;
+        fullName?: string | null;
+        phone?: string | null;
+        role: string;
+        verificationStatus: string;
     };
     accessToken: string;
     refreshToken: string;
@@ -44,9 +44,9 @@ export interface GoogleLoginData {
 
 export interface GoogleUserData{
     googleId: string;
-    correoElectronico: string;
-    nombreCompleto: string;
-    fotoPerfil?: string | null;
+    email: string;
+    fullName: string;
+    profilePhoto?: string | null;
 }
 
 export type LoginResponse = AuthResponse;

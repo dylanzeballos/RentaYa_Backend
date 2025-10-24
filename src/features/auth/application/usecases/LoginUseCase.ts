@@ -12,34 +12,34 @@ export class LoginUseCase {
     ) {}
 
     async execute(request: LoginRequest): Promise<AuthResponse> {
-        const { correoElectronico, contrasena } = request;
+        const { email, password } = request;
 
-        const usuario = await this.authRepository.findUserByEmail(correoElectronico);
-        if (!usuario) {
+        const user = await this.authRepository.findUserByEmail(email);
+        if (!user) {
             throw new AppError('Credenciales inválidas', 401);
         }
 
-        const isValidPassword = await this.hashService.compare(contrasena, usuario.contrasenaHash || '');
+        const isValidPassword = await this.hashService.compare(password, user.passwordHash || '');
         if (!isValidPassword) {
             throw new AppError('Credenciales inválidas', 401);
         }
 
         const tokens = this.jwtService.generateTokens({
-            userId: usuario.id,
-            email: usuario.correoElectronico,
-            role : usuario.rol
+            userId: user.id,
+            email: user.email,
+            role : user.role
         });
 
-        await this.authRepository.updateUser(usuario.id, { fechaActualizacion: new Date() });
+        await this.authRepository.updateUser(user.id, { updatedAt: new Date() });
 
         return {
             user: {
-                id: usuario.id,
-                correoElectronico: usuario.correoElectronico,
-                nombreCompleto: usuario.nombreCompleto,
-                telefono: usuario.telefono,
-                rol: usuario.rol,
-                estadoVerificacion: usuario.estadoVerificacion
+                id: user.id,
+                email: user.email,
+                fullName: user.fullName,
+                phone: user.phone,
+                role: user.role,
+                verificationStatus: user.verificationStatus
             },
             ...tokens
         };
