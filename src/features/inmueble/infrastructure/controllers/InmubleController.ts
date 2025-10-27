@@ -3,12 +3,19 @@ import { asyncHandler } from '@/shared/infrastructure/utils/asyncHandler';
 import { ApiResponse } from '@/shared/infrastructure/utils/ApiResponse';
 import { CreateInmuebleUseCase } from '@/features/inmueble/application/usecases/CreateInmubleUseCase';
 import prisma from '@/config/prisma';
+import { GetInmuebleDetailUseCase } from '../../application/usecases/GetInmuebleDetailUseCase';
+import { create } from 'domain';
+
+
 function jsonReplacer(key: string, value: any) {
     return typeof value === 'bigint' ? value.toString() : value;
 }
 
 export class InmuebleController {
-    constructor(private readonly createUseCase: CreateInmuebleUseCase) { }
+    constructor(
+        private readonly createUseCase: CreateInmuebleUseCase,
+        private readonly getDetailUseCase: GetInmuebleDetailUseCase
+    ) { }
 
 
     crearInmueble: RequestHandler = asyncHandler(async (req: Request, res: Response) => {
@@ -42,4 +49,26 @@ export class InmuebleController {
         const safePayload = JSON.parse(JSON.stringify(payload, jsonReplacer));
         res.status(200).json(ApiResponse.success(safePayload, 'Listado inmuebles'));
     })
+
+    getInmuebleDetail: RequestHandler = asyncHandler(async (req: Request, res: Response) => {
+        const id = req.params.id as string;
+        const inmueble = await this.getDetailUseCase.execute(id);
+
+        const safe: any = { ...inmueble };
+        if (safe.price) safe.price = safe.price.toString();
+        if (safe.areaM2) safe.areaM2 = safe.areaM2.toString();
+        if (safe.createdAt) safe.createdAt = safe.createdAt.toISOString();
+        if (safe.updatedAt) safe.updatedAt = safe.updatedAt.toISOString();
+
+        if (safe.propertyPhotos && Array.isArray(safe.propertyPhotos)) {
+            safe.propertyPhotos = safe.propertyPhotos.map((photo: any) => ({
+                ...photo,
+                id: photo.id.toString(),
+                createdAt: photo.createdAt.toISOString(),
+
+            }));
+        }
+        const jsonSafeResult = JSON.parse(JSON.stringify(safe, jsonReplacer));
+        res.status(200).json(ApiResponse.success(jsonSafeResult, 'Detalle del inmueble'));
+    });
 }  
