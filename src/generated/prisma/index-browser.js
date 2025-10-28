@@ -142,6 +142,7 @@ exports.Prisma.InmuebleScalarFieldEnum = {
   description: 'description',
   address: 'address',
   city: 'city',
+  propertyType: 'propertyType',
   bedrooms: 'bedrooms',
   bathrooms: 'bathrooms',
   areaM2: 'areaM2',

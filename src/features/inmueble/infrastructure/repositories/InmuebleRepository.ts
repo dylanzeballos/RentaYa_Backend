@@ -1,49 +1,43 @@
-import prisma from '@/config/prisma';
-import { Inmueble } from '@/generated/prisma';
+import prisma from "@/config/prisma";
+import { Inmueble } from "@/generated/prisma";
 
 export class InmuebleRepository {
-    async createInmueble(payload: {
-        ownerId: string;
-        title: string;
-        description?: string | null;
-        address?: string | null;
-        city?: string;
-        bedrooms?: number | null;
-        bathrooms?: number | null;
-        areaM2?: number | null;
-        price: number;
-        operationType: string;
-        photos?: string[];
+  async createInmueble(payload: {
+    ownerId: string;
+    title: string;
+    description?: string | null;
+    address?: string | null;
+    city?: string;
+    propertyType?: string | null;
+    bedrooms?: number | null;
+    bathrooms?: number | null;
+    areaM2?: number | null;
+    price: number;
+    operationType: string;
+    photos?: string[];
+  }): Promise<Inmueble> {
+    const { photos, ...inmuebleData } = payload;
 
-    }): Promise<Inmueble> {
+    // mapear explícitamente y usar any para evitar errores estrictos de tipos
+    const dataPayload: any = {
+      ...inmuebleData,
+      propertyPhotos: photos
+        ? { create: photos.map((url, idx) => ({ url, order: idx + 1 })) }
+        : undefined,
+    };
 
-        const { photos, ...inmuebleData } = payload;
+    const created = await prisma.inmueble.create({
+      data: dataPayload,
+      include: { propertyPhotos: true },
+    });
+    return created;
+  }
 
-        // mapear explícitamente y usar any para evitar errores estrictos de tipos
-        const dataPayload: any = {
-            ...inmuebleData,
-            propertyPhotos: photos
-                ? { create: photos.map((url, idx) => ({ url, order: idx + 1 })) }
-                : undefined,
-        };
-
-        const created = await prisma.inmueble.create({
-            data: dataPayload,
-            include: { propertyPhotos: true },
-        });
-        return created;
-    }
-
-
-    async listAllInmuebles(): Promise<any[]> {
-
-        const items = await prisma.inmueble.findMany({
-            include: { propertyPhotos: true },
-            orderBy: { createdAt: 'desc' },
-        });
-        return items;
-    }
-
-
-
+  async listAllInmuebles(): Promise<any[]> {
+    const items = await prisma.inmueble.findMany({
+      include: { propertyPhotos: true },
+      orderBy: { createdAt: "desc" },
+    });
+    return items;
+  }
 }
