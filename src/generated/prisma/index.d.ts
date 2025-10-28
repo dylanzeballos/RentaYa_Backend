@@ -3403,6 +3403,7 @@ export namespace Prisma {
     description: string | null
     address: string | null
     city: string | null
+    propertyType: string | null
     bedrooms: number | null
     bathrooms: number | null
     areaM2: Decimal | null
@@ -3420,6 +3421,7 @@ export namespace Prisma {
     description: string | null
     address: string | null
     city: string | null
+    propertyType: string | null
     bedrooms: number | null
     bathrooms: number | null
     areaM2: Decimal | null
@@ -3437,6 +3439,7 @@ export namespace Prisma {
     description: number
     address: number
     city: number
+    propertyType: number
     bedrooms: number
     bathrooms: number
     areaM2: number
@@ -3470,6 +3473,7 @@ export namespace Prisma {
     description?: true
     address?: true
     city?: true
+    propertyType?: true
     bedrooms?: true
     bathrooms?: true
     areaM2?: true
@@ -3487,6 +3491,7 @@ export namespace Prisma {
     description?: true
     address?: true
     city?: true
+    propertyType?: true
     bedrooms?: true
     bathrooms?: true
     areaM2?: true
@@ -3504,6 +3509,7 @@ export namespace Prisma {
     description?: true
     address?: true
     city?: true
+    propertyType?: true
     bedrooms?: true
     bathrooms?: true
     areaM2?: true
@@ -3608,6 +3614,7 @@ export namespace Prisma {
     description: string | null
     address: string | null
     city: string
+    propertyType: string | null
     bedrooms: number | null
     bathrooms: number | null
     areaM2: Decimal | null
@@ -3644,6 +3651,7 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    propertyType?: boolean
     bedrooms?: boolean
     bathrooms?: boolean
     areaM2?: boolean
@@ -3667,6 +3675,7 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    propertyType?: boolean
     bedrooms?: boolean
     bathrooms?: boolean
     areaM2?: boolean
@@ -3685,6 +3694,7 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    propertyType?: boolean
     bedrooms?: boolean
     bathrooms?: boolean
     areaM2?: boolean
@@ -3703,6 +3713,7 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    propertyType?: boolean
     bedrooms?: boolean
     bathrooms?: boolean
     areaM2?: boolean
@@ -3713,7 +3724,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type InmuebleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "description" | "address" | "city" | "bedrooms" | "bathrooms" | "areaM2" | "price" | "operationType" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["inmueble"]>
+  export type InmuebleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "description" | "address" | "city" | "propertyType" | "bedrooms" | "bathrooms" | "areaM2" | "price" | "operationType" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["inmueble"]>
   export type InmuebleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UsuarioDefaultArgs<ExtArgs>
     interests?: boolean | Inmueble$interestsArgs<ExtArgs>
@@ -3745,6 +3756,7 @@ export namespace Prisma {
       description: string | null
       address: string | null
       city: string
+      propertyType: string | null
       bedrooms: number | null
       bathrooms: number | null
       areaM2: Prisma.Decimal | null
@@ -4187,6 +4199,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Inmueble", 'String'>
     readonly address: FieldRef<"Inmueble", 'String'>
     readonly city: FieldRef<"Inmueble", 'String'>
+    readonly propertyType: FieldRef<"Inmueble", 'String'>
     readonly bedrooms: FieldRef<"Inmueble", 'Int'>
     readonly bathrooms: FieldRef<"Inmueble", 'Int'>
     readonly areaM2: FieldRef<"Inmueble", 'Decimal'>
@@ -14562,6 +14575,7 @@ export namespace Prisma {
     description: 'description',
     address: 'address',
     city: 'city',
+    propertyType: 'propertyType',
     bedrooms: 'bedrooms',
     bathrooms: 'bathrooms',
     areaM2: 'areaM2',
@@ -14971,6 +14985,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Inmueble"> | string | null
     address?: StringNullableFilter<"Inmueble"> | string | null
     city?: StringFilter<"Inmueble"> | string
+    propertyType?: StringNullableFilter<"Inmueble"> | string | null
     bedrooms?: IntNullableFilter<"Inmueble"> | number | null
     bathrooms?: IntNullableFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
@@ -14993,6 +15008,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     city?: SortOrder
+    propertyType?: SortOrderInput | SortOrder
     bedrooms?: SortOrderInput | SortOrder
     bathrooms?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
@@ -15018,6 +15034,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Inmueble"> | string | null
     address?: StringNullableFilter<"Inmueble"> | string | null
     city?: StringFilter<"Inmueble"> | string
+    propertyType?: StringNullableFilter<"Inmueble"> | string | null
     bedrooms?: IntNullableFilter<"Inmueble"> | number | null
     bathrooms?: IntNullableFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
@@ -15040,6 +15057,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     city?: SortOrder
+    propertyType?: SortOrderInput | SortOrder
     bedrooms?: SortOrderInput | SortOrder
     bathrooms?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
@@ -15065,6 +15083,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Inmueble"> | string | null
     address?: StringNullableWithAggregatesFilter<"Inmueble"> | string | null
     city?: StringWithAggregatesFilter<"Inmueble"> | string
+    propertyType?: StringNullableWithAggregatesFilter<"Inmueble"> | string | null
     bedrooms?: IntNullableWithAggregatesFilter<"Inmueble"> | number | null
     bathrooms?: IntNullableWithAggregatesFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableWithAggregatesFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
@@ -15791,6 +15810,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -15813,6 +15833,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -15833,6 +15854,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15855,6 +15877,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15876,6 +15899,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -15892,6 +15916,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15909,6 +15934,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -16784,6 +16810,7 @@ export namespace Prisma {
     description?: SortOrder
     address?: SortOrder
     city?: SortOrder
+    propertyType?: SortOrder
     bedrooms?: SortOrder
     bathrooms?: SortOrder
     areaM2?: SortOrder
@@ -16808,6 +16835,7 @@ export namespace Prisma {
     description?: SortOrder
     address?: SortOrder
     city?: SortOrder
+    propertyType?: SortOrder
     bedrooms?: SortOrder
     bathrooms?: SortOrder
     areaM2?: SortOrder
@@ -16825,6 +16853,7 @@ export namespace Prisma {
     description?: SortOrder
     address?: SortOrder
     city?: SortOrder
+    propertyType?: SortOrder
     bedrooms?: SortOrder
     bathrooms?: SortOrder
     areaM2?: SortOrder
@@ -18631,6 +18660,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -18651,6 +18681,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -18936,6 +18967,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Inmueble"> | string | null
     address?: StringNullableFilter<"Inmueble"> | string | null
     city?: StringFilter<"Inmueble"> | string
+    propertyType?: StringNullableFilter<"Inmueble"> | string | null
     bedrooms?: IntNullableFilter<"Inmueble"> | number | null
     bathrooms?: IntNullableFilter<"Inmueble"> | number | null
     areaM2?: DecimalNullableFilter<"Inmueble"> | Decimal | DecimalJsLike | number | string | null
@@ -19533,6 +19565,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -19554,6 +19587,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -19676,6 +19710,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -19697,6 +19732,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -20008,6 +20044,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -20029,6 +20066,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -20064,6 +20102,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -20085,6 +20124,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -20157,6 +20197,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -20178,6 +20219,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -20272,6 +20314,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -20293,6 +20336,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -20589,6 +20633,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -20610,6 +20655,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -20704,6 +20750,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -20725,6 +20772,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -20968,6 +21016,7 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    propertyType?: string | null
     bedrooms?: number | null
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
@@ -21049,6 +21098,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -21069,6 +21119,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -21089,6 +21140,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
     bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null

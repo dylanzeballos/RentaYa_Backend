@@ -1,33 +1,30 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const createInmuebleSchema = z.object({
   body: z.object({
-    title: z.string()
-      .min(3, 'El título debe tener al menos 3 caracteres')
-      .max(100, 'El título no debe exceder los 100 caracteres'),
-    description: z.string()
+    title: z
+      .string()
+      .min(3, "El título debe tener al menos 3 caracteres")
+      .max(100, "El título no debe exceder los 100 caracteres"),
+    description: z.string().optional(),
+    address: z
+      .string()
+      .regex(
+        /^[A-Za-zÀ-ÿ0-9\s.,'’-]+$/,
+        "La dirección contiene caracteres inválidos"
+      )
+      .max(50, "La dirección no debe exceder los 50 caracteres"),
+    city: z.string().optional(),
+    propertyType: z
+      .enum(["casa", "departamento", "oficina", "terreno"])
       .optional(),
-    address: z.string()
-      .regex(/^[A-Za-zÀ-ÿ0-9\s.,'’-]+$/, 'La dirección contiene caracteres inválidos')
-      .max(50, 'La dirección no debe exceder los 50 caracteres'),
-    city: z.string()
-      .optional(),
-    bedrooms: z.number()
-      .int()
-      .positive()
-      .optional(),
-    bathrooms: z.number()
-      .int()
-      .positive()
-      .optional(),
-    areaM2: z.number()
-      .positive()
-      .optional(),
-    price: z.number()
-      .positive(),
-    operationType: z.enum(['alquiler', 'anticretico']),
+    bedrooms: z.number().int().positive().optional(),
+    bathrooms: z.number().int().positive().optional(),
+    areaM2: z.number().positive().optional(),
+    price: z.number().positive(),
+    operationType: z.enum(["alquiler", "anticretico", "venta"]),
     photos: z.array(z.string().url()).optional(),
-  })
+  }),
 });
 
 export const updateInmuebleSchema = z
@@ -81,7 +78,7 @@ export const listInmueblesSchema = z.object({
     operationType: z.string().optional(),
     minPrice: z.string().optional(),
     maxPrice: z.string().optional(),
-  })
+  }),
 });
 
 export const getInmuebleDetailSchema = z.object({

@@ -45,6 +45,7 @@ model Inmueble {
   description     String?  @db.Text
   address         String?  @db.VarChar(500)
   city            String   @default("Cochabamba") @db.VarChar(100)
+  propertyType    String?  @db.VarChar(50) // 'casa', 'departamento', 'oficina', 'terreno'
   bedrooms        Int?
   bathrooms       Int?
   areaM2          Decimal? @db.Decimal(10, 2)
