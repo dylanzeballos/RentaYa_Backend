@@ -1,31 +1,29 @@
-import { Router } from 'express';
-import { InmuebleRepository } from '../repositories/InmuebleRepository';
-import { CreateInmuebleUseCase } from '@/features/inmueble/application/usecases/CreateInmubleUseCase';
-import { InmuebleController } from '../controllers/InmubleController';
-import { validateSchema } from '@/shared/infrastructure/validation/validateSchema';
-import { createInmuebleSchema } from '../validation/inmuebleSchema';
-import { getInmuebleDetailSchema } from '../validation/inmuebleSchema';
-import { authMiddleware } from '@/shared/infrastructure/middleware/AuthMiddleware';
-import { GetInmuebleDetailUseCase } from '@/features/inmueble/application/usecases/GetInmuebleDetailUseCase';
-import { ListInmueblesUseCase } from '@/features/inmueble/application/usecases/ListInmuebleUseCase';
+import { Router } from "express";
+import { InmuebleController } from "../controllers/InmuebleController";
+import { authMiddleware } from "@/shared/infrastructure/middleware/AuthMiddleware";
+import { ImageUploadService } from "@/shared/infrastructure/services/ImageUploadService";
 
+const router = Router();
+const inmuebleController = new InmuebleController();
+const imageUploadService = new ImageUploadService();
 
+router.get("/", inmuebleController.listInmuebles);
+router.get("/:id", inmuebleController.getInmuebleDetail);
 
-const router: Router = Router();
-const repo = new InmuebleRepository();
-const createUseCase = new CreateInmuebleUseCase(repo);
-const getDetailUseCase = new GetInmuebleDetailUseCase(repo);
-const listUseCase = new ListInmueblesUseCase(repo);
+router.post(
+  "/",
+  authMiddleware.authenticate,
+  imageUploadService.upload.array("photos", 10),
+  inmuebleController.createInmueble
+);
 
-const controller = new InmuebleController(createUseCase, getDetailUseCase, listUseCase );
+router.put(
+  "/:id",
+  authMiddleware.authenticate,
+  imageUploadService.upload.array("photos", 10),
+  inmuebleController.updateInmueble
+);
 
-
-
-router.post('/inmuebles', authMiddleware.authenticate, validateSchema(createInmuebleSchema), controller.crearInmueble);
-
-router.get('/inmuebles', controller.listInmuebles);
-
-router.get('/detail/inmuebles/:id', validateSchema(getInmuebleDetailSchema), controller.getInmuebleDetail);
-
+router.delete("/:id", authMiddleware.authenticate, inmuebleController.deleteInmueble);
 
 export default router;
