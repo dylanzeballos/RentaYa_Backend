@@ -5,8 +5,6 @@ import { RefreshTokenUseCase } from "@/features/auth/application/usecases/Refres
 import { asyncHandler } from "@/shared/infrastructure/utils/asyncHandler";
 import { ApiResponse } from "@/shared/infrastructure/utils/ApiResponse";
 import { GoogleLoginUseCase } from "@/features/auth/application/usecases/GoogleLoginUseCase";
-import { googleLoginSchema } from "@/shared/infrastructure/validation/authSchema";
-import { validateSchema } from "@/shared/infrastructure/validation/validateSchema";
 
 export class AuthController {
     constructor(
