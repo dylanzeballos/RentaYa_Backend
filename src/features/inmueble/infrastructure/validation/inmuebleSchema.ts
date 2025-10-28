@@ -41,3 +41,10 @@ export const listInmueblesSchema = z.object({
     maxPrice: z.string().optional(),
   })
 });
+
+export const getInmuebleDetailSchema = z.object({
+  params: z.object({
+    id: z.string().uuid('El ID debe ser un UUID válido')
+  })
+});
+

@@ -44,6 +44,25 @@ export class InmuebleRepository {
         return items;
     }
 
+    async detailInmueble(inmuebleId: string): Promise<any> {
+        const inmueble = await prisma.inmueble.findUnique({
+            where: { id: inmuebleId },
+            include: {
+                propertyPhotos: {
+                    orderBy: { order: 'asc' }
 
-
+                },
+                owner: {
+                    select: {
+                        id: true,
+                        fullName: true,
+                        email: true,
+                        phone: true,
+                        profilePhoto: true,
+                    }
+                }
+            }
+        });
+        return inmueble;
+    }
 }

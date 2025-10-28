@@ -12,11 +12,7 @@ export class CreateInmuebleUseCase {
             throw new AppError('Autenticación requerida', 401);
         }
 
-        // Validación de rol (si está presente)
-        const role = (user as any)?.role;
-        if (role && role !== 'propietario' ) {
-            throw new AppError('Solo los usuarios con rol propietario pueden crear inmuebles', 403);
-        }
+
 
         // Construir payload y delegar al repositorio
         const payload = { ...data, ownerId: resolvedUserId };
