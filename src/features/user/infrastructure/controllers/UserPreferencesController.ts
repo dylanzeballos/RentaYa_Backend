@@ -1,50 +1,51 @@
-import { Request, Response } from 'express';
+import { RequestHandler, Response } from 'express';
 import { SavePreferencesUseCase } from '@/features/user/application/usecases/SavePreferencesUseCase';
 import { GetPreferencesUseCase } from '@/features/user/application/usecases/GetPreferencesUseCase';
 import { UpdatePreferencesUseCase } from '@/features/user/application/usecases/UpdatePreferencesUseCase';
+import { asyncHandler } from '@/shared/infrastructure/utils/asyncHandler';
+import { ApiResponse } from '@/shared/infrastructure/utils/ApiResponse';
+import { AuthenticatedRequest } from '@/shared/infrastructure/middleware/AuthMiddleware';
 
 export class UserPreferencesController {
     constructor(
-        private savePreferencesUseCase: SavePreferencesUseCase,
-        private getPreferencesUseCase: GetPreferencesUseCase,
-        private updatePreferencesUseCase: UpdatePreferencesUseCase
+        private readonly savePreferencesUseCase: SavePreferencesUseCase,
+        private readonly getPreferencesUseCase: GetPreferencesUseCase,
+        private readonly updatePreferencesUseCase: UpdatePreferencesUseCase
     ) {}
 
-    savePreferences = async (req: Request, res: Response) => {
-        try {
-            const result = await this.savePreferencesUseCase.execute(req.body);
-            res.status(201).json(result);
-        } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : 'Internal server error';
-            res.status(500).json({ message: errorMessage });
+    savePreferences: RequestHandler = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
+        const userId = req.user?.userId;
+        
+        if (!userId) {
+            res.status(401).json(ApiResponse.error('Usuario no autenticado'));
+            return;
         }
-    };
 
-    getPreferences = async (req: Request, res: Response) => {
-        try {
-            const { userId } = req.params;
-            if (!userId) {
-                return res.status(400).json({ message: 'userId parameter is required' });
-            }
-            const preferences = await this.getPreferencesUseCase.execute(userId);
-            res.status(200).json(preferences);
-        } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : 'Internal server error';
-            res.status(500).json({ message: errorMessage });
-        }
-    };
+        const result = await this.savePreferencesUseCase.execute({ ...req.body, userId });
+        res.status(201).json(ApiResponse.success(result, 'Preferencias guardadas exitosamente'));
+    });
 
-    updatePreferences = async (req: Request, res: Response) => {
-        try {
-            const { userId } = req.params;
-            if (!userId) {
-                return res.status(400).json({ message: 'userId parameter is required' });
-            }
-            const preferences = await this.updatePreferencesUseCase.execute(userId, req.body);
-            res.status(200).json(preferences);
-        } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : 'Internal server error';
-            res.status(500).json({ message: errorMessage });
+    getPreferences: RequestHandler = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
+        const userId = req.user?.userId;
+        
+        if (!userId) {
+            res.status(401).json(ApiResponse.error('Usuario no autenticado'));
+            return;
         }
-    };
+
+        const preferences = await this.getPreferencesUseCase.execute(userId);
+        res.status(200).json(ApiResponse.success(preferences, 'Preferencias obtenidas exitosamente'));
+    });
+
+    updatePreferences: RequestHandler = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
+        const userId = req.user?.userId;
+        
+        if (!userId) {
+            res.status(401).json(ApiResponse.error('Usuario no autenticado'));
+            return;
+        }
+
+        const preferences = await this.updatePreferencesUseCase.execute(userId, req.body);
+        res.status(200).json(ApiResponse.success(preferences, 'Preferencias actualizadas exitosamente'));
+    });
 }
