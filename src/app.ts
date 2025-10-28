@@ -37,7 +37,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
-app.use('/api', inmuebleRoutes);
+app.use('/api/inmuebles', inmuebleRoutes);
 app.use('/api/users', usersRoutes)
 
 
