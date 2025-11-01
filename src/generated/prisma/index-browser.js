@@ -120,7 +120,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UsuarioScalarFieldEnum = {
+exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   googleId: 'googleId',
   profilePhoto: 'profilePhoto',
@@ -135,7 +135,7 @@ exports.Prisma.UsuarioScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.InmuebleScalarFieldEnum = {
+exports.Prisma.PropertyScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
   title: 'title',
@@ -152,7 +152,7 @@ exports.Prisma.InmuebleScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.InteresScalarFieldEnum = {
+exports.Prisma.InterestScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   propertyId: 'propertyId',
@@ -161,7 +161,7 @@ exports.Prisma.InteresScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.MensajeScalarFieldEnum = {
+exports.Prisma.MessageScalarFieldEnum = {
   id: 'id',
   senderId: 'senderId',
   receiverId: 'receiverId',
@@ -171,7 +171,7 @@ exports.Prisma.MensajeScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.FotoInmuebleScalarFieldEnum = {
+exports.Prisma.PropertyPhotoScalarFieldEnum = {
   id: 'id',
   propertyId: 'propertyId',
   url: 'url',
@@ -179,7 +179,7 @@ exports.Prisma.FotoInmuebleScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.ResenaScalarFieldEnum = {
+exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   propertyId: 'propertyId',
@@ -188,7 +188,7 @@ exports.Prisma.ResenaScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.NotificacionScalarFieldEnum = {
+exports.Prisma.NotificationScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   type: 'type',
@@ -199,7 +199,7 @@ exports.Prisma.NotificacionScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.ReporteScalarFieldEnum = {
+exports.Prisma.ReportScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   type: 'type',
@@ -208,14 +208,14 @@ exports.Prisma.ReporteScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.FavoritoScalarFieldEnum = {
+exports.Prisma.FavoriteScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   propertyId: 'propertyId',
   createdAt: 'createdAt'
 };
 
-exports.Prisma.BusquedaGuardadaScalarFieldEnum = {
+exports.Prisma.SavedSearchScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   searchParameters: 'searchParameters',
@@ -265,16 +265,16 @@ exports.Prisma.JsonNullValueFilter = {
 
 
 exports.Prisma.ModelName = {
-  Usuario: 'Usuario',
-  Inmueble: 'Inmueble',
-  Interes: 'Interes',
-  Mensaje: 'Mensaje',
-  FotoInmueble: 'FotoInmueble',
-  Resena: 'Resena',
-  Notificacion: 'Notificacion',
-  Reporte: 'Reporte',
-  Favorito: 'Favorito',
-  BusquedaGuardada: 'BusquedaGuardada',
+  User: 'User',
+  Property: 'Property',
+  Interest: 'Interest',
+  Message: 'Message',
+  PropertyPhoto: 'PropertyPhoto',
+  Review: 'Review',
+  Notification: 'Notification',
+  Report: 'Report',
+  Favorite: 'Favorite',
+  SavedSearch: 'SavedSearch',
   UserPreference: 'UserPreference'
 };
 
