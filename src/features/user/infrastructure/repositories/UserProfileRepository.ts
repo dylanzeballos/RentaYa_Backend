@@ -2,9 +2,9 @@ import prisma from "@/config/prisma";
 import { UserProfile, UpdateUserProfileData } from "../../domain/UserProfile";
 
 export class UserProfileRepository {
-    async findById(userId: string): Promise<UserProfile | null> {
+    async getUserById(userId: string): Promise<UserProfile | null> {
         try {
-            const user = await prisma.usuario.findUnique({
+            const user = await prisma.user.findUnique({
                 where: { id: userId },
                 select: {
                     id: true,
@@ -25,7 +25,7 @@ export class UserProfileRepository {
 
     async update(userId: string, data: UpdateUserProfileData): Promise<UserProfile> {
         try {
-            const updatedUser = await prisma.usuario.update({
+            const updatedUser = await prisma.user.update({
                 where: { id: userId },
                 data: {
                     ...data,
@@ -51,7 +51,7 @@ export class UserProfileRepository {
 
     async updateProfileImage(userId: string, profileImageUrl: string): Promise<UserProfile> {
         try {
-            const updatedUser = await prisma.usuario.update({
+            const updatedUser = await prisma.user.update({
                 where: { id: userId },
                 data: {
                     profilePhoto: profileImageUrl,
@@ -77,7 +77,7 @@ export class UserProfileRepository {
 
     async delete(userId: string): Promise<void> {
         try {
-            await prisma.usuario.delete({
+            await prisma.user.delete({
                 where: { id: userId },
             });
         } catch (error) {
