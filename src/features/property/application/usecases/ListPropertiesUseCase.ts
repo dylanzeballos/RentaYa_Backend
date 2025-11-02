@@ -1,11 +1,10 @@
-import { InmuebleRepository } from "@/features/inmueble/infrastructure/repositories/InmuebleRepository";
+import { PropertyRepository } from "@/features/property/infrastructure/repositories/PropertyRepository";
 
-export class ListInmueblesUseCase {
-  constructor(private readonly repo: InmuebleRepository) {}
+export class ListPropertiesUseCase {
+  constructor(private readonly repo: PropertyRepository) {}
 
   async execute() {
-    const items = await this.repo.listAllInmuebles();
-    // formatear datos si es necesario
+    const items = await this.repo.listAllProperties();
     const safe = (items || []).map((item: any) => {
       const copy: any = { ...item };
       if (copy.price && typeof copy.price.toString === "function")

@@ -1,11 +1,11 @@
 import prisma from '@/config/prisma';
 import { IAuthRepository } from '@/features/auth/domain/repositories/IAuthRepository';
-import { Usuario } from '@/generated/prisma';
+import { User } from '@/generated/prisma';
 import { GoogleUserData } from '@/shared/domain/types/AuthTypes';
 
 export class AuthRepository implements IAuthRepository {
-    async findUserByEmail(email: string): Promise<Usuario | null> {
-        return prisma.usuario.findUnique({
+    async findUserByEmail(email: string): Promise<User | null> {
+        return prisma.user.findUnique({
             where: { email: email }
         });
     }
@@ -15,50 +15,50 @@ export class AuthRepository implements IAuthRepository {
         passwordHash: string;
         fullName?: string;
         phone?: string;
-    }): Promise<Usuario> {
-        return prisma.usuario.create({
+    }): Promise<User> {
+        return prisma.user.create({
             data: userData
         });
     }
 
-    async updateUser(id: string, data: Partial<Usuario>): Promise<Usuario> {
-        return prisma.usuario.update({
+    async updateUser(id: string, data: Partial<User>): Promise<User> {
+        return prisma.user.update({
             where: { id },
             data
         });
     }
 
-    async findUserByGoogleId(googleId: string): Promise<Usuario | null> {
-        return await prisma.usuario.findUnique({
+    async findUserByGoogleId(googleId: string): Promise<User | null> {
+        return await prisma.user.findUnique({
             where: { googleId }
         });
     }
 
-    async createGoogleUser(userData: GoogleUserData): Promise<Usuario> {
-        return await prisma.usuario.create({
+    async createGoogleUser(userData: GoogleUserData): Promise<User> {
+        return await prisma.user.create({
             data: {
                 googleId: userData.googleId,
                 email: userData.email,
                 fullName: userData.fullName,
                 profilePhoto: userData.profilePhoto || null,
-                role: 'usuario',
-                verificationStatus: 'verificado'
+                role: 'user',
+                verificationStatus: 'verified'
             }
         });
     }
 
-    async updateUserGoogleInfo(userId: string, googleData: Partial<GoogleUserData>): Promise<Usuario> {
-        return await prisma.usuario.update({
+    async updateUserGoogleInfo(userId: string, googleData: Partial<GoogleUserData>): Promise<User> {
+        return await prisma.user.update({
             where: { id: userId },
             data: {
                 ...googleData,
-                verificationStatus: 'verificado'
+                verificationStatus: 'verified'
             }
         });
     }
 
     async saveRefreshToken(userId: string, refreshToken: string): Promise<void> {
-        await prisma.usuario.update({
+        await prisma.user.update({
             where: { id: userId },
             data: { refreshToken }
         });

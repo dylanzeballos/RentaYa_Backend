@@ -5,7 +5,7 @@ export class UpdateUserProfileUseCase {
     constructor(private userProfileRepository: UserProfileRepository) {}
 
     async execute(userId: string, updateData: UpdateUserProfileData): Promise<UserProfileResponse> {
-        const existingUser = await this.userProfileRepository.findById(userId);
+        const existingUser = await this.userProfileRepository.getUserById(userId);
         if (!existingUser) {
             throw new Error('User profile not found');
         }

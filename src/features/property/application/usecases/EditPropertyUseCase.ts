@@ -1,8 +1,8 @@
-import { InmuebleRepository } from "../../infrastructure/repositories/InmuebleRepository";
+import { PropertyRepository } from "../../infrastructure/repositories/PropertyRepository";
 import { AppError } from "@/shared/domain/errors/AppError";
 
 interface EditPropertyInput {
-  inmuebleId: string;
+  propertyId: string;
   userId: string;
   title?: string;
   description?: string | null;
@@ -18,20 +18,20 @@ interface EditPropertyInput {
 }
 
 export class EditPropertyUseCase {
-  constructor(private inmuebleRepository: InmuebleRepository) {}
+  constructor(private propertyRepository: PropertyRepository) {}
 
   async execute(input: EditPropertyInput): Promise<any> {
-    const { inmuebleId, userId, ...updateData } = input;
+    const { propertyId, userId, ...updateData } = input;
 
-    const existingInmueble = await this.inmuebleRepository.detailInmueble(
-      inmuebleId
+    const existingProperty = await this.propertyRepository.getPropertyDetail(
+      propertyId
     );
-    if (!existingInmueble) {
-      throw new AppError("Inmueble not found", 404);
+    if (!existingProperty) {
+      throw new AppError("Property not found", 404);
     }
 
-    const isOwner = await this.inmuebleRepository.verifyOwnership(
-      inmuebleId,
+    const isOwner = await this.propertyRepository.verifyOwnership(
+      propertyId,
       userId
     );
     if (!isOwner) {
@@ -45,11 +45,11 @@ export class EditPropertyUseCase {
       throw new AppError("No updates provided", 400);
     }
 
-    const updatedInmueble = await this.inmuebleRepository.updateInmueble(
-      inmuebleId,
+    const updatedProperty = await this.propertyRepository.updateProperty(
+      propertyId,
       updateData
     );
 
-    return updatedInmueble;
+    return updatedProperty;
   }
 }
