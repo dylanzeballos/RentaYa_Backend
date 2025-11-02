@@ -3,7 +3,7 @@ import { z } from "zod";
 export const createPropertySchema = z.object({
   title: z
     .string()
-    .min(3, "Title must be at least 3 characters")
+    .min(5, "Title must be at least 5 characters")
     .max(100, "Title must not exceed 100 characters"),
   description: z.preprocess(
     (val) => (!val || val === "" ? undefined : val),
