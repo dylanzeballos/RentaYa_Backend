@@ -14,6 +14,8 @@ export class PropertyRepository {
     price: number;
     operationType: string;
     photos?: string[];
+    latitude?: number | null;
+    longitude?: number | null;
   }): Promise<Property> {
     const { photos, ...propertyData } = payload;
 
@@ -83,6 +85,8 @@ export class PropertyRepository {
       operationType?: string;
       photosToAdd?: string[];
       photosToRemove?: string[];
+      latitude?: number | null;
+      longitude?: number | null;
     },
   ): Promise<Property> {
     const { photosToAdd, photosToRemove, ...propertyData } = payload;
