@@ -49,6 +49,8 @@ model Property {
   bathrooms       Int?
   areaM2          Decimal? @db.Decimal(10, 2)
   price           Decimal  @db.Decimal(12, 2)
+  latitude        Decimal? @db.Decimal(10, 8)
+  longitude       Decimal? @db.Decimal(11, 8)
   operationType   String   @db.VarChar(20) // 'rent' or 'sale'
   status          String   @default("available") @db.VarChar(20) // 'available', 'rented'
   createdAt       DateTime @default(now()) @db.Timestamp(0)

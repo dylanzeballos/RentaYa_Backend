@@ -3387,6 +3387,8 @@ export namespace Prisma {
     bathrooms: number | null
     areaM2: Decimal | null
     price: Decimal | null
+    latitude: Decimal | null
+    longitude: Decimal | null
   }
 
   export type PropertySumAggregateOutputType = {
@@ -3394,6 +3396,8 @@ export namespace Prisma {
     bathrooms: number | null
     areaM2: Decimal | null
     price: Decimal | null
+    latitude: Decimal | null
+    longitude: Decimal | null
   }
 
   export type PropertyMinAggregateOutputType = {
@@ -3407,6 +3411,8 @@ export namespace Prisma {
     bathrooms: number | null
     areaM2: Decimal | null
     price: Decimal | null
+    latitude: Decimal | null
+    longitude: Decimal | null
     operationType: string | null
     status: string | null
     createdAt: Date | null
@@ -3424,6 +3430,8 @@ export namespace Prisma {
     bathrooms: number | null
     areaM2: Decimal | null
     price: Decimal | null
+    latitude: Decimal | null
+    longitude: Decimal | null
     operationType: string | null
     status: string | null
     createdAt: Date | null
@@ -3441,6 +3449,8 @@ export namespace Prisma {
     bathrooms: number
     areaM2: number
     price: number
+    latitude: number
+    longitude: number
     operationType: number
     status: number
     createdAt: number
@@ -3454,6 +3464,8 @@ export namespace Prisma {
     bathrooms?: true
     areaM2?: true
     price?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type PropertySumAggregateInputType = {
@@ -3461,6 +3473,8 @@ export namespace Prisma {
     bathrooms?: true
     areaM2?: true
     price?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type PropertyMinAggregateInputType = {
@@ -3474,6 +3488,8 @@ export namespace Prisma {
     bathrooms?: true
     areaM2?: true
     price?: true
+    latitude?: true
+    longitude?: true
     operationType?: true
     status?: true
     createdAt?: true
@@ -3491,6 +3507,8 @@ export namespace Prisma {
     bathrooms?: true
     areaM2?: true
     price?: true
+    latitude?: true
+    longitude?: true
     operationType?: true
     status?: true
     createdAt?: true
@@ -3508,6 +3526,8 @@ export namespace Prisma {
     bathrooms?: true
     areaM2?: true
     price?: true
+    latitude?: true
+    longitude?: true
     operationType?: true
     status?: true
     createdAt?: true
@@ -3612,6 +3632,8 @@ export namespace Prisma {
     bathrooms: number | null
     areaM2: Decimal | null
     price: Decimal
+    latitude: Decimal | null
+    longitude: Decimal | null
     operationType: string
     status: string
     createdAt: Date
@@ -3648,6 +3670,8 @@ export namespace Prisma {
     bathrooms?: boolean
     areaM2?: boolean
     price?: boolean
+    latitude?: boolean
+    longitude?: boolean
     operationType?: boolean
     status?: boolean
     createdAt?: boolean
@@ -3671,6 +3695,8 @@ export namespace Prisma {
     bathrooms?: boolean
     areaM2?: boolean
     price?: boolean
+    latitude?: boolean
+    longitude?: boolean
     operationType?: boolean
     status?: boolean
     createdAt?: boolean
@@ -3689,6 +3715,8 @@ export namespace Prisma {
     bathrooms?: boolean
     areaM2?: boolean
     price?: boolean
+    latitude?: boolean
+    longitude?: boolean
     operationType?: boolean
     status?: boolean
     createdAt?: boolean
@@ -3707,13 +3735,15 @@ export namespace Prisma {
     bathrooms?: boolean
     areaM2?: boolean
     price?: boolean
+    latitude?: boolean
+    longitude?: boolean
     operationType?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "description" | "address" | "city" | "bedrooms" | "bathrooms" | "areaM2" | "price" | "operationType" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "description" | "address" | "city" | "bedrooms" | "bathrooms" | "areaM2" | "price" | "latitude" | "longitude" | "operationType" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
     interests?: boolean | Property$interestsArgs<ExtArgs>
@@ -3749,6 +3779,8 @@ export namespace Prisma {
       bathrooms: number | null
       areaM2: Prisma.Decimal | null
       price: Prisma.Decimal
+      latitude: Prisma.Decimal | null
+      longitude: Prisma.Decimal | null
       operationType: string
       status: string
       createdAt: Date
@@ -4191,6 +4223,8 @@ export namespace Prisma {
     readonly bathrooms: FieldRef<"Property", 'Int'>
     readonly areaM2: FieldRef<"Property", 'Decimal'>
     readonly price: FieldRef<"Property", 'Decimal'>
+    readonly latitude: FieldRef<"Property", 'Decimal'>
+    readonly longitude: FieldRef<"Property", 'Decimal'>
     readonly operationType: FieldRef<"Property", 'String'>
     readonly status: FieldRef<"Property", 'String'>
     readonly createdAt: FieldRef<"Property", 'DateTime'>
@@ -14566,6 +14600,8 @@ export namespace Prisma {
     bathrooms: 'bathrooms',
     areaM2: 'areaM2',
     price: 'price',
+    latitude: 'latitude',
+    longitude: 'longitude',
     operationType: 'operationType',
     status: 'status',
     createdAt: 'createdAt',
@@ -14975,6 +15011,8 @@ export namespace Prisma {
     bathrooms?: IntNullableFilter<"Property"> | number | null
     areaM2?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFilter<"Property"> | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFilter<"Property"> | string
     status?: StringFilter<"Property"> | string
     createdAt?: DateTimeFilter<"Property"> | Date | string
@@ -14997,6 +15035,8 @@ export namespace Prisma {
     bathrooms?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
     price?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     operationType?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -15022,6 +15062,8 @@ export namespace Prisma {
     bathrooms?: IntNullableFilter<"Property"> | number | null
     areaM2?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFilter<"Property"> | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFilter<"Property"> | string
     status?: StringFilter<"Property"> | string
     createdAt?: DateTimeFilter<"Property"> | Date | string
@@ -15044,6 +15086,8 @@ export namespace Prisma {
     bathrooms?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
     price?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     operationType?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -15069,6 +15113,8 @@ export namespace Prisma {
     bathrooms?: IntNullableWithAggregatesFilter<"Property"> | number | null
     areaM2?: DecimalNullableWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalNullableWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     operationType?: StringWithAggregatesFilter<"Property"> | string
     status?: StringWithAggregatesFilter<"Property"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Property"> | Date | string
@@ -15795,6 +15841,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -15817,6 +15865,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -15837,6 +15887,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15859,6 +15911,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15880,6 +15934,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -15896,6 +15952,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15913,6 +15971,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16788,6 +16848,8 @@ export namespace Prisma {
     bathrooms?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     operationType?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -16799,6 +16861,8 @@ export namespace Prisma {
     bathrooms?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type PropertyMaxOrderByAggregateInput = {
@@ -16812,6 +16876,8 @@ export namespace Prisma {
     bathrooms?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     operationType?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -16829,6 +16895,8 @@ export namespace Prisma {
     bathrooms?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     operationType?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -16840,6 +16908,8 @@ export namespace Prisma {
     bathrooms?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -18635,6 +18705,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -18655,6 +18727,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -18940,6 +19014,8 @@ export namespace Prisma {
     bathrooms?: IntNullableFilter<"Property"> | number | null
     areaM2?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFilter<"Property"> | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFilter<"Property"> | string
     status?: StringFilter<"Property"> | string
     createdAt?: DateTimeFilter<"Property"> | Date | string
@@ -19537,6 +19613,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -19558,6 +19636,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -19680,6 +19760,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19701,6 +19783,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20012,6 +20096,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -20033,6 +20119,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -20068,6 +20156,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20089,6 +20179,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20161,6 +20253,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -20182,6 +20276,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -20276,6 +20372,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20297,6 +20395,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20593,6 +20693,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -20614,6 +20716,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -20708,6 +20812,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20729,6 +20835,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20972,6 +21080,8 @@ export namespace Prisma {
     bathrooms?: number | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
     operationType: string
     status?: string
     createdAt?: Date | string
@@ -21053,6 +21163,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21073,6 +21185,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21093,6 +21207,8 @@ export namespace Prisma {
     bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
