@@ -39,6 +39,18 @@ export const createPropertySchema = z.object({
     const parsed = parseFloat(val as string);
     return isNaN(parsed) ? undefined : parsed;
   }, z.number().positive().optional()),
+  latitude: z.preprocess((val) => {
+    if (!val || val === "" || val === "undefined" || val === "null")
+      return undefined;
+    const parsed = parseFloat(val as string);
+    return isNaN(parsed) ? undefined : parsed;
+  }, z.number().min(-90).max(90).optional()),
+  longitude: z.preprocess((val) => {
+    if (!val || val === "" || val === "undefined" || val === "null")
+      return undefined;
+    const parsed = parseFloat(val as string);
+    return isNaN(parsed) ? undefined : parsed;
+  }, z.number().min(-180).max(180).optional()),
   price: z.preprocess(
     (val) => {
       if (!val || val === "" || val === "undefined" || val === "null") {
@@ -105,6 +117,18 @@ export const updatePropertySchema = z
       const parsed = parseFloat(val as string);
       return isNaN(parsed) ? undefined : parsed;
     }, z.number().min(0).nullable().optional()),
+    latitude: z.preprocess((val) => {
+      if (!val || val === "" || val === "undefined" || val === "null")
+        return undefined;
+      const parsed = parseFloat(val as string);
+      return isNaN(parsed) ? undefined : parsed;
+    }, z.number().min(-90).max(90).nullable().optional()),
+    longitude: z.preprocess((val) => {
+      if (!val || val === "" || val === "undefined" || val === "null")
+        return undefined;
+      const parsed = parseFloat(val as string);
+      return isNaN(parsed) ? undefined : parsed;
+    }, z.number().min(-180).max(180).nullable().optional()),
     price: z.preprocess((val) => {
       if (!val || val === "" || val === "undefined" || val === "null")
         return undefined;
