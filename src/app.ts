@@ -10,6 +10,7 @@ import { errorHandler } from '@/shared/infrastructure/middleware/errorHandler';
 //Rutas de features
 import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
 import propertyRoutes from '@/features/property/infrastructure/routes/property.routes';
+import reviewRoutes from '@/features/property/infrastructure/routes/review.routes';
 import usersRoutes from '@/features/user/infrastructure/routes/user.routes';
 
 
@@ -51,6 +52,7 @@ app.get('/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
+app.use('/api/reviews', reviewRoutes);
 app.use('/api/users', usersRoutes)
 
 
