@@ -1,10 +1,12 @@
 import { Router } from "express";
 import { PropertyController } from "../controllers/PropertyController";
+import { FavoriteController } from "../controllers/FavoriteController";
 import { authMiddleware } from "@/shared/infrastructure/middleware/AuthMiddleware";
 import { ImageUploadService } from "@/shared/infrastructure/services/ImageUploadService";
 
 const router = Router();
 const propertyController = new PropertyController();
+const favoriteController = new FavoriteController();
 const imageUploadService = new ImageUploadService();
 
 /**
@@ -329,6 +331,83 @@ router.delete(
   "/:id",
   authMiddleware.authenticate,
   propertyController.deleteProperty,
+);
+
+/**
+ * @swagger
+ * /api/properties/{id}/favorite:
+ *   post:
+ *     summary: Add property to favorites
+ *     tags: [Properties]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Property ID
+ *     responses:
+ *       201:
+ *         description: Property added to favorites
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Property added to favorites
+ *                 data:
+ *                   $ref: '#/components/schemas/Favorite'
+ *       400:
+ *         description: Validation error
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: Property not found
+ *       409:
+ *         description: Already favorited
+ */
+router.post(
+  "/:id/favorite",
+  authMiddleware.authenticate,
+  favoriteController.toggleFavorite,
+);
+
+/**
+ * @swagger
+ * /api/properties/user/favorites:
+ *   get:
+ *     summary: Get current user's favorite properties
+ *     tags: [Properties]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of favorite properties
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Favorite'
+ */
+router.get(
+  "/user/favorites",
+  authMiddleware.authenticate,
+  favoriteController.listMyFavorites,
 );
 
 export default router;
