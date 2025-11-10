@@ -150,4 +150,5 @@ export class PropertyRepository {
       where: { id: propertyId },
     });
   }
+  
 }
