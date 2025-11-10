@@ -1,14 +1,12 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/config/prisma';
 import { UserPreferences } from '@/features/user/domain/UserPreferences';
-
-const prisma = new PrismaClient();
 
 export class UserPreferencesRepository {
     async save(preferences: UserPreferences): Promise<UserPreferences> {
         const created = await prisma.userPreference.create({
             data: {
                 userId: preferences.userId,
-                propertyType: preferences.propertyTypes,
+                propertyTypes: preferences.propertyTypes,
                 modality: preferences.modality,
                 locations: preferences.locations
             }
@@ -28,7 +26,7 @@ export class UserPreferencesRepository {
             where: { userId },
             data: {
                 userId: preferences.userId,
-                propertyType: preferences.propertyTypes,
+                propertyTypes: preferences.propertyTypes,
                 modality: preferences.modality,
                 locations: preferences.locations
                 

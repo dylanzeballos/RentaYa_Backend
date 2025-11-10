@@ -35,12 +35,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.16.3
- * Query Engine version: bb420e667c1820a8c05a38023385f6cc7ef8e83a
+ * Prisma Client JS version: 6.18.0
+ * Query Engine version: 34b5a692b7bd79939a9a2c3ef97d816e749cda2f
  */
 Prisma.prismaVersion = {
-  client: "6.16.3",
-  engine: "bb420e667c1820a8c05a38023385f6cc7ef8e83a"
+  client: "6.18.0",
+  engine: "34b5a692b7bd79939a9a2c3ef97d816e749cda2f"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -92,107 +92,111 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UsuarioScalarFieldEnum = {
+exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   googleId: 'googleId',
-  fotoPerfil: 'fotoPerfil',
-  correoElectronico: 'correoElectronico',
-  contrasenaHash: 'contrasenaHash',
-  nombreCompleto: 'nombreCompleto',
-  telefono: 'telefono',
-  rol: 'rol',
-  estadoVerificacion: 'estadoVerificacion',
+  profilePhoto: 'profilePhoto',
+  email: 'email',
+  passwordHash: 'passwordHash',
+  fullName: 'fullName',
+  phone: 'phone',
+  role: 'role',
+  verificationStatus: 'verificationStatus',
   refreshToken: 'refreshToken',
-  fechaCreacion: 'fechaCreacion',
-  fechaActualizacion: 'fechaActualizacion'
+  resetPasswordToken: 'resetPasswordToken',
+  resetPasswordExpires: 'resetPasswordExpires',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.InmuebleScalarFieldEnum = {
+exports.Prisma.PropertyScalarFieldEnum = {
   id: 'id',
-  propietarioId: 'propietarioId',
-  titulo: 'titulo',
-  descripcion: 'descripcion',
-  direccion: 'direccion',
-  ciudad: 'ciudad',
-  dormitorios: 'dormitorios',
-  banos: 'banos',
+  ownerId: 'ownerId',
+  title: 'title',
+  description: 'description',
+  address: 'address',
+  city: 'city',
+  bedrooms: 'bedrooms',
+  bathrooms: 'bathrooms',
   areaM2: 'areaM2',
-  precio: 'precio',
-  tipoOperacion: 'tipoOperacion',
-  estado: 'estado',
-  fechaCreacion: 'fechaCreacion',
-  fechaActualizacion: 'fechaActualizacion'
+  price: 'price',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  operationType: 'operationType',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.InteresScalarFieldEnum = {
+exports.Prisma.InterestScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  inmuebleId: 'inmuebleId',
-  mensaje: 'mensaje',
-  estado: 'estado',
-  fechaCreacion: 'fechaCreacion'
+  userId: 'userId',
+  propertyId: 'propertyId',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.MensajeScalarFieldEnum = {
+exports.Prisma.MessageScalarFieldEnum = {
   id: 'id',
-  emisorId: 'emisorId',
-  receptorId: 'receptorId',
-  interesId: 'interesId',
-  contenido: 'contenido',
-  leido: 'leido',
-  fechaCreacion: 'fechaCreacion'
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  interestId: 'interestId',
+  content: 'content',
+  read: 'read',
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.FotoInmuebleScalarFieldEnum = {
+exports.Prisma.PropertyPhotoScalarFieldEnum = {
   id: 'id',
-  inmuebleId: 'inmuebleId',
+  propertyId: 'propertyId',
   url: 'url',
-  orden: 'orden',
-  fechaCreacion: 'fechaCreacion'
+  order: 'order',
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.ResenaScalarFieldEnum = {
+exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  inmuebleId: 'inmuebleId',
-  contenido: 'contenido',
-  calificacion: 'calificacion',
-  fechaCreacion: 'fechaCreacion'
+  userId: 'userId',
+  propertyId: 'propertyId',
+  content: 'content',
+  rating: 'rating',
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.NotificacionScalarFieldEnum = {
+exports.Prisma.NotificationScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  tipo: 'tipo',
-  titulo: 'titulo',
-  contenido: 'contenido',
-  leido: 'leido',
+  userId: 'userId',
+  type: 'type',
+  title: 'title',
+  content: 'content',
+  read: 'read',
   metadata: 'metadata',
-  fechaCreacion: 'fechaCreacion'
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.ReporteScalarFieldEnum = {
+exports.Prisma.ReportScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  tipo: 'tipo',
-  parametros: 'parametros',
-  archivoUrl: 'archivoUrl',
-  fechaCreacion: 'fechaCreacion'
+  userId: 'userId',
+  type: 'type',
+  parameters: 'parameters',
+  fileUrl: 'fileUrl',
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.FavoritoScalarFieldEnum = {
+exports.Prisma.FavoriteScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  inmuebleId: 'inmuebleId',
-  fechaCreacion: 'fechaCreacion'
+  userId: 'userId',
+  propertyId: 'propertyId',
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.BusquedaGuardadaScalarFieldEnum = {
+exports.Prisma.SavedSearchScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  parametrosBusqueda: 'parametrosBusqueda',
-  nombreBusqueda: 'nombreBusqueda',
-  fechaCreacion: 'fechaCreacion'
+  userId: 'userId',
+  searchParameters: 'searchParameters',
+  searchName: 'searchName',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.UserPreferenceScalarFieldEnum = {
@@ -237,16 +241,16 @@ exports.Prisma.JsonNullValueFilter = {
 
 
 exports.Prisma.ModelName = {
-  Usuario: 'Usuario',
-  Inmueble: 'Inmueble',
-  Interes: 'Interes',
-  Mensaje: 'Mensaje',
-  FotoInmueble: 'FotoInmueble',
-  Resena: 'Resena',
-  Notificacion: 'Notificacion',
-  Reporte: 'Reporte',
-  Favorito: 'Favorito',
-  BusquedaGuardada: 'BusquedaGuardada',
+  User: 'User',
+  Property: 'Property',
+  Interest: 'Interest',
+  Message: 'Message',
+  PropertyPhoto: 'PropertyPhoto',
+  Review: 'Review',
+  Notification: 'Notification',
+  Report: 'Report',
+  Favorite: 'Favorite',
+  SavedSearch: 'SavedSearch',
   UserPreference: 'UserPreference'
 };
 /**
@@ -260,7 +264,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\Proyectos\\RentaYa_Backend\\src\\generated\\prisma",
+      "value": "C:\\movil\\RentaYa_Backend\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -274,7 +278,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\Proyectos\\RentaYa_Backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\movil\\RentaYa_Backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -282,13 +286,12 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
-  "clientVersion": "6.16.3",
-  "engineVersion": "bb420e667c1820a8c05a38023385f6cc7ef8e83a",
+  "clientVersion": "6.18.0",
+  "engineVersion": "34b5a692b7bd79939a9a2c3ef97d816e749cda2f",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -297,13 +300,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel Usuario {\n  id                   String             @id @default(uuid()) @db.Uuid\n  googleId             String?            @unique\n  fotoPerfil           String?\n  correoElectronico    String             @unique @db.VarChar(255)\n  contrasenaHash       String?\n  nombreCompleto       String?            @db.VarChar(255)\n  telefono             String?            @db.VarChar(20)\n  rol                  String             @default(\"usuario\") @db.VarChar(20)\n  estadoVerificacion   String             @default(\"pendiente\") @db.VarChar(20)\n  refreshToken         String?\n  fechaCreacion        DateTime           @default(now()) @db.Timestamp(0)\n  fechaActualizacion   DateTime           @updatedAt @db.Timestamp(0)\n  busquedasGuardadas   BusquedaGuardada[]\n  favoritos            Favorito[]\n  inmueblesPropietario Inmueble[]\n  Intereses            Interes[]\n  mensajesEmitidos     Mensaje[]          @relation(\"MensajesEmisor\")\n  mensajesRecibidos    Mensaje[]          @relation(\"MensajesReceptor\")\n  notificaciones       Notificacion[]\n  reportes             Reporte[]\n  resenas              Resena[]\n  preferences          UserPreference?    @relation(\"UserPreferences\")\n\n  @@map(\"usuarios\")\n}\n\nmodel Inmueble {\n  id                 String         @id @default(uuid()) @db.Uuid\n  propietarioId      String         @db.Uuid\n  titulo             String         @db.VarChar(255)\n  descripcion        String?\n  direccion          String?        @db.VarChar(500)\n  ciudad             String         @default(\"Cochabamba\") @db.VarChar(100)\n  dormitorios        Int?\n  banos              Int?\n  areaM2             Decimal?       @db.Decimal(10, 2)\n  precio             Decimal        @db.Decimal(12, 2)\n  tipoOperacion      String         @db.VarChar(20)\n  estado             String         @default(\"disponible\") @db.VarChar(20)\n  fechaCreacion      DateTime       @default(now()) @db.Timestamp(0)\n  fechaActualizacion DateTime       @updatedAt @db.Timestamp(0)\n  favoritos          Favorito[]\n  fotosInmueble      FotoInmueble[]\n  propietario        Usuario        @relation(fields: [propietarioId], references: [id], onDelete: Cascade)\n  intereses          Interes[]\n  resenas            Resena[]\n\n  @@index([ciudad])\n  @@index([estado])\n  @@index([precio])\n  @@index([propietarioId])\n  @@map(\"inmuebles\")\n}\n\nmodel Interes {\n  id            String    @id @default(uuid()) @db.Uuid\n  usuarioId     String    @db.Uuid\n  inmuebleId    String    @db.Uuid\n  mensaje       String?\n  estado        String    @default(\"pendiente\") @db.VarChar(20)\n  fechaCreacion DateTime  @default(now()) @db.Timestamp(0)\n  inmueble      Inmueble  @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)\n  usuario       Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)\n  mensajes      Mensaje[]\n\n  @@index([usuarioId])\n  @@index([inmuebleId])\n  @@map(\"intereses\")\n}\n\nmodel Mensaje {\n  id            BigInt   @id @default(autoincrement())\n  emisorId      String   @db.Uuid\n  receptorId    String   @db.Uuid\n  interesId     String?  @db.Uuid\n  contenido     String\n  leido         Boolean  @default(false)\n  fechaCreacion DateTime @default(now()) @db.Timestamp(0)\n  emisor        Usuario  @relation(\"MensajesEmisor\", fields: [emisorId], references: [id], onDelete: Cascade)\n  interes       Interes? @relation(fields: [interesId], references: [id])\n  receptor      Usuario  @relation(\"MensajesReceptor\", fields: [receptorId], references: [id], onDelete: Cascade)\n\n  @@index([emisorId, receptorId])\n  @@index([interesId])\n  @@map(\"mensajes\")\n}\n\nmodel FotoInmueble {\n  id            BigInt   @id @default(autoincrement())\n  inmuebleId    String   @db.Uuid\n  url           String\n  orden         Int?\n  fechaCreacion DateTime @default(now()) @db.Timestamp(0)\n  inmueble      Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)\n\n  @@index([inmuebleId])\n  @@map(\"fotos_inmueble\")\n}\n\nmodel Resena {\n  id            BigInt   @id @default(autoincrement())\n  usuarioId     String   @db.Uuid\n  inmuebleId    String   @db.Uuid\n  contenido     String\n  calificacion  Int\n  fechaCreacion DateTime @default(now()) @db.Timestamp(0)\n  inmueble      Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)\n  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)\n\n  @@index([usuarioId])\n  @@index([inmuebleId])\n  @@map(\"resenas\")\n}\n\nmodel Notificacion {\n  id            String   @id @default(uuid()) @db.Uuid\n  usuarioId     String   @db.Uuid\n  tipo          String   @db.VarChar(50)\n  titulo        String   @db.VarChar(255)\n  contenido     String\n  leido         Boolean  @default(false)\n  metadata      Json?\n  fechaCreacion DateTime @default(now()) @db.Timestamp(0)\n  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)\n\n  @@index([usuarioId])\n  @@index([leido])\n  @@map(\"notificaciones\")\n}\n\nmodel Reporte {\n  id            String   @id @default(uuid()) @db.Uuid\n  usuarioId     String   @db.Uuid\n  tipo          String   @db.VarChar(50)\n  parametros    Json?\n  archivoUrl    String?  @db.VarChar(500)\n  fechaCreacion DateTime @default(now()) @db.Timestamp(0)\n  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)\n\n  @@index([usuarioId])\n  @@map(\"reportes\")\n}\n\nmodel Favorito {\n  id            String   @id @default(uuid()) @db.Uuid\n  usuarioId     String   @db.Uuid\n  inmuebleId    String   @db.Uuid\n  fechaCreacion DateTime @default(now()) @db.Timestamp(0)\n  inmueble      Inmueble @relation(fields: [inmuebleId], references: [id], onDelete: Cascade)\n  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)\n\n  @@unique([usuarioId, inmuebleId])\n  @@index([usuarioId])\n  @@index([inmuebleId])\n  @@map(\"favoritos\")\n}\n\nmodel BusquedaGuardada {\n  id                 String   @id @default(uuid()) @db.Uuid\n  usuarioId          String   @db.Uuid\n  parametrosBusqueda Json\n  nombreBusqueda     String?  @db.VarChar(255)\n  fechaCreacion      DateTime @default(now()) @db.Timestamp(0)\n  usuario            Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)\n\n  @@index([usuarioId])\n  @@map(\"busquedas_guardadas\")\n}\n\nmodel UserPreference {\n  id            String   @id @default(uuid()) @db.Uuid\n  userId        String   @unique @db.Uuid\n  propertyTypes String[]\n  modality      String?\n  locations     String[]\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @updatedAt\n\n  user Usuario @relation(\"UserPreferences\", fields: [userId], references: [id])\n\n  @@map(\"user_preferences\")\n}\n",
-  "inlineSchemaHash": "8c1b23e7074c6083a93dcb998ee7e2e27c9b2f89108b0f0227b9439838b38f57",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel User {\n  id                   String    @id @default(uuid()) @db.Uuid\n  googleId             String?   @unique\n  profilePhoto         String?\n  email                String    @unique @db.VarChar(255)\n  passwordHash         String?\n  fullName             String?   @db.VarChar(255)\n  phone                String?   @db.VarChar(20)\n  role                 String    @default(\"user\") @db.VarChar(20) // 'owner' or 'tenant'\n  verificationStatus   String    @default(\"pending\") @db.VarChar(20)\n  refreshToken         String?\n  resetPasswordToken   String?\n  resetPasswordExpires DateTime? @db.Timestamp(0)\n  createdAt            DateTime  @default(now()) @db.Timestamp(0)\n  updatedAt            DateTime  @updatedAt @db.Timestamp(0)\n\n  // Relations\n  ownedProperties  Property[]\n  interests        Interest[]\n  sentMessages     Message[]       @relation(\"SentMessages\")\n  receivedMessages Message[]       @relation(\"ReceivedMessages\")\n  reviews          Review[]\n  notifications    Notification[]\n  reports          Report[]\n  favorites        Favorite[]\n  savedSearches    SavedSearch[]\n  userPreference   UserPreference? @relation(\"UserPreferences\")\n\n  @@map(\"users\")\n}\n\nmodel Property {\n  id            String   @id @default(uuid()) @db.Uuid\n  ownerId       String   @db.Uuid\n  title         String   @db.VarChar(255)\n  description   String?  @db.Text\n  address       String?  @db.VarChar(500)\n  city          String   @default(\"Cochabamba\") @db.VarChar(100)\n  bedrooms      Int?\n  bathrooms     Int?\n  areaM2        Decimal? @db.Decimal(10, 2)\n  price         Decimal  @db.Decimal(12, 2)\n  latitude      Decimal? @db.Decimal(10, 8)\n  longitude     Decimal? @db.Decimal(11, 8)\n  operationType String   @db.VarChar(20) // 'rent' or 'sale'\n  status        String   @default(\"available\") @db.VarChar(20) // 'available', 'rented'\n  createdAt     DateTime @default(now()) @db.Timestamp(0)\n  updatedAt     DateTime @updatedAt @db.Timestamp(0)\n\n  // Relations\n  owner          User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)\n  interests      Interest[]\n  propertyPhotos PropertyPhoto[]\n  reviews        Review[]\n  favorites      Favorite[]\n\n  @@index([city])\n  @@index([status])\n  @@index([price])\n  @@index([ownerId])\n  @@map(\"properties\")\n}\n\nmodel Interest {\n  id         String   @id @default(uuid()) @db.Uuid\n  userId     String   @db.Uuid\n  propertyId String   @db.Uuid\n  message    String?  @db.Text\n  status     String   @default(\"pending\") @db.VarChar(20)\n  createdAt  DateTime @default(now()) @db.Timestamp(0)\n\n  // Relations\n  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  property Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)\n  messages Message[]\n\n  @@index([userId])\n  @@index([propertyId])\n  @@map(\"interests\")\n}\n\nmodel Message {\n  id         BigInt   @id @default(autoincrement())\n  senderId   String   @db.Uuid\n  receiverId String   @db.Uuid\n  interestId String?  @db.Uuid\n  content    String   @db.Text\n  read       Boolean  @default(false)\n  createdAt  DateTime @default(now()) @db.Timestamp(0)\n\n  // Relations\n  sender   User      @relation(\"SentMessages\", fields: [senderId], references: [id], onDelete: Cascade)\n  receiver User      @relation(\"ReceivedMessages\", fields: [receiverId], references: [id], onDelete: Cascade)\n  interest Interest? @relation(fields: [interestId], references: [id], onDelete: SetNull)\n\n  @@index([senderId, receiverId])\n  @@index([interestId])\n  @@map(\"messages\")\n}\n\nmodel PropertyPhoto {\n  id         BigInt   @id @default(autoincrement())\n  propertyId String   @db.Uuid\n  url        String   @db.Text\n  order      Int?\n  createdAt  DateTime @default(now()) @db.Timestamp(0)\n\n  // Relaciones\n  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)\n\n  @@index([propertyId])\n  @@map(\"property_photos\")\n}\n\nmodel Review {\n  id         BigInt   @id @default(autoincrement())\n  userId     String   @db.Uuid\n  propertyId String   @db.Uuid\n  content    String   @db.Text\n  rating     Int      @db.Integer\n  createdAt  DateTime @default(now()) @db.Timestamp(0)\n\n  // Relations\n  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)\n\n  @@index([userId])\n  @@index([propertyId])\n  @@map(\"reviews\")\n}\n\nmodel Notification {\n  id        String   @id @default(uuid()) @db.Uuid\n  userId    String   @db.Uuid\n  type      String   @db.VarChar(50)\n  title     String   @db.VarChar(255)\n  content   String   @db.Text\n  read      Boolean  @default(false)\n  metadata  Json?\n  createdAt DateTime @default(now()) @db.Timestamp(0)\n\n  // Relations\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@index([userId])\n  @@index([read])\n  @@map(\"notifications\")\n}\n\nmodel Report {\n  id         String   @id @default(uuid()) @db.Uuid\n  userId     String   @db.Uuid\n  type       String   @db.VarChar(50)\n  parameters Json?\n  fileUrl    String?  @db.VarChar(500)\n  createdAt  DateTime @default(now()) @db.Timestamp(0)\n\n  // Relations\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@index([userId])\n  @@map(\"reports\")\n}\n\nmodel Favorite {\n  id         String   @id @default(uuid()) @db.Uuid\n  userId     String   @db.Uuid\n  propertyId String   @db.Uuid\n  createdAt  DateTime @default(now()) @db.Timestamp(0)\n\n  // Relations\n  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)\n\n  @@unique([userId, propertyId])\n  @@index([userId])\n  @@index([propertyId])\n  @@map(\"favorites\")\n}\n\nmodel SavedSearch {\n  id               String   @id @default(uuid()) @db.Uuid\n  userId           String   @db.Uuid\n  searchParameters Json\n  searchName       String?  @db.VarChar(255)\n  createdAt        DateTime @default(now()) @db.Timestamp(0)\n\n  // Relations\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@index([userId])\n  @@map(\"saved_searches\")\n}\n\nmodel UserPreference {\n  id            String   @id @default(uuid()) @db.Uuid\n  userId        String   @unique @db.Uuid\n  propertyTypes String[]\n  modality      String?\n  locations     String[]\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @updatedAt\n\n  user User @relation(\"UserPreferences\", fields: [userId], references: [id])\n\n  @@map(\"user_preferences\")\n}\n",
+  "inlineSchemaHash": "bab0b963e564590f4128a959845c6d9f4a2aae2e67a333f1a768dd27237f9d42",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Usuario\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fotoPerfil\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"correoElectronico\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contrasenaHash\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nombreCompleto\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefono\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"estadoVerificacion\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"fechaActualizacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"busquedasGuardadas\",\"kind\":\"object\",\"type\":\"BusquedaGuardada\",\"relationName\":\"BusquedaGuardadaToUsuario\"},{\"name\":\"favoritos\",\"kind\":\"object\",\"type\":\"Favorito\",\"relationName\":\"FavoritoToUsuario\"},{\"name\":\"inmueblesPropietario\",\"kind\":\"object\",\"type\":\"Inmueble\",\"relationName\":\"InmuebleToUsuario\"},{\"name\":\"Intereses\",\"kind\":\"object\",\"type\":\"Interes\",\"relationName\":\"InteresToUsuario\"},{\"name\":\"mensajesEmitidos\",\"kind\":\"object\",\"type\":\"Mensaje\",\"relationName\":\"MensajesEmisor\"},{\"name\":\"mensajesRecibidos\",\"kind\":\"object\",\"type\":\"Mensaje\",\"relationName\":\"MensajesReceptor\"},{\"name\":\"notificaciones\",\"kind\":\"object\",\"type\":\"Notificacion\",\"relationName\":\"NotificacionToUsuario\"},{\"name\":\"reportes\",\"kind\":\"object\",\"type\":\"Reporte\",\"relationName\":\"ReporteToUsuario\"},{\"name\":\"resenas\",\"kind\":\"object\",\"type\":\"Resena\",\"relationName\":\"ResenaToUsuario\"},{\"name\":\"preferences\",\"kind\":\"object\",\"type\":\"UserPreference\",\"relationName\":\"UserPreferences\"}],\"dbName\":\"usuarios\"},\"Inmueble\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propietarioId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"titulo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"descripcion\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"direccion\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ciudad\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dormitorios\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"banos\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"areaM2\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"precio\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"tipoOperacion\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"estado\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"fechaActualizacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"favoritos\",\"kind\":\"object\",\"type\":\"Favorito\",\"relationName\":\"FavoritoToInmueble\"},{\"name\":\"fotosInmueble\",\"kind\":\"object\",\"type\":\"FotoInmueble\",\"relationName\":\"FotoInmuebleToInmueble\"},{\"name\":\"propietario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"InmuebleToUsuario\"},{\"name\":\"intereses\",\"kind\":\"object\",\"type\":\"Interes\",\"relationName\":\"InmuebleToInteres\"},{\"name\":\"resenas\",\"kind\":\"object\",\"type\":\"Resena\",\"relationName\":\"InmuebleToResena\"}],\"dbName\":\"inmuebles\"},\"Interes\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"usuarioId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"inmuebleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mensaje\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"estado\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"inmueble\",\"kind\":\"object\",\"type\":\"Inmueble\",\"relationName\":\"InmuebleToInteres\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"InteresToUsuario\"},{\"name\":\"mensajes\",\"kind\":\"object\",\"type\":\"Mensaje\",\"relationName\":\"InteresToMensaje\"}],\"dbName\":\"intereses\"},\"Mensaje\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"emisorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"receptorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"interesId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contenido\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"leido\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"emisor\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"MensajesEmisor\"},{\"name\":\"interes\",\"kind\":\"object\",\"type\":\"Interes\",\"relationName\":\"InteresToMensaje\"},{\"name\":\"receptor\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"MensajesReceptor\"}],\"dbName\":\"mensajes\"},\"FotoInmueble\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"inmuebleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"orden\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"inmueble\",\"kind\":\"object\",\"type\":\"Inmueble\",\"relationName\":\"FotoInmuebleToInmueble\"}],\"dbName\":\"fotos_inmueble\"},\"Resena\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"usuarioId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"inmuebleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contenido\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"calificacion\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"inmueble\",\"kind\":\"object\",\"type\":\"Inmueble\",\"relationName\":\"InmuebleToResena\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"ResenaToUsuario\"}],\"dbName\":\"resenas\"},\"Notificacion\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"usuarioId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tipo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"titulo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contenido\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"leido\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"metadata\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"NotificacionToUsuario\"}],\"dbName\":\"notificaciones\"},\"Reporte\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"usuarioId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tipo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"parametros\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"archivoUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"ReporteToUsuario\"}],\"dbName\":\"reportes\"},\"Favorito\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"usuarioId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"inmuebleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"inmueble\",\"kind\":\"object\",\"type\":\"Inmueble\",\"relationName\":\"FavoritoToInmueble\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"FavoritoToUsuario\"}],\"dbName\":\"favoritos\"},\"BusquedaGuardada\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"usuarioId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"parametrosBusqueda\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"nombreBusqueda\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fechaCreacion\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"BusquedaGuardadaToUsuario\"}],\"dbName\":\"busquedas_guardadas\"},\"UserPreference\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propertyTypes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"modality\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"locations\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"UserPreferences\"}],\"dbName\":\"user_preferences\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profilePhoto\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"passwordHash\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"verificationStatus\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"resetPasswordToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"resetPasswordExpires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"ownedProperties\",\"kind\":\"object\",\"type\":\"Property\",\"relationName\":\"PropertyToUser\"},{\"name\":\"interests\",\"kind\":\"object\",\"type\":\"Interest\",\"relationName\":\"InterestToUser\"},{\"name\":\"sentMessages\",\"kind\":\"object\",\"type\":\"Message\",\"relationName\":\"SentMessages\"},{\"name\":\"receivedMessages\",\"kind\":\"object\",\"type\":\"Message\",\"relationName\":\"ReceivedMessages\"},{\"name\":\"reviews\",\"kind\":\"object\",\"type\":\"Review\",\"relationName\":\"ReviewToUser\"},{\"name\":\"notifications\",\"kind\":\"object\",\"type\":\"Notification\",\"relationName\":\"NotificationToUser\"},{\"name\":\"reports\",\"kind\":\"object\",\"type\":\"Report\",\"relationName\":\"ReportToUser\"},{\"name\":\"favorites\",\"kind\":\"object\",\"type\":\"Favorite\",\"relationName\":\"FavoriteToUser\"},{\"name\":\"savedSearches\",\"kind\":\"object\",\"type\":\"SavedSearch\",\"relationName\":\"SavedSearchToUser\"},{\"name\":\"userPreference\",\"kind\":\"object\",\"type\":\"UserPreference\",\"relationName\":\"UserPreferences\"}],\"dbName\":\"users\"},\"Property\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bedrooms\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bathrooms\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"areaM2\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"latitude\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"longitude\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"operationType\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"owner\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PropertyToUser\"},{\"name\":\"interests\",\"kind\":\"object\",\"type\":\"Interest\",\"relationName\":\"InterestToProperty\"},{\"name\":\"propertyPhotos\",\"kind\":\"object\",\"type\":\"PropertyPhoto\",\"relationName\":\"PropertyToPropertyPhoto\"},{\"name\":\"reviews\",\"kind\":\"object\",\"type\":\"Review\",\"relationName\":\"PropertyToReview\"},{\"name\":\"favorites\",\"kind\":\"object\",\"type\":\"Favorite\",\"relationName\":\"FavoriteToProperty\"}],\"dbName\":\"properties\"},\"Interest\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propertyId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"message\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"InterestToUser\"},{\"name\":\"property\",\"kind\":\"object\",\"type\":\"Property\",\"relationName\":\"InterestToProperty\"},{\"name\":\"messages\",\"kind\":\"object\",\"type\":\"Message\",\"relationName\":\"InterestToMessage\"}],\"dbName\":\"interests\"},\"Message\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"senderId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"receiverId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"interestId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"read\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"sender\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SentMessages\"},{\"name\":\"receiver\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"ReceivedMessages\"},{\"name\":\"interest\",\"kind\":\"object\",\"type\":\"Interest\",\"relationName\":\"InterestToMessage\"}],\"dbName\":\"messages\"},\"PropertyPhoto\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"propertyId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"property\",\"kind\":\"object\",\"type\":\"Property\",\"relationName\":\"PropertyToPropertyPhoto\"}],\"dbName\":\"property_photos\"},\"Review\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propertyId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rating\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"ReviewToUser\"},{\"name\":\"property\",\"kind\":\"object\",\"type\":\"Property\",\"relationName\":\"PropertyToReview\"}],\"dbName\":\"reviews\"},\"Notification\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"read\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"metadata\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"NotificationToUser\"}],\"dbName\":\"notifications\"},\"Report\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"parameters\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"fileUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"ReportToUser\"}],\"dbName\":\"reports\"},\"Favorite\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propertyId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"FavoriteToUser\"},{\"name\":\"property\",\"kind\":\"object\",\"type\":\"Property\",\"relationName\":\"FavoriteToProperty\"}],\"dbName\":\"favorites\"},\"SavedSearch\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"searchParameters\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"searchName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SavedSearchToUser\"}],\"dbName\":\"saved_searches\"},\"UserPreference\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propertyTypes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"modality\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"locations\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"UserPreferences\"}],\"dbName\":\"user_preferences\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

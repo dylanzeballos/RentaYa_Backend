@@ -1,66 +1,121 @@
-import prisma from '@/config/prisma';
-import { IAuthRepository } from '@/features/auth/domain/repositories/IAuthRepository';
-import { Usuario } from '@/generated/prisma';
-import { GoogleUserData } from '@/shared/domain/types/AuthTypes';
+import prisma from "@/config/prisma";
+import { IAuthRepository } from "@/features/auth/domain/repositories/IAuthRepository";
+import { User } from "@/generated/prisma";
+import { GoogleUserData } from "@/shared/domain/types/AuthTypes";
 
 export class AuthRepository implements IAuthRepository {
-    async findUserByEmail(email: string): Promise<Usuario | null> {
-        return prisma.usuario.findUnique({
-            where: { email: email }
-        });
-    }
+  async findUserByEmail(email: string): Promise<User | null> {
+    return prisma.user.findUnique({
+      where: { email: email },
+    });
+  }
 
-    async createUser(userData: {
-        email: string;
-        passwordHash: string;
-        fullName?: string;
-        phone?: string;
-    }): Promise<Usuario> {
-        return prisma.usuario.create({
-            data: userData
-        });
-    }
+  async findUserById(userId: string): Promise<User | null> {
+    return prisma.user.findUnique({
+      where: { id: userId },
+    });
+  }
 
-    async updateUser(id: string, data: Partial<Usuario>): Promise<Usuario> {
-        return prisma.usuario.update({
-            where: { id },
-            data
-        });
-    }
+  async createUser(userData: {
+    email: string;
+    passwordHash: string;
+    fullName?: string;
+    phone?: string;
+  }): Promise<User> {
+    return prisma.user.create({
+      data: userData,
+    });
+  }
 
-    async findUserByGoogleId(googleId: string): Promise<Usuario | null> {
-        return await prisma.usuario.findUnique({
-            where: { googleId }
-        });
-    }
+  async updateUser(id: string, data: Partial<User>): Promise<User> {
+    return prisma.user.update({
+      where: { id },
+      data,
+    });
+  }
 
-    async createGoogleUser(userData: GoogleUserData): Promise<Usuario> {
-        return await prisma.usuario.create({
-            data: {
-                googleId: userData.googleId,
-                email: userData.email,
-                fullName: userData.fullName,
-                profilePhoto: userData.profilePhoto || null,
-                role: 'usuario',
-                verificationStatus: 'verificado'
-            }
-        });
-    }
+  async findUserByGoogleId(googleId: string): Promise<User | null> {
+    return await prisma.user.findUnique({
+      where: { googleId },
+    });
+  }
 
-    async updateUserGoogleInfo(userId: string, googleData: Partial<GoogleUserData>): Promise<Usuario> {
-        return await prisma.usuario.update({
-            where: { id: userId },
-            data: {
-                ...googleData,
-                verificationStatus: 'verificado'
-            }
-        });
-    }
+  async createGoogleUser(userData: GoogleUserData): Promise<User> {
+    return await prisma.user.create({
+      data: {
+        googleId: userData.googleId,
+        email: userData.email,
+        fullName: userData.fullName,
+        profilePhoto: userData.profilePhoto || null,
+        role: "user",
+        verificationStatus: "verified",
+      },
+    });
+  }
 
-    async saveRefreshToken(userId: string, refreshToken: string): Promise<void> {
-        await prisma.usuario.update({
-            where: { id: userId },
-            data: { refreshToken }
-        });
-    }
+  async updateUserGoogleInfo(
+    userId: string,
+    googleData: Partial<GoogleUserData>,
+  ): Promise<User> {
+    return await prisma.user.update({
+      where: { id: userId },
+      data: {
+        ...googleData,
+        verificationStatus: "verified",
+      },
+    });
+  }
+
+  async saveRefreshToken(userId: string, refreshToken: string): Promise<void> {
+    await prisma.user.update({
+      where: { id: userId },
+      data: { refreshToken },
+    });
+  }
+
+  async savePasswordResetToken(
+    userId: string,
+    resetToken: string,
+    expiresAt: Date,
+  ): Promise<void> {
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        resetPasswordToken: resetToken,
+        resetPasswordExpires: expiresAt,
+      },
+    });
+  }
+
+  async findUserByResetToken(resetToken: string): Promise<User | null> {
+    return await prisma.user.findFirst({
+      where: {
+        resetPasswordToken: resetToken,
+        resetPasswordExpires: {
+          gt: new Date(), // Token no expirado
+        },
+      },
+    });
+  }
+
+  async updatePassword(userId: string, passwordHash: string): Promise<User> {
+    return await prisma.user.update({
+      where: { id: userId },
+      data: {
+        passwordHash,
+        resetPasswordToken: null,
+        resetPasswordExpires: null,
+      },
+    });
+  }
+
+  async clearPasswordResetToken(userId: string): Promise<void> {
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        resetPasswordToken: null,
+        resetPasswordExpires: null,
+      },
+    });
+  }
 }
