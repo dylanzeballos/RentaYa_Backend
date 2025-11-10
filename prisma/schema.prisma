@@ -12,14 +12,16 @@ datasource db {
 model User {
   id                String   @id @default(uuid()) @db.Uuid
   googleId          String?  @unique
-  profilePhoto      String?  
+  profilePhoto      String?
   email             String   @unique @db.VarChar(255)
-  passwordHash      String?  
+  passwordHash      String?
   fullName          String?  @db.VarChar(255)
   phone             String?  @db.VarChar(20)
   role              String   @default("user")@db.VarChar(20) // 'owner' or 'tenant'
   verificationStatus String   @default("pending") @db.VarChar(20)
   refreshToken      String?
+  resetPasswordToken String?
+  resetPasswordExpires DateTime? @db.Timestamp(0)
   createdAt         DateTime @default(now()) @db.Timestamp(0)
   updatedAt         DateTime @updatedAt @db.Timestamp(0)
 

@@ -99,13 +99,11 @@ export class PropertyController {
 
       if (photosFromBody.length > 0) {
         photoUrls = photosFromBody;
-      }
-      else if (req.body.photos && Array.isArray(req.body.photos)) {
+      } else if (req.body.photos && Array.isArray(req.body.photos)) {
         photoUrls = req.body.photos.filter(
           (url: string) => typeof url === "string" && url.trim() !== "",
         );
-      }
-      else if (req.files && Array.isArray(req.files)) {
+      } else if (req.files && Array.isArray(req.files)) {
         photoUrls = await Promise.all(
           req.files.map((file) =>
             this.imageUploadService.uploadImage(file, "properties"),
@@ -227,8 +225,7 @@ export class PropertyController {
         Array.isArray(validationResult.data.photosToAdd)
       ) {
         newPhotoUrls = validationResult.data.photosToAdd;
-      }
-      else if (req.files && Array.isArray(req.files)) {
+      } else if (req.files && Array.isArray(req.files)) {
         newPhotoUrls = await Promise.all(
           req.files.map((file) =>
             this.imageUploadService.uploadImage(file, "properties"),
@@ -263,6 +260,12 @@ export class PropertyController {
         }),
         ...(validationResult.data.operationType && {
           operationType: validationResult.data.operationType,
+        }),
+        ...(validationResult.data.latitude !== undefined && {
+          latitude: validationResult.data.latitude,
+        }),
+        ...(validationResult.data.longitude !== undefined && {
+          longitude: validationResult.data.longitude,
         }),
         photosToRemove: validationResult.data.photosToRemove,
         photosToAdd: newPhotoUrls.length > 0 ? newPhotoUrls : undefined,
