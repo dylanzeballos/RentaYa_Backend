@@ -29,7 +29,7 @@ export class ReviewController {
   createReview: RequestHandler = asyncHandler(
     async (req: Request, res: Response): Promise<void> => {
       const { userId, propertyId, content, rating } = req.body;
-      if (!userId || !propertyId || !content || typeof rating !== "number") {
+      if (!userId || !propertyId || typeof rating !== "number") {
         throw new AppError("Missing or invalid fields", 400);
       }
       const review = await this.reviewUseCase.createReview({ userId, propertyId, content, rating });
