@@ -1878,6 +1878,7 @@ export namespace Prisma {
     propertyPhotos: number
     reviews: number
     favorites: number
+    reports: number
   }
 
   export type PropertyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1885,6 +1886,7 @@ export namespace Prisma {
     propertyPhotos?: boolean | PropertyCountOutputTypeCountPropertyPhotosArgs
     reviews?: boolean | PropertyCountOutputTypeCountReviewsArgs
     favorites?: boolean | PropertyCountOutputTypeCountFavoritesArgs
+    reports?: boolean | PropertyCountOutputTypeCountReportsArgs
   }
 
   // Custom InputTypes
@@ -1924,6 +1926,13 @@ export namespace Prisma {
    */
   export type PropertyCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FavoriteWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountReportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReportWhereInput
   }
 
 
@@ -3707,6 +3716,7 @@ export namespace Prisma {
     propertyPhotos?: boolean | Property$propertyPhotosArgs<ExtArgs>
     reviews?: boolean | Property$reviewsArgs<ExtArgs>
     favorites?: boolean | Property$favoritesArgs<ExtArgs>
+    reports?: boolean | Property$reportsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -3776,6 +3786,7 @@ export namespace Prisma {
     propertyPhotos?: boolean | Property$propertyPhotosArgs<ExtArgs>
     reviews?: boolean | Property$reviewsArgs<ExtArgs>
     favorites?: boolean | Property$favoritesArgs<ExtArgs>
+    reports?: boolean | Property$reportsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3793,6 +3804,7 @@ export namespace Prisma {
       propertyPhotos: Prisma.$PropertyPhotoPayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
       favorites: Prisma.$FavoritePayload<ExtArgs>[]
+      reports: Prisma.$ReportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4210,6 +4222,7 @@ export namespace Prisma {
     propertyPhotos<T extends Property$propertyPhotosArgs<ExtArgs> = {}>(args?: Subset<T, Property$propertyPhotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews<T extends Property$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Property$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favorites<T extends Property$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, Property$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reports<T extends Property$reportsArgs<ExtArgs> = {}>(args?: Subset<T, Property$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4744,6 +4757,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FavoriteScalarFieldEnum | FavoriteScalarFieldEnum[]
+  }
+
+  /**
+   * Property.reports
+   */
+  export type Property$reportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Report
+     */
+    select?: ReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Report
+     */
+    omit?: ReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportInclude<ExtArgs> | null
+    where?: ReportWhereInput
+    orderBy?: ReportOrderByWithRelationInput | ReportOrderByWithRelationInput[]
+    cursor?: ReportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReportScalarFieldEnum | ReportScalarFieldEnum[]
   }
 
   /**
@@ -10339,14 +10376,30 @@ export namespace Prisma {
 
   export type AggregateReport = {
     _count: ReportCountAggregateOutputType | null
+    _avg: ReportAvgAggregateOutputType | null
+    _sum: ReportSumAggregateOutputType | null
     _min: ReportMinAggregateOutputType | null
     _max: ReportMaxAggregateOutputType | null
+  }
+
+  export type ReportAvgAggregateOutputType = {
+    totalPrice: Decimal | null
+  }
+
+  export type ReportSumAggregateOutputType = {
+    totalPrice: Decimal | null
   }
 
   export type ReportMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    propertyId: string | null
     type: string | null
+    status: string | null
+    totalPrice: Decimal | null
+    startDate: Date | null
+    finishDate: Date | null
+    uploadedAt: Date | null
     fileUrl: string | null
     createdAt: Date | null
   }
@@ -10354,7 +10407,13 @@ export namespace Prisma {
   export type ReportMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    propertyId: string | null
     type: string | null
+    status: string | null
+    totalPrice: Decimal | null
+    startDate: Date | null
+    finishDate: Date | null
+    uploadedAt: Date | null
     fileUrl: string | null
     createdAt: Date | null
   }
@@ -10362,7 +10421,13 @@ export namespace Prisma {
   export type ReportCountAggregateOutputType = {
     id: number
     userId: number
+    propertyId: number
     type: number
+    status: number
+    totalPrice: number
+    startDate: number
+    finishDate: number
+    uploadedAt: number
     parameters: number
     fileUrl: number
     createdAt: number
@@ -10370,10 +10435,24 @@ export namespace Prisma {
   }
 
 
+  export type ReportAvgAggregateInputType = {
+    totalPrice?: true
+  }
+
+  export type ReportSumAggregateInputType = {
+    totalPrice?: true
+  }
+
   export type ReportMinAggregateInputType = {
     id?: true
     userId?: true
+    propertyId?: true
     type?: true
+    status?: true
+    totalPrice?: true
+    startDate?: true
+    finishDate?: true
+    uploadedAt?: true
     fileUrl?: true
     createdAt?: true
   }
@@ -10381,7 +10460,13 @@ export namespace Prisma {
   export type ReportMaxAggregateInputType = {
     id?: true
     userId?: true
+    propertyId?: true
     type?: true
+    status?: true
+    totalPrice?: true
+    startDate?: true
+    finishDate?: true
+    uploadedAt?: true
     fileUrl?: true
     createdAt?: true
   }
@@ -10389,7 +10474,13 @@ export namespace Prisma {
   export type ReportCountAggregateInputType = {
     id?: true
     userId?: true
+    propertyId?: true
     type?: true
+    status?: true
+    totalPrice?: true
+    startDate?: true
+    finishDate?: true
+    uploadedAt?: true
     parameters?: true
     fileUrl?: true
     createdAt?: true
@@ -10434,6 +10525,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ReportAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReportSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ReportMinAggregateInputType
@@ -10464,6 +10567,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ReportCountAggregateInputType | true
+    _avg?: ReportAvgAggregateInputType
+    _sum?: ReportSumAggregateInputType
     _min?: ReportMinAggregateInputType
     _max?: ReportMaxAggregateInputType
   }
@@ -10471,11 +10576,19 @@ export namespace Prisma {
   export type ReportGroupByOutputType = {
     id: string
     userId: string
+    propertyId: string
     type: string
+    status: string
+    totalPrice: Decimal | null
+    startDate: Date | null
+    finishDate: Date | null
+    uploadedAt: Date | null
     parameters: JsonValue | null
     fileUrl: string | null
     createdAt: Date
     _count: ReportCountAggregateOutputType | null
+    _avg: ReportAvgAggregateOutputType | null
+    _sum: ReportSumAggregateOutputType | null
     _min: ReportMinAggregateOutputType | null
     _max: ReportMaxAggregateOutputType | null
   }
@@ -10497,62 +10610,99 @@ export namespace Prisma {
   export type ReportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    propertyId?: boolean
     type?: boolean
+    status?: boolean
+    totalPrice?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    uploadedAt?: boolean
     parameters?: boolean
     fileUrl?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report"]>
 
   export type ReportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    propertyId?: boolean
     type?: boolean
+    status?: boolean
+    totalPrice?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    uploadedAt?: boolean
     parameters?: boolean
     fileUrl?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report"]>
 
   export type ReportSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    propertyId?: boolean
     type?: boolean
+    status?: boolean
+    totalPrice?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    uploadedAt?: boolean
     parameters?: boolean
     fileUrl?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report"]>
 
   export type ReportSelectScalar = {
     id?: boolean
     userId?: boolean
+    propertyId?: boolean
     type?: boolean
+    status?: boolean
+    totalPrice?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    uploadedAt?: boolean
     parameters?: boolean
     fileUrl?: boolean
     createdAt?: boolean
   }
 
-  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "parameters" | "fileUrl" | "createdAt", ExtArgs["result"]["report"]>
+  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyId" | "type" | "status" | "totalPrice" | "startDate" | "finishDate" | "uploadedAt" | "parameters" | "fileUrl" | "createdAt", ExtArgs["result"]["report"]>
   export type ReportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
   }
   export type ReportIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
   }
   export type ReportIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
   }
 
   export type $ReportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Report"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      property: Prisma.$PropertyPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
+      propertyId: string
       type: string
+      status: string
+      totalPrice: Prisma.Decimal | null
+      startDate: Date | null
+      finishDate: Date | null
+      uploadedAt: Date | null
       parameters: Prisma.JsonValue | null
       fileUrl: string | null
       createdAt: Date
@@ -10951,6 +11101,7 @@ export namespace Prisma {
   export interface Prisma__ReportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    property<T extends PropertyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PropertyDefaultArgs<ExtArgs>>): Prisma__PropertyClient<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10982,7 +11133,13 @@ export namespace Prisma {
   interface ReportFieldRefs {
     readonly id: FieldRef<"Report", 'String'>
     readonly userId: FieldRef<"Report", 'String'>
+    readonly propertyId: FieldRef<"Report", 'String'>
     readonly type: FieldRef<"Report", 'String'>
+    readonly status: FieldRef<"Report", 'String'>
+    readonly totalPrice: FieldRef<"Report", 'Decimal'>
+    readonly startDate: FieldRef<"Report", 'DateTime'>
+    readonly finishDate: FieldRef<"Report", 'DateTime'>
+    readonly uploadedAt: FieldRef<"Report", 'DateTime'>
     readonly parameters: FieldRef<"Report", 'Json'>
     readonly fileUrl: FieldRef<"Report", 'String'>
     readonly createdAt: FieldRef<"Report", 'DateTime'>
@@ -14704,7 +14861,13 @@ export namespace Prisma {
   export const ReportScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    propertyId: 'propertyId',
     type: 'type',
+    status: 'status',
+    totalPrice: 'totalPrice',
+    startDate: 'startDate',
+    finishDate: 'finishDate',
+    uploadedAt: 'uploadedAt',
     parameters: 'parameters',
     fileUrl: 'fileUrl',
     createdAt: 'createdAt'
@@ -15060,6 +15223,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoListRelationFilter
     reviews?: ReviewListRelationFilter
     favorites?: FavoriteListRelationFilter
+    reports?: ReportListRelationFilter
   }
 
   export type PropertyOrderByWithRelationInput = {
@@ -15084,6 +15248,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
     favorites?: FavoriteOrderByRelationAggregateInput
+    reports?: ReportOrderByRelationAggregateInput
   }
 
   export type PropertyWhereUniqueInput = Prisma.AtLeast<{
@@ -15111,6 +15276,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoListRelationFilter
     reviews?: ReviewListRelationFilter
     favorites?: FavoriteListRelationFilter
+    reports?: ReportListRelationFilter
   }, "id">
 
   export type PropertyOrderByWithAggregationInput = {
@@ -15496,21 +15662,35 @@ export namespace Prisma {
     NOT?: ReportWhereInput | ReportWhereInput[]
     id?: UuidFilter<"Report"> | string
     userId?: UuidFilter<"Report"> | string
+    propertyId?: UuidFilter<"Report"> | string
     type?: StringFilter<"Report"> | string
+    status?: StringFilter<"Report"> | string
+    totalPrice?: DecimalNullableFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
     parameters?: JsonNullableFilter<"Report">
     fileUrl?: StringNullableFilter<"Report"> | string | null
     createdAt?: DateTimeFilter<"Report"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
   }
 
   export type ReportOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    propertyId?: SortOrder
     type?: SortOrder
+    status?: SortOrder
+    totalPrice?: SortOrderInput | SortOrder
+    startDate?: SortOrderInput | SortOrder
+    finishDate?: SortOrderInput | SortOrder
+    uploadedAt?: SortOrderInput | SortOrder
     parameters?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    property?: PropertyOrderByWithRelationInput
   }
 
   export type ReportWhereUniqueInput = Prisma.AtLeast<{
@@ -15519,23 +15699,38 @@ export namespace Prisma {
     OR?: ReportWhereInput[]
     NOT?: ReportWhereInput | ReportWhereInput[]
     userId?: UuidFilter<"Report"> | string
+    propertyId?: UuidFilter<"Report"> | string
     type?: StringFilter<"Report"> | string
+    status?: StringFilter<"Report"> | string
+    totalPrice?: DecimalNullableFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
     parameters?: JsonNullableFilter<"Report">
     fileUrl?: StringNullableFilter<"Report"> | string | null
     createdAt?: DateTimeFilter<"Report"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
   }, "id">
 
   export type ReportOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    propertyId?: SortOrder
     type?: SortOrder
+    status?: SortOrder
+    totalPrice?: SortOrderInput | SortOrder
+    startDate?: SortOrderInput | SortOrder
+    finishDate?: SortOrderInput | SortOrder
+    uploadedAt?: SortOrderInput | SortOrder
     parameters?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: ReportCountOrderByAggregateInput
+    _avg?: ReportAvgOrderByAggregateInput
     _max?: ReportMaxOrderByAggregateInput
     _min?: ReportMinOrderByAggregateInput
+    _sum?: ReportSumOrderByAggregateInput
   }
 
   export type ReportScalarWhereWithAggregatesInput = {
@@ -15544,7 +15739,13 @@ export namespace Prisma {
     NOT?: ReportScalarWhereWithAggregatesInput | ReportScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Report"> | string
     userId?: UuidWithAggregatesFilter<"Report"> | string
+    propertyId?: UuidWithAggregatesFilter<"Report"> | string
     type?: StringWithAggregatesFilter<"Report"> | string
+    status?: StringWithAggregatesFilter<"Report"> | string
+    totalPrice?: DecimalNullableWithAggregatesFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    startDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
+    uploadedAt?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
     parameters?: JsonNullableWithAggregatesFilter<"Report">
     fileUrl?: StringNullableWithAggregatesFilter<"Report"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
@@ -15904,6 +16105,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateInput = {
@@ -15927,6 +16129,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUpdateInput = {
@@ -15950,6 +16153,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
@@ -15973,6 +16177,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateManyInput = {
@@ -16358,16 +16563,28 @@ export namespace Prisma {
   export type ReportCreateInput = {
     id?: string
     type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutReportsInput
+    property: PropertyCreateNestedOneWithoutReportsInput
   }
 
   export type ReportUncheckedCreateInput = {
     id?: string
     userId: string
+    propertyId: string
     type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: string | null
     createdAt?: Date | string
@@ -16376,16 +16593,28 @@ export namespace Prisma {
   export type ReportUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutReportsNestedInput
+    property?: PropertyUpdateOneRequiredWithoutReportsNestedInput
   }
 
   export type ReportUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16394,7 +16623,13 @@ export namespace Prisma {
   export type ReportCreateManyInput = {
     id?: string
     userId: string
+    propertyId: string
     type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: string | null
     createdAt?: Date | string
@@ -16403,6 +16638,11 @@ export namespace Prisma {
   export type ReportUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16411,7 +16651,13 @@ export namespace Prisma {
   export type ReportUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17366,16 +17612,32 @@ export namespace Prisma {
   export type ReportCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    propertyId?: SortOrder
     type?: SortOrder
+    status?: SortOrder
+    totalPrice?: SortOrder
+    startDate?: SortOrder
+    finishDate?: SortOrder
+    uploadedAt?: SortOrder
     parameters?: SortOrder
     fileUrl?: SortOrder
     createdAt?: SortOrder
   }
 
+  export type ReportAvgOrderByAggregateInput = {
+    totalPrice?: SortOrder
+  }
+
   export type ReportMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    propertyId?: SortOrder
     type?: SortOrder
+    status?: SortOrder
+    totalPrice?: SortOrder
+    startDate?: SortOrder
+    finishDate?: SortOrder
+    uploadedAt?: SortOrder
     fileUrl?: SortOrder
     createdAt?: SortOrder
   }
@@ -17383,9 +17645,19 @@ export namespace Prisma {
   export type ReportMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    propertyId?: SortOrder
     type?: SortOrder
+    status?: SortOrder
+    totalPrice?: SortOrder
+    startDate?: SortOrder
+    finishDate?: SortOrder
+    uploadedAt?: SortOrder
     fileUrl?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type ReportSumOrderByAggregateInput = {
+    totalPrice?: SortOrder
   }
 
   export type FavoriteUserIdPropertyIdCompoundUniqueInput = {
@@ -17979,6 +18251,13 @@ export namespace Prisma {
     connect?: FavoriteWhereUniqueInput | FavoriteWhereUniqueInput[]
   }
 
+  export type ReportCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ReportCreateWithoutPropertyInput, ReportUncheckedCreateWithoutPropertyInput> | ReportCreateWithoutPropertyInput[] | ReportUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutPropertyInput | ReportCreateOrConnectWithoutPropertyInput[]
+    createMany?: ReportCreateManyPropertyInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+  }
+
   export type InterestUncheckedCreateNestedManyWithoutPropertyInput = {
     create?: XOR<InterestCreateWithoutPropertyInput, InterestUncheckedCreateWithoutPropertyInput> | InterestCreateWithoutPropertyInput[] | InterestUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: InterestCreateOrConnectWithoutPropertyInput | InterestCreateOrConnectWithoutPropertyInput[]
@@ -18005,6 +18284,13 @@ export namespace Prisma {
     connectOrCreate?: FavoriteCreateOrConnectWithoutPropertyInput | FavoriteCreateOrConnectWithoutPropertyInput[]
     createMany?: FavoriteCreateManyPropertyInputEnvelope
     connect?: FavoriteWhereUniqueInput | FavoriteWhereUniqueInput[]
+  }
+
+  export type ReportUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ReportCreateWithoutPropertyInput, ReportUncheckedCreateWithoutPropertyInput> | ReportCreateWithoutPropertyInput[] | ReportUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutPropertyInput | ReportCreateOrConnectWithoutPropertyInput[]
+    createMany?: ReportCreateManyPropertyInputEnvelope
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -18095,6 +18381,20 @@ export namespace Prisma {
     deleteMany?: FavoriteScalarWhereInput | FavoriteScalarWhereInput[]
   }
 
+  export type ReportUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ReportCreateWithoutPropertyInput, ReportUncheckedCreateWithoutPropertyInput> | ReportCreateWithoutPropertyInput[] | ReportUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutPropertyInput | ReportCreateOrConnectWithoutPropertyInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutPropertyInput | ReportUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ReportCreateManyPropertyInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutPropertyInput | ReportUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutPropertyInput | ReportUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
+  }
+
   export type InterestUncheckedUpdateManyWithoutPropertyNestedInput = {
     create?: XOR<InterestCreateWithoutPropertyInput, InterestUncheckedCreateWithoutPropertyInput> | InterestCreateWithoutPropertyInput[] | InterestUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: InterestCreateOrConnectWithoutPropertyInput | InterestCreateOrConnectWithoutPropertyInput[]
@@ -18149,6 +18449,20 @@ export namespace Prisma {
     update?: FavoriteUpdateWithWhereUniqueWithoutPropertyInput | FavoriteUpdateWithWhereUniqueWithoutPropertyInput[]
     updateMany?: FavoriteUpdateManyWithWhereWithoutPropertyInput | FavoriteUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: FavoriteScalarWhereInput | FavoriteScalarWhereInput[]
+  }
+
+  export type ReportUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ReportCreateWithoutPropertyInput, ReportUncheckedCreateWithoutPropertyInput> | ReportCreateWithoutPropertyInput[] | ReportUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ReportCreateOrConnectWithoutPropertyInput | ReportCreateOrConnectWithoutPropertyInput[]
+    upsert?: ReportUpsertWithWhereUniqueWithoutPropertyInput | ReportUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ReportCreateManyPropertyInputEnvelope
+    set?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    disconnect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    delete?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
+    update?: ReportUpdateWithWhereUniqueWithoutPropertyInput | ReportUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ReportUpdateManyWithWhereWithoutPropertyInput | ReportUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutInterestsInput = {
@@ -18347,12 +18661,26 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type PropertyCreateNestedOneWithoutReportsInput = {
+    create?: XOR<PropertyCreateWithoutReportsInput, PropertyUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutReportsInput
+    connect?: PropertyWhereUniqueInput
+  }
+
   export type UserUpdateOneRequiredWithoutReportsNestedInput = {
     create?: XOR<UserCreateWithoutReportsInput, UserUncheckedCreateWithoutReportsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReportsInput
     upsert?: UserUpsertWithoutReportsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReportsInput, UserUpdateWithoutReportsInput>, UserUncheckedUpdateWithoutReportsInput>
+  }
+
+  export type PropertyUpdateOneRequiredWithoutReportsNestedInput = {
+    create?: XOR<PropertyCreateWithoutReportsInput, PropertyUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutReportsInput
+    upsert?: PropertyUpsertWithoutReportsInput
+    connect?: PropertyWhereUniqueInput
+    update?: XOR<XOR<PropertyUpdateToOneWithWhereWithoutReportsInput, PropertyUpdateWithoutReportsInput>, PropertyUncheckedUpdateWithoutReportsInput>
   }
 
   export type UserCreateNestedOneWithoutFavoritesInput = {
@@ -18827,6 +19155,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutOwnerInput = {
@@ -18849,6 +19178,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutOwnerInput = {
@@ -19004,14 +19334,26 @@ export namespace Prisma {
   export type ReportCreateWithoutUserInput = {
     id?: string
     type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: string | null
     createdAt?: Date | string
+    property: PropertyCreateNestedOneWithoutReportsInput
   }
 
   export type ReportUncheckedCreateWithoutUserInput = {
     id?: string
+    propertyId: string
     type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: string | null
     createdAt?: Date | string
@@ -19287,7 +19629,13 @@ export namespace Prisma {
     NOT?: ReportScalarWhereInput | ReportScalarWhereInput[]
     id?: UuidFilter<"Report"> | string
     userId?: UuidFilter<"Report"> | string
+    propertyId?: UuidFilter<"Report"> | string
     type?: StringFilter<"Report"> | string
+    status?: StringFilter<"Report"> | string
+    totalPrice?: DecimalNullableFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
     parameters?: JsonNullableFilter<"Report">
     fileUrl?: StringNullableFilter<"Report"> | string | null
     createdAt?: DateTimeFilter<"Report"> | Date | string
@@ -19532,6 +19880,44 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ReportCreateWithoutPropertyInput = {
+    id?: string
+    type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutReportsInput
+  }
+
+  export type ReportUncheckedCreateWithoutPropertyInput = {
+    id?: string
+    userId: string
+    type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReportCreateOrConnectWithoutPropertyInput = {
+    where: ReportWhereUniqueInput
+    create: XOR<ReportCreateWithoutPropertyInput, ReportUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ReportCreateManyPropertyInputEnvelope = {
+    data: ReportCreateManyPropertyInput | ReportCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutOwnedPropertiesInput = {
     update: XOR<UserUpdateWithoutOwnedPropertiesInput, UserUncheckedUpdateWithoutOwnedPropertiesInput>
     create: XOR<UserCreateWithoutOwnedPropertiesInput, UserUncheckedCreateWithoutOwnedPropertiesInput>
@@ -19670,6 +20056,22 @@ export namespace Prisma {
     data: XOR<FavoriteUpdateManyMutationInput, FavoriteUncheckedUpdateManyWithoutPropertyInput>
   }
 
+  export type ReportUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: ReportWhereUniqueInput
+    update: XOR<ReportUpdateWithoutPropertyInput, ReportUncheckedUpdateWithoutPropertyInput>
+    create: XOR<ReportCreateWithoutPropertyInput, ReportUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ReportUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: ReportWhereUniqueInput
+    data: XOR<ReportUpdateWithoutPropertyInput, ReportUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type ReportUpdateManyWithWhereWithoutPropertyInput = {
+    where: ReportScalarWhereInput
+    data: XOR<ReportUpdateManyMutationInput, ReportUncheckedUpdateManyWithoutPropertyInput>
+  }
+
   export type UserCreateWithoutInterestsInput = {
     id?: string
     googleId?: string | null
@@ -19747,6 +20149,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutInterestsInput = {
@@ -19769,6 +20172,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutInterestsInput = {
@@ -19898,6 +20302,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutInterestsInput = {
@@ -19920,6 +20325,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type MessageUpsertWithWhereUniqueWithoutInterestInput = {
@@ -20250,6 +20656,7 @@ export namespace Prisma {
     interests?: InterestCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutPropertyPhotosInput = {
@@ -20272,6 +20679,7 @@ export namespace Prisma {
     interests?: InterestUncheckedCreateNestedManyWithoutPropertyInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutPropertyPhotosInput = {
@@ -20310,6 +20718,7 @@ export namespace Prisma {
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutPropertyPhotosInput = {
@@ -20332,6 +20741,7 @@ export namespace Prisma {
     interests?: InterestUncheckedUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserCreateWithoutReviewsInput = {
@@ -20411,6 +20821,7 @@ export namespace Prisma {
     interests?: InterestCreateNestedManyWithoutPropertyInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutReviewsInput = {
@@ -20433,6 +20844,7 @@ export namespace Prisma {
     interests?: InterestUncheckedCreateNestedManyWithoutPropertyInput
     propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutReviewsInput = {
@@ -20534,6 +20946,7 @@ export namespace Prisma {
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutReviewsInput = {
@@ -20556,6 +20969,7 @@ export namespace Prisma {
     interests?: InterestUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserCreateWithoutNotificationsInput = {
@@ -20735,6 +21149,57 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutReportsInput, UserUncheckedCreateWithoutReportsInput>
   }
 
+  export type PropertyCreateWithoutReportsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    interests?: InterestCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewCreateNestedManyWithoutPropertyInput
+    favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutReportsInput = {
+    id?: string
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    bedrooms?: number | null
+    bathrooms?: number | null
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    operationType: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    interests?: InterestUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutReportsInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutReportsInput, PropertyUncheckedCreateWithoutReportsInput>
+  }
+
   export type UserUpsertWithoutReportsInput = {
     update: XOR<UserUpdateWithoutReportsInput, UserUncheckedUpdateWithoutReportsInput>
     create: XOR<UserCreateWithoutReportsInput, UserUncheckedCreateWithoutReportsInput>
@@ -20796,6 +21261,63 @@ export namespace Prisma {
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
     savedSearches?: SavedSearchUncheckedUpdateManyWithoutUserNestedInput
     userPreference?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type PropertyUpsertWithoutReportsInput = {
+    update: XOR<PropertyUpdateWithoutReportsInput, PropertyUncheckedUpdateWithoutReportsInput>
+    create: XOR<PropertyCreateWithoutReportsInput, PropertyUncheckedCreateWithoutReportsInput>
+    where?: PropertyWhereInput
+  }
+
+  export type PropertyUpdateToOneWithWhereWithoutReportsInput = {
+    where?: PropertyWhereInput
+    data: XOR<PropertyUpdateWithoutReportsInput, PropertyUncheckedUpdateWithoutReportsInput>
+  }
+
+  export type PropertyUpdateWithoutReportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    interests?: InterestUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutReportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    bedrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    bathrooms?: NullableIntFieldUpdateOperationsInput | number | null
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    operationType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    interests?: InterestUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
+    favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserCreateWithoutFavoritesInput = {
@@ -20875,6 +21397,7 @@ export namespace Prisma {
     interests?: InterestCreateNestedManyWithoutPropertyInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutFavoritesInput = {
@@ -20897,6 +21420,7 @@ export namespace Prisma {
     interests?: InterestUncheckedCreateNestedManyWithoutPropertyInput
     propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutFavoritesInput = {
@@ -20998,6 +21522,7 @@ export namespace Prisma {
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutFavoritesInput = {
@@ -21020,6 +21545,7 @@ export namespace Prisma {
     interests?: InterestUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserCreateWithoutSavedSearchesInput = {
@@ -21326,7 +21852,13 @@ export namespace Prisma {
 
   export type ReportCreateManyUserInput = {
     id?: string
+    propertyId: string
     type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: string | null
     createdAt?: Date | string
@@ -21365,6 +21897,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutOwnerInput = {
@@ -21387,6 +21920,7 @@ export namespace Prisma {
     propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutOwnerInput = {
@@ -21544,14 +22078,26 @@ export namespace Prisma {
   export type ReportUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    property?: PropertyUpdateOneRequiredWithoutReportsNestedInput
   }
 
   export type ReportUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21559,7 +22105,13 @@ export namespace Prisma {
 
   export type ReportUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    propertyId?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     parameters?: NullableJsonNullValueInput | InputJsonValue
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21630,6 +22182,20 @@ export namespace Prisma {
   export type FavoriteCreateManyPropertyInput = {
     id?: string
     userId: string
+    createdAt?: Date | string
+  }
+
+  export type ReportCreateManyPropertyInput = {
+    id?: string
+    userId: string
+    type: string
+    status?: string
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    uploadedAt?: Date | string | null
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: string | null
     createdAt?: Date | string
   }
 
@@ -21719,6 +22285,48 @@ export namespace Prisma {
   export type FavoriteUncheckedUpdateManyWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUpdateWithoutPropertyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReportsNestedInput
+  }
+
+  export type ReportUncheckedUpdateWithoutPropertyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportUncheckedUpdateManyWithoutPropertyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parameters?: NullableJsonNullValueInput | InputJsonValue
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

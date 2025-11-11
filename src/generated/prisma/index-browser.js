@@ -206,7 +206,13 @@ exports.Prisma.NotificationScalarFieldEnum = {
 exports.Prisma.ReportScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  propertyId: 'propertyId',
   type: 'type',
+  status: 'status',
+  totalPrice: 'totalPrice',
+  startDate: 'startDate',
+  finishDate: 'finishDate',
+  uploadedAt: 'uploadedAt',
   parameters: 'parameters',
   fileUrl: 'fileUrl',
   createdAt: 'createdAt'
