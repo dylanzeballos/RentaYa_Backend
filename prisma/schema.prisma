@@ -17,8 +17,8 @@ model User {
   passwordHash      String?
   fullName          String?  @db.VarChar(255)
   phone             String?  @db.VarChar(20)
-  role              String   @default("user")@db.VarChar(20) // 'owner' or 'tenant'
-  verificationStatus String   @default("pending") @db.VarChar(20)
+  role              String   @default("user")@db.VarChar(20)
+  verificationStatus String   @default("pendiente") @db.VarChar(20)
   refreshToken      String?
   resetPasswordToken String?
   resetPasswordExpires DateTime? @db.Timestamp(0)
@@ -47,14 +47,12 @@ model Property {
   description     String?  @db.Text
   address         String?  @db.VarChar(500)
   city            String   @default("Cochabamba") @db.VarChar(100)
-  bedrooms        Int?
-  bathrooms       Int?
   areaM2          Decimal? @db.Decimal(10, 2)
   price           Decimal  @db.Decimal(12, 2)
   latitude        Decimal? @db.Decimal(10, 8)
   longitude       Decimal? @db.Decimal(11, 8)
-  operationType   String   @db.VarChar(20) // 'rent' or 'sale'
-  status          String   @default("available") @db.VarChar(20) // 'available', 'rented'
+  operationType   String   @db.VarChar(20) // 'alquiler', 'anticretico'
+  status          String   @default("disponible") @db.VarChar(20) // 'disponible', 'rentado'
   createdAt       DateTime @default(now()) @db.Timestamp(0)
   updatedAt       DateTime @updatedAt @db.Timestamp(0)
 
@@ -78,7 +76,7 @@ model Interest {
   userId     String   @db.Uuid
   propertyId String   @db.Uuid
   message    String?  @db.Text
-  status     String   @default("pending") @db.VarChar(20)
+  status     String   @default("pendiente") @db.VarChar(20)
   createdAt  DateTime @default(now()) @db.Timestamp(0)
 
   // Relations
@@ -164,7 +162,7 @@ model Report {
   userId     String   @db.Uuid
   propertyId   String    @db.Uuid
   type       String   @db.VarChar(50)
-  status       String    @default("pending") @db.VarChar(30)
+  status       String    @default("pendiente") @db.VarChar(30)
   totalPrice   Decimal?  @db.Decimal(10,2)
   startDate    DateTime? @db.Timestamp(0)
   finishDate   DateTime? @db.Timestamp(0)

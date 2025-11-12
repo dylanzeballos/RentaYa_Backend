@@ -137,12 +137,6 @@ router.get("/:id", propertyController.getPropertyDetail);
  *               city:
  *                 type: string
  *                 example: Cochabamba
- *               bedrooms:
- *                 type: integer
- *                 example: 2
- *               bathrooms:
- *                 type: integer
- *                 example: 1
  *               areaM2:
  *                 type: number
  *                 example: 85.5
@@ -226,10 +220,6 @@ router.post(
  *                 type: string
  *               city:
  *                 type: string
- *               bedrooms:
- *                 type: integer
- *               bathrooms:
- *                 type: integer
  *               areaM2:
  *                 type: number
  *               price:

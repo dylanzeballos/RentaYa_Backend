@@ -144,8 +144,6 @@ exports.Prisma.PropertyScalarFieldEnum = {
   description: 'description',
   address: 'address',
   city: 'city',
-  bedrooms: 'bedrooms',
-  bathrooms: 'bathrooms',
   areaM2: 'areaM2',
   price: 'price',
   latitude: 'latitude',

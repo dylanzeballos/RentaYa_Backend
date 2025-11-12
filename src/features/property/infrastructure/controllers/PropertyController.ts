@@ -246,12 +246,6 @@ export class PropertyController {
           address: validationResult.data.address,
         }),
         ...(validationResult.data.city && { city: validationResult.data.city }),
-        ...(validationResult.data.bedrooms !== undefined && {
-          bedrooms: validationResult.data.bedrooms,
-        }),
-        ...(validationResult.data.bathrooms !== undefined && {
-          bathrooms: validationResult.data.bathrooms,
-        }),
         ...(validationResult.data.areaM2 !== undefined && {
           areaM2: validationResult.data.areaM2,
         }),

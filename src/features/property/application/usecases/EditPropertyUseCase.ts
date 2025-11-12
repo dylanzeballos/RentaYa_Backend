@@ -8,8 +8,6 @@ interface EditPropertyInput {
   description?: string | null;
   address?: string | null;
   city?: string;
-  bedrooms?: number | null;
-  bathrooms?: number | null;
   areaM2?: number | null;
   price?: number;
   operationType?: string;
