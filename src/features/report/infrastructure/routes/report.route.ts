@@ -7,6 +7,7 @@ const router = Router();
 const reportController = new ReportController();
 
 router.post('/', authMiddleware.authenticate, validateCreateReport, reportController.createReport);
+router.post('/email', authMiddleware.authenticate, validateCreateReport, reportController.createReportByEmail);
 router.get('/:userId/:propertyId', authMiddleware.authenticate, reportController.getReportsByUserAndProperty);
 
 export default router;
