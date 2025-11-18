@@ -12,6 +12,7 @@ import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
 import propertyRoutes from '@/features/property/infrastructure/routes/property.routes';
 import reviewRoutes from '@/features/property/infrastructure/routes/review.routes';
 import usersRoutes from '@/features/user/infrastructure/routes/user.routes';
+import reports from '@/features/report/infrastructure/routes/report.route';
 
 
 const app: Express= express();
@@ -54,6 +55,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/users', usersRoutes)
+app.use('/api/reports', reports)
+
 
 
 /* app.use('*', (req, res) => {
