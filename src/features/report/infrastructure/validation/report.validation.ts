@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 
 export function validateCreateReport(req: Request, res: Response, next: NextFunction) {
-  const { userId, propertyId, type } = req.body;
-  if (!userId || !propertyId || !type) {
+  const { userId, email, propertyId } = req.body;
+  // Allow creating a report either by `userId` or by `email` (for the /email endpoint)
+  if ((!userId && !email) || !propertyId) {
     return res.status(400).json({
       success: false,
-      message: "userId, propertyId and type are required",
+      message: "userId (or email) and propertyId are required",
     });
   }
   next();

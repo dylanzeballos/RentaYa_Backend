@@ -1,5 +1,6 @@
 import prisma from "@/config/prisma";
 import { Report } from "@/generated/prisma";
+import { AppError } from "@/shared/domain/errors/AppError";
 
 export class ReportRepository {
   async createReport(payload: {
@@ -27,5 +28,40 @@ export class ReportRepository {
       where: { userId, propertyId },
       orderBy: { createdAt: "desc" },
     });
+  }
+
+  async createReportByEmail(payload: {
+    email: string;
+    propertyId: string;
+    type: string;
+    status?: string;
+    totalPrice?: any;
+    startDate?: Date;
+    finishDate?: Date;
+    uploadedAt?: Date;
+    parameters?: any;
+    fileUrl?: string;
+  }): Promise<Report> {
+    const { email, ...rest } = payload;
+    const user = await prisma.user.findUnique({ where: { email } });
+    if (!user) {
+      throw AppError.notFound(`User with email ${email} not found`);
+    }
+
+    const data: any = {
+      userId: user.id,
+      propertyId: rest.propertyId,
+      type: rest.type,
+    };
+
+    if (rest.status !== undefined) data.status = rest.status;
+    if (rest.totalPrice !== undefined) data.totalPrice = rest.totalPrice;
+    if (rest.startDate !== undefined) data.startDate = rest.startDate;
+    if (rest.finishDate !== undefined) data.finishDate = rest.finishDate;
+    if (rest.uploadedAt !== undefined) data.uploadedAt = rest.uploadedAt;
+    if (rest.parameters !== undefined) data.parameters = rest.parameters;
+    if (rest.fileUrl !== undefined) data.fileUrl = rest.fileUrl;
+
+    return await prisma.report.create({ data });
   }
 }

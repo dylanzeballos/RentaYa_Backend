@@ -22,6 +22,21 @@ export class ReportUseCase {
     return await this.reportRepository.createReport(payload);
   }
 
+  async createReportByEmail(payload: {
+    email: string;
+    propertyId: string;
+    type: string;
+    status?: string;
+    totalPrice?: any;
+    startDate?: Date;
+    finishDate?: Date;
+    uploadedAt?: Date;
+    parameters?: any;
+    fileUrl?: string;
+  }) {
+    return await this.reportRepository.createReportByEmail(payload as any);
+  }
+
   async getReportsByUserAndProperty(userId: string, propertyId: string) {
     return await this.reportRepository.getReportsByUserAndProperty(userId, propertyId);
   }

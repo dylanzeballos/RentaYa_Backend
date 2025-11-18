@@ -63,5 +63,47 @@ export class ReportController {
       });
     }
   );
+
+  createReportByEmail: RequestHandler = asyncHandler(
+    async (req: Request, res: Response): Promise<void> => {
+      const {
+        email,
+        propertyId,
+        type,
+        status,
+        totalPrice,
+        startDate,
+        finishDate,
+        uploadedAt,
+        parameters,
+        fileUrl,
+      } = req.body;
+
+      if (!email || !propertyId) {
+        throw new AppError("email and propertyId are required", 400);
+      }
+
+      const resolvedType = type ?? "email";
+
+      const report = await this.reportUseCase.createReportByEmail({
+        email,
+        propertyId,
+        type: resolvedType,
+        status,
+        totalPrice,
+        startDate,
+        finishDate,
+        uploadedAt,
+        parameters,
+        fileUrl,
+      });
+
+      res.status(201).json({
+        success: true,
+        data: report,
+        message: "Report created successfully",
+      });
+    }
+  );
 }
 
