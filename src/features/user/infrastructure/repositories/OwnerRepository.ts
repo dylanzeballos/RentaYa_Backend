@@ -50,4 +50,30 @@ export class OwnerRepository {
             totalReviews,
         };
     }
+
+    async getReportsByOwner(ownerId: string) {
+        // Find all reports for properties that belong to the owner.
+        // We include property and user to provide context in the API.
+        const reports = await prisma.report.findMany({
+            where: {
+                property: {
+                    ownerId,
+                },
+            },
+            include: {
+                property: true,
+                user: {
+                    select: {
+                        id: true,
+                        email: true,
+                        fullName: true,
+                        profilePhoto: true,
+                    },
+                },
+            },
+            orderBy: { createdAt: 'desc' },
+        });
+
+        return reports;
+    }
 }

@@ -13,6 +13,7 @@ import { GetPreferencesUseCase } from '../../application/usecases/GetPreferences
 import { SavePreferencesUseCase } from '../../application/usecases/SavePreferencesUseCase';
 import { UpdatePreferencesUseCase } from '../../application/usecases/UpdatePreferencesUseCase';
 import { GetOwnerStatsUseCase } from '../../application/usecases/GetOwnerStatsUseCase';
+import { GetOwnerReportsUseCase } from '../../application/usecases/GetOwnerReportsUseCase';
 import { OwnerRepository } from '../repositories/OwnerRepository';
 import { ImageUploadService } from '@/shared/infrastructure/services/ImageUploadService';
 import { validateSchema } from '@/shared/infrastructure/validation/validateSchema';
@@ -54,8 +55,10 @@ const userPreferencesController = new UserPreferencesController(
 // Owner stats: create repository, usecase and controller
 const ownerRepository = new OwnerRepository();
 const getOwnerStatsUseCase = new GetOwnerStatsUseCase(ownerRepository);
+const getOwnerReportsUseCase = new GetOwnerReportsUseCase(ownerRepository);
 const userOwnerController = new UserOwnerController(
-    getOwnerStatsUseCase
+    getOwnerStatsUseCase,
+    getOwnerReportsUseCase
 );
 
 // Profile Routes
@@ -343,6 +346,7 @@ router.get('/preferences', authMiddleware.authenticate, userPreferencesControlle
 router.put('/preferences', authMiddleware.authenticate, userPreferencesController.updatePreferences);
 
 router.get('/properties/stats', authMiddleware.authenticate, userOwnerController.getOwnerPropertyStats);
+router.get('/properties/reports', authMiddleware.authenticate, userOwnerController.getOwnerReports);
 
 
 export default router;
