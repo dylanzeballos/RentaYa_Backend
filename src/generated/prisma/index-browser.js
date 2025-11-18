@@ -131,10 +131,10 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role',
   verificationStatus: 'verificationStatus',
   refreshToken: 'refreshToken',
-  resetPasswordToken: 'resetPasswordToken',
-  resetPasswordExpires: 'resetPasswordExpires',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  resetPasswordExpires: 'resetPasswordExpires',
+  resetPasswordToken: 'resetPasswordToken'
 };
 
 exports.Prisma.PropertyScalarFieldEnum = {
@@ -146,12 +146,12 @@ exports.Prisma.PropertyScalarFieldEnum = {
   city: 'city',
   areaM2: 'areaM2',
   price: 'price',
-  latitude: 'latitude',
-  longitude: 'longitude',
   operationType: 'operationType',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  latitude: 'latitude',
+  longitude: 'longitude'
 };
 
 exports.Prisma.InterestScalarFieldEnum = {
@@ -198,22 +198,24 @@ exports.Prisma.NotificationScalarFieldEnum = {
   content: 'content',
   read: 'read',
   metadata: 'metadata',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  deleted: 'deleted',
+  pushSent: 'pushSent'
 };
 
 exports.Prisma.ReportScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  propertyId: 'propertyId',
   type: 'type',
-  status: 'status',
-  totalPrice: 'totalPrice',
-  startDate: 'startDate',
-  finishDate: 'finishDate',
-  uploadedAt: 'uploadedAt',
   parameters: 'parameters',
   fileUrl: 'fileUrl',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  finishDate: 'finishDate',
+  propertyId: 'propertyId',
+  startDate: 'startDate',
+  status: 'status',
+  totalPrice: 'totalPrice',
+  uploadedAt: 'uploadedAt'
 };
 
 exports.Prisma.FavoriteScalarFieldEnum = {
@@ -237,6 +239,16 @@ exports.Prisma.UserPreferenceScalarFieldEnum = {
   propertyTypes: 'propertyTypes',
   modality: 'modality',
   locations: 'locations',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DeviceTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  token: 'token',
+  platform: 'platform',
+  active: 'active',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -283,7 +295,8 @@ exports.Prisma.ModelName = {
   Report: 'Report',
   Favorite: 'Favorite',
   SavedSearch: 'SavedSearch',
-  UserPreference: 'UserPreference'
+  UserPreference: 'UserPreference',
+  DeviceToken: 'DeviceToken'
 };
 
 /**

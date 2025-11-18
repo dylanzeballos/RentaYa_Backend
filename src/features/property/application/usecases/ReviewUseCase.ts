@@ -1,4 +1,7 @@
 import { ReviewRepository } from "@/features/property/infrastructure/repositories/ReviewRepository";
+import { PropertyRepository } from "@/features/property/infrastructure/repositories/PropertyRepository";
+import { NotificationUseCase } from "@/features/notification/application/usecases/NotificationUseCase";
+import { NotificationRepository } from "@/features/notification/infrastructure/repositories/NotificationRepository";
 
 type ReviewDTO = {
   id: string;
@@ -13,19 +16,30 @@ type ReviewDTO = {
 
 function serializeReview(review: any): ReviewDTO {
   return {
-    id: typeof review.id === "bigint" ? review.id.toString() : String(review.id),
+    id:
+      typeof review.id === "bigint" ? review.id.toString() : String(review.id),
     userId: review.userId,
     propertyId: review.propertyId,
     content: review.content,
     rating: review.rating,
-    createdAt: review.createdAt instanceof Date ? review.createdAt.toISOString() : String(review.createdAt),
+    createdAt:
+      review.createdAt instanceof Date
+        ? review.createdAt.toISOString()
+        : String(review.createdAt),
     user: review.user,
     property: review.property,
   };
 }
 
 export class ReviewUseCase {
-  constructor(private readonly repo: ReviewRepository) {}
+  private propertyRepository: PropertyRepository;
+  private notificationUseCase: NotificationUseCase;
+
+  constructor(private readonly repo: ReviewRepository) {
+    this.propertyRepository = new PropertyRepository();
+    const notificationRepository = new NotificationRepository();
+    this.notificationUseCase = new NotificationUseCase(notificationRepository);
+  }
 
   async createReview(payload: {
     userId: string;
@@ -34,6 +48,25 @@ export class ReviewUseCase {
     rating: number;
   }): Promise<ReviewDTO> {
     const review = await this.repo.createReview(payload);
+
+    try {
+      const property = await this.propertyRepository.getPropertyDetail(
+        payload.propertyId,
+      );
+
+      if (property && property.ownerId !== payload.userId) {
+        await this.notificationUseCase.notifyNewReview(
+          property.ownerId,
+          property.title,
+          payload.rating,
+          payload.propertyId,
+          review.id.toString(),
+        );
+      }
+    } catch (error) {
+      console.error("Error enviando notificación de reseña:", error);
+    }
+
     return serializeReview(review);
   }
 
