@@ -4,6 +4,7 @@ import { UserPreferencesRepository } from '@/features/user/infrastructure/reposi
 import { NotificationRepository } from '@/features/notification/infrastructure/repositories/NotificationRepository';
 import { PushNotificationService } from '@/features/notification/application/usecases/PushNotificationService';
 import { NotificationType } from '@/features/notification/domain/types/notification.types';
+import { emitNotificationToUsers } from '@/socket';
 
 export class CreatePropertyUseCase {
     constructor(private repo: PropertyRepository) { }
@@ -42,7 +43,19 @@ export class CreatePropertyUseCase {
                     createdNotifications.push(notif);
                 }
 
-               
+                // Emit real-time notification via sockets
+                try {
+                    const payload = {
+                        type: NotificationType.NEW_PROPERTY,
+                        title: 'Nuevo inmueble disponible',
+                        content: `${created.title} en ${created.city || 'ubicación'}`,
+                        metadata: { propertyId: created.id },
+                        createdAt: new Date().toISOString(),
+                    };
+                    emitNotificationToUsers(recipients, payload);
+                } catch (e) {
+                    console.error('Error emitiendo notificaciones por socket:', e);
+                }
                 const pushService = new PushNotificationService(notificationRepo);
                 await pushService.sendPushToMultipleUsers(
                     recipients,
