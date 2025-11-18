@@ -12,7 +12,7 @@ import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
 import propertyRoutes from '@/features/property/infrastructure/routes/property.routes';
 import reviewRoutes from '@/features/property/infrastructure/routes/review.routes';
 import usersRoutes from '@/features/user/infrastructure/routes/user.routes';
-import reports from '@/features/report/infrastructure/routes/report.route';
+import reportRoutes from '@/features/report/infrastructure/routes/report.route';
 import notificationRoutes from '@/features/notification/infrastructure/routes/notification.routes';
 
 const app: Express = express();
