@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { UserPreferencesController } from '../controllers/UserPreferencesController';
+import { UserOwnerController } from '../controllers/UserOwnerController';
 import { authMiddleware } from '@/shared/infrastructure/middleware/AuthMiddleware';
 import { UserProfileController } from '../controllers/UserProfileController';
 import { UserProfileRepository } from '../repositories/UserProfileRepository';
@@ -11,6 +12,8 @@ import { DeleteUserAccountUseCase } from '../../application/usecases/DeleteUserA
 import { GetPreferencesUseCase } from '../../application/usecases/GetPreferencesUseCase';
 import { SavePreferencesUseCase } from '../../application/usecases/SavePreferencesUseCase';
 import { UpdatePreferencesUseCase } from '../../application/usecases/UpdatePreferencesUseCase';
+import { GetOwnerStatsUseCase } from '../../application/usecases/GetOwnerStatsUseCase';
+import { OwnerRepository } from '../repositories/OwnerRepository';
 import { ImageUploadService } from '@/shared/infrastructure/services/ImageUploadService';
 import { validateSchema } from '@/shared/infrastructure/validation/validateSchema';
 import { updateUserProfileSchema } from '../validation/userProfileSchema';
@@ -47,6 +50,12 @@ const userPreferencesController = new UserPreferencesController(
     savePreferencesUseCase,
     getPreferencesUseCase,
     updatePreferencesUseCase
+);
+// Owner stats: create repository, usecase and controller
+const ownerRepository = new OwnerRepository();
+const getOwnerStatsUseCase = new GetOwnerStatsUseCase(ownerRepository);
+const userOwnerController = new UserOwnerController(
+    getOwnerStatsUseCase
 );
 
 // Profile Routes
@@ -332,5 +341,8 @@ router.get('/preferences', authMiddleware.authenticate, userPreferencesControlle
  *                   $ref: '#/components/schemas/UserPreference'
  */
 router.put('/preferences', authMiddleware.authenticate, userPreferencesController.updatePreferences);
+
+router.get('/properties/stats', authMiddleware.authenticate, userOwnerController.getOwnerPropertyStats);
+
 
 export default router;
