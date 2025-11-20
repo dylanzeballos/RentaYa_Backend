@@ -34,6 +34,9 @@ export class RegisterUseCase {
             role: user.role
         });
 
+        // Guardar el refresh token en la base de datos
+        await this.authRepository.saveRefreshToken(user.id, tokens.refreshToken);
+
         return {
             user: {
                 id: user.id,

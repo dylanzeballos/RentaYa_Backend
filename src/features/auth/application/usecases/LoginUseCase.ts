@@ -30,6 +30,9 @@ export class LoginUseCase {
             role : user.role
         });
 
+        // Guardar el refresh token en la base de datos
+        await this.authRepository.saveRefreshToken(user.id, tokens.refreshToken);
+
         await this.authRepository.updateUser(user.id, { updatedAt: new Date() });
 
         return {
