@@ -11,6 +11,7 @@ import { errorHandler } from "@/shared/infrastructure/middleware/errorHandler";
 import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
 import propertyRoutes from '@/features/property/infrastructure/routes/property.routes';
 import reviewRoutes from '@/features/property/infrastructure/routes/review.routes';
+import interestRoutes from '@/features/property/infrastructure/routes/interest.routes';
 import usersRoutes from '@/features/user/infrastructure/routes/user.routes';
 import reportRoutes from '@/features/report/infrastructure/routes/report.route';
 import notificationRoutes from '@/features/notification/infrastructure/routes/notification.routes';
@@ -25,11 +26,6 @@ app.use(
   }),
 );
 
-const limiter = rateLimit({
-  windowMs: 600 * 60 * 1000, // 15 minutes
-  max: 700, // maximo 100 requests por IP por ventana
-});
-app.use(limiter);
 
 app.use(express.json({ limit: "10mb" })); // Limitar tamaño del body a 10mb
 app.use(express.urlencoded({ extended: true }));
@@ -60,6 +56,7 @@ app.get("/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/properties", propertyRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/interests", interestRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/notifications", notificationRoutes);

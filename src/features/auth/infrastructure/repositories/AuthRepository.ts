@@ -1,6 +1,6 @@
 import prisma from "@/config/prisma";
 import { IAuthRepository } from "@/features/auth/domain/repositories/IAuthRepository";
-import { User } from "@/generated/prisma";
+import { User, UserRole } from "@/generated/prisma";
 import { GoogleUserData } from "@/shared/domain/types/AuthTypes";
 
 export class AuthRepository implements IAuthRepository {
@@ -19,12 +19,23 @@ export class AuthRepository implements IAuthRepository {
   async createUser(userData: {
     email: string;
     passwordHash: string;
-    role: string;
+    role: UserRole;
     fullName?: string;
     phone?: string;
   }): Promise<User> {
+    const createData: any = {
+      email: userData.email,
+      passwordHash: userData.passwordHash,
+      role: userData.role,
+    };
+    if (userData.fullName !== undefined) {
+      createData.fullName = userData.fullName;
+    }
+    if (userData.phone !== undefined) {
+      createData.phone = userData.phone;
+    }
     return prisma.user.create({
-      data: userData,
+      data: createData,
     });
   }
 
@@ -41,7 +52,7 @@ export class AuthRepository implements IAuthRepository {
     });
   }
 
-  async createGoogleUser(userData: GoogleUserData & { role: string }): Promise<User> {
+  async createGoogleUser(userData: GoogleUserData & { role: UserRole }): Promise<User> {
     return await prisma.user.create({
       data: {
         googleId: userData.googleId,

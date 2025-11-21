@@ -45,32 +45,65 @@ model User {
 }
 
 model Property {
-  id             String          @id @default(uuid()) @db.Uuid
-  ownerId        String          @db.Uuid
-  title          String          @db.VarChar(255)
-  description    String?
-  address        String?         @db.VarChar(500)
-  city           String          @default("Cochabamba") @db.VarChar(100)
-  areaM2         Decimal?        @db.Decimal(10, 2)
-  price          Decimal         @db.Decimal(12, 2)
-  operationType  String          @db.VarChar(20)
-  status         String          @default("disponible") @db.VarChar(20)
-  createdAt      DateTime        @default(now()) @db.Timestamp(0)
-  updatedAt      DateTime        @updatedAt @db.Timestamp(0)
-  latitude       Decimal?        @db.Decimal(10, 8)
-  longitude      Decimal?        @db.Decimal(11, 8)
-  favorites      Favorite[]
-  interests      Interest[]
-  owner          User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  propertyPhotos PropertyPhoto[]
-  reports        Report[]
-  reviews        Review[]
+  id              String          @id @default(uuid()) @db.Uuid
+  ownerId         String          @db.Uuid
+  title           String          @db.VarChar(255)
+  description     String?
+  address         String?         @db.VarChar(500)
+  city            String          @default("Cochabamba") @db.VarChar(100)
+  provinceId      String?         @db.Uuid
+  areaM2          Decimal?        @db.Decimal(10, 2)
+  price           Decimal         @db.Decimal(12, 2)
+  operationTypeId String?         @db.Uuid
+  propertyTypeId  String?         @db.Uuid
+  status          String          @default("disponible") @db.VarChar(20)
+  createdAt       DateTime        @default(now()) @db.Timestamp(0)
+  updatedAt       DateTime        @updatedAt @db.Timestamp(0)
+  latitude        Decimal?        @db.Decimal(10, 8)
+  longitude       Decimal?        @db.Decimal(11, 8)
+  favorites       Favorite[]
+  interests       Interest[]
+  owner           User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  operationType   OperationType?   @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
+  propertyType    PropertyType?   @relation(fields: [propertyTypeId], references: [id], onDelete: Cascade)
+  province        Province?       @relation(fields: [provinceId], references: [id], onDelete: SetNull)
+  propertyPhotos  PropertyPhoto[]
+  reports         Report[]
+  reviews         Review[]
 
   @@index([city])
   @@index([status])
   @@index([price])
   @@index([ownerId])
   @@map("properties")
+}
+
+model OperationType {
+  id                           String                        @id @default(uuid()) @db.Uuid
+  name                         String                        @unique @db.VarChar(20)
+  properties                   Property[]
+  userPreferences              UserPreference[]
+  userPreferenceOperationTypes UserPreferenceOperationType[]
+
+  @@map("operation_types")
+}
+
+model PropertyType {
+  id                          String                       @id @default(uuid()) @db.Uuid
+  name                        String                       @unique @db.VarChar(50)
+  properties                  Property[]
+  userPreferencePropertyTypes UserPreferencePropertyType[]
+
+  @@map("property_types")
+}
+
+model Province {
+  id                       String                   @id @default(uuid()) @db.Uuid
+  name                     String                   @unique @db.VarChar(100)
+  properties               Property[]
+  userPreferencesProvinces UserPreferenceProvince[]
+
+  @@map("provinces")
 }
 
 model Interest {
@@ -200,16 +233,51 @@ model SavedSearch {
 }
 
 model UserPreference {
-  id            String   @id @default(uuid()) @db.Uuid
-  userId        String   @unique @db.Uuid
-  propertyTypes String[]
-  modality      String?
-  locations     String[]
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  user          User     @relation("UserPreferences", fields: [userId], references: [id])
+  id                          String                        @id @default(uuid()) @db.Uuid
+  userId                      String                        @unique @db.Uuid
+  createdAt                   DateTime                      @default(now())
+  updatedAt                   DateTime                      @updatedAt
+  user                        User                          @relation("UserPreferences", fields: [userId], references: [id])
+  operationTypes              UserPreferenceOperationType[]
+  userPreferenceProvinces     UserPreferenceProvince[]
+  userPreferencePropertyTypes UserPreferencePropertyType[]
+  OperationType               OperationType?                @relation(fields: [operationTypeId], references: [id])
+  operationTypeId             String?                       @db.Uuid
 
   @@map("user_preferences")
+}
+
+model UserPreferenceProvince {
+  id               String         @id @default(uuid()) @db.Uuid
+  userPreferenceId String         @db.Uuid
+  provinceId       String         @db.Uuid
+  userPreference   UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
+  province         Province       @relation(fields: [provinceId], references: [id], onDelete: Cascade)
+
+  @@unique([userPreferenceId, provinceId])
+  @@map("user_preference_provinces")
+}
+
+model UserPreferencePropertyType {
+  id               String         @id @default(uuid()) @db.Uuid
+  userPreferenceId String         @db.Uuid
+  propertyTypeId   String         @db.Uuid
+  userPreference   UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
+  propertyType     PropertyType   @relation(fields: [propertyTypeId], references: [id], onDelete: Cascade)
+
+  @@unique([userPreferenceId, propertyTypeId])
+  @@map("user_preference_property_types")
+}
+
+model UserPreferenceOperationType {
+  id               String         @id @default(uuid()) @db.Uuid
+  userPreferenceId String         @db.Uuid
+  operationTypeId  String         @db.Uuid
+  userPreference   UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
+  operationType    OperationType  @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
+
+  @@unique([userPreferenceId, operationTypeId])
+  @@map("user_preference_operation_types")
 }
 
 model DeviceToken {

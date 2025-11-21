@@ -6,33 +6,39 @@ export class UserPreferencesRepository {
         const created = await prisma.userPreference.create({
             data: {
                 userId: preferences.userId,
-                propertyTypes: preferences.propertyTypes,
-                modality: preferences.modality,
-                locations: preferences.locations
-            }
+            },
+            include: {
+                operationTypes: true,
+                userPreferenceProvinces: true,
+                userPreferencePropertyTypes: true,
+            },
         });
-        return created;
+        return created as any;
     }
 
     async findByUserId(userId: string): Promise<UserPreferences | null> {
         const found = await prisma.userPreference.findUnique({
-            where: { userId }
+            where: { userId },
+            include: {
+                operationTypes: true,
+                userPreferenceProvinces: true,
+                userPreferencePropertyTypes: true,
+            },
         });
-        return found;
+        return found as any;
     }
 
     async update(userId: string, preferences: UserPreferences): Promise<UserPreferences> {
         const updated = await prisma.userPreference.update({
             where: { userId },
-            data: {
-                userId: preferences.userId,
-                propertyTypes: preferences.propertyTypes,
-                modality: preferences.modality,
-                locations: preferences.locations
-
-            }
+            data: {},
+            include: {
+                operationTypes: true,
+                userPreferenceProvinces: true,
+                userPreferencePropertyTypes: true,
+            },
         });
-        return updated;
+        return updated as any;
     }
 
     async findUsersMatchingProperty(

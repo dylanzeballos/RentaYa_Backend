@@ -17,7 +17,7 @@ export class OwnerRepository {
         const totalProperties = properties.length;
         const availableCount = properties.filter(p => p.status === 'disponible').length;
         const rentedCount = properties.filter(p => p.status === 'rentado').length;
-        const anticreticoCount = properties.filter(p => p.operationType === 'anticretico').length;
+        const anticreticoCount = properties.filter(p => p.operationTypeId && p.operationTypeId === 'anticretico').length;
 
         // Sum up report.totalPrice (Prisma Decimal) where present
         const estimatedIncome = properties.reduce((sum, p) => {

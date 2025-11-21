@@ -141,6 +141,23 @@ export class PropertyRepository {
     return property?.ownerId === userId;
   }
 
+  async getPropertyById(propertyId: string): Promise<any> {
+    return await prisma.property.findUnique({
+      where: { id: propertyId },
+      select: {
+        id: true,
+        title: true,
+        ownerId: true,
+        description: true,
+        address: true,
+        city: true,
+        price: true,
+        operationType: true,
+        status: true,
+      },
+    });
+  }
+
   async deleteProperty(propertyId: string): Promise<void> {
     await prisma.propertyPhoto.deleteMany({
       where: { propertyId: propertyId },

@@ -11,19 +11,7 @@ import { asyncHandler } from "@/shared/infrastructure/utils/asyncHandler";
  *   description: Gestión de reseñas de propiedades
  */
 
-const serializeBigInt = (obj: any): any => {
-  if (obj === null || obj === undefined) return obj;
-  if (typeof obj === "bigint") return obj.toString();
-  if (Array.isArray(obj)) return obj.map(serializeBigInt);
-  if (typeof obj === "object") {
-    const serialized: any = {};
-    for (const key in obj) {
-      serialized[key] = serializeBigInt(obj[key]);
-    }
-    return serialized;
-  }
-  return obj;
-};
+import { SerializationUtils } from "@/shared/infrastructure/utils/SerializationUtils";
 
 export class ReviewController {
   private reviewUseCase: ReviewUseCase;
@@ -97,7 +85,7 @@ export class ReviewController {
       });
       res.status(201).json({
         success: true,
-        data: serializeBigInt(review),
+        data: SerializationUtils.serializePrismaData(review),
         message: "Review created successfully",
       });
     },
@@ -167,7 +155,7 @@ export class ReviewController {
       const reviews = await this.reviewUseCase.getReviewsByUser(userId);
       res.status(200).json({
         success: true,
-        data: serializeBigInt(reviews),
+        data: SerializationUtils.serializePrismaData(reviews),
         message: "Reviews by user retrieved successfully",
       });
     },
@@ -237,7 +225,7 @@ export class ReviewController {
       const reviews = await this.reviewUseCase.getReviewsByProperty(propertyId);
       res.status(200).json({
         success: true,
-        data: serializeBigInt(reviews),
+        data: SerializationUtils.serializePrismaData(reviews),
         message: "Reviews by property retrieved successfully",
       });
     },

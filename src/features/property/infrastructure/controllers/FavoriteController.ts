@@ -9,17 +9,7 @@ import { AddFavoriteUseCase } from "../../application/usecases/AddFavoriteUseCas
 import { ToggleFavoriteUseCase } from "../../application/usecases/ToggleFavoriteUseCase";
 import { ListUserFavoritesUseCase } from "../../application/usecases/ListUserFavoritesUseCase";
 
-const serializeBigInt = (obj: any): any => {
-  if (obj === null || obj === undefined) return obj;
-  if (typeof obj === "bigint") return obj.toString();
-  if (Array.isArray(obj)) return obj.map(serializeBigInt);
-  if (typeof obj === "object") {
-    const out: any = {};
-    for (const k in obj) out[k] = serializeBigInt(obj[k]);
-    return out;
-  }
-  return obj;
-};
+import { SerializationUtils } from "@/shared/infrastructure/utils/SerializationUtils";
 
 export class FavoriteController {
   private addFavoriteUseCase: AddFavoriteUseCase;
@@ -44,12 +34,7 @@ export class FavoriteController {
       if (!parsed.success) {
         res
           .status(400)
-          .json(
-            ApiResponse.error(
-              "Validation error",
-              parsed.error.issues,
-            ),
-          );
+          .json(ApiResponse.error("Validation error", parsed.error.issues));
         return;
       }
 
@@ -62,7 +47,7 @@ export class FavoriteController {
 
       res.status(201).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message: "Property added to favorites",
       });
     },
@@ -77,7 +62,7 @@ export class FavoriteController {
 
       res.status(200).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message: "Favorites retrieved successfully",
       });
     },
@@ -92,12 +77,7 @@ export class FavoriteController {
       if (!parsed.success) {
         res
           .status(400)
-          .json(
-            ApiResponse.error(
-              "Validation error",
-              parsed.error.issues,
-            ),
-          );
+          .json(ApiResponse.error("Validation error", parsed.error.issues));
         return;
       }
 
@@ -110,7 +90,7 @@ export class FavoriteController {
 
       res.status(200).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message:
           result.action === "added"
             ? "Property added to favorites"

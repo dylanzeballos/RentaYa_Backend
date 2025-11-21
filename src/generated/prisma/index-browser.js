@@ -144,14 +144,31 @@ exports.Prisma.PropertyScalarFieldEnum = {
   description: 'description',
   address: 'address',
   city: 'city',
+  provinceId: 'provinceId',
   areaM2: 'areaM2',
   price: 'price',
-  operationType: 'operationType',
+  operationTypeId: 'operationTypeId',
+  propertyTypeId: 'propertyTypeId',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   latitude: 'latitude',
   longitude: 'longitude'
+};
+
+exports.Prisma.OperationTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.PropertyTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ProvinceScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.InterestScalarFieldEnum = {
@@ -236,11 +253,27 @@ exports.Prisma.SavedSearchScalarFieldEnum = {
 exports.Prisma.UserPreferenceScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  propertyTypes: 'propertyTypes',
-  modality: 'modality',
-  locations: 'locations',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  operationTypeId: 'operationTypeId'
+};
+
+exports.Prisma.UserPreferenceProvinceScalarFieldEnum = {
+  id: 'id',
+  userPreferenceId: 'userPreferenceId',
+  provinceId: 'provinceId'
+};
+
+exports.Prisma.UserPreferencePropertyTypeScalarFieldEnum = {
+  id: 'id',
+  userPreferenceId: 'userPreferenceId',
+  propertyTypeId: 'propertyTypeId'
+};
+
+exports.Prisma.UserPreferenceOperationTypeScalarFieldEnum = {
+  id: 'id',
+  userPreferenceId: 'userPreferenceId',
+  operationTypeId: 'operationTypeId'
 };
 
 exports.Prisma.DeviceTokenScalarFieldEnum = {
@@ -282,11 +315,17 @@ exports.Prisma.JsonNullValueFilter = {
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
 };
-
+exports.UserRole = exports.$Enums.UserRole = {
+  rentante: 'rentante',
+  arrendador: 'arrendador'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   Property: 'Property',
+  OperationType: 'OperationType',
+  PropertyType: 'PropertyType',
+  Province: 'Province',
   Interest: 'Interest',
   Message: 'Message',
   PropertyPhoto: 'PropertyPhoto',
@@ -296,6 +335,9 @@ exports.Prisma.ModelName = {
   Favorite: 'Favorite',
   SavedSearch: 'SavedSearch',
   UserPreference: 'UserPreference',
+  UserPreferenceProvince: 'UserPreferenceProvince',
+  UserPreferencePropertyType: 'UserPreferencePropertyType',
+  UserPreferenceOperationType: 'UserPreferenceOperationType',
   DeviceToken: 'DeviceToken'
 };
 
