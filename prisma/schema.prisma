@@ -9,6 +9,11 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum UserRole {
+  rentante
+  arrendador
+}
+
 model User {
   id                   String          @id @default(uuid()) @db.Uuid
   googleId             String?         @unique
@@ -17,7 +22,7 @@ model User {
   passwordHash         String?
   fullName             String?         @db.VarChar(255)
   phone                String?         @db.VarChar(20)
-  role                 String          @default("user") @db.VarChar(20)
+  role                 UserRole
   verificationStatus   String          @default("pendiente") @db.VarChar(20)
   refreshToken         String?
   createdAt            DateTime        @default(now()) @db.Timestamp(0)

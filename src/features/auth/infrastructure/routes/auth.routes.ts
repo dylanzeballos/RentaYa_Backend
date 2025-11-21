@@ -5,6 +5,7 @@ import {
   loginSchema,
   registerSchema,
   refreshTokenSchema,
+  googleLoginSchema,
   forgotPasswordSchema,
   resetPasswordSchema,
   setPasswordSchema,
@@ -84,6 +85,7 @@ const authController = new AuthController(
  *             required:
  *               - email
  *               - password
+ *               - role
  *             properties:
  *               email:
  *                 type: string
@@ -94,6 +96,11 @@ const authController = new AuthController(
  *                 format: password
  *                 minLength: 6
  *                 example: password123
+ *               role:
+ *                 type: string
+ *                 enum: [rentante, arrendador]
+ *                 description: Rol del usuario. Un mismo correo no puede tener diferentes roles.
+ *                 example: rentante
  *               fullName:
  *                 type: string
  *                 example: John Doe
@@ -126,7 +133,13 @@ const authController = new AuthController(
  *                       type: string
  *                       example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
  *       400:
- *         description: Validation error or user already exists
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       409:
+ *         description: Email already exists (with same or different role)
  *         content:
  *           application/json:
  *             schema:
@@ -257,11 +270,17 @@ router.post(
  *             type: object
  *             required:
  *               - token
+ *               - role
  *             properties:
  *               token:
  *                 type: string
  *                 description: Google OAuth token
  *                 example: ya29.a0AfH6SMBx...
+ *               role:
+ *                 type: string
+ *                 enum: [rentante, arrendador]
+ *                 description: Rol del usuario. Un mismo correo no puede tener diferentes roles.
+ *                 example: rentante
  *     responses:
  *       200:
  *         description: Google login successful
@@ -286,13 +305,19 @@ router.post(
  *                     refreshToken:
  *                       type: string
  *       400:
- *         description: Invalid Google token
+ *         description: Invalid Google token or validation error
+ *       409:
+ *         description: Email already exists with a different role
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post("/google", authController.googleLogin);
+router.post(
+  "/google",
+  validateSchema(googleLoginSchema),
+  authController.googleLogin
+);
 
 /**
  * @swagger

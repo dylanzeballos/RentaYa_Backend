@@ -31,6 +31,10 @@ export const registerSchema = z.object({
       .min(6, "La contraseña debe tener al menos 6 caracteres")
       .max(50, "La contraseña no debe exceder los 50 caracteres")
       .min(1, "La contraseña es requerida"),
+    role: z
+      .enum(["rentante", "arrendador"], {
+        message: "El rol debe ser 'rentante' o 'arrendador'",
+      }),
     fullName: z
       .string()
       .min(1, "El nombre completo es requerido")
@@ -49,7 +53,13 @@ export const refreshTokenSchema = z.object({
 });
 
 export const googleLoginSchema = z.object({
-  token: z.string().min(1, "Token de Google es requerido"),
+  body: z.object({
+    token: z.string().min(1, "Token de Google es requerido"),
+    role: z
+      .enum(["rentante", "arrendador"], {
+        message: "El rol debe ser 'rentante' o 'arrendador'",
+      }),
+  }),
 });
 
 export const forgotPasswordSchema = z.object({

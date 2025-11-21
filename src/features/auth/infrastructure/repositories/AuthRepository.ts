@@ -19,6 +19,7 @@ export class AuthRepository implements IAuthRepository {
   async createUser(userData: {
     email: string;
     passwordHash: string;
+    role: string;
     fullName?: string;
     phone?: string;
   }): Promise<User> {
@@ -40,14 +41,14 @@ export class AuthRepository implements IAuthRepository {
     });
   }
 
-  async createGoogleUser(userData: GoogleUserData): Promise<User> {
+  async createGoogleUser(userData: GoogleUserData & { role: string }): Promise<User> {
     return await prisma.user.create({
       data: {
         googleId: userData.googleId,
         email: userData.email,
         fullName: userData.fullName,
         profilePhoto: userData.profilePhoto || null,
-        role: "user",
+        role: userData.role,
         verificationStatus: "verified",
       },
     });
