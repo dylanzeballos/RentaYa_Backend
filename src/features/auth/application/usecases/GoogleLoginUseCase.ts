@@ -11,7 +11,7 @@ export class GoogleLoginUseCase {
         private jwtService: JwtService
     ) { }
 
-    async execute(token: string): Promise<AuthResponse> {
+    async execute(token: string, role: string): Promise<AuthResponse> {
         const googleUser: GoogleUserInfo = await this.googleOAuthService.verifyToken(token);
 
         if (!googleUser.verified_email) {
@@ -23,6 +23,13 @@ export class GoogleLoginUseCase {
         if (!user) {
             user = await this.authRepository.findUserByEmail(googleUser.email);
             if (user) {
+                // Validar que el rol coincida
+                if (user.role !== role) {
+                    throw new AppError(
+                        `Este correo electrónico ya está registrado como ${user.role}. Un mismo correo no puede tener diferentes roles.`,
+                        409
+                    );
+                }
                 const updateData = {
                     googleId: googleUser.id,
                     fullName: googleUser.name,
@@ -35,9 +42,17 @@ export class GoogleLoginUseCase {
                     email: googleUser.email,
                     fullName: googleUser.name,
                     profilePhoto: googleUser.picture || null,
+                    role: role,
                 });
             }
         } else {
+            // Validar que el rol coincida
+            if (user.role !== role) {
+                throw new AppError(
+                    `Este correo electrónico ya está registrado como ${user.role}. Un mismo correo no puede tener diferentes roles.`,
+                    409
+                );
+            }
             const updateData = {
                 fullName: googleUser.name,
                 ...(googleUser.picture && { profilePhoto: googleUser.picture })

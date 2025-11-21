@@ -4,7 +4,7 @@ import { TokenPayload, TokenResponse } from '@/shared/domain/types/AuthTypes';
 export class JwtService {
     private readonly accessTokenSecret: string;
     private readonly refreshTokenSecret: string;
-    private readonly accessTokenExpiry: string = '30m';
+    private readonly accessTokenExpiry: string = '7d'; // 7 días para apps móviles
     private readonly refreshTokenExpiry: string = '30d';
 
     constructor() {

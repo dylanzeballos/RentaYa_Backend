@@ -42,7 +42,7 @@ export class AuthController {
   );
 
   googleLogin = asyncHandler(async (req: Request, res: Response) => {
-    const result = await this.googleLoginUseCase.execute(req.body.token);
+    const result = await this.googleLoginUseCase.execute(req.body.token, req.body.role);
 
     res
       .status(200)

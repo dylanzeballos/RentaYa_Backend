@@ -15,16 +15,23 @@ export class RefreshTokenUseCase {
         try {
             const decoded = this.jwtService.verifyRefreshToken(refreshToken);
 
-            const user = await this.authRepository.findUserByEmail(decoded.email);
+            // El refresh token solo contiene userId, no email
+            const user = await this.authRepository.findUserById(decoded.userId);
             if (!user) {
                 throw new AppError('Usuario no encontrado', 404);
             }
 
-            return this.jwtService.generateTokens({
+            // Generar nuevos tokens
+            const tokens = this.jwtService.generateTokens({
                 userId: user.id,
                 email: user.email,
                 role: user.role
             });
+
+            // Guardar el nuevo refresh token en la base de datos
+            await this.authRepository.saveRefreshToken(user.id, tokens.refreshToken);
+
+            return tokens;
         } catch (error) {
             throw new AppError('Token de refresco inválido o expirado', 403);
         }

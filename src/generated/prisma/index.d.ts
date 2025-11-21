@@ -24,6 +24,21 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Property = $Result.DefaultSelection<Prisma.$PropertyPayload>
 /**
+ * Model OperationType
+ * 
+ */
+export type OperationType = $Result.DefaultSelection<Prisma.$OperationTypePayload>
+/**
+ * Model PropertyType
+ * 
+ */
+export type PropertyType = $Result.DefaultSelection<Prisma.$PropertyTypePayload>
+/**
+ * Model Province
+ * 
+ */
+export type Province = $Result.DefaultSelection<Prisma.$ProvincePayload>
+/**
  * Model Interest
  * 
  */
@@ -69,10 +84,42 @@ export type SavedSearch = $Result.DefaultSelection<Prisma.$SavedSearchPayload>
  */
 export type UserPreference = $Result.DefaultSelection<Prisma.$UserPreferencePayload>
 /**
+ * Model UserPreferenceProvince
+ * 
+ */
+export type UserPreferenceProvince = $Result.DefaultSelection<Prisma.$UserPreferenceProvincePayload>
+/**
+ * Model UserPreferencePropertyType
+ * 
+ */
+export type UserPreferencePropertyType = $Result.DefaultSelection<Prisma.$UserPreferencePropertyTypePayload>
+/**
+ * Model UserPreferenceOperationType
+ * 
+ */
+export type UserPreferenceOperationType = $Result.DefaultSelection<Prisma.$UserPreferenceOperationTypePayload>
+/**
  * Model DeviceToken
  * 
  */
 export type DeviceToken = $Result.DefaultSelection<Prisma.$DeviceTokenPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const UserRole: {
+  rentante: 'rentante',
+  arrendador: 'arrendador'
+};
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+}
+
+export type UserRole = $Enums.UserRole
+
+export const UserRole: typeof $Enums.UserRole
 
 /**
  * ##  Prisma Client ʲˢ
@@ -213,6 +260,36 @@ export class PrismaClient<
   get property(): Prisma.PropertyDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.operationType`: Exposes CRUD operations for the **OperationType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OperationTypes
+    * const operationTypes = await prisma.operationType.findMany()
+    * ```
+    */
+  get operationType(): Prisma.OperationTypeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.propertyType`: Exposes CRUD operations for the **PropertyType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PropertyTypes
+    * const propertyTypes = await prisma.propertyType.findMany()
+    * ```
+    */
+  get propertyType(): Prisma.PropertyTypeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.province`: Exposes CRUD operations for the **Province** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Provinces
+    * const provinces = await prisma.province.findMany()
+    * ```
+    */
+  get province(): Prisma.ProvinceDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.interest`: Exposes CRUD operations for the **Interest** model.
     * Example usage:
     * ```ts
@@ -301,6 +378,36 @@ export class PrismaClient<
     * ```
     */
   get userPreference(): Prisma.UserPreferenceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userPreferenceProvince`: Exposes CRUD operations for the **UserPreferenceProvince** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserPreferenceProvinces
+    * const userPreferenceProvinces = await prisma.userPreferenceProvince.findMany()
+    * ```
+    */
+  get userPreferenceProvince(): Prisma.UserPreferenceProvinceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userPreferencePropertyType`: Exposes CRUD operations for the **UserPreferencePropertyType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserPreferencePropertyTypes
+    * const userPreferencePropertyTypes = await prisma.userPreferencePropertyType.findMany()
+    * ```
+    */
+  get userPreferencePropertyType(): Prisma.UserPreferencePropertyTypeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userPreferenceOperationType`: Exposes CRUD operations for the **UserPreferenceOperationType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserPreferenceOperationTypes
+    * const userPreferenceOperationTypes = await prisma.userPreferenceOperationType.findMany()
+    * ```
+    */
+  get userPreferenceOperationType(): Prisma.UserPreferenceOperationTypeDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.deviceToken`: Exposes CRUD operations for the **DeviceToken** model.
@@ -754,6 +861,9 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Property: 'Property',
+    OperationType: 'OperationType',
+    PropertyType: 'PropertyType',
+    Province: 'Province',
     Interest: 'Interest',
     Message: 'Message',
     PropertyPhoto: 'PropertyPhoto',
@@ -763,6 +873,9 @@ export namespace Prisma {
     Favorite: 'Favorite',
     SavedSearch: 'SavedSearch',
     UserPreference: 'UserPreference',
+    UserPreferenceProvince: 'UserPreferenceProvince',
+    UserPreferencePropertyType: 'UserPreferencePropertyType',
+    UserPreferenceOperationType: 'UserPreferenceOperationType',
     DeviceToken: 'DeviceToken'
   };
 
@@ -782,7 +895,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "property" | "interest" | "message" | "propertyPhoto" | "review" | "notification" | "report" | "favorite" | "savedSearch" | "userPreference" | "deviceToken"
+      modelProps: "user" | "property" | "operationType" | "propertyType" | "province" | "interest" | "message" | "propertyPhoto" | "review" | "notification" | "report" | "favorite" | "savedSearch" | "userPreference" | "userPreferenceProvince" | "userPreferencePropertyType" | "userPreferenceOperationType" | "deviceToken"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -931,6 +1044,228 @@ export namespace Prisma {
           count: {
             args: Prisma.PropertyCountArgs<ExtArgs>
             result: $Utils.Optional<PropertyCountAggregateOutputType> | number
+          }
+        }
+      }
+      OperationType: {
+        payload: Prisma.$OperationTypePayload<ExtArgs>
+        fields: Prisma.OperationTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OperationTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OperationTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>
+          }
+          findFirst: {
+            args: Prisma.OperationTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OperationTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>
+          }
+          findMany: {
+            args: Prisma.OperationTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>[]
+          }
+          create: {
+            args: Prisma.OperationTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>
+          }
+          createMany: {
+            args: Prisma.OperationTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OperationTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>[]
+          }
+          delete: {
+            args: Prisma.OperationTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>
+          }
+          update: {
+            args: Prisma.OperationTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.OperationTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OperationTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OperationTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.OperationTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationTypePayload>
+          }
+          aggregate: {
+            args: Prisma.OperationTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOperationType>
+          }
+          groupBy: {
+            args: Prisma.OperationTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OperationTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OperationTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<OperationTypeCountAggregateOutputType> | number
+          }
+        }
+      }
+      PropertyType: {
+        payload: Prisma.$PropertyTypePayload<ExtArgs>
+        fields: Prisma.PropertyTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PropertyTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PropertyTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>
+          }
+          findFirst: {
+            args: Prisma.PropertyTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PropertyTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>
+          }
+          findMany: {
+            args: Prisma.PropertyTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>[]
+          }
+          create: {
+            args: Prisma.PropertyTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>
+          }
+          createMany: {
+            args: Prisma.PropertyTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PropertyTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>[]
+          }
+          delete: {
+            args: Prisma.PropertyTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>
+          }
+          update: {
+            args: Prisma.PropertyTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.PropertyTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PropertyTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PropertyTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.PropertyTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PropertyTypePayload>
+          }
+          aggregate: {
+            args: Prisma.PropertyTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePropertyType>
+          }
+          groupBy: {
+            args: Prisma.PropertyTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PropertyTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PropertyTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<PropertyTypeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Province: {
+        payload: Prisma.$ProvincePayload<ExtArgs>
+        fields: Prisma.ProvinceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProvinceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProvinceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>
+          }
+          findFirst: {
+            args: Prisma.ProvinceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProvinceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>
+          }
+          findMany: {
+            args: Prisma.ProvinceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>[]
+          }
+          create: {
+            args: Prisma.ProvinceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>
+          }
+          createMany: {
+            args: Prisma.ProvinceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProvinceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>[]
+          }
+          delete: {
+            args: Prisma.ProvinceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>
+          }
+          update: {
+            args: Prisma.ProvinceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProvinceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProvinceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProvinceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>[]
+          }
+          upsert: {
+            args: Prisma.ProvinceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvincePayload>
+          }
+          aggregate: {
+            args: Prisma.ProvinceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProvince>
+          }
+          groupBy: {
+            args: Prisma.ProvinceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProvinceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProvinceCountArgs<ExtArgs>
+            result: $Utils.Optional<ProvinceCountAggregateOutputType> | number
           }
         }
       }
@@ -1600,6 +1935,228 @@ export namespace Prisma {
           }
         }
       }
+      UserPreferenceProvince: {
+        payload: Prisma.$UserPreferenceProvincePayload<ExtArgs>
+        fields: Prisma.UserPreferenceProvinceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserPreferenceProvinceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserPreferenceProvinceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>
+          }
+          findFirst: {
+            args: Prisma.UserPreferenceProvinceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserPreferenceProvinceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>
+          }
+          findMany: {
+            args: Prisma.UserPreferenceProvinceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>[]
+          }
+          create: {
+            args: Prisma.UserPreferenceProvinceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>
+          }
+          createMany: {
+            args: Prisma.UserPreferenceProvinceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserPreferenceProvinceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>[]
+          }
+          delete: {
+            args: Prisma.UserPreferenceProvinceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>
+          }
+          update: {
+            args: Prisma.UserPreferenceProvinceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserPreferenceProvinceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserPreferenceProvinceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserPreferenceProvinceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserPreferenceProvinceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceProvincePayload>
+          }
+          aggregate: {
+            args: Prisma.UserPreferenceProvinceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserPreferenceProvince>
+          }
+          groupBy: {
+            args: Prisma.UserPreferenceProvinceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserPreferenceProvinceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserPreferenceProvinceCountArgs<ExtArgs>
+            result: $Utils.Optional<UserPreferenceProvinceCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserPreferencePropertyType: {
+        payload: Prisma.$UserPreferencePropertyTypePayload<ExtArgs>
+        fields: Prisma.UserPreferencePropertyTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserPreferencePropertyTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserPreferencePropertyTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>
+          }
+          findFirst: {
+            args: Prisma.UserPreferencePropertyTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserPreferencePropertyTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>
+          }
+          findMany: {
+            args: Prisma.UserPreferencePropertyTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>[]
+          }
+          create: {
+            args: Prisma.UserPreferencePropertyTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>
+          }
+          createMany: {
+            args: Prisma.UserPreferencePropertyTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserPreferencePropertyTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>[]
+          }
+          delete: {
+            args: Prisma.UserPreferencePropertyTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>
+          }
+          update: {
+            args: Prisma.UserPreferencePropertyTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserPreferencePropertyTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserPreferencePropertyTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserPreferencePropertyTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserPreferencePropertyTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferencePropertyTypePayload>
+          }
+          aggregate: {
+            args: Prisma.UserPreferencePropertyTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserPreferencePropertyType>
+          }
+          groupBy: {
+            args: Prisma.UserPreferencePropertyTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserPreferencePropertyTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserPreferencePropertyTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<UserPreferencePropertyTypeCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserPreferenceOperationType: {
+        payload: Prisma.$UserPreferenceOperationTypePayload<ExtArgs>
+        fields: Prisma.UserPreferenceOperationTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserPreferenceOperationTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserPreferenceOperationTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>
+          }
+          findFirst: {
+            args: Prisma.UserPreferenceOperationTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserPreferenceOperationTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>
+          }
+          findMany: {
+            args: Prisma.UserPreferenceOperationTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>[]
+          }
+          create: {
+            args: Prisma.UserPreferenceOperationTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>
+          }
+          createMany: {
+            args: Prisma.UserPreferenceOperationTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserPreferenceOperationTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>[]
+          }
+          delete: {
+            args: Prisma.UserPreferenceOperationTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>
+          }
+          update: {
+            args: Prisma.UserPreferenceOperationTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserPreferenceOperationTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserPreferenceOperationTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserPreferenceOperationTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserPreferenceOperationTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPreferenceOperationTypePayload>
+          }
+          aggregate: {
+            args: Prisma.UserPreferenceOperationTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserPreferenceOperationType>
+          }
+          groupBy: {
+            args: Prisma.UserPreferenceOperationTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserPreferenceOperationTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserPreferenceOperationTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<UserPreferenceOperationTypeCountAggregateOutputType> | number
+          }
+        }
+      }
       DeviceToken: {
         payload: Prisma.$DeviceTokenPayload<ExtArgs>
         fields: Prisma.DeviceTokenFieldRefs
@@ -1772,6 +2329,9 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     property?: PropertyOmit
+    operationType?: OperationTypeOmit
+    propertyType?: PropertyTypeOmit
+    province?: ProvinceOmit
     interest?: InterestOmit
     message?: MessageOmit
     propertyPhoto?: PropertyPhotoOmit
@@ -1781,6 +2341,9 @@ export namespace Prisma {
     favorite?: FavoriteOmit
     savedSearch?: SavedSearchOmit
     userPreference?: UserPreferenceOmit
+    userPreferenceProvince?: UserPreferenceProvinceOmit
+    userPreferencePropertyType?: UserPreferencePropertyTypeOmit
+    userPreferenceOperationType?: UserPreferenceOperationTypeOmit
     deviceToken?: DeviceTokenOmit
   }
 
@@ -2037,6 +2600,135 @@ export namespace Prisma {
 
 
   /**
+   * Count Type OperationTypeCountOutputType
+   */
+
+  export type OperationTypeCountOutputType = {
+    properties: number
+    userPreferences: number
+    userPreferenceOperationTypes: number
+  }
+
+  export type OperationTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | OperationTypeCountOutputTypeCountPropertiesArgs
+    userPreferences?: boolean | OperationTypeCountOutputTypeCountUserPreferencesArgs
+    userPreferenceOperationTypes?: boolean | OperationTypeCountOutputTypeCountUserPreferenceOperationTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OperationTypeCountOutputType without action
+   */
+  export type OperationTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationTypeCountOutputType
+     */
+    select?: OperationTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OperationTypeCountOutputType without action
+   */
+  export type OperationTypeCountOutputTypeCountPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
+  /**
+   * OperationTypeCountOutputType without action
+   */
+  export type OperationTypeCountOutputTypeCountUserPreferencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferenceWhereInput
+  }
+
+  /**
+   * OperationTypeCountOutputType without action
+   */
+  export type OperationTypeCountOutputTypeCountUserPreferenceOperationTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferenceOperationTypeWhereInput
+  }
+
+
+  /**
+   * Count Type PropertyTypeCountOutputType
+   */
+
+  export type PropertyTypeCountOutputType = {
+    properties: number
+    userPreferencePropertyTypes: number
+  }
+
+  export type PropertyTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | PropertyTypeCountOutputTypeCountPropertiesArgs
+    userPreferencePropertyTypes?: boolean | PropertyTypeCountOutputTypeCountUserPreferencePropertyTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PropertyTypeCountOutputType without action
+   */
+  export type PropertyTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyTypeCountOutputType
+     */
+    select?: PropertyTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PropertyTypeCountOutputType without action
+   */
+  export type PropertyTypeCountOutputTypeCountPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
+  /**
+   * PropertyTypeCountOutputType without action
+   */
+  export type PropertyTypeCountOutputTypeCountUserPreferencePropertyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferencePropertyTypeWhereInput
+  }
+
+
+  /**
+   * Count Type ProvinceCountOutputType
+   */
+
+  export type ProvinceCountOutputType = {
+    properties: number
+    userPreferencesProvinces: number
+  }
+
+  export type ProvinceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | ProvinceCountOutputTypeCountPropertiesArgs
+    userPreferencesProvinces?: boolean | ProvinceCountOutputTypeCountUserPreferencesProvincesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProvinceCountOutputType without action
+   */
+  export type ProvinceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProvinceCountOutputType
+     */
+    select?: ProvinceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProvinceCountOutputType without action
+   */
+  export type ProvinceCountOutputTypeCountPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
+  /**
+   * ProvinceCountOutputType without action
+   */
+  export type ProvinceCountOutputTypeCountUserPreferencesProvincesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferenceProvinceWhereInput
+  }
+
+
+  /**
    * Count Type InterestCountOutputType
    */
 
@@ -2068,6 +2760,55 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UserPreferenceCountOutputType
+   */
+
+  export type UserPreferenceCountOutputType = {
+    operationTypes: number
+    userPreferenceProvinces: number
+    userPreferencePropertyTypes: number
+  }
+
+  export type UserPreferenceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    operationTypes?: boolean | UserPreferenceCountOutputTypeCountOperationTypesArgs
+    userPreferenceProvinces?: boolean | UserPreferenceCountOutputTypeCountUserPreferenceProvincesArgs
+    userPreferencePropertyTypes?: boolean | UserPreferenceCountOutputTypeCountUserPreferencePropertyTypesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserPreferenceCountOutputType without action
+   */
+  export type UserPreferenceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceCountOutputType
+     */
+    select?: UserPreferenceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserPreferenceCountOutputType without action
+   */
+  export type UserPreferenceCountOutputTypeCountOperationTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferenceOperationTypeWhereInput
+  }
+
+  /**
+   * UserPreferenceCountOutputType without action
+   */
+  export type UserPreferenceCountOutputTypeCountUserPreferenceProvincesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferenceProvinceWhereInput
+  }
+
+  /**
+   * UserPreferenceCountOutputType without action
+   */
+  export type UserPreferenceCountOutputTypeCountUserPreferencePropertyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferencePropertyTypeWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -2089,7 +2830,7 @@ export namespace Prisma {
     passwordHash: string | null
     fullName: string | null
     phone: string | null
-    role: string | null
+    role: $Enums.UserRole | null
     verificationStatus: string | null
     refreshToken: string | null
     createdAt: Date | null
@@ -2106,7 +2847,7 @@ export namespace Prisma {
     passwordHash: string | null
     fullName: string | null
     phone: string | null
-    role: string | null
+    role: $Enums.UserRole | null
     verificationStatus: string | null
     refreshToken: string | null
     createdAt: Date | null
@@ -2266,7 +3007,7 @@ export namespace Prisma {
     passwordHash: string | null
     fullName: string | null
     phone: string | null
-    role: string
+    role: $Enums.UserRole
     verificationStatus: string
     refreshToken: string | null
     createdAt: Date
@@ -2413,7 +3154,7 @@ export namespace Prisma {
       passwordHash: string | null
       fullName: string | null
       phone: string | null
-      role: string
+      role: $Enums.UserRole
       verificationStatus: string
       refreshToken: string | null
       createdAt: Date
@@ -2861,7 +3602,7 @@ export namespace Prisma {
     readonly passwordHash: FieldRef<"User", 'String'>
     readonly fullName: FieldRef<"User", 'String'>
     readonly phone: FieldRef<"User", 'String'>
-    readonly role: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'UserRole'>
     readonly verificationStatus: FieldRef<"User", 'String'>
     readonly refreshToken: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
@@ -3566,9 +4307,11 @@ export namespace Prisma {
     description: string | null
     address: string | null
     city: string | null
+    provinceId: string | null
     areaM2: Decimal | null
     price: Decimal | null
-    operationType: string | null
+    operationTypeId: string | null
+    propertyTypeId: string | null
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3583,9 +4326,11 @@ export namespace Prisma {
     description: string | null
     address: string | null
     city: string | null
+    provinceId: string | null
     areaM2: Decimal | null
     price: Decimal | null
-    operationType: string | null
+    operationTypeId: string | null
+    propertyTypeId: string | null
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3600,9 +4345,11 @@ export namespace Prisma {
     description: number
     address: number
     city: number
+    provinceId: number
     areaM2: number
     price: number
-    operationType: number
+    operationTypeId: number
+    propertyTypeId: number
     status: number
     createdAt: number
     updatedAt: number
@@ -3633,9 +4380,11 @@ export namespace Prisma {
     description?: true
     address?: true
     city?: true
+    provinceId?: true
     areaM2?: true
     price?: true
-    operationType?: true
+    operationTypeId?: true
+    propertyTypeId?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -3650,9 +4399,11 @@ export namespace Prisma {
     description?: true
     address?: true
     city?: true
+    provinceId?: true
     areaM2?: true
     price?: true
-    operationType?: true
+    operationTypeId?: true
+    propertyTypeId?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -3667,9 +4418,11 @@ export namespace Prisma {
     description?: true
     address?: true
     city?: true
+    provinceId?: true
     areaM2?: true
     price?: true
-    operationType?: true
+    operationTypeId?: true
+    propertyTypeId?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -3771,9 +4524,11 @@ export namespace Prisma {
     description: string | null
     address: string | null
     city: string
+    provinceId: string | null
     areaM2: Decimal | null
     price: Decimal
-    operationType: string
+    operationTypeId: string | null
+    propertyTypeId: string | null
     status: string
     createdAt: Date
     updatedAt: Date
@@ -3807,9 +4562,11 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    provinceId?: boolean
     areaM2?: boolean
     price?: boolean
-    operationType?: boolean
+    operationTypeId?: boolean
+    propertyTypeId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3818,6 +4575,9 @@ export namespace Prisma {
     favorites?: boolean | Property$favoritesArgs<ExtArgs>
     interests?: boolean | Property$interestsArgs<ExtArgs>
     owner?: boolean | UserDefaultArgs<ExtArgs>
+    operationType?: boolean | Property$operationTypeArgs<ExtArgs>
+    propertyType?: boolean | Property$propertyTypeArgs<ExtArgs>
+    province?: boolean | Property$provinceArgs<ExtArgs>
     propertyPhotos?: boolean | Property$propertyPhotosArgs<ExtArgs>
     reports?: boolean | Property$reportsArgs<ExtArgs>
     reviews?: boolean | Property$reviewsArgs<ExtArgs>
@@ -3831,15 +4591,20 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    provinceId?: boolean
     areaM2?: boolean
     price?: boolean
-    operationType?: boolean
+    operationTypeId?: boolean
+    propertyTypeId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     latitude?: boolean
     longitude?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
+    operationType?: boolean | Property$operationTypeArgs<ExtArgs>
+    propertyType?: boolean | Property$propertyTypeArgs<ExtArgs>
+    province?: boolean | Property$provinceArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3849,15 +4614,20 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    provinceId?: boolean
     areaM2?: boolean
     price?: boolean
-    operationType?: boolean
+    operationTypeId?: boolean
+    propertyTypeId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     latitude?: boolean
     longitude?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
+    operationType?: boolean | Property$operationTypeArgs<ExtArgs>
+    propertyType?: boolean | Property$propertyTypeArgs<ExtArgs>
+    province?: boolean | Property$provinceArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectScalar = {
@@ -3867,9 +4637,11 @@ export namespace Prisma {
     description?: boolean
     address?: boolean
     city?: boolean
+    provinceId?: boolean
     areaM2?: boolean
     price?: boolean
-    operationType?: boolean
+    operationTypeId?: boolean
+    propertyTypeId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3877,11 +4649,14 @@ export namespace Prisma {
     longitude?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "description" | "address" | "city" | "areaM2" | "price" | "operationType" | "status" | "createdAt" | "updatedAt" | "latitude" | "longitude", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "title" | "description" | "address" | "city" | "provinceId" | "areaM2" | "price" | "operationTypeId" | "propertyTypeId" | "status" | "createdAt" | "updatedAt" | "latitude" | "longitude", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     favorites?: boolean | Property$favoritesArgs<ExtArgs>
     interests?: boolean | Property$interestsArgs<ExtArgs>
     owner?: boolean | UserDefaultArgs<ExtArgs>
+    operationType?: boolean | Property$operationTypeArgs<ExtArgs>
+    propertyType?: boolean | Property$propertyTypeArgs<ExtArgs>
+    province?: boolean | Property$provinceArgs<ExtArgs>
     propertyPhotos?: boolean | Property$propertyPhotosArgs<ExtArgs>
     reports?: boolean | Property$reportsArgs<ExtArgs>
     reviews?: boolean | Property$reviewsArgs<ExtArgs>
@@ -3889,9 +4664,15 @@ export namespace Prisma {
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
+    operationType?: boolean | Property$operationTypeArgs<ExtArgs>
+    propertyType?: boolean | Property$propertyTypeArgs<ExtArgs>
+    province?: boolean | Property$provinceArgs<ExtArgs>
   }
   export type PropertyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
+    operationType?: boolean | Property$operationTypeArgs<ExtArgs>
+    propertyType?: boolean | Property$propertyTypeArgs<ExtArgs>
+    province?: boolean | Property$provinceArgs<ExtArgs>
   }
 
   export type $PropertyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3900,6 +4681,9 @@ export namespace Prisma {
       favorites: Prisma.$FavoritePayload<ExtArgs>[]
       interests: Prisma.$InterestPayload<ExtArgs>[]
       owner: Prisma.$UserPayload<ExtArgs>
+      operationType: Prisma.$OperationTypePayload<ExtArgs> | null
+      propertyType: Prisma.$PropertyTypePayload<ExtArgs> | null
+      province: Prisma.$ProvincePayload<ExtArgs> | null
       propertyPhotos: Prisma.$PropertyPhotoPayload<ExtArgs>[]
       reports: Prisma.$ReportPayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
@@ -3911,9 +4695,11 @@ export namespace Prisma {
       description: string | null
       address: string | null
       city: string
+      provinceId: string | null
       areaM2: Prisma.Decimal | null
       price: Prisma.Decimal
-      operationType: string
+      operationTypeId: string | null
+      propertyTypeId: string | null
       status: string
       createdAt: Date
       updatedAt: Date
@@ -4316,6 +5102,9 @@ export namespace Prisma {
     favorites<T extends Property$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, Property$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     interests<T extends Property$interestsArgs<ExtArgs> = {}>(args?: Subset<T, Property$interestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InterestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     owner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    operationType<T extends Property$operationTypeArgs<ExtArgs> = {}>(args?: Subset<T, Property$operationTypeArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    propertyType<T extends Property$propertyTypeArgs<ExtArgs> = {}>(args?: Subset<T, Property$propertyTypeArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    province<T extends Property$provinceArgs<ExtArgs> = {}>(args?: Subset<T, Property$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     propertyPhotos<T extends Property$propertyPhotosArgs<ExtArgs> = {}>(args?: Subset<T, Property$propertyPhotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reports<T extends Property$reportsArgs<ExtArgs> = {}>(args?: Subset<T, Property$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews<T extends Property$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Property$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4354,9 +5143,11 @@ export namespace Prisma {
     readonly description: FieldRef<"Property", 'String'>
     readonly address: FieldRef<"Property", 'String'>
     readonly city: FieldRef<"Property", 'String'>
+    readonly provinceId: FieldRef<"Property", 'String'>
     readonly areaM2: FieldRef<"Property", 'Decimal'>
     readonly price: FieldRef<"Property", 'Decimal'>
-    readonly operationType: FieldRef<"Property", 'String'>
+    readonly operationTypeId: FieldRef<"Property", 'String'>
+    readonly propertyTypeId: FieldRef<"Property", 'String'>
     readonly status: FieldRef<"Property", 'String'>
     readonly createdAt: FieldRef<"Property", 'DateTime'>
     readonly updatedAt: FieldRef<"Property", 'DateTime'>
@@ -4806,6 +5597,63 @@ export namespace Prisma {
   }
 
   /**
+   * Property.operationType
+   */
+  export type Property$operationTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    where?: OperationTypeWhereInput
+  }
+
+  /**
+   * Property.propertyType
+   */
+  export type Property$propertyTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    where?: PropertyTypeWhereInput
+  }
+
+  /**
+   * Property.province
+   */
+  export type Property$provinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    where?: ProvinceWhereInput
+  }
+
+  /**
    * Property.propertyPhotos
    */
   export type Property$propertyPhotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4893,6 +5741,3211 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PropertyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OperationType
+   */
+
+  export type AggregateOperationType = {
+    _count: OperationTypeCountAggregateOutputType | null
+    _min: OperationTypeMinAggregateOutputType | null
+    _max: OperationTypeMaxAggregateOutputType | null
+  }
+
+  export type OperationTypeMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type OperationTypeMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type OperationTypeCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type OperationTypeMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type OperationTypeMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type OperationTypeCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type OperationTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperationType to aggregate.
+     */
+    where?: OperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationTypes to fetch.
+     */
+    orderBy?: OperationTypeOrderByWithRelationInput | OperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OperationTypes
+    **/
+    _count?: true | OperationTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OperationTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OperationTypeMaxAggregateInputType
+  }
+
+  export type GetOperationTypeAggregateType<T extends OperationTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateOperationType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOperationType[P]>
+      : GetScalarType<T[P], AggregateOperationType[P]>
+  }
+
+
+
+
+  export type OperationTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OperationTypeWhereInput
+    orderBy?: OperationTypeOrderByWithAggregationInput | OperationTypeOrderByWithAggregationInput[]
+    by: OperationTypeScalarFieldEnum[] | OperationTypeScalarFieldEnum
+    having?: OperationTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OperationTypeCountAggregateInputType | true
+    _min?: OperationTypeMinAggregateInputType
+    _max?: OperationTypeMaxAggregateInputType
+  }
+
+  export type OperationTypeGroupByOutputType = {
+    id: string
+    name: string
+    _count: OperationTypeCountAggregateOutputType | null
+    _min: OperationTypeMinAggregateOutputType | null
+    _max: OperationTypeMaxAggregateOutputType | null
+  }
+
+  type GetOperationTypeGroupByPayload<T extends OperationTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OperationTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OperationTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OperationTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], OperationTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OperationTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    properties?: boolean | OperationType$propertiesArgs<ExtArgs>
+    userPreferences?: boolean | OperationType$userPreferencesArgs<ExtArgs>
+    userPreferenceOperationTypes?: boolean | OperationType$userPreferenceOperationTypesArgs<ExtArgs>
+    _count?: boolean | OperationTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["operationType"]>
+
+  export type OperationTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["operationType"]>
+
+  export type OperationTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["operationType"]>
+
+  export type OperationTypeSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type OperationTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["operationType"]>
+  export type OperationTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | OperationType$propertiesArgs<ExtArgs>
+    userPreferences?: boolean | OperationType$userPreferencesArgs<ExtArgs>
+    userPreferenceOperationTypes?: boolean | OperationType$userPreferenceOperationTypesArgs<ExtArgs>
+    _count?: boolean | OperationTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type OperationTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type OperationTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $OperationTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OperationType"
+    objects: {
+      properties: Prisma.$PropertyPayload<ExtArgs>[]
+      userPreferences: Prisma.$UserPreferencePayload<ExtArgs>[]
+      userPreferenceOperationTypes: Prisma.$UserPreferenceOperationTypePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["operationType"]>
+    composites: {}
+  }
+
+  type OperationTypeGetPayload<S extends boolean | null | undefined | OperationTypeDefaultArgs> = $Result.GetResult<Prisma.$OperationTypePayload, S>
+
+  type OperationTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OperationTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OperationTypeCountAggregateInputType | true
+    }
+
+  export interface OperationTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OperationType'], meta: { name: 'OperationType' } }
+    /**
+     * Find zero or one OperationType that matches the filter.
+     * @param {OperationTypeFindUniqueArgs} args - Arguments to find a OperationType
+     * @example
+     * // Get one OperationType
+     * const operationType = await prisma.operationType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OperationTypeFindUniqueArgs>(args: SelectSubset<T, OperationTypeFindUniqueArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OperationType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OperationTypeFindUniqueOrThrowArgs} args - Arguments to find a OperationType
+     * @example
+     * // Get one OperationType
+     * const operationType = await prisma.operationType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OperationTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, OperationTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperationType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationTypeFindFirstArgs} args - Arguments to find a OperationType
+     * @example
+     * // Get one OperationType
+     * const operationType = await prisma.operationType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OperationTypeFindFirstArgs>(args?: SelectSubset<T, OperationTypeFindFirstArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperationType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationTypeFindFirstOrThrowArgs} args - Arguments to find a OperationType
+     * @example
+     * // Get one OperationType
+     * const operationType = await prisma.operationType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OperationTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, OperationTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OperationTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OperationTypes
+     * const operationTypes = await prisma.operationType.findMany()
+     * 
+     * // Get first 10 OperationTypes
+     * const operationTypes = await prisma.operationType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const operationTypeWithIdOnly = await prisma.operationType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OperationTypeFindManyArgs>(args?: SelectSubset<T, OperationTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OperationType.
+     * @param {OperationTypeCreateArgs} args - Arguments to create a OperationType.
+     * @example
+     * // Create one OperationType
+     * const OperationType = await prisma.operationType.create({
+     *   data: {
+     *     // ... data to create a OperationType
+     *   }
+     * })
+     * 
+     */
+    create<T extends OperationTypeCreateArgs>(args: SelectSubset<T, OperationTypeCreateArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OperationTypes.
+     * @param {OperationTypeCreateManyArgs} args - Arguments to create many OperationTypes.
+     * @example
+     * // Create many OperationTypes
+     * const operationType = await prisma.operationType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OperationTypeCreateManyArgs>(args?: SelectSubset<T, OperationTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OperationTypes and returns the data saved in the database.
+     * @param {OperationTypeCreateManyAndReturnArgs} args - Arguments to create many OperationTypes.
+     * @example
+     * // Create many OperationTypes
+     * const operationType = await prisma.operationType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OperationTypes and only return the `id`
+     * const operationTypeWithIdOnly = await prisma.operationType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OperationTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, OperationTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OperationType.
+     * @param {OperationTypeDeleteArgs} args - Arguments to delete one OperationType.
+     * @example
+     * // Delete one OperationType
+     * const OperationType = await prisma.operationType.delete({
+     *   where: {
+     *     // ... filter to delete one OperationType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OperationTypeDeleteArgs>(args: SelectSubset<T, OperationTypeDeleteArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OperationType.
+     * @param {OperationTypeUpdateArgs} args - Arguments to update one OperationType.
+     * @example
+     * // Update one OperationType
+     * const operationType = await prisma.operationType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OperationTypeUpdateArgs>(args: SelectSubset<T, OperationTypeUpdateArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OperationTypes.
+     * @param {OperationTypeDeleteManyArgs} args - Arguments to filter OperationTypes to delete.
+     * @example
+     * // Delete a few OperationTypes
+     * const { count } = await prisma.operationType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OperationTypeDeleteManyArgs>(args?: SelectSubset<T, OperationTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperationTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OperationTypes
+     * const operationType = await prisma.operationType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OperationTypeUpdateManyArgs>(args: SelectSubset<T, OperationTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperationTypes and returns the data updated in the database.
+     * @param {OperationTypeUpdateManyAndReturnArgs} args - Arguments to update many OperationTypes.
+     * @example
+     * // Update many OperationTypes
+     * const operationType = await prisma.operationType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OperationTypes and only return the `id`
+     * const operationTypeWithIdOnly = await prisma.operationType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OperationTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, OperationTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OperationType.
+     * @param {OperationTypeUpsertArgs} args - Arguments to update or create a OperationType.
+     * @example
+     * // Update or create a OperationType
+     * const operationType = await prisma.operationType.upsert({
+     *   create: {
+     *     // ... data to create a OperationType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OperationType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OperationTypeUpsertArgs>(args: SelectSubset<T, OperationTypeUpsertArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OperationTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationTypeCountArgs} args - Arguments to filter OperationTypes to count.
+     * @example
+     * // Count the number of OperationTypes
+     * const count = await prisma.operationType.count({
+     *   where: {
+     *     // ... the filter for the OperationTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends OperationTypeCountArgs>(
+      args?: Subset<T, OperationTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OperationTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OperationType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OperationTypeAggregateArgs>(args: Subset<T, OperationTypeAggregateArgs>): Prisma.PrismaPromise<GetOperationTypeAggregateType<T>>
+
+    /**
+     * Group by OperationType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OperationTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OperationTypeGroupByArgs['orderBy'] }
+        : { orderBy?: OperationTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OperationTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOperationTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OperationType model
+   */
+  readonly fields: OperationTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OperationType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OperationTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    properties<T extends OperationType$propertiesArgs<ExtArgs> = {}>(args?: Subset<T, OperationType$propertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userPreferences<T extends OperationType$userPreferencesArgs<ExtArgs> = {}>(args?: Subset<T, OperationType$userPreferencesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userPreferenceOperationTypes<T extends OperationType$userPreferenceOperationTypesArgs<ExtArgs> = {}>(args?: Subset<T, OperationType$userPreferenceOperationTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OperationType model
+   */
+  interface OperationTypeFieldRefs {
+    readonly id: FieldRef<"OperationType", 'String'>
+    readonly name: FieldRef<"OperationType", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OperationType findUnique
+   */
+  export type OperationTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationType to fetch.
+     */
+    where: OperationTypeWhereUniqueInput
+  }
+
+  /**
+   * OperationType findUniqueOrThrow
+   */
+  export type OperationTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationType to fetch.
+     */
+    where: OperationTypeWhereUniqueInput
+  }
+
+  /**
+   * OperationType findFirst
+   */
+  export type OperationTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationType to fetch.
+     */
+    where?: OperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationTypes to fetch.
+     */
+    orderBy?: OperationTypeOrderByWithRelationInput | OperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperationTypes.
+     */
+    cursor?: OperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperationTypes.
+     */
+    distinct?: OperationTypeScalarFieldEnum | OperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * OperationType findFirstOrThrow
+   */
+  export type OperationTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationType to fetch.
+     */
+    where?: OperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationTypes to fetch.
+     */
+    orderBy?: OperationTypeOrderByWithRelationInput | OperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperationTypes.
+     */
+    cursor?: OperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperationTypes.
+     */
+    distinct?: OperationTypeScalarFieldEnum | OperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * OperationType findMany
+   */
+  export type OperationTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationTypes to fetch.
+     */
+    where?: OperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationTypes to fetch.
+     */
+    orderBy?: OperationTypeOrderByWithRelationInput | OperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OperationTypes.
+     */
+    cursor?: OperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationTypes.
+     */
+    skip?: number
+    distinct?: OperationTypeScalarFieldEnum | OperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * OperationType create
+   */
+  export type OperationTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OperationType.
+     */
+    data: XOR<OperationTypeCreateInput, OperationTypeUncheckedCreateInput>
+  }
+
+  /**
+   * OperationType createMany
+   */
+  export type OperationTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OperationTypes.
+     */
+    data: OperationTypeCreateManyInput | OperationTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OperationType createManyAndReturn
+   */
+  export type OperationTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many OperationTypes.
+     */
+    data: OperationTypeCreateManyInput | OperationTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OperationType update
+   */
+  export type OperationTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OperationType.
+     */
+    data: XOR<OperationTypeUpdateInput, OperationTypeUncheckedUpdateInput>
+    /**
+     * Choose, which OperationType to update.
+     */
+    where: OperationTypeWhereUniqueInput
+  }
+
+  /**
+   * OperationType updateMany
+   */
+  export type OperationTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OperationTypes.
+     */
+    data: XOR<OperationTypeUpdateManyMutationInput, OperationTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which OperationTypes to update
+     */
+    where?: OperationTypeWhereInput
+    /**
+     * Limit how many OperationTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperationType updateManyAndReturn
+   */
+  export type OperationTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update OperationTypes.
+     */
+    data: XOR<OperationTypeUpdateManyMutationInput, OperationTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which OperationTypes to update
+     */
+    where?: OperationTypeWhereInput
+    /**
+     * Limit how many OperationTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperationType upsert
+   */
+  export type OperationTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OperationType to update in case it exists.
+     */
+    where: OperationTypeWhereUniqueInput
+    /**
+     * In case the OperationType found by the `where` argument doesn't exist, create a new OperationType with this data.
+     */
+    create: XOR<OperationTypeCreateInput, OperationTypeUncheckedCreateInput>
+    /**
+     * In case the OperationType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OperationTypeUpdateInput, OperationTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * OperationType delete
+   */
+  export type OperationTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter which OperationType to delete.
+     */
+    where: OperationTypeWhereUniqueInput
+  }
+
+  /**
+   * OperationType deleteMany
+   */
+  export type OperationTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperationTypes to delete
+     */
+    where?: OperationTypeWhereInput
+    /**
+     * Limit how many OperationTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperationType.properties
+   */
+  export type OperationType$propertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * OperationType.userPreferences
+   */
+  export type OperationType$userPreferencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreference
+     */
+    select?: UserPreferenceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreference
+     */
+    omit?: UserPreferenceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceInclude<ExtArgs> | null
+    where?: UserPreferenceWhereInput
+    orderBy?: UserPreferenceOrderByWithRelationInput | UserPreferenceOrderByWithRelationInput[]
+    cursor?: UserPreferenceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPreferenceScalarFieldEnum | UserPreferenceScalarFieldEnum[]
+  }
+
+  /**
+   * OperationType.userPreferenceOperationTypes
+   */
+  export type OperationType$userPreferenceOperationTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    where?: UserPreferenceOperationTypeWhereInput
+    orderBy?: UserPreferenceOperationTypeOrderByWithRelationInput | UserPreferenceOperationTypeOrderByWithRelationInput[]
+    cursor?: UserPreferenceOperationTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPreferenceOperationTypeScalarFieldEnum | UserPreferenceOperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * OperationType without action
+   */
+  export type OperationTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PropertyType
+   */
+
+  export type AggregatePropertyType = {
+    _count: PropertyTypeCountAggregateOutputType | null
+    _min: PropertyTypeMinAggregateOutputType | null
+    _max: PropertyTypeMaxAggregateOutputType | null
+  }
+
+  export type PropertyTypeMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type PropertyTypeMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type PropertyTypeCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type PropertyTypeMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type PropertyTypeMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type PropertyTypeCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type PropertyTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PropertyType to aggregate.
+     */
+    where?: PropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PropertyTypes to fetch.
+     */
+    orderBy?: PropertyTypeOrderByWithRelationInput | PropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PropertyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PropertyTypes
+    **/
+    _count?: true | PropertyTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PropertyTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PropertyTypeMaxAggregateInputType
+  }
+
+  export type GetPropertyTypeAggregateType<T extends PropertyTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregatePropertyType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePropertyType[P]>
+      : GetScalarType<T[P], AggregatePropertyType[P]>
+  }
+
+
+
+
+  export type PropertyTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyTypeWhereInput
+    orderBy?: PropertyTypeOrderByWithAggregationInput | PropertyTypeOrderByWithAggregationInput[]
+    by: PropertyTypeScalarFieldEnum[] | PropertyTypeScalarFieldEnum
+    having?: PropertyTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PropertyTypeCountAggregateInputType | true
+    _min?: PropertyTypeMinAggregateInputType
+    _max?: PropertyTypeMaxAggregateInputType
+  }
+
+  export type PropertyTypeGroupByOutputType = {
+    id: string
+    name: string
+    _count: PropertyTypeCountAggregateOutputType | null
+    _min: PropertyTypeMinAggregateOutputType | null
+    _max: PropertyTypeMaxAggregateOutputType | null
+  }
+
+  type GetPropertyTypeGroupByPayload<T extends PropertyTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PropertyTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PropertyTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PropertyTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], PropertyTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PropertyTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    properties?: boolean | PropertyType$propertiesArgs<ExtArgs>
+    userPreferencePropertyTypes?: boolean | PropertyType$userPreferencePropertyTypesArgs<ExtArgs>
+    _count?: boolean | PropertyTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["propertyType"]>
+
+  export type PropertyTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["propertyType"]>
+
+  export type PropertyTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["propertyType"]>
+
+  export type PropertyTypeSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type PropertyTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["propertyType"]>
+  export type PropertyTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | PropertyType$propertiesArgs<ExtArgs>
+    userPreferencePropertyTypes?: boolean | PropertyType$userPreferencePropertyTypesArgs<ExtArgs>
+    _count?: boolean | PropertyTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PropertyTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PropertyTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $PropertyTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PropertyType"
+    objects: {
+      properties: Prisma.$PropertyPayload<ExtArgs>[]
+      userPreferencePropertyTypes: Prisma.$UserPreferencePropertyTypePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["propertyType"]>
+    composites: {}
+  }
+
+  type PropertyTypeGetPayload<S extends boolean | null | undefined | PropertyTypeDefaultArgs> = $Result.GetResult<Prisma.$PropertyTypePayload, S>
+
+  type PropertyTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PropertyTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PropertyTypeCountAggregateInputType | true
+    }
+
+  export interface PropertyTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PropertyType'], meta: { name: 'PropertyType' } }
+    /**
+     * Find zero or one PropertyType that matches the filter.
+     * @param {PropertyTypeFindUniqueArgs} args - Arguments to find a PropertyType
+     * @example
+     * // Get one PropertyType
+     * const propertyType = await prisma.propertyType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PropertyTypeFindUniqueArgs>(args: SelectSubset<T, PropertyTypeFindUniqueArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PropertyType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PropertyTypeFindUniqueOrThrowArgs} args - Arguments to find a PropertyType
+     * @example
+     * // Get one PropertyType
+     * const propertyType = await prisma.propertyType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PropertyTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, PropertyTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PropertyType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PropertyTypeFindFirstArgs} args - Arguments to find a PropertyType
+     * @example
+     * // Get one PropertyType
+     * const propertyType = await prisma.propertyType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PropertyTypeFindFirstArgs>(args?: SelectSubset<T, PropertyTypeFindFirstArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PropertyType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PropertyTypeFindFirstOrThrowArgs} args - Arguments to find a PropertyType
+     * @example
+     * // Get one PropertyType
+     * const propertyType = await prisma.propertyType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PropertyTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, PropertyTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PropertyTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PropertyTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PropertyTypes
+     * const propertyTypes = await prisma.propertyType.findMany()
+     * 
+     * // Get first 10 PropertyTypes
+     * const propertyTypes = await prisma.propertyType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const propertyTypeWithIdOnly = await prisma.propertyType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PropertyTypeFindManyArgs>(args?: SelectSubset<T, PropertyTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PropertyType.
+     * @param {PropertyTypeCreateArgs} args - Arguments to create a PropertyType.
+     * @example
+     * // Create one PropertyType
+     * const PropertyType = await prisma.propertyType.create({
+     *   data: {
+     *     // ... data to create a PropertyType
+     *   }
+     * })
+     * 
+     */
+    create<T extends PropertyTypeCreateArgs>(args: SelectSubset<T, PropertyTypeCreateArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PropertyTypes.
+     * @param {PropertyTypeCreateManyArgs} args - Arguments to create many PropertyTypes.
+     * @example
+     * // Create many PropertyTypes
+     * const propertyType = await prisma.propertyType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PropertyTypeCreateManyArgs>(args?: SelectSubset<T, PropertyTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PropertyTypes and returns the data saved in the database.
+     * @param {PropertyTypeCreateManyAndReturnArgs} args - Arguments to create many PropertyTypes.
+     * @example
+     * // Create many PropertyTypes
+     * const propertyType = await prisma.propertyType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PropertyTypes and only return the `id`
+     * const propertyTypeWithIdOnly = await prisma.propertyType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PropertyTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, PropertyTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PropertyType.
+     * @param {PropertyTypeDeleteArgs} args - Arguments to delete one PropertyType.
+     * @example
+     * // Delete one PropertyType
+     * const PropertyType = await prisma.propertyType.delete({
+     *   where: {
+     *     // ... filter to delete one PropertyType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PropertyTypeDeleteArgs>(args: SelectSubset<T, PropertyTypeDeleteArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PropertyType.
+     * @param {PropertyTypeUpdateArgs} args - Arguments to update one PropertyType.
+     * @example
+     * // Update one PropertyType
+     * const propertyType = await prisma.propertyType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PropertyTypeUpdateArgs>(args: SelectSubset<T, PropertyTypeUpdateArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PropertyTypes.
+     * @param {PropertyTypeDeleteManyArgs} args - Arguments to filter PropertyTypes to delete.
+     * @example
+     * // Delete a few PropertyTypes
+     * const { count } = await prisma.propertyType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PropertyTypeDeleteManyArgs>(args?: SelectSubset<T, PropertyTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PropertyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PropertyTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PropertyTypes
+     * const propertyType = await prisma.propertyType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PropertyTypeUpdateManyArgs>(args: SelectSubset<T, PropertyTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PropertyTypes and returns the data updated in the database.
+     * @param {PropertyTypeUpdateManyAndReturnArgs} args - Arguments to update many PropertyTypes.
+     * @example
+     * // Update many PropertyTypes
+     * const propertyType = await prisma.propertyType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PropertyTypes and only return the `id`
+     * const propertyTypeWithIdOnly = await prisma.propertyType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PropertyTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, PropertyTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PropertyType.
+     * @param {PropertyTypeUpsertArgs} args - Arguments to update or create a PropertyType.
+     * @example
+     * // Update or create a PropertyType
+     * const propertyType = await prisma.propertyType.upsert({
+     *   create: {
+     *     // ... data to create a PropertyType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PropertyType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PropertyTypeUpsertArgs>(args: SelectSubset<T, PropertyTypeUpsertArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PropertyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PropertyTypeCountArgs} args - Arguments to filter PropertyTypes to count.
+     * @example
+     * // Count the number of PropertyTypes
+     * const count = await prisma.propertyType.count({
+     *   where: {
+     *     // ... the filter for the PropertyTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends PropertyTypeCountArgs>(
+      args?: Subset<T, PropertyTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PropertyTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PropertyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PropertyTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PropertyTypeAggregateArgs>(args: Subset<T, PropertyTypeAggregateArgs>): Prisma.PrismaPromise<GetPropertyTypeAggregateType<T>>
+
+    /**
+     * Group by PropertyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PropertyTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PropertyTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PropertyTypeGroupByArgs['orderBy'] }
+        : { orderBy?: PropertyTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PropertyTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPropertyTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PropertyType model
+   */
+  readonly fields: PropertyTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PropertyType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PropertyTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    properties<T extends PropertyType$propertiesArgs<ExtArgs> = {}>(args?: Subset<T, PropertyType$propertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userPreferencePropertyTypes<T extends PropertyType$userPreferencePropertyTypesArgs<ExtArgs> = {}>(args?: Subset<T, PropertyType$userPreferencePropertyTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PropertyType model
+   */
+  interface PropertyTypeFieldRefs {
+    readonly id: FieldRef<"PropertyType", 'String'>
+    readonly name: FieldRef<"PropertyType", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PropertyType findUnique
+   */
+  export type PropertyTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PropertyType to fetch.
+     */
+    where: PropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * PropertyType findUniqueOrThrow
+   */
+  export type PropertyTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PropertyType to fetch.
+     */
+    where: PropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * PropertyType findFirst
+   */
+  export type PropertyTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PropertyType to fetch.
+     */
+    where?: PropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PropertyTypes to fetch.
+     */
+    orderBy?: PropertyTypeOrderByWithRelationInput | PropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PropertyTypes.
+     */
+    cursor?: PropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PropertyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PropertyTypes.
+     */
+    distinct?: PropertyTypeScalarFieldEnum | PropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * PropertyType findFirstOrThrow
+   */
+  export type PropertyTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PropertyType to fetch.
+     */
+    where?: PropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PropertyTypes to fetch.
+     */
+    orderBy?: PropertyTypeOrderByWithRelationInput | PropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PropertyTypes.
+     */
+    cursor?: PropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PropertyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PropertyTypes.
+     */
+    distinct?: PropertyTypeScalarFieldEnum | PropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * PropertyType findMany
+   */
+  export type PropertyTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PropertyTypes to fetch.
+     */
+    where?: PropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PropertyTypes to fetch.
+     */
+    orderBy?: PropertyTypeOrderByWithRelationInput | PropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PropertyTypes.
+     */
+    cursor?: PropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PropertyTypes.
+     */
+    skip?: number
+    distinct?: PropertyTypeScalarFieldEnum | PropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * PropertyType create
+   */
+  export type PropertyTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PropertyType.
+     */
+    data: XOR<PropertyTypeCreateInput, PropertyTypeUncheckedCreateInput>
+  }
+
+  /**
+   * PropertyType createMany
+   */
+  export type PropertyTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PropertyTypes.
+     */
+    data: PropertyTypeCreateManyInput | PropertyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PropertyType createManyAndReturn
+   */
+  export type PropertyTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many PropertyTypes.
+     */
+    data: PropertyTypeCreateManyInput | PropertyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PropertyType update
+   */
+  export type PropertyTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PropertyType.
+     */
+    data: XOR<PropertyTypeUpdateInput, PropertyTypeUncheckedUpdateInput>
+    /**
+     * Choose, which PropertyType to update.
+     */
+    where: PropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * PropertyType updateMany
+   */
+  export type PropertyTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PropertyTypes.
+     */
+    data: XOR<PropertyTypeUpdateManyMutationInput, PropertyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which PropertyTypes to update
+     */
+    where?: PropertyTypeWhereInput
+    /**
+     * Limit how many PropertyTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PropertyType updateManyAndReturn
+   */
+  export type PropertyTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update PropertyTypes.
+     */
+    data: XOR<PropertyTypeUpdateManyMutationInput, PropertyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which PropertyTypes to update
+     */
+    where?: PropertyTypeWhereInput
+    /**
+     * Limit how many PropertyTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PropertyType upsert
+   */
+  export type PropertyTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PropertyType to update in case it exists.
+     */
+    where: PropertyTypeWhereUniqueInput
+    /**
+     * In case the PropertyType found by the `where` argument doesn't exist, create a new PropertyType with this data.
+     */
+    create: XOR<PropertyTypeCreateInput, PropertyTypeUncheckedCreateInput>
+    /**
+     * In case the PropertyType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PropertyTypeUpdateInput, PropertyTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * PropertyType delete
+   */
+  export type PropertyTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter which PropertyType to delete.
+     */
+    where: PropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * PropertyType deleteMany
+   */
+  export type PropertyTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PropertyTypes to delete
+     */
+    where?: PropertyTypeWhereInput
+    /**
+     * Limit how many PropertyTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PropertyType.properties
+   */
+  export type PropertyType$propertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * PropertyType.userPreferencePropertyTypes
+   */
+  export type PropertyType$userPreferencePropertyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    where?: UserPreferencePropertyTypeWhereInput
+    orderBy?: UserPreferencePropertyTypeOrderByWithRelationInput | UserPreferencePropertyTypeOrderByWithRelationInput[]
+    cursor?: UserPreferencePropertyTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPreferencePropertyTypeScalarFieldEnum | UserPreferencePropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * PropertyType without action
+   */
+  export type PropertyTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PropertyType
+     */
+    select?: PropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PropertyType
+     */
+    omit?: PropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Province
+   */
+
+  export type AggregateProvince = {
+    _count: ProvinceCountAggregateOutputType | null
+    _min: ProvinceMinAggregateOutputType | null
+    _max: ProvinceMaxAggregateOutputType | null
+  }
+
+  export type ProvinceMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ProvinceMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ProvinceCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type ProvinceMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ProvinceMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ProvinceCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type ProvinceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Province to aggregate.
+     */
+    where?: ProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinces to fetch.
+     */
+    orderBy?: ProvinceOrderByWithRelationInput | ProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Provinces
+    **/
+    _count?: true | ProvinceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProvinceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProvinceMaxAggregateInputType
+  }
+
+  export type GetProvinceAggregateType<T extends ProvinceAggregateArgs> = {
+        [P in keyof T & keyof AggregateProvince]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProvince[P]>
+      : GetScalarType<T[P], AggregateProvince[P]>
+  }
+
+
+
+
+  export type ProvinceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProvinceWhereInput
+    orderBy?: ProvinceOrderByWithAggregationInput | ProvinceOrderByWithAggregationInput[]
+    by: ProvinceScalarFieldEnum[] | ProvinceScalarFieldEnum
+    having?: ProvinceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProvinceCountAggregateInputType | true
+    _min?: ProvinceMinAggregateInputType
+    _max?: ProvinceMaxAggregateInputType
+  }
+
+  export type ProvinceGroupByOutputType = {
+    id: string
+    name: string
+    _count: ProvinceCountAggregateOutputType | null
+    _min: ProvinceMinAggregateOutputType | null
+    _max: ProvinceMaxAggregateOutputType | null
+  }
+
+  type GetProvinceGroupByPayload<T extends ProvinceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProvinceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProvinceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProvinceGroupByOutputType[P]>
+            : GetScalarType<T[P], ProvinceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProvinceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    properties?: boolean | Province$propertiesArgs<ExtArgs>
+    userPreferencesProvinces?: boolean | Province$userPreferencesProvincesArgs<ExtArgs>
+    _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["province"]>
+
+  export type ProvinceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["province"]>
+
+  export type ProvinceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["province"]>
+
+  export type ProvinceSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type ProvinceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["province"]>
+  export type ProvinceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | Province$propertiesArgs<ExtArgs>
+    userPreferencesProvinces?: boolean | Province$userPreferencesProvincesArgs<ExtArgs>
+    _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ProvinceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ProvincePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Province"
+    objects: {
+      properties: Prisma.$PropertyPayload<ExtArgs>[]
+      userPreferencesProvinces: Prisma.$UserPreferenceProvincePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["province"]>
+    composites: {}
+  }
+
+  type ProvinceGetPayload<S extends boolean | null | undefined | ProvinceDefaultArgs> = $Result.GetResult<Prisma.$ProvincePayload, S>
+
+  type ProvinceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProvinceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProvinceCountAggregateInputType | true
+    }
+
+  export interface ProvinceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Province'], meta: { name: 'Province' } }
+    /**
+     * Find zero or one Province that matches the filter.
+     * @param {ProvinceFindUniqueArgs} args - Arguments to find a Province
+     * @example
+     * // Get one Province
+     * const province = await prisma.province.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProvinceFindUniqueArgs>(args: SelectSubset<T, ProvinceFindUniqueArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Province that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProvinceFindUniqueOrThrowArgs} args - Arguments to find a Province
+     * @example
+     * // Get one Province
+     * const province = await prisma.province.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProvinceFindUniqueOrThrowArgs>(args: SelectSubset<T, ProvinceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Province that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinceFindFirstArgs} args - Arguments to find a Province
+     * @example
+     * // Get one Province
+     * const province = await prisma.province.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProvinceFindFirstArgs>(args?: SelectSubset<T, ProvinceFindFirstArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Province that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinceFindFirstOrThrowArgs} args - Arguments to find a Province
+     * @example
+     * // Get one Province
+     * const province = await prisma.province.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProvinceFindFirstOrThrowArgs>(args?: SelectSubset<T, ProvinceFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Provinces that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Provinces
+     * const provinces = await prisma.province.findMany()
+     * 
+     * // Get first 10 Provinces
+     * const provinces = await prisma.province.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const provinceWithIdOnly = await prisma.province.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProvinceFindManyArgs>(args?: SelectSubset<T, ProvinceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Province.
+     * @param {ProvinceCreateArgs} args - Arguments to create a Province.
+     * @example
+     * // Create one Province
+     * const Province = await prisma.province.create({
+     *   data: {
+     *     // ... data to create a Province
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProvinceCreateArgs>(args: SelectSubset<T, ProvinceCreateArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Provinces.
+     * @param {ProvinceCreateManyArgs} args - Arguments to create many Provinces.
+     * @example
+     * // Create many Provinces
+     * const province = await prisma.province.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProvinceCreateManyArgs>(args?: SelectSubset<T, ProvinceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Provinces and returns the data saved in the database.
+     * @param {ProvinceCreateManyAndReturnArgs} args - Arguments to create many Provinces.
+     * @example
+     * // Create many Provinces
+     * const province = await prisma.province.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Provinces and only return the `id`
+     * const provinceWithIdOnly = await prisma.province.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProvinceCreateManyAndReturnArgs>(args?: SelectSubset<T, ProvinceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Province.
+     * @param {ProvinceDeleteArgs} args - Arguments to delete one Province.
+     * @example
+     * // Delete one Province
+     * const Province = await prisma.province.delete({
+     *   where: {
+     *     // ... filter to delete one Province
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProvinceDeleteArgs>(args: SelectSubset<T, ProvinceDeleteArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Province.
+     * @param {ProvinceUpdateArgs} args - Arguments to update one Province.
+     * @example
+     * // Update one Province
+     * const province = await prisma.province.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProvinceUpdateArgs>(args: SelectSubset<T, ProvinceUpdateArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Provinces.
+     * @param {ProvinceDeleteManyArgs} args - Arguments to filter Provinces to delete.
+     * @example
+     * // Delete a few Provinces
+     * const { count } = await prisma.province.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProvinceDeleteManyArgs>(args?: SelectSubset<T, ProvinceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provinces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Provinces
+     * const province = await prisma.province.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProvinceUpdateManyArgs>(args: SelectSubset<T, ProvinceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provinces and returns the data updated in the database.
+     * @param {ProvinceUpdateManyAndReturnArgs} args - Arguments to update many Provinces.
+     * @example
+     * // Update many Provinces
+     * const province = await prisma.province.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Provinces and only return the `id`
+     * const provinceWithIdOnly = await prisma.province.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProvinceUpdateManyAndReturnArgs>(args: SelectSubset<T, ProvinceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Province.
+     * @param {ProvinceUpsertArgs} args - Arguments to update or create a Province.
+     * @example
+     * // Update or create a Province
+     * const province = await prisma.province.upsert({
+     *   create: {
+     *     // ... data to create a Province
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Province we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProvinceUpsertArgs>(args: SelectSubset<T, ProvinceUpsertArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Provinces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinceCountArgs} args - Arguments to filter Provinces to count.
+     * @example
+     * // Count the number of Provinces
+     * const count = await prisma.province.count({
+     *   where: {
+     *     // ... the filter for the Provinces we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProvinceCountArgs>(
+      args?: Subset<T, ProvinceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProvinceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Province.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProvinceAggregateArgs>(args: Subset<T, ProvinceAggregateArgs>): Prisma.PrismaPromise<GetProvinceAggregateType<T>>
+
+    /**
+     * Group by Province.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProvinceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProvinceGroupByArgs['orderBy'] }
+        : { orderBy?: ProvinceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProvinceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProvinceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Province model
+   */
+  readonly fields: ProvinceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Province.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProvinceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    properties<T extends Province$propertiesArgs<ExtArgs> = {}>(args?: Subset<T, Province$propertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userPreferencesProvinces<T extends Province$userPreferencesProvincesArgs<ExtArgs> = {}>(args?: Subset<T, Province$userPreferencesProvincesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Province model
+   */
+  interface ProvinceFieldRefs {
+    readonly id: FieldRef<"Province", 'String'>
+    readonly name: FieldRef<"Province", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Province findUnique
+   */
+  export type ProvinceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which Province to fetch.
+     */
+    where: ProvinceWhereUniqueInput
+  }
+
+  /**
+   * Province findUniqueOrThrow
+   */
+  export type ProvinceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which Province to fetch.
+     */
+    where: ProvinceWhereUniqueInput
+  }
+
+  /**
+   * Province findFirst
+   */
+  export type ProvinceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which Province to fetch.
+     */
+    where?: ProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinces to fetch.
+     */
+    orderBy?: ProvinceOrderByWithRelationInput | ProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Provinces.
+     */
+    cursor?: ProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Provinces.
+     */
+    distinct?: ProvinceScalarFieldEnum | ProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * Province findFirstOrThrow
+   */
+  export type ProvinceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which Province to fetch.
+     */
+    where?: ProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinces to fetch.
+     */
+    orderBy?: ProvinceOrderByWithRelationInput | ProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Provinces.
+     */
+    cursor?: ProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Provinces.
+     */
+    distinct?: ProvinceScalarFieldEnum | ProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * Province findMany
+   */
+  export type ProvinceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which Provinces to fetch.
+     */
+    where?: ProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinces to fetch.
+     */
+    orderBy?: ProvinceOrderByWithRelationInput | ProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Provinces.
+     */
+    cursor?: ProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinces.
+     */
+    skip?: number
+    distinct?: ProvinceScalarFieldEnum | ProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * Province create
+   */
+  export type ProvinceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Province.
+     */
+    data: XOR<ProvinceCreateInput, ProvinceUncheckedCreateInput>
+  }
+
+  /**
+   * Province createMany
+   */
+  export type ProvinceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Provinces.
+     */
+    data: ProvinceCreateManyInput | ProvinceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Province createManyAndReturn
+   */
+  export type ProvinceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * The data used to create many Provinces.
+     */
+    data: ProvinceCreateManyInput | ProvinceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Province update
+   */
+  export type ProvinceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Province.
+     */
+    data: XOR<ProvinceUpdateInput, ProvinceUncheckedUpdateInput>
+    /**
+     * Choose, which Province to update.
+     */
+    where: ProvinceWhereUniqueInput
+  }
+
+  /**
+   * Province updateMany
+   */
+  export type ProvinceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Provinces.
+     */
+    data: XOR<ProvinceUpdateManyMutationInput, ProvinceUncheckedUpdateManyInput>
+    /**
+     * Filter which Provinces to update
+     */
+    where?: ProvinceWhereInput
+    /**
+     * Limit how many Provinces to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Province updateManyAndReturn
+   */
+  export type ProvinceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * The data used to update Provinces.
+     */
+    data: XOR<ProvinceUpdateManyMutationInput, ProvinceUncheckedUpdateManyInput>
+    /**
+     * Filter which Provinces to update
+     */
+    where?: ProvinceWhereInput
+    /**
+     * Limit how many Provinces to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Province upsert
+   */
+  export type ProvinceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Province to update in case it exists.
+     */
+    where: ProvinceWhereUniqueInput
+    /**
+     * In case the Province found by the `where` argument doesn't exist, create a new Province with this data.
+     */
+    create: XOR<ProvinceCreateInput, ProvinceUncheckedCreateInput>
+    /**
+     * In case the Province was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProvinceUpdateInput, ProvinceUncheckedUpdateInput>
+  }
+
+  /**
+   * Province delete
+   */
+  export type ProvinceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    /**
+     * Filter which Province to delete.
+     */
+    where: ProvinceWhereUniqueInput
+  }
+
+  /**
+   * Province deleteMany
+   */
+  export type ProvinceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Provinces to delete
+     */
+    where?: ProvinceWhereInput
+    /**
+     * Limit how many Provinces to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Province.properties
+   */
+  export type Province$propertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * Province.userPreferencesProvinces
+   */
+  export type Province$userPreferencesProvincesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    where?: UserPreferenceProvinceWhereInput
+    orderBy?: UserPreferenceProvinceOrderByWithRelationInput | UserPreferenceProvinceOrderByWithRelationInput[]
+    cursor?: UserPreferenceProvinceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPreferenceProvinceScalarFieldEnum | UserPreferenceProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * Province without action
+   */
+  export type ProvinceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
   }
 
 
@@ -13797,27 +17850,25 @@ export namespace Prisma {
   export type UserPreferenceMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    modality: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    operationTypeId: string | null
   }
 
   export type UserPreferenceMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    modality: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    operationTypeId: string | null
   }
 
   export type UserPreferenceCountAggregateOutputType = {
     id: number
     userId: number
-    propertyTypes: number
-    modality: number
-    locations: number
     createdAt: number
     updatedAt: number
+    operationTypeId: number
     _all: number
   }
 
@@ -13825,27 +17876,25 @@ export namespace Prisma {
   export type UserPreferenceMinAggregateInputType = {
     id?: true
     userId?: true
-    modality?: true
     createdAt?: true
     updatedAt?: true
+    operationTypeId?: true
   }
 
   export type UserPreferenceMaxAggregateInputType = {
     id?: true
     userId?: true
-    modality?: true
     createdAt?: true
     updatedAt?: true
+    operationTypeId?: true
   }
 
   export type UserPreferenceCountAggregateInputType = {
     id?: true
     userId?: true
-    propertyTypes?: true
-    modality?: true
-    locations?: true
     createdAt?: true
     updatedAt?: true
+    operationTypeId?: true
     _all?: true
   }
 
@@ -13924,11 +17973,9 @@ export namespace Prisma {
   export type UserPreferenceGroupByOutputType = {
     id: string
     userId: string
-    propertyTypes: string[]
-    modality: string | null
-    locations: string[]
     createdAt: Date
     updatedAt: Date
+    operationTypeId: string | null
     _count: UserPreferenceCountAggregateOutputType | null
     _min: UserPreferenceMinAggregateOutputType | null
     _max: UserPreferenceMaxAggregateOutputType | null
@@ -13951,70 +17998,78 @@ export namespace Prisma {
   export type UserPreferenceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    propertyTypes?: boolean
-    modality?: boolean
-    locations?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    operationTypeId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    operationTypes?: boolean | UserPreference$operationTypesArgs<ExtArgs>
+    userPreferenceProvinces?: boolean | UserPreference$userPreferenceProvincesArgs<ExtArgs>
+    userPreferencePropertyTypes?: boolean | UserPreference$userPreferencePropertyTypesArgs<ExtArgs>
+    OperationType?: boolean | UserPreference$OperationTypeArgs<ExtArgs>
+    _count?: boolean | UserPreferenceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userPreference"]>
 
   export type UserPreferenceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    propertyTypes?: boolean
-    modality?: boolean
-    locations?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    operationTypeId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    OperationType?: boolean | UserPreference$OperationTypeArgs<ExtArgs>
   }, ExtArgs["result"]["userPreference"]>
 
   export type UserPreferenceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    propertyTypes?: boolean
-    modality?: boolean
-    locations?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    operationTypeId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    OperationType?: boolean | UserPreference$OperationTypeArgs<ExtArgs>
   }, ExtArgs["result"]["userPreference"]>
 
   export type UserPreferenceSelectScalar = {
     id?: boolean
     userId?: boolean
-    propertyTypes?: boolean
-    modality?: boolean
-    locations?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    operationTypeId?: boolean
   }
 
-  export type UserPreferenceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyTypes" | "modality" | "locations" | "createdAt" | "updatedAt", ExtArgs["result"]["userPreference"]>
+  export type UserPreferenceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "createdAt" | "updatedAt" | "operationTypeId", ExtArgs["result"]["userPreference"]>
   export type UserPreferenceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    operationTypes?: boolean | UserPreference$operationTypesArgs<ExtArgs>
+    userPreferenceProvinces?: boolean | UserPreference$userPreferenceProvincesArgs<ExtArgs>
+    userPreferencePropertyTypes?: boolean | UserPreference$userPreferencePropertyTypesArgs<ExtArgs>
+    OperationType?: boolean | UserPreference$OperationTypeArgs<ExtArgs>
+    _count?: boolean | UserPreferenceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserPreferenceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    OperationType?: boolean | UserPreference$OperationTypeArgs<ExtArgs>
   }
   export type UserPreferenceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    OperationType?: boolean | UserPreference$OperationTypeArgs<ExtArgs>
   }
 
   export type $UserPreferencePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "UserPreference"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      operationTypes: Prisma.$UserPreferenceOperationTypePayload<ExtArgs>[]
+      userPreferenceProvinces: Prisma.$UserPreferenceProvincePayload<ExtArgs>[]
+      userPreferencePropertyTypes: Prisma.$UserPreferencePropertyTypePayload<ExtArgs>[]
+      OperationType: Prisma.$OperationTypePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      propertyTypes: string[]
-      modality: string | null
-      locations: string[]
       createdAt: Date
       updatedAt: Date
+      operationTypeId: string | null
     }, ExtArgs["result"]["userPreference"]>
     composites: {}
   }
@@ -14410,6 +18465,10 @@ export namespace Prisma {
   export interface Prisma__UserPreferenceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    operationTypes<T extends UserPreference$operationTypesArgs<ExtArgs> = {}>(args?: Subset<T, UserPreference$operationTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userPreferenceProvinces<T extends UserPreference$userPreferenceProvincesArgs<ExtArgs> = {}>(args?: Subset<T, UserPreference$userPreferenceProvincesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userPreferencePropertyTypes<T extends UserPreference$userPreferencePropertyTypesArgs<ExtArgs> = {}>(args?: Subset<T, UserPreference$userPreferencePropertyTypesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    OperationType<T extends UserPreference$OperationTypeArgs<ExtArgs> = {}>(args?: Subset<T, UserPreference$OperationTypeArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14441,11 +18500,9 @@ export namespace Prisma {
   interface UserPreferenceFieldRefs {
     readonly id: FieldRef<"UserPreference", 'String'>
     readonly userId: FieldRef<"UserPreference", 'String'>
-    readonly propertyTypes: FieldRef<"UserPreference", 'String[]'>
-    readonly modality: FieldRef<"UserPreference", 'String'>
-    readonly locations: FieldRef<"UserPreference", 'String[]'>
     readonly createdAt: FieldRef<"UserPreference", 'DateTime'>
     readonly updatedAt: FieldRef<"UserPreference", 'DateTime'>
+    readonly operationTypeId: FieldRef<"UserPreference", 'String'>
   }
     
 
@@ -14842,6 +18899,97 @@ export namespace Prisma {
   }
 
   /**
+   * UserPreference.operationTypes
+   */
+  export type UserPreference$operationTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    where?: UserPreferenceOperationTypeWhereInput
+    orderBy?: UserPreferenceOperationTypeOrderByWithRelationInput | UserPreferenceOperationTypeOrderByWithRelationInput[]
+    cursor?: UserPreferenceOperationTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPreferenceOperationTypeScalarFieldEnum | UserPreferenceOperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreference.userPreferenceProvinces
+   */
+  export type UserPreference$userPreferenceProvincesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    where?: UserPreferenceProvinceWhereInput
+    orderBy?: UserPreferenceProvinceOrderByWithRelationInput | UserPreferenceProvinceOrderByWithRelationInput[]
+    cursor?: UserPreferenceProvinceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPreferenceProvinceScalarFieldEnum | UserPreferenceProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreference.userPreferencePropertyTypes
+   */
+  export type UserPreference$userPreferencePropertyTypesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    where?: UserPreferencePropertyTypeWhereInput
+    orderBy?: UserPreferencePropertyTypeOrderByWithRelationInput | UserPreferencePropertyTypeOrderByWithRelationInput[]
+    cursor?: UserPreferencePropertyTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserPreferencePropertyTypeScalarFieldEnum | UserPreferencePropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreference.OperationType
+   */
+  export type UserPreference$OperationTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationType
+     */
+    select?: OperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationType
+     */
+    omit?: OperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationTypeInclude<ExtArgs> | null
+    where?: OperationTypeWhereInput
+  }
+
+  /**
    * UserPreference without action
    */
   export type UserPreferenceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14857,6 +19005,3126 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserPreferenceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserPreferenceProvince
+   */
+
+  export type AggregateUserPreferenceProvince = {
+    _count: UserPreferenceProvinceCountAggregateOutputType | null
+    _min: UserPreferenceProvinceMinAggregateOutputType | null
+    _max: UserPreferenceProvinceMaxAggregateOutputType | null
+  }
+
+  export type UserPreferenceProvinceMinAggregateOutputType = {
+    id: string | null
+    userPreferenceId: string | null
+    provinceId: string | null
+  }
+
+  export type UserPreferenceProvinceMaxAggregateOutputType = {
+    id: string | null
+    userPreferenceId: string | null
+    provinceId: string | null
+  }
+
+  export type UserPreferenceProvinceCountAggregateOutputType = {
+    id: number
+    userPreferenceId: number
+    provinceId: number
+    _all: number
+  }
+
+
+  export type UserPreferenceProvinceMinAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    provinceId?: true
+  }
+
+  export type UserPreferenceProvinceMaxAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    provinceId?: true
+  }
+
+  export type UserPreferenceProvinceCountAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    provinceId?: true
+    _all?: true
+  }
+
+  export type UserPreferenceProvinceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPreferenceProvince to aggregate.
+     */
+    where?: UserPreferenceProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceProvinces to fetch.
+     */
+    orderBy?: UserPreferenceProvinceOrderByWithRelationInput | UserPreferenceProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserPreferenceProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceProvinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceProvinces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserPreferenceProvinces
+    **/
+    _count?: true | UserPreferenceProvinceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserPreferenceProvinceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserPreferenceProvinceMaxAggregateInputType
+  }
+
+  export type GetUserPreferenceProvinceAggregateType<T extends UserPreferenceProvinceAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserPreferenceProvince]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserPreferenceProvince[P]>
+      : GetScalarType<T[P], AggregateUserPreferenceProvince[P]>
+  }
+
+
+
+
+  export type UserPreferenceProvinceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferenceProvinceWhereInput
+    orderBy?: UserPreferenceProvinceOrderByWithAggregationInput | UserPreferenceProvinceOrderByWithAggregationInput[]
+    by: UserPreferenceProvinceScalarFieldEnum[] | UserPreferenceProvinceScalarFieldEnum
+    having?: UserPreferenceProvinceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserPreferenceProvinceCountAggregateInputType | true
+    _min?: UserPreferenceProvinceMinAggregateInputType
+    _max?: UserPreferenceProvinceMaxAggregateInputType
+  }
+
+  export type UserPreferenceProvinceGroupByOutputType = {
+    id: string
+    userPreferenceId: string
+    provinceId: string
+    _count: UserPreferenceProvinceCountAggregateOutputType | null
+    _min: UserPreferenceProvinceMinAggregateOutputType | null
+    _max: UserPreferenceProvinceMaxAggregateOutputType | null
+  }
+
+  type GetUserPreferenceProvinceGroupByPayload<T extends UserPreferenceProvinceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserPreferenceProvinceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserPreferenceProvinceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserPreferenceProvinceGroupByOutputType[P]>
+            : GetScalarType<T[P], UserPreferenceProvinceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserPreferenceProvinceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    provinceId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferenceProvince"]>
+
+  export type UserPreferenceProvinceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    provinceId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferenceProvince"]>
+
+  export type UserPreferenceProvinceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    provinceId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferenceProvince"]>
+
+  export type UserPreferenceProvinceSelectScalar = {
+    id?: boolean
+    userPreferenceId?: boolean
+    provinceId?: boolean
+  }
+
+  export type UserPreferenceProvinceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userPreferenceId" | "provinceId", ExtArgs["result"]["userPreferenceProvince"]>
+  export type UserPreferenceProvinceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }
+  export type UserPreferenceProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }
+  export type UserPreferenceProvinceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }
+
+  export type $UserPreferenceProvincePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserPreferenceProvince"
+    objects: {
+      userPreference: Prisma.$UserPreferencePayload<ExtArgs>
+      province: Prisma.$ProvincePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userPreferenceId: string
+      provinceId: string
+    }, ExtArgs["result"]["userPreferenceProvince"]>
+    composites: {}
+  }
+
+  type UserPreferenceProvinceGetPayload<S extends boolean | null | undefined | UserPreferenceProvinceDefaultArgs> = $Result.GetResult<Prisma.$UserPreferenceProvincePayload, S>
+
+  type UserPreferenceProvinceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserPreferenceProvinceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserPreferenceProvinceCountAggregateInputType | true
+    }
+
+  export interface UserPreferenceProvinceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserPreferenceProvince'], meta: { name: 'UserPreferenceProvince' } }
+    /**
+     * Find zero or one UserPreferenceProvince that matches the filter.
+     * @param {UserPreferenceProvinceFindUniqueArgs} args - Arguments to find a UserPreferenceProvince
+     * @example
+     * // Get one UserPreferenceProvince
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserPreferenceProvinceFindUniqueArgs>(args: SelectSubset<T, UserPreferenceProvinceFindUniqueArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserPreferenceProvince that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserPreferenceProvinceFindUniqueOrThrowArgs} args - Arguments to find a UserPreferenceProvince
+     * @example
+     * // Get one UserPreferenceProvince
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserPreferenceProvinceFindUniqueOrThrowArgs>(args: SelectSubset<T, UserPreferenceProvinceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPreferenceProvince that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceProvinceFindFirstArgs} args - Arguments to find a UserPreferenceProvince
+     * @example
+     * // Get one UserPreferenceProvince
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserPreferenceProvinceFindFirstArgs>(args?: SelectSubset<T, UserPreferenceProvinceFindFirstArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPreferenceProvince that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceProvinceFindFirstOrThrowArgs} args - Arguments to find a UserPreferenceProvince
+     * @example
+     * // Get one UserPreferenceProvince
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserPreferenceProvinceFindFirstOrThrowArgs>(args?: SelectSubset<T, UserPreferenceProvinceFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserPreferenceProvinces that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceProvinceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserPreferenceProvinces
+     * const userPreferenceProvinces = await prisma.userPreferenceProvince.findMany()
+     * 
+     * // Get first 10 UserPreferenceProvinces
+     * const userPreferenceProvinces = await prisma.userPreferenceProvince.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userPreferenceProvinceWithIdOnly = await prisma.userPreferenceProvince.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserPreferenceProvinceFindManyArgs>(args?: SelectSubset<T, UserPreferenceProvinceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserPreferenceProvince.
+     * @param {UserPreferenceProvinceCreateArgs} args - Arguments to create a UserPreferenceProvince.
+     * @example
+     * // Create one UserPreferenceProvince
+     * const UserPreferenceProvince = await prisma.userPreferenceProvince.create({
+     *   data: {
+     *     // ... data to create a UserPreferenceProvince
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserPreferenceProvinceCreateArgs>(args: SelectSubset<T, UserPreferenceProvinceCreateArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserPreferenceProvinces.
+     * @param {UserPreferenceProvinceCreateManyArgs} args - Arguments to create many UserPreferenceProvinces.
+     * @example
+     * // Create many UserPreferenceProvinces
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserPreferenceProvinceCreateManyArgs>(args?: SelectSubset<T, UserPreferenceProvinceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserPreferenceProvinces and returns the data saved in the database.
+     * @param {UserPreferenceProvinceCreateManyAndReturnArgs} args - Arguments to create many UserPreferenceProvinces.
+     * @example
+     * // Create many UserPreferenceProvinces
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserPreferenceProvinces and only return the `id`
+     * const userPreferenceProvinceWithIdOnly = await prisma.userPreferenceProvince.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserPreferenceProvinceCreateManyAndReturnArgs>(args?: SelectSubset<T, UserPreferenceProvinceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserPreferenceProvince.
+     * @param {UserPreferenceProvinceDeleteArgs} args - Arguments to delete one UserPreferenceProvince.
+     * @example
+     * // Delete one UserPreferenceProvince
+     * const UserPreferenceProvince = await prisma.userPreferenceProvince.delete({
+     *   where: {
+     *     // ... filter to delete one UserPreferenceProvince
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserPreferenceProvinceDeleteArgs>(args: SelectSubset<T, UserPreferenceProvinceDeleteArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserPreferenceProvince.
+     * @param {UserPreferenceProvinceUpdateArgs} args - Arguments to update one UserPreferenceProvince.
+     * @example
+     * // Update one UserPreferenceProvince
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserPreferenceProvinceUpdateArgs>(args: SelectSubset<T, UserPreferenceProvinceUpdateArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserPreferenceProvinces.
+     * @param {UserPreferenceProvinceDeleteManyArgs} args - Arguments to filter UserPreferenceProvinces to delete.
+     * @example
+     * // Delete a few UserPreferenceProvinces
+     * const { count } = await prisma.userPreferenceProvince.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserPreferenceProvinceDeleteManyArgs>(args?: SelectSubset<T, UserPreferenceProvinceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPreferenceProvinces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceProvinceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserPreferenceProvinces
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserPreferenceProvinceUpdateManyArgs>(args: SelectSubset<T, UserPreferenceProvinceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPreferenceProvinces and returns the data updated in the database.
+     * @param {UserPreferenceProvinceUpdateManyAndReturnArgs} args - Arguments to update many UserPreferenceProvinces.
+     * @example
+     * // Update many UserPreferenceProvinces
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserPreferenceProvinces and only return the `id`
+     * const userPreferenceProvinceWithIdOnly = await prisma.userPreferenceProvince.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserPreferenceProvinceUpdateManyAndReturnArgs>(args: SelectSubset<T, UserPreferenceProvinceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserPreferenceProvince.
+     * @param {UserPreferenceProvinceUpsertArgs} args - Arguments to update or create a UserPreferenceProvince.
+     * @example
+     * // Update or create a UserPreferenceProvince
+     * const userPreferenceProvince = await prisma.userPreferenceProvince.upsert({
+     *   create: {
+     *     // ... data to create a UserPreferenceProvince
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserPreferenceProvince we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserPreferenceProvinceUpsertArgs>(args: SelectSubset<T, UserPreferenceProvinceUpsertArgs<ExtArgs>>): Prisma__UserPreferenceProvinceClient<$Result.GetResult<Prisma.$UserPreferenceProvincePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserPreferenceProvinces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceProvinceCountArgs} args - Arguments to filter UserPreferenceProvinces to count.
+     * @example
+     * // Count the number of UserPreferenceProvinces
+     * const count = await prisma.userPreferenceProvince.count({
+     *   where: {
+     *     // ... the filter for the UserPreferenceProvinces we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserPreferenceProvinceCountArgs>(
+      args?: Subset<T, UserPreferenceProvinceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserPreferenceProvinceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserPreferenceProvince.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceProvinceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserPreferenceProvinceAggregateArgs>(args: Subset<T, UserPreferenceProvinceAggregateArgs>): Prisma.PrismaPromise<GetUserPreferenceProvinceAggregateType<T>>
+
+    /**
+     * Group by UserPreferenceProvince.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceProvinceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserPreferenceProvinceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserPreferenceProvinceGroupByArgs['orderBy'] }
+        : { orderBy?: UserPreferenceProvinceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserPreferenceProvinceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserPreferenceProvinceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserPreferenceProvince model
+   */
+  readonly fields: UserPreferenceProvinceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserPreferenceProvince.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserPreferenceProvinceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    userPreference<T extends UserPreferenceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserPreferenceDefaultArgs<ExtArgs>>): Prisma__UserPreferenceClient<$Result.GetResult<Prisma.$UserPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserPreferenceProvince model
+   */
+  interface UserPreferenceProvinceFieldRefs {
+    readonly id: FieldRef<"UserPreferenceProvince", 'String'>
+    readonly userPreferenceId: FieldRef<"UserPreferenceProvince", 'String'>
+    readonly provinceId: FieldRef<"UserPreferenceProvince", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserPreferenceProvince findUnique
+   */
+  export type UserPreferenceProvinceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceProvince to fetch.
+     */
+    where: UserPreferenceProvinceWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceProvince findUniqueOrThrow
+   */
+  export type UserPreferenceProvinceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceProvince to fetch.
+     */
+    where: UserPreferenceProvinceWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceProvince findFirst
+   */
+  export type UserPreferenceProvinceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceProvince to fetch.
+     */
+    where?: UserPreferenceProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceProvinces to fetch.
+     */
+    orderBy?: UserPreferenceProvinceOrderByWithRelationInput | UserPreferenceProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPreferenceProvinces.
+     */
+    cursor?: UserPreferenceProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceProvinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceProvinces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPreferenceProvinces.
+     */
+    distinct?: UserPreferenceProvinceScalarFieldEnum | UserPreferenceProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferenceProvince findFirstOrThrow
+   */
+  export type UserPreferenceProvinceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceProvince to fetch.
+     */
+    where?: UserPreferenceProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceProvinces to fetch.
+     */
+    orderBy?: UserPreferenceProvinceOrderByWithRelationInput | UserPreferenceProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPreferenceProvinces.
+     */
+    cursor?: UserPreferenceProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceProvinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceProvinces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPreferenceProvinces.
+     */
+    distinct?: UserPreferenceProvinceScalarFieldEnum | UserPreferenceProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferenceProvince findMany
+   */
+  export type UserPreferenceProvinceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceProvinces to fetch.
+     */
+    where?: UserPreferenceProvinceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceProvinces to fetch.
+     */
+    orderBy?: UserPreferenceProvinceOrderByWithRelationInput | UserPreferenceProvinceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserPreferenceProvinces.
+     */
+    cursor?: UserPreferenceProvinceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceProvinces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceProvinces.
+     */
+    skip?: number
+    distinct?: UserPreferenceProvinceScalarFieldEnum | UserPreferenceProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferenceProvince create
+   */
+  export type UserPreferenceProvinceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserPreferenceProvince.
+     */
+    data: XOR<UserPreferenceProvinceCreateInput, UserPreferenceProvinceUncheckedCreateInput>
+  }
+
+  /**
+   * UserPreferenceProvince createMany
+   */
+  export type UserPreferenceProvinceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserPreferenceProvinces.
+     */
+    data: UserPreferenceProvinceCreateManyInput | UserPreferenceProvinceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserPreferenceProvince createManyAndReturn
+   */
+  export type UserPreferenceProvinceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserPreferenceProvinces.
+     */
+    data: UserPreferenceProvinceCreateManyInput | UserPreferenceProvinceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPreferenceProvince update
+   */
+  export type UserPreferenceProvinceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserPreferenceProvince.
+     */
+    data: XOR<UserPreferenceProvinceUpdateInput, UserPreferenceProvinceUncheckedUpdateInput>
+    /**
+     * Choose, which UserPreferenceProvince to update.
+     */
+    where: UserPreferenceProvinceWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceProvince updateMany
+   */
+  export type UserPreferenceProvinceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserPreferenceProvinces.
+     */
+    data: XOR<UserPreferenceProvinceUpdateManyMutationInput, UserPreferenceProvinceUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPreferenceProvinces to update
+     */
+    where?: UserPreferenceProvinceWhereInput
+    /**
+     * Limit how many UserPreferenceProvinces to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPreferenceProvince updateManyAndReturn
+   */
+  export type UserPreferenceProvinceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * The data used to update UserPreferenceProvinces.
+     */
+    data: XOR<UserPreferenceProvinceUpdateManyMutationInput, UserPreferenceProvinceUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPreferenceProvinces to update
+     */
+    where?: UserPreferenceProvinceWhereInput
+    /**
+     * Limit how many UserPreferenceProvinces to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPreferenceProvince upsert
+   */
+  export type UserPreferenceProvinceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserPreferenceProvince to update in case it exists.
+     */
+    where: UserPreferenceProvinceWhereUniqueInput
+    /**
+     * In case the UserPreferenceProvince found by the `where` argument doesn't exist, create a new UserPreferenceProvince with this data.
+     */
+    create: XOR<UserPreferenceProvinceCreateInput, UserPreferenceProvinceUncheckedCreateInput>
+    /**
+     * In case the UserPreferenceProvince was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserPreferenceProvinceUpdateInput, UserPreferenceProvinceUncheckedUpdateInput>
+  }
+
+  /**
+   * UserPreferenceProvince delete
+   */
+  export type UserPreferenceProvinceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+    /**
+     * Filter which UserPreferenceProvince to delete.
+     */
+    where: UserPreferenceProvinceWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceProvince deleteMany
+   */
+  export type UserPreferenceProvinceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPreferenceProvinces to delete
+     */
+    where?: UserPreferenceProvinceWhereInput
+    /**
+     * Limit how many UserPreferenceProvinces to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPreferenceProvince without action
+   */
+  export type UserPreferenceProvinceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceProvince
+     */
+    select?: UserPreferenceProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceProvince
+     */
+    omit?: UserPreferenceProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceProvinceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserPreferencePropertyType
+   */
+
+  export type AggregateUserPreferencePropertyType = {
+    _count: UserPreferencePropertyTypeCountAggregateOutputType | null
+    _min: UserPreferencePropertyTypeMinAggregateOutputType | null
+    _max: UserPreferencePropertyTypeMaxAggregateOutputType | null
+  }
+
+  export type UserPreferencePropertyTypeMinAggregateOutputType = {
+    id: string | null
+    userPreferenceId: string | null
+    propertyTypeId: string | null
+  }
+
+  export type UserPreferencePropertyTypeMaxAggregateOutputType = {
+    id: string | null
+    userPreferenceId: string | null
+    propertyTypeId: string | null
+  }
+
+  export type UserPreferencePropertyTypeCountAggregateOutputType = {
+    id: number
+    userPreferenceId: number
+    propertyTypeId: number
+    _all: number
+  }
+
+
+  export type UserPreferencePropertyTypeMinAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    propertyTypeId?: true
+  }
+
+  export type UserPreferencePropertyTypeMaxAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    propertyTypeId?: true
+  }
+
+  export type UserPreferencePropertyTypeCountAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    propertyTypeId?: true
+    _all?: true
+  }
+
+  export type UserPreferencePropertyTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPreferencePropertyType to aggregate.
+     */
+    where?: UserPreferencePropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferencePropertyTypes to fetch.
+     */
+    orderBy?: UserPreferencePropertyTypeOrderByWithRelationInput | UserPreferencePropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserPreferencePropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferencePropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferencePropertyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserPreferencePropertyTypes
+    **/
+    _count?: true | UserPreferencePropertyTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserPreferencePropertyTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserPreferencePropertyTypeMaxAggregateInputType
+  }
+
+  export type GetUserPreferencePropertyTypeAggregateType<T extends UserPreferencePropertyTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserPreferencePropertyType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserPreferencePropertyType[P]>
+      : GetScalarType<T[P], AggregateUserPreferencePropertyType[P]>
+  }
+
+
+
+
+  export type UserPreferencePropertyTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferencePropertyTypeWhereInput
+    orderBy?: UserPreferencePropertyTypeOrderByWithAggregationInput | UserPreferencePropertyTypeOrderByWithAggregationInput[]
+    by: UserPreferencePropertyTypeScalarFieldEnum[] | UserPreferencePropertyTypeScalarFieldEnum
+    having?: UserPreferencePropertyTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserPreferencePropertyTypeCountAggregateInputType | true
+    _min?: UserPreferencePropertyTypeMinAggregateInputType
+    _max?: UserPreferencePropertyTypeMaxAggregateInputType
+  }
+
+  export type UserPreferencePropertyTypeGroupByOutputType = {
+    id: string
+    userPreferenceId: string
+    propertyTypeId: string
+    _count: UserPreferencePropertyTypeCountAggregateOutputType | null
+    _min: UserPreferencePropertyTypeMinAggregateOutputType | null
+    _max: UserPreferencePropertyTypeMaxAggregateOutputType | null
+  }
+
+  type GetUserPreferencePropertyTypeGroupByPayload<T extends UserPreferencePropertyTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserPreferencePropertyTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserPreferencePropertyTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserPreferencePropertyTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], UserPreferencePropertyTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserPreferencePropertyTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    propertyTypeId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    propertyType?: boolean | PropertyTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferencePropertyType"]>
+
+  export type UserPreferencePropertyTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    propertyTypeId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    propertyType?: boolean | PropertyTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferencePropertyType"]>
+
+  export type UserPreferencePropertyTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    propertyTypeId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    propertyType?: boolean | PropertyTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferencePropertyType"]>
+
+  export type UserPreferencePropertyTypeSelectScalar = {
+    id?: boolean
+    userPreferenceId?: boolean
+    propertyTypeId?: boolean
+  }
+
+  export type UserPreferencePropertyTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userPreferenceId" | "propertyTypeId", ExtArgs["result"]["userPreferencePropertyType"]>
+  export type UserPreferencePropertyTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    propertyType?: boolean | PropertyTypeDefaultArgs<ExtArgs>
+  }
+  export type UserPreferencePropertyTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    propertyType?: boolean | PropertyTypeDefaultArgs<ExtArgs>
+  }
+  export type UserPreferencePropertyTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    propertyType?: boolean | PropertyTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $UserPreferencePropertyTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserPreferencePropertyType"
+    objects: {
+      userPreference: Prisma.$UserPreferencePayload<ExtArgs>
+      propertyType: Prisma.$PropertyTypePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userPreferenceId: string
+      propertyTypeId: string
+    }, ExtArgs["result"]["userPreferencePropertyType"]>
+    composites: {}
+  }
+
+  type UserPreferencePropertyTypeGetPayload<S extends boolean | null | undefined | UserPreferencePropertyTypeDefaultArgs> = $Result.GetResult<Prisma.$UserPreferencePropertyTypePayload, S>
+
+  type UserPreferencePropertyTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserPreferencePropertyTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserPreferencePropertyTypeCountAggregateInputType | true
+    }
+
+  export interface UserPreferencePropertyTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserPreferencePropertyType'], meta: { name: 'UserPreferencePropertyType' } }
+    /**
+     * Find zero or one UserPreferencePropertyType that matches the filter.
+     * @param {UserPreferencePropertyTypeFindUniqueArgs} args - Arguments to find a UserPreferencePropertyType
+     * @example
+     * // Get one UserPreferencePropertyType
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserPreferencePropertyTypeFindUniqueArgs>(args: SelectSubset<T, UserPreferencePropertyTypeFindUniqueArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserPreferencePropertyType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserPreferencePropertyTypeFindUniqueOrThrowArgs} args - Arguments to find a UserPreferencePropertyType
+     * @example
+     * // Get one UserPreferencePropertyType
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserPreferencePropertyTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, UserPreferencePropertyTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPreferencePropertyType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferencePropertyTypeFindFirstArgs} args - Arguments to find a UserPreferencePropertyType
+     * @example
+     * // Get one UserPreferencePropertyType
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserPreferencePropertyTypeFindFirstArgs>(args?: SelectSubset<T, UserPreferencePropertyTypeFindFirstArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPreferencePropertyType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferencePropertyTypeFindFirstOrThrowArgs} args - Arguments to find a UserPreferencePropertyType
+     * @example
+     * // Get one UserPreferencePropertyType
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserPreferencePropertyTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, UserPreferencePropertyTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserPreferencePropertyTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferencePropertyTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserPreferencePropertyTypes
+     * const userPreferencePropertyTypes = await prisma.userPreferencePropertyType.findMany()
+     * 
+     * // Get first 10 UserPreferencePropertyTypes
+     * const userPreferencePropertyTypes = await prisma.userPreferencePropertyType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userPreferencePropertyTypeWithIdOnly = await prisma.userPreferencePropertyType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserPreferencePropertyTypeFindManyArgs>(args?: SelectSubset<T, UserPreferencePropertyTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserPreferencePropertyType.
+     * @param {UserPreferencePropertyTypeCreateArgs} args - Arguments to create a UserPreferencePropertyType.
+     * @example
+     * // Create one UserPreferencePropertyType
+     * const UserPreferencePropertyType = await prisma.userPreferencePropertyType.create({
+     *   data: {
+     *     // ... data to create a UserPreferencePropertyType
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserPreferencePropertyTypeCreateArgs>(args: SelectSubset<T, UserPreferencePropertyTypeCreateArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserPreferencePropertyTypes.
+     * @param {UserPreferencePropertyTypeCreateManyArgs} args - Arguments to create many UserPreferencePropertyTypes.
+     * @example
+     * // Create many UserPreferencePropertyTypes
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserPreferencePropertyTypeCreateManyArgs>(args?: SelectSubset<T, UserPreferencePropertyTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserPreferencePropertyTypes and returns the data saved in the database.
+     * @param {UserPreferencePropertyTypeCreateManyAndReturnArgs} args - Arguments to create many UserPreferencePropertyTypes.
+     * @example
+     * // Create many UserPreferencePropertyTypes
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserPreferencePropertyTypes and only return the `id`
+     * const userPreferencePropertyTypeWithIdOnly = await prisma.userPreferencePropertyType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserPreferencePropertyTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, UserPreferencePropertyTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserPreferencePropertyType.
+     * @param {UserPreferencePropertyTypeDeleteArgs} args - Arguments to delete one UserPreferencePropertyType.
+     * @example
+     * // Delete one UserPreferencePropertyType
+     * const UserPreferencePropertyType = await prisma.userPreferencePropertyType.delete({
+     *   where: {
+     *     // ... filter to delete one UserPreferencePropertyType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserPreferencePropertyTypeDeleteArgs>(args: SelectSubset<T, UserPreferencePropertyTypeDeleteArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserPreferencePropertyType.
+     * @param {UserPreferencePropertyTypeUpdateArgs} args - Arguments to update one UserPreferencePropertyType.
+     * @example
+     * // Update one UserPreferencePropertyType
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserPreferencePropertyTypeUpdateArgs>(args: SelectSubset<T, UserPreferencePropertyTypeUpdateArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserPreferencePropertyTypes.
+     * @param {UserPreferencePropertyTypeDeleteManyArgs} args - Arguments to filter UserPreferencePropertyTypes to delete.
+     * @example
+     * // Delete a few UserPreferencePropertyTypes
+     * const { count } = await prisma.userPreferencePropertyType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserPreferencePropertyTypeDeleteManyArgs>(args?: SelectSubset<T, UserPreferencePropertyTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPreferencePropertyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferencePropertyTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserPreferencePropertyTypes
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserPreferencePropertyTypeUpdateManyArgs>(args: SelectSubset<T, UserPreferencePropertyTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPreferencePropertyTypes and returns the data updated in the database.
+     * @param {UserPreferencePropertyTypeUpdateManyAndReturnArgs} args - Arguments to update many UserPreferencePropertyTypes.
+     * @example
+     * // Update many UserPreferencePropertyTypes
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserPreferencePropertyTypes and only return the `id`
+     * const userPreferencePropertyTypeWithIdOnly = await prisma.userPreferencePropertyType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserPreferencePropertyTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, UserPreferencePropertyTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserPreferencePropertyType.
+     * @param {UserPreferencePropertyTypeUpsertArgs} args - Arguments to update or create a UserPreferencePropertyType.
+     * @example
+     * // Update or create a UserPreferencePropertyType
+     * const userPreferencePropertyType = await prisma.userPreferencePropertyType.upsert({
+     *   create: {
+     *     // ... data to create a UserPreferencePropertyType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserPreferencePropertyType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserPreferencePropertyTypeUpsertArgs>(args: SelectSubset<T, UserPreferencePropertyTypeUpsertArgs<ExtArgs>>): Prisma__UserPreferencePropertyTypeClient<$Result.GetResult<Prisma.$UserPreferencePropertyTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserPreferencePropertyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferencePropertyTypeCountArgs} args - Arguments to filter UserPreferencePropertyTypes to count.
+     * @example
+     * // Count the number of UserPreferencePropertyTypes
+     * const count = await prisma.userPreferencePropertyType.count({
+     *   where: {
+     *     // ... the filter for the UserPreferencePropertyTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserPreferencePropertyTypeCountArgs>(
+      args?: Subset<T, UserPreferencePropertyTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserPreferencePropertyTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserPreferencePropertyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferencePropertyTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserPreferencePropertyTypeAggregateArgs>(args: Subset<T, UserPreferencePropertyTypeAggregateArgs>): Prisma.PrismaPromise<GetUserPreferencePropertyTypeAggregateType<T>>
+
+    /**
+     * Group by UserPreferencePropertyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferencePropertyTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserPreferencePropertyTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserPreferencePropertyTypeGroupByArgs['orderBy'] }
+        : { orderBy?: UserPreferencePropertyTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserPreferencePropertyTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserPreferencePropertyTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserPreferencePropertyType model
+   */
+  readonly fields: UserPreferencePropertyTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserPreferencePropertyType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserPreferencePropertyTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    userPreference<T extends UserPreferenceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserPreferenceDefaultArgs<ExtArgs>>): Prisma__UserPreferenceClient<$Result.GetResult<Prisma.$UserPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    propertyType<T extends PropertyTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PropertyTypeDefaultArgs<ExtArgs>>): Prisma__PropertyTypeClient<$Result.GetResult<Prisma.$PropertyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserPreferencePropertyType model
+   */
+  interface UserPreferencePropertyTypeFieldRefs {
+    readonly id: FieldRef<"UserPreferencePropertyType", 'String'>
+    readonly userPreferenceId: FieldRef<"UserPreferencePropertyType", 'String'>
+    readonly propertyTypeId: FieldRef<"UserPreferencePropertyType", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserPreferencePropertyType findUnique
+   */
+  export type UserPreferencePropertyTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferencePropertyType to fetch.
+     */
+    where: UserPreferencePropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferencePropertyType findUniqueOrThrow
+   */
+  export type UserPreferencePropertyTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferencePropertyType to fetch.
+     */
+    where: UserPreferencePropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferencePropertyType findFirst
+   */
+  export type UserPreferencePropertyTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferencePropertyType to fetch.
+     */
+    where?: UserPreferencePropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferencePropertyTypes to fetch.
+     */
+    orderBy?: UserPreferencePropertyTypeOrderByWithRelationInput | UserPreferencePropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPreferencePropertyTypes.
+     */
+    cursor?: UserPreferencePropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferencePropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferencePropertyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPreferencePropertyTypes.
+     */
+    distinct?: UserPreferencePropertyTypeScalarFieldEnum | UserPreferencePropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferencePropertyType findFirstOrThrow
+   */
+  export type UserPreferencePropertyTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferencePropertyType to fetch.
+     */
+    where?: UserPreferencePropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferencePropertyTypes to fetch.
+     */
+    orderBy?: UserPreferencePropertyTypeOrderByWithRelationInput | UserPreferencePropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPreferencePropertyTypes.
+     */
+    cursor?: UserPreferencePropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferencePropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferencePropertyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPreferencePropertyTypes.
+     */
+    distinct?: UserPreferencePropertyTypeScalarFieldEnum | UserPreferencePropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferencePropertyType findMany
+   */
+  export type UserPreferencePropertyTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferencePropertyTypes to fetch.
+     */
+    where?: UserPreferencePropertyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferencePropertyTypes to fetch.
+     */
+    orderBy?: UserPreferencePropertyTypeOrderByWithRelationInput | UserPreferencePropertyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserPreferencePropertyTypes.
+     */
+    cursor?: UserPreferencePropertyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferencePropertyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferencePropertyTypes.
+     */
+    skip?: number
+    distinct?: UserPreferencePropertyTypeScalarFieldEnum | UserPreferencePropertyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferencePropertyType create
+   */
+  export type UserPreferencePropertyTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserPreferencePropertyType.
+     */
+    data: XOR<UserPreferencePropertyTypeCreateInput, UserPreferencePropertyTypeUncheckedCreateInput>
+  }
+
+  /**
+   * UserPreferencePropertyType createMany
+   */
+  export type UserPreferencePropertyTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserPreferencePropertyTypes.
+     */
+    data: UserPreferencePropertyTypeCreateManyInput | UserPreferencePropertyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserPreferencePropertyType createManyAndReturn
+   */
+  export type UserPreferencePropertyTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserPreferencePropertyTypes.
+     */
+    data: UserPreferencePropertyTypeCreateManyInput | UserPreferencePropertyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPreferencePropertyType update
+   */
+  export type UserPreferencePropertyTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserPreferencePropertyType.
+     */
+    data: XOR<UserPreferencePropertyTypeUpdateInput, UserPreferencePropertyTypeUncheckedUpdateInput>
+    /**
+     * Choose, which UserPreferencePropertyType to update.
+     */
+    where: UserPreferencePropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferencePropertyType updateMany
+   */
+  export type UserPreferencePropertyTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserPreferencePropertyTypes.
+     */
+    data: XOR<UserPreferencePropertyTypeUpdateManyMutationInput, UserPreferencePropertyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPreferencePropertyTypes to update
+     */
+    where?: UserPreferencePropertyTypeWhereInput
+    /**
+     * Limit how many UserPreferencePropertyTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPreferencePropertyType updateManyAndReturn
+   */
+  export type UserPreferencePropertyTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update UserPreferencePropertyTypes.
+     */
+    data: XOR<UserPreferencePropertyTypeUpdateManyMutationInput, UserPreferencePropertyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPreferencePropertyTypes to update
+     */
+    where?: UserPreferencePropertyTypeWhereInput
+    /**
+     * Limit how many UserPreferencePropertyTypes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPreferencePropertyType upsert
+   */
+  export type UserPreferencePropertyTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserPreferencePropertyType to update in case it exists.
+     */
+    where: UserPreferencePropertyTypeWhereUniqueInput
+    /**
+     * In case the UserPreferencePropertyType found by the `where` argument doesn't exist, create a new UserPreferencePropertyType with this data.
+     */
+    create: XOR<UserPreferencePropertyTypeCreateInput, UserPreferencePropertyTypeUncheckedCreateInput>
+    /**
+     * In case the UserPreferencePropertyType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserPreferencePropertyTypeUpdateInput, UserPreferencePropertyTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * UserPreferencePropertyType delete
+   */
+  export type UserPreferencePropertyTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+    /**
+     * Filter which UserPreferencePropertyType to delete.
+     */
+    where: UserPreferencePropertyTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferencePropertyType deleteMany
+   */
+  export type UserPreferencePropertyTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPreferencePropertyTypes to delete
+     */
+    where?: UserPreferencePropertyTypeWhereInput
+    /**
+     * Limit how many UserPreferencePropertyTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPreferencePropertyType without action
+   */
+  export type UserPreferencePropertyTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferencePropertyType
+     */
+    select?: UserPreferencePropertyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferencePropertyType
+     */
+    omit?: UserPreferencePropertyTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferencePropertyTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserPreferenceOperationType
+   */
+
+  export type AggregateUserPreferenceOperationType = {
+    _count: UserPreferenceOperationTypeCountAggregateOutputType | null
+    _min: UserPreferenceOperationTypeMinAggregateOutputType | null
+    _max: UserPreferenceOperationTypeMaxAggregateOutputType | null
+  }
+
+  export type UserPreferenceOperationTypeMinAggregateOutputType = {
+    id: string | null
+    userPreferenceId: string | null
+    operationTypeId: string | null
+  }
+
+  export type UserPreferenceOperationTypeMaxAggregateOutputType = {
+    id: string | null
+    userPreferenceId: string | null
+    operationTypeId: string | null
+  }
+
+  export type UserPreferenceOperationTypeCountAggregateOutputType = {
+    id: number
+    userPreferenceId: number
+    operationTypeId: number
+    _all: number
+  }
+
+
+  export type UserPreferenceOperationTypeMinAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    operationTypeId?: true
+  }
+
+  export type UserPreferenceOperationTypeMaxAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    operationTypeId?: true
+  }
+
+  export type UserPreferenceOperationTypeCountAggregateInputType = {
+    id?: true
+    userPreferenceId?: true
+    operationTypeId?: true
+    _all?: true
+  }
+
+  export type UserPreferenceOperationTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPreferenceOperationType to aggregate.
+     */
+    where?: UserPreferenceOperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceOperationTypes to fetch.
+     */
+    orderBy?: UserPreferenceOperationTypeOrderByWithRelationInput | UserPreferenceOperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserPreferenceOperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceOperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceOperationTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserPreferenceOperationTypes
+    **/
+    _count?: true | UserPreferenceOperationTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserPreferenceOperationTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserPreferenceOperationTypeMaxAggregateInputType
+  }
+
+  export type GetUserPreferenceOperationTypeAggregateType<T extends UserPreferenceOperationTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserPreferenceOperationType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserPreferenceOperationType[P]>
+      : GetScalarType<T[P], AggregateUserPreferenceOperationType[P]>
+  }
+
+
+
+
+  export type UserPreferenceOperationTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPreferenceOperationTypeWhereInput
+    orderBy?: UserPreferenceOperationTypeOrderByWithAggregationInput | UserPreferenceOperationTypeOrderByWithAggregationInput[]
+    by: UserPreferenceOperationTypeScalarFieldEnum[] | UserPreferenceOperationTypeScalarFieldEnum
+    having?: UserPreferenceOperationTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserPreferenceOperationTypeCountAggregateInputType | true
+    _min?: UserPreferenceOperationTypeMinAggregateInputType
+    _max?: UserPreferenceOperationTypeMaxAggregateInputType
+  }
+
+  export type UserPreferenceOperationTypeGroupByOutputType = {
+    id: string
+    userPreferenceId: string
+    operationTypeId: string
+    _count: UserPreferenceOperationTypeCountAggregateOutputType | null
+    _min: UserPreferenceOperationTypeMinAggregateOutputType | null
+    _max: UserPreferenceOperationTypeMaxAggregateOutputType | null
+  }
+
+  type GetUserPreferenceOperationTypeGroupByPayload<T extends UserPreferenceOperationTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserPreferenceOperationTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserPreferenceOperationTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserPreferenceOperationTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], UserPreferenceOperationTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserPreferenceOperationTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    operationTypeId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    operationType?: boolean | OperationTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferenceOperationType"]>
+
+  export type UserPreferenceOperationTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    operationTypeId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    operationType?: boolean | OperationTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferenceOperationType"]>
+
+  export type UserPreferenceOperationTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userPreferenceId?: boolean
+    operationTypeId?: boolean
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    operationType?: boolean | OperationTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userPreferenceOperationType"]>
+
+  export type UserPreferenceOperationTypeSelectScalar = {
+    id?: boolean
+    userPreferenceId?: boolean
+    operationTypeId?: boolean
+  }
+
+  export type UserPreferenceOperationTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userPreferenceId" | "operationTypeId", ExtArgs["result"]["userPreferenceOperationType"]>
+  export type UserPreferenceOperationTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    operationType?: boolean | OperationTypeDefaultArgs<ExtArgs>
+  }
+  export type UserPreferenceOperationTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    operationType?: boolean | OperationTypeDefaultArgs<ExtArgs>
+  }
+  export type UserPreferenceOperationTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userPreference?: boolean | UserPreferenceDefaultArgs<ExtArgs>
+    operationType?: boolean | OperationTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $UserPreferenceOperationTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserPreferenceOperationType"
+    objects: {
+      userPreference: Prisma.$UserPreferencePayload<ExtArgs>
+      operationType: Prisma.$OperationTypePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userPreferenceId: string
+      operationTypeId: string
+    }, ExtArgs["result"]["userPreferenceOperationType"]>
+    composites: {}
+  }
+
+  type UserPreferenceOperationTypeGetPayload<S extends boolean | null | undefined | UserPreferenceOperationTypeDefaultArgs> = $Result.GetResult<Prisma.$UserPreferenceOperationTypePayload, S>
+
+  type UserPreferenceOperationTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserPreferenceOperationTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserPreferenceOperationTypeCountAggregateInputType | true
+    }
+
+  export interface UserPreferenceOperationTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserPreferenceOperationType'], meta: { name: 'UserPreferenceOperationType' } }
+    /**
+     * Find zero or one UserPreferenceOperationType that matches the filter.
+     * @param {UserPreferenceOperationTypeFindUniqueArgs} args - Arguments to find a UserPreferenceOperationType
+     * @example
+     * // Get one UserPreferenceOperationType
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserPreferenceOperationTypeFindUniqueArgs>(args: SelectSubset<T, UserPreferenceOperationTypeFindUniqueArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserPreferenceOperationType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserPreferenceOperationTypeFindUniqueOrThrowArgs} args - Arguments to find a UserPreferenceOperationType
+     * @example
+     * // Get one UserPreferenceOperationType
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserPreferenceOperationTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, UserPreferenceOperationTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPreferenceOperationType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceOperationTypeFindFirstArgs} args - Arguments to find a UserPreferenceOperationType
+     * @example
+     * // Get one UserPreferenceOperationType
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserPreferenceOperationTypeFindFirstArgs>(args?: SelectSubset<T, UserPreferenceOperationTypeFindFirstArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPreferenceOperationType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceOperationTypeFindFirstOrThrowArgs} args - Arguments to find a UserPreferenceOperationType
+     * @example
+     * // Get one UserPreferenceOperationType
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserPreferenceOperationTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, UserPreferenceOperationTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserPreferenceOperationTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceOperationTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserPreferenceOperationTypes
+     * const userPreferenceOperationTypes = await prisma.userPreferenceOperationType.findMany()
+     * 
+     * // Get first 10 UserPreferenceOperationTypes
+     * const userPreferenceOperationTypes = await prisma.userPreferenceOperationType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userPreferenceOperationTypeWithIdOnly = await prisma.userPreferenceOperationType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserPreferenceOperationTypeFindManyArgs>(args?: SelectSubset<T, UserPreferenceOperationTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserPreferenceOperationType.
+     * @param {UserPreferenceOperationTypeCreateArgs} args - Arguments to create a UserPreferenceOperationType.
+     * @example
+     * // Create one UserPreferenceOperationType
+     * const UserPreferenceOperationType = await prisma.userPreferenceOperationType.create({
+     *   data: {
+     *     // ... data to create a UserPreferenceOperationType
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserPreferenceOperationTypeCreateArgs>(args: SelectSubset<T, UserPreferenceOperationTypeCreateArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserPreferenceOperationTypes.
+     * @param {UserPreferenceOperationTypeCreateManyArgs} args - Arguments to create many UserPreferenceOperationTypes.
+     * @example
+     * // Create many UserPreferenceOperationTypes
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserPreferenceOperationTypeCreateManyArgs>(args?: SelectSubset<T, UserPreferenceOperationTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserPreferenceOperationTypes and returns the data saved in the database.
+     * @param {UserPreferenceOperationTypeCreateManyAndReturnArgs} args - Arguments to create many UserPreferenceOperationTypes.
+     * @example
+     * // Create many UserPreferenceOperationTypes
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserPreferenceOperationTypes and only return the `id`
+     * const userPreferenceOperationTypeWithIdOnly = await prisma.userPreferenceOperationType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserPreferenceOperationTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, UserPreferenceOperationTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserPreferenceOperationType.
+     * @param {UserPreferenceOperationTypeDeleteArgs} args - Arguments to delete one UserPreferenceOperationType.
+     * @example
+     * // Delete one UserPreferenceOperationType
+     * const UserPreferenceOperationType = await prisma.userPreferenceOperationType.delete({
+     *   where: {
+     *     // ... filter to delete one UserPreferenceOperationType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserPreferenceOperationTypeDeleteArgs>(args: SelectSubset<T, UserPreferenceOperationTypeDeleteArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserPreferenceOperationType.
+     * @param {UserPreferenceOperationTypeUpdateArgs} args - Arguments to update one UserPreferenceOperationType.
+     * @example
+     * // Update one UserPreferenceOperationType
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserPreferenceOperationTypeUpdateArgs>(args: SelectSubset<T, UserPreferenceOperationTypeUpdateArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserPreferenceOperationTypes.
+     * @param {UserPreferenceOperationTypeDeleteManyArgs} args - Arguments to filter UserPreferenceOperationTypes to delete.
+     * @example
+     * // Delete a few UserPreferenceOperationTypes
+     * const { count } = await prisma.userPreferenceOperationType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserPreferenceOperationTypeDeleteManyArgs>(args?: SelectSubset<T, UserPreferenceOperationTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPreferenceOperationTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceOperationTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserPreferenceOperationTypes
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserPreferenceOperationTypeUpdateManyArgs>(args: SelectSubset<T, UserPreferenceOperationTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPreferenceOperationTypes and returns the data updated in the database.
+     * @param {UserPreferenceOperationTypeUpdateManyAndReturnArgs} args - Arguments to update many UserPreferenceOperationTypes.
+     * @example
+     * // Update many UserPreferenceOperationTypes
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserPreferenceOperationTypes and only return the `id`
+     * const userPreferenceOperationTypeWithIdOnly = await prisma.userPreferenceOperationType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserPreferenceOperationTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, UserPreferenceOperationTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserPreferenceOperationType.
+     * @param {UserPreferenceOperationTypeUpsertArgs} args - Arguments to update or create a UserPreferenceOperationType.
+     * @example
+     * // Update or create a UserPreferenceOperationType
+     * const userPreferenceOperationType = await prisma.userPreferenceOperationType.upsert({
+     *   create: {
+     *     // ... data to create a UserPreferenceOperationType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserPreferenceOperationType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserPreferenceOperationTypeUpsertArgs>(args: SelectSubset<T, UserPreferenceOperationTypeUpsertArgs<ExtArgs>>): Prisma__UserPreferenceOperationTypeClient<$Result.GetResult<Prisma.$UserPreferenceOperationTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserPreferenceOperationTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceOperationTypeCountArgs} args - Arguments to filter UserPreferenceOperationTypes to count.
+     * @example
+     * // Count the number of UserPreferenceOperationTypes
+     * const count = await prisma.userPreferenceOperationType.count({
+     *   where: {
+     *     // ... the filter for the UserPreferenceOperationTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserPreferenceOperationTypeCountArgs>(
+      args?: Subset<T, UserPreferenceOperationTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserPreferenceOperationTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserPreferenceOperationType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceOperationTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserPreferenceOperationTypeAggregateArgs>(args: Subset<T, UserPreferenceOperationTypeAggregateArgs>): Prisma.PrismaPromise<GetUserPreferenceOperationTypeAggregateType<T>>
+
+    /**
+     * Group by UserPreferenceOperationType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPreferenceOperationTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserPreferenceOperationTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserPreferenceOperationTypeGroupByArgs['orderBy'] }
+        : { orderBy?: UserPreferenceOperationTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserPreferenceOperationTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserPreferenceOperationTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserPreferenceOperationType model
+   */
+  readonly fields: UserPreferenceOperationTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserPreferenceOperationType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserPreferenceOperationTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    userPreference<T extends UserPreferenceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserPreferenceDefaultArgs<ExtArgs>>): Prisma__UserPreferenceClient<$Result.GetResult<Prisma.$UserPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    operationType<T extends OperationTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OperationTypeDefaultArgs<ExtArgs>>): Prisma__OperationTypeClient<$Result.GetResult<Prisma.$OperationTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserPreferenceOperationType model
+   */
+  interface UserPreferenceOperationTypeFieldRefs {
+    readonly id: FieldRef<"UserPreferenceOperationType", 'String'>
+    readonly userPreferenceId: FieldRef<"UserPreferenceOperationType", 'String'>
+    readonly operationTypeId: FieldRef<"UserPreferenceOperationType", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserPreferenceOperationType findUnique
+   */
+  export type UserPreferenceOperationTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceOperationType to fetch.
+     */
+    where: UserPreferenceOperationTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceOperationType findUniqueOrThrow
+   */
+  export type UserPreferenceOperationTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceOperationType to fetch.
+     */
+    where: UserPreferenceOperationTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceOperationType findFirst
+   */
+  export type UserPreferenceOperationTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceOperationType to fetch.
+     */
+    where?: UserPreferenceOperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceOperationTypes to fetch.
+     */
+    orderBy?: UserPreferenceOperationTypeOrderByWithRelationInput | UserPreferenceOperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPreferenceOperationTypes.
+     */
+    cursor?: UserPreferenceOperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceOperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceOperationTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPreferenceOperationTypes.
+     */
+    distinct?: UserPreferenceOperationTypeScalarFieldEnum | UserPreferenceOperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferenceOperationType findFirstOrThrow
+   */
+  export type UserPreferenceOperationTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceOperationType to fetch.
+     */
+    where?: UserPreferenceOperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceOperationTypes to fetch.
+     */
+    orderBy?: UserPreferenceOperationTypeOrderByWithRelationInput | UserPreferenceOperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPreferenceOperationTypes.
+     */
+    cursor?: UserPreferenceOperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceOperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceOperationTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPreferenceOperationTypes.
+     */
+    distinct?: UserPreferenceOperationTypeScalarFieldEnum | UserPreferenceOperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferenceOperationType findMany
+   */
+  export type UserPreferenceOperationTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserPreferenceOperationTypes to fetch.
+     */
+    where?: UserPreferenceOperationTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPreferenceOperationTypes to fetch.
+     */
+    orderBy?: UserPreferenceOperationTypeOrderByWithRelationInput | UserPreferenceOperationTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserPreferenceOperationTypes.
+     */
+    cursor?: UserPreferenceOperationTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPreferenceOperationTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPreferenceOperationTypes.
+     */
+    skip?: number
+    distinct?: UserPreferenceOperationTypeScalarFieldEnum | UserPreferenceOperationTypeScalarFieldEnum[]
+  }
+
+  /**
+   * UserPreferenceOperationType create
+   */
+  export type UserPreferenceOperationTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserPreferenceOperationType.
+     */
+    data: XOR<UserPreferenceOperationTypeCreateInput, UserPreferenceOperationTypeUncheckedCreateInput>
+  }
+
+  /**
+   * UserPreferenceOperationType createMany
+   */
+  export type UserPreferenceOperationTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserPreferenceOperationTypes.
+     */
+    data: UserPreferenceOperationTypeCreateManyInput | UserPreferenceOperationTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserPreferenceOperationType createManyAndReturn
+   */
+  export type UserPreferenceOperationTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserPreferenceOperationTypes.
+     */
+    data: UserPreferenceOperationTypeCreateManyInput | UserPreferenceOperationTypeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPreferenceOperationType update
+   */
+  export type UserPreferenceOperationTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserPreferenceOperationType.
+     */
+    data: XOR<UserPreferenceOperationTypeUpdateInput, UserPreferenceOperationTypeUncheckedUpdateInput>
+    /**
+     * Choose, which UserPreferenceOperationType to update.
+     */
+    where: UserPreferenceOperationTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceOperationType updateMany
+   */
+  export type UserPreferenceOperationTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserPreferenceOperationTypes.
+     */
+    data: XOR<UserPreferenceOperationTypeUpdateManyMutationInput, UserPreferenceOperationTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPreferenceOperationTypes to update
+     */
+    where?: UserPreferenceOperationTypeWhereInput
+    /**
+     * Limit how many UserPreferenceOperationTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPreferenceOperationType updateManyAndReturn
+   */
+  export type UserPreferenceOperationTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update UserPreferenceOperationTypes.
+     */
+    data: XOR<UserPreferenceOperationTypeUpdateManyMutationInput, UserPreferenceOperationTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPreferenceOperationTypes to update
+     */
+    where?: UserPreferenceOperationTypeWhereInput
+    /**
+     * Limit how many UserPreferenceOperationTypes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserPreferenceOperationType upsert
+   */
+  export type UserPreferenceOperationTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserPreferenceOperationType to update in case it exists.
+     */
+    where: UserPreferenceOperationTypeWhereUniqueInput
+    /**
+     * In case the UserPreferenceOperationType found by the `where` argument doesn't exist, create a new UserPreferenceOperationType with this data.
+     */
+    create: XOR<UserPreferenceOperationTypeCreateInput, UserPreferenceOperationTypeUncheckedCreateInput>
+    /**
+     * In case the UserPreferenceOperationType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserPreferenceOperationTypeUpdateInput, UserPreferenceOperationTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * UserPreferenceOperationType delete
+   */
+  export type UserPreferenceOperationTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
+    /**
+     * Filter which UserPreferenceOperationType to delete.
+     */
+    where: UserPreferenceOperationTypeWhereUniqueInput
+  }
+
+  /**
+   * UserPreferenceOperationType deleteMany
+   */
+  export type UserPreferenceOperationTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPreferenceOperationTypes to delete
+     */
+    where?: UserPreferenceOperationTypeWhereInput
+    /**
+     * Limit how many UserPreferenceOperationTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPreferenceOperationType without action
+   */
+  export type UserPreferenceOperationTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPreferenceOperationType
+     */
+    select?: UserPreferenceOperationTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPreferenceOperationType
+     */
+    omit?: UserPreferenceOperationTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserPreferenceOperationTypeInclude<ExtArgs> | null
   }
 
 
@@ -15985,9 +23253,11 @@ export namespace Prisma {
     description: 'description',
     address: 'address',
     city: 'city',
+    provinceId: 'provinceId',
     areaM2: 'areaM2',
     price: 'price',
-    operationType: 'operationType',
+    operationTypeId: 'operationTypeId',
+    propertyTypeId: 'propertyTypeId',
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -15996,6 +23266,30 @@ export namespace Prisma {
   };
 
   export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
+
+
+  export const OperationTypeScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type OperationTypeScalarFieldEnum = (typeof OperationTypeScalarFieldEnum)[keyof typeof OperationTypeScalarFieldEnum]
+
+
+  export const PropertyTypeScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type PropertyTypeScalarFieldEnum = (typeof PropertyTypeScalarFieldEnum)[keyof typeof PropertyTypeScalarFieldEnum]
+
+
+  export const ProvinceScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ProvinceScalarFieldEnum = (typeof ProvinceScalarFieldEnum)[keyof typeof ProvinceScalarFieldEnum]
 
 
   export const InterestScalarFieldEnum: {
@@ -16104,14 +23398,39 @@ export namespace Prisma {
   export const UserPreferenceScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    propertyTypes: 'propertyTypes',
-    modality: 'modality',
-    locations: 'locations',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    operationTypeId: 'operationTypeId'
   };
 
   export type UserPreferenceScalarFieldEnum = (typeof UserPreferenceScalarFieldEnum)[keyof typeof UserPreferenceScalarFieldEnum]
+
+
+  export const UserPreferenceProvinceScalarFieldEnum: {
+    id: 'id',
+    userPreferenceId: 'userPreferenceId',
+    provinceId: 'provinceId'
+  };
+
+  export type UserPreferenceProvinceScalarFieldEnum = (typeof UserPreferenceProvinceScalarFieldEnum)[keyof typeof UserPreferenceProvinceScalarFieldEnum]
+
+
+  export const UserPreferencePropertyTypeScalarFieldEnum: {
+    id: 'id',
+    userPreferenceId: 'userPreferenceId',
+    propertyTypeId: 'propertyTypeId'
+  };
+
+  export type UserPreferencePropertyTypeScalarFieldEnum = (typeof UserPreferencePropertyTypeScalarFieldEnum)[keyof typeof UserPreferencePropertyTypeScalarFieldEnum]
+
+
+  export const UserPreferenceOperationTypeScalarFieldEnum: {
+    id: 'id',
+    userPreferenceId: 'userPreferenceId',
+    operationTypeId: 'operationTypeId'
+  };
+
+  export type UserPreferenceOperationTypeScalarFieldEnum = (typeof UserPreferenceOperationTypeScalarFieldEnum)[keyof typeof UserPreferenceOperationTypeScalarFieldEnum]
 
 
   export const DeviceTokenScalarFieldEnum: {
@@ -16191,6 +23510,20 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole'
+   */
+  export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole[]'
+   */
+  export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
     
 
 
@@ -16299,7 +23632,7 @@ export namespace Prisma {
     passwordHash?: StringNullableFilter<"User"> | string | null
     fullName?: StringNullableFilter<"User"> | string | null
     phone?: StringNullableFilter<"User"> | string | null
-    role?: StringFilter<"User"> | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     verificationStatus?: StringFilter<"User"> | string
     refreshToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -16358,7 +23691,7 @@ export namespace Prisma {
     passwordHash?: StringNullableFilter<"User"> | string | null
     fullName?: StringNullableFilter<"User"> | string | null
     phone?: StringNullableFilter<"User"> | string | null
-    role?: StringFilter<"User"> | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     verificationStatus?: StringFilter<"User"> | string
     refreshToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -16409,7 +23742,7 @@ export namespace Prisma {
     passwordHash?: StringNullableWithAggregatesFilter<"User"> | string | null
     fullName?: StringNullableWithAggregatesFilter<"User"> | string | null
     phone?: StringNullableWithAggregatesFilter<"User"> | string | null
-    role?: StringWithAggregatesFilter<"User"> | string
+    role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     verificationStatus?: StringWithAggregatesFilter<"User"> | string
     refreshToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -16428,9 +23761,11 @@ export namespace Prisma {
     description?: StringNullableFilter<"Property"> | string | null
     address?: StringNullableFilter<"Property"> | string | null
     city?: StringFilter<"Property"> | string
+    provinceId?: UuidNullableFilter<"Property"> | string | null
     areaM2?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFilter<"Property"> | Decimal | DecimalJsLike | number | string
-    operationType?: StringFilter<"Property"> | string
+    operationTypeId?: UuidNullableFilter<"Property"> | string | null
+    propertyTypeId?: UuidNullableFilter<"Property"> | string | null
     status?: StringFilter<"Property"> | string
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
@@ -16439,6 +23774,9 @@ export namespace Prisma {
     favorites?: FavoriteListRelationFilter
     interests?: InterestListRelationFilter
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
+    operationType?: XOR<OperationTypeNullableScalarRelationFilter, OperationTypeWhereInput> | null
+    propertyType?: XOR<PropertyTypeNullableScalarRelationFilter, PropertyTypeWhereInput> | null
+    province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     propertyPhotos?: PropertyPhotoListRelationFilter
     reports?: ReportListRelationFilter
     reviews?: ReviewListRelationFilter
@@ -16451,9 +23789,11 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     city?: SortOrder
+    provinceId?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
     price?: SortOrder
-    operationType?: SortOrder
+    operationTypeId?: SortOrderInput | SortOrder
+    propertyTypeId?: SortOrderInput | SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16462,6 +23802,9 @@ export namespace Prisma {
     favorites?: FavoriteOrderByRelationAggregateInput
     interests?: InterestOrderByRelationAggregateInput
     owner?: UserOrderByWithRelationInput
+    operationType?: OperationTypeOrderByWithRelationInput
+    propertyType?: PropertyTypeOrderByWithRelationInput
+    province?: ProvinceOrderByWithRelationInput
     propertyPhotos?: PropertyPhotoOrderByRelationAggregateInput
     reports?: ReportOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
@@ -16477,9 +23820,11 @@ export namespace Prisma {
     description?: StringNullableFilter<"Property"> | string | null
     address?: StringNullableFilter<"Property"> | string | null
     city?: StringFilter<"Property"> | string
+    provinceId?: UuidNullableFilter<"Property"> | string | null
     areaM2?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFilter<"Property"> | Decimal | DecimalJsLike | number | string
-    operationType?: StringFilter<"Property"> | string
+    operationTypeId?: UuidNullableFilter<"Property"> | string | null
+    propertyTypeId?: UuidNullableFilter<"Property"> | string | null
     status?: StringFilter<"Property"> | string
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
@@ -16488,6 +23833,9 @@ export namespace Prisma {
     favorites?: FavoriteListRelationFilter
     interests?: InterestListRelationFilter
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
+    operationType?: XOR<OperationTypeNullableScalarRelationFilter, OperationTypeWhereInput> | null
+    propertyType?: XOR<PropertyTypeNullableScalarRelationFilter, PropertyTypeWhereInput> | null
+    province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     propertyPhotos?: PropertyPhotoListRelationFilter
     reports?: ReportListRelationFilter
     reviews?: ReviewListRelationFilter
@@ -16500,9 +23848,11 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     city?: SortOrder
+    provinceId?: SortOrderInput | SortOrder
     areaM2?: SortOrderInput | SortOrder
     price?: SortOrder
-    operationType?: SortOrder
+    operationTypeId?: SortOrderInput | SortOrder
+    propertyTypeId?: SortOrderInput | SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16525,14 +23875,148 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Property"> | string | null
     address?: StringNullableWithAggregatesFilter<"Property"> | string | null
     city?: StringWithAggregatesFilter<"Property"> | string
+    provinceId?: UuidNullableWithAggregatesFilter<"Property"> | string | null
     areaM2?: DecimalNullableWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string
-    operationType?: StringWithAggregatesFilter<"Property"> | string
+    operationTypeId?: UuidNullableWithAggregatesFilter<"Property"> | string | null
+    propertyTypeId?: UuidNullableWithAggregatesFilter<"Property"> | string | null
     status?: StringWithAggregatesFilter<"Property"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     latitude?: DecimalNullableWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     longitude?: DecimalNullableWithAggregatesFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type OperationTypeWhereInput = {
+    AND?: OperationTypeWhereInput | OperationTypeWhereInput[]
+    OR?: OperationTypeWhereInput[]
+    NOT?: OperationTypeWhereInput | OperationTypeWhereInput[]
+    id?: UuidFilter<"OperationType"> | string
+    name?: StringFilter<"OperationType"> | string
+    properties?: PropertyListRelationFilter
+    userPreferences?: UserPreferenceListRelationFilter
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeListRelationFilter
+  }
+
+  export type OperationTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    properties?: PropertyOrderByRelationAggregateInput
+    userPreferences?: UserPreferenceOrderByRelationAggregateInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeOrderByRelationAggregateInput
+  }
+
+  export type OperationTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: OperationTypeWhereInput | OperationTypeWhereInput[]
+    OR?: OperationTypeWhereInput[]
+    NOT?: OperationTypeWhereInput | OperationTypeWhereInput[]
+    properties?: PropertyListRelationFilter
+    userPreferences?: UserPreferenceListRelationFilter
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeListRelationFilter
+  }, "id" | "name">
+
+  export type OperationTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: OperationTypeCountOrderByAggregateInput
+    _max?: OperationTypeMaxOrderByAggregateInput
+    _min?: OperationTypeMinOrderByAggregateInput
+  }
+
+  export type OperationTypeScalarWhereWithAggregatesInput = {
+    AND?: OperationTypeScalarWhereWithAggregatesInput | OperationTypeScalarWhereWithAggregatesInput[]
+    OR?: OperationTypeScalarWhereWithAggregatesInput[]
+    NOT?: OperationTypeScalarWhereWithAggregatesInput | OperationTypeScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"OperationType"> | string
+    name?: StringWithAggregatesFilter<"OperationType"> | string
+  }
+
+  export type PropertyTypeWhereInput = {
+    AND?: PropertyTypeWhereInput | PropertyTypeWhereInput[]
+    OR?: PropertyTypeWhereInput[]
+    NOT?: PropertyTypeWhereInput | PropertyTypeWhereInput[]
+    id?: UuidFilter<"PropertyType"> | string
+    name?: StringFilter<"PropertyType"> | string
+    properties?: PropertyListRelationFilter
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeListRelationFilter
+  }
+
+  export type PropertyTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    properties?: PropertyOrderByRelationAggregateInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeOrderByRelationAggregateInput
+  }
+
+  export type PropertyTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: PropertyTypeWhereInput | PropertyTypeWhereInput[]
+    OR?: PropertyTypeWhereInput[]
+    NOT?: PropertyTypeWhereInput | PropertyTypeWhereInput[]
+    properties?: PropertyListRelationFilter
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeListRelationFilter
+  }, "id" | "name">
+
+  export type PropertyTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: PropertyTypeCountOrderByAggregateInput
+    _max?: PropertyTypeMaxOrderByAggregateInput
+    _min?: PropertyTypeMinOrderByAggregateInput
+  }
+
+  export type PropertyTypeScalarWhereWithAggregatesInput = {
+    AND?: PropertyTypeScalarWhereWithAggregatesInput | PropertyTypeScalarWhereWithAggregatesInput[]
+    OR?: PropertyTypeScalarWhereWithAggregatesInput[]
+    NOT?: PropertyTypeScalarWhereWithAggregatesInput | PropertyTypeScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"PropertyType"> | string
+    name?: StringWithAggregatesFilter<"PropertyType"> | string
+  }
+
+  export type ProvinceWhereInput = {
+    AND?: ProvinceWhereInput | ProvinceWhereInput[]
+    OR?: ProvinceWhereInput[]
+    NOT?: ProvinceWhereInput | ProvinceWhereInput[]
+    id?: UuidFilter<"Province"> | string
+    name?: StringFilter<"Province"> | string
+    properties?: PropertyListRelationFilter
+    userPreferencesProvinces?: UserPreferenceProvinceListRelationFilter
+  }
+
+  export type ProvinceOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    properties?: PropertyOrderByRelationAggregateInput
+    userPreferencesProvinces?: UserPreferenceProvinceOrderByRelationAggregateInput
+  }
+
+  export type ProvinceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: ProvinceWhereInput | ProvinceWhereInput[]
+    OR?: ProvinceWhereInput[]
+    NOT?: ProvinceWhereInput | ProvinceWhereInput[]
+    properties?: PropertyListRelationFilter
+    userPreferencesProvinces?: UserPreferenceProvinceListRelationFilter
+  }, "id" | "name">
+
+  export type ProvinceOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: ProvinceCountOrderByAggregateInput
+    _max?: ProvinceMaxOrderByAggregateInput
+    _min?: ProvinceMinOrderByAggregateInput
+  }
+
+  export type ProvinceScalarWhereWithAggregatesInput = {
+    AND?: ProvinceScalarWhereWithAggregatesInput | ProvinceScalarWhereWithAggregatesInput[]
+    OR?: ProvinceScalarWhereWithAggregatesInput[]
+    NOT?: ProvinceScalarWhereWithAggregatesInput | ProvinceScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"Province"> | string
+    name?: StringWithAggregatesFilter<"Province"> | string
   }
 
   export type InterestWhereInput = {
@@ -17086,23 +24570,27 @@ export namespace Prisma {
     NOT?: UserPreferenceWhereInput | UserPreferenceWhereInput[]
     id?: UuidFilter<"UserPreference"> | string
     userId?: UuidFilter<"UserPreference"> | string
-    propertyTypes?: StringNullableListFilter<"UserPreference">
-    modality?: StringNullableFilter<"UserPreference"> | string | null
-    locations?: StringNullableListFilter<"UserPreference">
     createdAt?: DateTimeFilter<"UserPreference"> | Date | string
     updatedAt?: DateTimeFilter<"UserPreference"> | Date | string
+    operationTypeId?: UuidNullableFilter<"UserPreference"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    operationTypes?: UserPreferenceOperationTypeListRelationFilter
+    userPreferenceProvinces?: UserPreferenceProvinceListRelationFilter
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeListRelationFilter
+    OperationType?: XOR<OperationTypeNullableScalarRelationFilter, OperationTypeWhereInput> | null
   }
 
   export type UserPreferenceOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    propertyTypes?: SortOrder
-    modality?: SortOrderInput | SortOrder
-    locations?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operationTypeId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
+    operationTypes?: UserPreferenceOperationTypeOrderByRelationAggregateInput
+    userPreferenceProvinces?: UserPreferenceProvinceOrderByRelationAggregateInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeOrderByRelationAggregateInput
+    OperationType?: OperationTypeOrderByWithRelationInput
   }
 
   export type UserPreferenceWhereUniqueInput = Prisma.AtLeast<{
@@ -17111,22 +24599,22 @@ export namespace Prisma {
     AND?: UserPreferenceWhereInput | UserPreferenceWhereInput[]
     OR?: UserPreferenceWhereInput[]
     NOT?: UserPreferenceWhereInput | UserPreferenceWhereInput[]
-    propertyTypes?: StringNullableListFilter<"UserPreference">
-    modality?: StringNullableFilter<"UserPreference"> | string | null
-    locations?: StringNullableListFilter<"UserPreference">
     createdAt?: DateTimeFilter<"UserPreference"> | Date | string
     updatedAt?: DateTimeFilter<"UserPreference"> | Date | string
+    operationTypeId?: UuidNullableFilter<"UserPreference"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    operationTypes?: UserPreferenceOperationTypeListRelationFilter
+    userPreferenceProvinces?: UserPreferenceProvinceListRelationFilter
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeListRelationFilter
+    OperationType?: XOR<OperationTypeNullableScalarRelationFilter, OperationTypeWhereInput> | null
   }, "id" | "userId">
 
   export type UserPreferenceOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    propertyTypes?: SortOrder
-    modality?: SortOrderInput | SortOrder
-    locations?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operationTypeId?: SortOrderInput | SortOrder
     _count?: UserPreferenceCountOrderByAggregateInput
     _max?: UserPreferenceMaxOrderByAggregateInput
     _min?: UserPreferenceMinOrderByAggregateInput
@@ -17138,11 +24626,156 @@ export namespace Prisma {
     NOT?: UserPreferenceScalarWhereWithAggregatesInput | UserPreferenceScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"UserPreference"> | string
     userId?: UuidWithAggregatesFilter<"UserPreference"> | string
-    propertyTypes?: StringNullableListFilter<"UserPreference">
-    modality?: StringNullableWithAggregatesFilter<"UserPreference"> | string | null
-    locations?: StringNullableListFilter<"UserPreference">
     createdAt?: DateTimeWithAggregatesFilter<"UserPreference"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"UserPreference"> | Date | string
+    operationTypeId?: UuidNullableWithAggregatesFilter<"UserPreference"> | string | null
+  }
+
+  export type UserPreferenceProvinceWhereInput = {
+    AND?: UserPreferenceProvinceWhereInput | UserPreferenceProvinceWhereInput[]
+    OR?: UserPreferenceProvinceWhereInput[]
+    NOT?: UserPreferenceProvinceWhereInput | UserPreferenceProvinceWhereInput[]
+    id?: UuidFilter<"UserPreferenceProvince"> | string
+    userPreferenceId?: UuidFilter<"UserPreferenceProvince"> | string
+    provinceId?: UuidFilter<"UserPreferenceProvince"> | string
+    userPreference?: XOR<UserPreferenceScalarRelationFilter, UserPreferenceWhereInput>
+    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+  }
+
+  export type UserPreferenceProvinceOrderByWithRelationInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    provinceId?: SortOrder
+    userPreference?: UserPreferenceOrderByWithRelationInput
+    province?: ProvinceOrderByWithRelationInput
+  }
+
+  export type UserPreferenceProvinceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userPreferenceId_provinceId?: UserPreferenceProvinceUserPreferenceIdProvinceIdCompoundUniqueInput
+    AND?: UserPreferenceProvinceWhereInput | UserPreferenceProvinceWhereInput[]
+    OR?: UserPreferenceProvinceWhereInput[]
+    NOT?: UserPreferenceProvinceWhereInput | UserPreferenceProvinceWhereInput[]
+    userPreferenceId?: UuidFilter<"UserPreferenceProvince"> | string
+    provinceId?: UuidFilter<"UserPreferenceProvince"> | string
+    userPreference?: XOR<UserPreferenceScalarRelationFilter, UserPreferenceWhereInput>
+    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+  }, "id" | "userPreferenceId_provinceId">
+
+  export type UserPreferenceProvinceOrderByWithAggregationInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    provinceId?: SortOrder
+    _count?: UserPreferenceProvinceCountOrderByAggregateInput
+    _max?: UserPreferenceProvinceMaxOrderByAggregateInput
+    _min?: UserPreferenceProvinceMinOrderByAggregateInput
+  }
+
+  export type UserPreferenceProvinceScalarWhereWithAggregatesInput = {
+    AND?: UserPreferenceProvinceScalarWhereWithAggregatesInput | UserPreferenceProvinceScalarWhereWithAggregatesInput[]
+    OR?: UserPreferenceProvinceScalarWhereWithAggregatesInput[]
+    NOT?: UserPreferenceProvinceScalarWhereWithAggregatesInput | UserPreferenceProvinceScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"UserPreferenceProvince"> | string
+    userPreferenceId?: UuidWithAggregatesFilter<"UserPreferenceProvince"> | string
+    provinceId?: UuidWithAggregatesFilter<"UserPreferenceProvince"> | string
+  }
+
+  export type UserPreferencePropertyTypeWhereInput = {
+    AND?: UserPreferencePropertyTypeWhereInput | UserPreferencePropertyTypeWhereInput[]
+    OR?: UserPreferencePropertyTypeWhereInput[]
+    NOT?: UserPreferencePropertyTypeWhereInput | UserPreferencePropertyTypeWhereInput[]
+    id?: UuidFilter<"UserPreferencePropertyType"> | string
+    userPreferenceId?: UuidFilter<"UserPreferencePropertyType"> | string
+    propertyTypeId?: UuidFilter<"UserPreferencePropertyType"> | string
+    userPreference?: XOR<UserPreferenceScalarRelationFilter, UserPreferenceWhereInput>
+    propertyType?: XOR<PropertyTypeScalarRelationFilter, PropertyTypeWhereInput>
+  }
+
+  export type UserPreferencePropertyTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    propertyTypeId?: SortOrder
+    userPreference?: UserPreferenceOrderByWithRelationInput
+    propertyType?: PropertyTypeOrderByWithRelationInput
+  }
+
+  export type UserPreferencePropertyTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userPreferenceId_propertyTypeId?: UserPreferencePropertyTypeUserPreferenceIdPropertyTypeIdCompoundUniqueInput
+    AND?: UserPreferencePropertyTypeWhereInput | UserPreferencePropertyTypeWhereInput[]
+    OR?: UserPreferencePropertyTypeWhereInput[]
+    NOT?: UserPreferencePropertyTypeWhereInput | UserPreferencePropertyTypeWhereInput[]
+    userPreferenceId?: UuidFilter<"UserPreferencePropertyType"> | string
+    propertyTypeId?: UuidFilter<"UserPreferencePropertyType"> | string
+    userPreference?: XOR<UserPreferenceScalarRelationFilter, UserPreferenceWhereInput>
+    propertyType?: XOR<PropertyTypeScalarRelationFilter, PropertyTypeWhereInput>
+  }, "id" | "userPreferenceId_propertyTypeId">
+
+  export type UserPreferencePropertyTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    propertyTypeId?: SortOrder
+    _count?: UserPreferencePropertyTypeCountOrderByAggregateInput
+    _max?: UserPreferencePropertyTypeMaxOrderByAggregateInput
+    _min?: UserPreferencePropertyTypeMinOrderByAggregateInput
+  }
+
+  export type UserPreferencePropertyTypeScalarWhereWithAggregatesInput = {
+    AND?: UserPreferencePropertyTypeScalarWhereWithAggregatesInput | UserPreferencePropertyTypeScalarWhereWithAggregatesInput[]
+    OR?: UserPreferencePropertyTypeScalarWhereWithAggregatesInput[]
+    NOT?: UserPreferencePropertyTypeScalarWhereWithAggregatesInput | UserPreferencePropertyTypeScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"UserPreferencePropertyType"> | string
+    userPreferenceId?: UuidWithAggregatesFilter<"UserPreferencePropertyType"> | string
+    propertyTypeId?: UuidWithAggregatesFilter<"UserPreferencePropertyType"> | string
+  }
+
+  export type UserPreferenceOperationTypeWhereInput = {
+    AND?: UserPreferenceOperationTypeWhereInput | UserPreferenceOperationTypeWhereInput[]
+    OR?: UserPreferenceOperationTypeWhereInput[]
+    NOT?: UserPreferenceOperationTypeWhereInput | UserPreferenceOperationTypeWhereInput[]
+    id?: UuidFilter<"UserPreferenceOperationType"> | string
+    userPreferenceId?: UuidFilter<"UserPreferenceOperationType"> | string
+    operationTypeId?: UuidFilter<"UserPreferenceOperationType"> | string
+    userPreference?: XOR<UserPreferenceScalarRelationFilter, UserPreferenceWhereInput>
+    operationType?: XOR<OperationTypeScalarRelationFilter, OperationTypeWhereInput>
+  }
+
+  export type UserPreferenceOperationTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    operationTypeId?: SortOrder
+    userPreference?: UserPreferenceOrderByWithRelationInput
+    operationType?: OperationTypeOrderByWithRelationInput
+  }
+
+  export type UserPreferenceOperationTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userPreferenceId_operationTypeId?: UserPreferenceOperationTypeUserPreferenceIdOperationTypeIdCompoundUniqueInput
+    AND?: UserPreferenceOperationTypeWhereInput | UserPreferenceOperationTypeWhereInput[]
+    OR?: UserPreferenceOperationTypeWhereInput[]
+    NOT?: UserPreferenceOperationTypeWhereInput | UserPreferenceOperationTypeWhereInput[]
+    userPreferenceId?: UuidFilter<"UserPreferenceOperationType"> | string
+    operationTypeId?: UuidFilter<"UserPreferenceOperationType"> | string
+    userPreference?: XOR<UserPreferenceScalarRelationFilter, UserPreferenceWhereInput>
+    operationType?: XOR<OperationTypeScalarRelationFilter, OperationTypeWhereInput>
+  }, "id" | "userPreferenceId_operationTypeId">
+
+  export type UserPreferenceOperationTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    operationTypeId?: SortOrder
+    _count?: UserPreferenceOperationTypeCountOrderByAggregateInput
+    _max?: UserPreferenceOperationTypeMaxOrderByAggregateInput
+    _min?: UserPreferenceOperationTypeMinOrderByAggregateInput
+  }
+
+  export type UserPreferenceOperationTypeScalarWhereWithAggregatesInput = {
+    AND?: UserPreferenceOperationTypeScalarWhereWithAggregatesInput | UserPreferenceOperationTypeScalarWhereWithAggregatesInput[]
+    OR?: UserPreferenceOperationTypeScalarWhereWithAggregatesInput[]
+    NOT?: UserPreferenceOperationTypeScalarWhereWithAggregatesInput | UserPreferenceOperationTypeScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"UserPreferenceOperationType"> | string
+    userPreferenceId?: UuidWithAggregatesFilter<"UserPreferenceOperationType"> | string
+    operationTypeId?: UuidWithAggregatesFilter<"UserPreferenceOperationType"> | string
   }
 
   export type DeviceTokenWhereInput = {
@@ -17219,7 +24852,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -17247,7 +24880,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -17275,7 +24908,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17303,7 +24936,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17331,7 +24964,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -17348,7 +24981,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17365,7 +24998,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17382,7 +25015,6 @@ export namespace Prisma {
     city?: string
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17391,6 +25023,9 @@ export namespace Prisma {
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
     interests?: InterestCreateNestedManyWithoutPropertyInput
     owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reports?: ReportCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
@@ -17403,9 +25038,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17426,7 +25063,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17435,6 +25071,9 @@ export namespace Prisma {
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reports?: ReportUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
@@ -17447,9 +25086,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17469,9 +25110,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17487,7 +25130,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17502,14 +25144,149 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type OperationTypeCreateInput = {
+    id?: string
+    name: string
+    properties?: PropertyCreateNestedManyWithoutOperationTypeInput
+    userPreferences?: UserPreferenceCreateNestedManyWithoutOperationTypeInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeUncheckedCreateInput = {
+    id?: string
+    name: string
+    properties?: PropertyUncheckedCreateNestedManyWithoutOperationTypeInput
+    userPreferences?: UserPreferenceUncheckedCreateNestedManyWithoutOperationTypeInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUpdateManyWithoutOperationTypeNestedInput
+    userPreferences?: UserPreferenceUpdateManyWithoutOperationTypeNestedInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUpdateManyWithoutOperationTypeNestedInput
+  }
+
+  export type OperationTypeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUncheckedUpdateManyWithoutOperationTypeNestedInput
+    userPreferences?: UserPreferenceUncheckedUpdateManyWithoutOperationTypeNestedInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutOperationTypeNestedInput
+  }
+
+  export type OperationTypeCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type OperationTypeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OperationTypeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PropertyTypeCreateInput = {
+    id?: string
+    name: string
+    properties?: PropertyCreateNestedManyWithoutPropertyTypeInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeCreateNestedManyWithoutPropertyTypeInput
+  }
+
+  export type PropertyTypeUncheckedCreateInput = {
+    id?: string
+    name: string
+    properties?: PropertyUncheckedCreateNestedManyWithoutPropertyTypeInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutPropertyTypeInput
+  }
+
+  export type PropertyTypeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUpdateManyWithoutPropertyTypeNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUpdateManyWithoutPropertyTypeNestedInput
+  }
+
+  export type PropertyTypeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUncheckedUpdateManyWithoutPropertyTypeNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedUpdateManyWithoutPropertyTypeNestedInput
+  }
+
+  export type PropertyTypeCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type PropertyTypeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PropertyTypeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProvinceCreateInput = {
+    id?: string
+    name: string
+    properties?: PropertyCreateNestedManyWithoutProvinceInput
+    userPreferencesProvinces?: UserPreferenceProvinceCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateInput = {
+    id?: string
+    name: string
+    properties?: PropertyUncheckedCreateNestedManyWithoutProvinceInput
+    userPreferencesProvinces?: UserPreferenceProvinceUncheckedCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUpdateManyWithoutProvinceNestedInput
+    userPreferencesProvinces?: UserPreferenceProvinceUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUncheckedUpdateManyWithoutProvinceNestedInput
+    userPreferencesProvinces?: UserPreferenceProvinceUncheckedUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type ProvinceCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type ProvinceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProvinceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type InterestCreateInput = {
@@ -18057,59 +25834,58 @@ export namespace Prisma {
 
   export type UserPreferenceCreateInput = {
     id?: string
-    propertyTypes?: UserPreferenceCreatepropertyTypesInput | string[]
-    modality?: string | null
-    locations?: UserPreferenceCreatelocationsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutUserPreferenceInput
+    operationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeCreateNestedManyWithoutUserPreferenceInput
+    OperationType?: OperationTypeCreateNestedOneWithoutUserPreferencesInput
   }
 
   export type UserPreferenceUncheckedCreateInput = {
     id?: string
     userId: string
-    propertyTypes?: UserPreferenceCreatepropertyTypesInput | string[]
-    modality?: string | null
-    locations?: UserPreferenceCreatelocationsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    operationTypeId?: string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
   }
 
   export type UserPreferenceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propertyTypes?: UserPreferenceUpdatepropertyTypesInput | string[]
-    modality?: NullableStringFieldUpdateOperationsInput | string | null
-    locations?: UserPreferenceUpdatelocationsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUserPreferenceNestedInput
+    operationTypes?: UserPreferenceOperationTypeUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUpdateManyWithoutUserPreferenceNestedInput
+    OperationType?: OperationTypeUpdateOneWithoutUserPreferencesNestedInput
   }
 
   export type UserPreferenceUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    propertyTypes?: UserPreferenceUpdatepropertyTypesInput | string[]
-    modality?: NullableStringFieldUpdateOperationsInput | string | null
-    locations?: UserPreferenceUpdatelocationsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
   }
 
   export type UserPreferenceCreateManyInput = {
     id?: string
     userId: string
-    propertyTypes?: UserPreferenceCreatepropertyTypesInput | string[]
-    modality?: string | null
-    locations?: UserPreferenceCreatelocationsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    operationTypeId?: string | null
   }
 
   export type UserPreferenceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propertyTypes?: UserPreferenceUpdatepropertyTypesInput | string[]
-    modality?: NullableStringFieldUpdateOperationsInput | string | null
-    locations?: UserPreferenceUpdatelocationsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18117,11 +25893,129 @@ export namespace Prisma {
   export type UserPreferenceUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    propertyTypes?: UserPreferenceUpdatepropertyTypesInput | string[]
-    modality?: NullableStringFieldUpdateOperationsInput | string | null
-    locations?: UserPreferenceUpdatelocationsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserPreferenceProvinceCreateInput = {
+    id?: string
+    userPreference: UserPreferenceCreateNestedOneWithoutUserPreferenceProvincesInput
+    province: ProvinceCreateNestedOneWithoutUserPreferencesProvincesInput
+  }
+
+  export type UserPreferenceProvinceUncheckedCreateInput = {
+    id?: string
+    userPreferenceId: string
+    provinceId: string
+  }
+
+  export type UserPreferenceProvinceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreference?: UserPreferenceUpdateOneRequiredWithoutUserPreferenceProvincesNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutUserPreferencesProvincesNestedInput
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceProvinceCreateManyInput = {
+    id?: string
+    userPreferenceId: string
+    provinceId: string
+  }
+
+  export type UserPreferenceProvinceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferencePropertyTypeCreateInput = {
+    id?: string
+    userPreference: UserPreferenceCreateNestedOneWithoutUserPreferencePropertyTypesInput
+    propertyType: PropertyTypeCreateNestedOneWithoutUserPreferencePropertyTypesInput
+  }
+
+  export type UserPreferencePropertyTypeUncheckedCreateInput = {
+    id?: string
+    userPreferenceId: string
+    propertyTypeId: string
+  }
+
+  export type UserPreferencePropertyTypeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreference?: UserPreferenceUpdateOneRequiredWithoutUserPreferencePropertyTypesNestedInput
+    propertyType?: PropertyTypeUpdateOneRequiredWithoutUserPreferencePropertyTypesNestedInput
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+    propertyTypeId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferencePropertyTypeCreateManyInput = {
+    id?: string
+    userPreferenceId: string
+    propertyTypeId: string
+  }
+
+  export type UserPreferencePropertyTypeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+    propertyTypeId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceOperationTypeCreateInput = {
+    id?: string
+    userPreference: UserPreferenceCreateNestedOneWithoutOperationTypesInput
+    operationType: OperationTypeCreateNestedOneWithoutUserPreferenceOperationTypesInput
+  }
+
+  export type UserPreferenceOperationTypeUncheckedCreateInput = {
+    id?: string
+    userPreferenceId: string
+    operationTypeId: string
+  }
+
+  export type UserPreferenceOperationTypeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreference?: UserPreferenceUpdateOneRequiredWithoutOperationTypesNestedInput
+    operationType?: OperationTypeUpdateOneRequiredWithoutUserPreferenceOperationTypesNestedInput
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceOperationTypeCreateManyInput = {
+    id?: string
+    userPreferenceId: string
+    operationTypeId: string
+  }
+
+  export type UserPreferenceOperationTypeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DeviceTokenCreateInput = {
@@ -18233,6 +26127,13 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type EnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -18459,6 +26360,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -18485,6 +26396,18 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type UuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
   export type DecimalNullableFilter<$PrismaModel = never> = {
@@ -18514,6 +26437,21 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type OperationTypeNullableScalarRelationFilter = {
+    is?: OperationTypeWhereInput | null
+    isNot?: OperationTypeWhereInput | null
+  }
+
+  export type PropertyTypeNullableScalarRelationFilter = {
+    is?: PropertyTypeWhereInput | null
+    isNot?: PropertyTypeWhereInput | null
+  }
+
+  export type ProvinceNullableScalarRelationFilter = {
+    is?: ProvinceWhereInput | null
+    isNot?: ProvinceWhereInput | null
+  }
+
   export type PropertyPhotoListRelationFilter = {
     every?: PropertyPhotoWhereInput
     some?: PropertyPhotoWhereInput
@@ -18531,9 +26469,11 @@ export namespace Prisma {
     description?: SortOrder
     address?: SortOrder
     city?: SortOrder
+    provinceId?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
-    operationType?: SortOrder
+    operationTypeId?: SortOrder
+    propertyTypeId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18555,9 +26495,11 @@ export namespace Prisma {
     description?: SortOrder
     address?: SortOrder
     city?: SortOrder
+    provinceId?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
-    operationType?: SortOrder
+    operationTypeId?: SortOrder
+    propertyTypeId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18572,9 +26514,11 @@ export namespace Prisma {
     description?: SortOrder
     address?: SortOrder
     city?: SortOrder
+    provinceId?: SortOrder
     areaM2?: SortOrder
     price?: SortOrder
-    operationType?: SortOrder
+    operationTypeId?: SortOrder
+    propertyTypeId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18587,6 +26531,21 @@ export namespace Prisma {
     price?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+  }
+
+  export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -18619,6 +26578,91 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type UserPreferenceListRelationFilter = {
+    every?: UserPreferenceWhereInput
+    some?: UserPreferenceWhereInput
+    none?: UserPreferenceWhereInput
+  }
+
+  export type UserPreferenceOperationTypeListRelationFilter = {
+    every?: UserPreferenceOperationTypeWhereInput
+    some?: UserPreferenceOperationTypeWhereInput
+    none?: UserPreferenceOperationTypeWhereInput
+  }
+
+  export type UserPreferenceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserPreferenceOperationTypeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OperationTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type OperationTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type OperationTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type UserPreferencePropertyTypeListRelationFilter = {
+    every?: UserPreferencePropertyTypeWhereInput
+    some?: UserPreferencePropertyTypeWhereInput
+    none?: UserPreferencePropertyTypeWhereInput
+  }
+
+  export type UserPreferencePropertyTypeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PropertyTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type PropertyTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type PropertyTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type UserPreferenceProvinceListRelationFilter = {
+    every?: UserPreferenceProvinceWhereInput
+    some?: UserPreferenceProvinceWhereInput
+    none?: UserPreferenceProvinceWhereInput
+  }
+
+  export type UserPreferenceProvinceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProvinceCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ProvinceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ProvinceMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
   }
 
   export type PropertyScalarRelationFilter = {
@@ -18662,18 +26706,6 @@ export namespace Prisma {
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type UuidNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -18738,21 +26770,6 @@ export namespace Prisma {
     _sum?: NestedBigIntFilter<$PrismaModel>
     _min?: NestedBigIntFilter<$PrismaModel>
     _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -19122,38 +27139,117 @@ export namespace Prisma {
     _max?: NestedJsonFilter<$PrismaModel>
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
   export type UserPreferenceCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    propertyTypes?: SortOrder
-    modality?: SortOrder
-    locations?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operationTypeId?: SortOrder
   }
 
   export type UserPreferenceMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    modality?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operationTypeId?: SortOrder
   }
 
   export type UserPreferenceMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    modality?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operationTypeId?: SortOrder
+  }
+
+  export type UserPreferenceScalarRelationFilter = {
+    is?: UserPreferenceWhereInput
+    isNot?: UserPreferenceWhereInput
+  }
+
+  export type ProvinceScalarRelationFilter = {
+    is?: ProvinceWhereInput
+    isNot?: ProvinceWhereInput
+  }
+
+  export type UserPreferenceProvinceUserPreferenceIdProvinceIdCompoundUniqueInput = {
+    userPreferenceId: string
+    provinceId: string
+  }
+
+  export type UserPreferenceProvinceCountOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    provinceId?: SortOrder
+  }
+
+  export type UserPreferenceProvinceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    provinceId?: SortOrder
+  }
+
+  export type UserPreferenceProvinceMinOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    provinceId?: SortOrder
+  }
+
+  export type PropertyTypeScalarRelationFilter = {
+    is?: PropertyTypeWhereInput
+    isNot?: PropertyTypeWhereInput
+  }
+
+  export type UserPreferencePropertyTypeUserPreferenceIdPropertyTypeIdCompoundUniqueInput = {
+    userPreferenceId: string
+    propertyTypeId: string
+  }
+
+  export type UserPreferencePropertyTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    propertyTypeId?: SortOrder
+  }
+
+  export type UserPreferencePropertyTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    propertyTypeId?: SortOrder
+  }
+
+  export type UserPreferencePropertyTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    propertyTypeId?: SortOrder
+  }
+
+  export type OperationTypeScalarRelationFilter = {
+    is?: OperationTypeWhereInput
+    isNot?: OperationTypeWhereInput
+  }
+
+  export type UserPreferenceOperationTypeUserPreferenceIdOperationTypeIdCompoundUniqueInput = {
+    userPreferenceId: string
+    operationTypeId: string
+  }
+
+  export type UserPreferenceOperationTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    operationTypeId?: SortOrder
+  }
+
+  export type UserPreferenceOperationTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    operationTypeId?: SortOrder
+  }
+
+  export type UserPreferenceOperationTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    userPreferenceId?: SortOrder
+    operationTypeId?: SortOrder
   }
 
   export type DeviceTokenUserIdTokenCompoundUniqueInput = {
@@ -19349,6 +27445,10 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type EnumUserRoleFieldUpdateOperationsInput = {
+    set?: $Enums.UserRole
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -19679,6 +27779,24 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type OperationTypeCreateNestedOneWithoutPropertiesInput = {
+    create?: XOR<OperationTypeCreateWithoutPropertiesInput, OperationTypeUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: OperationTypeCreateOrConnectWithoutPropertiesInput
+    connect?: OperationTypeWhereUniqueInput
+  }
+
+  export type PropertyTypeCreateNestedOneWithoutPropertiesInput = {
+    create?: XOR<PropertyTypeCreateWithoutPropertiesInput, PropertyTypeUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: PropertyTypeCreateOrConnectWithoutPropertiesInput
+    connect?: PropertyTypeWhereUniqueInput
+  }
+
+  export type ProvinceCreateNestedOneWithoutPropertiesInput = {
+    create?: XOR<ProvinceCreateWithoutPropertiesInput, ProvinceUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutPropertiesInput
+    connect?: ProvinceWhereUniqueInput
+  }
+
   export type PropertyPhotoCreateNestedManyWithoutPropertyInput = {
     create?: XOR<PropertyPhotoCreateWithoutPropertyInput, PropertyPhotoUncheckedCreateWithoutPropertyInput> | PropertyPhotoCreateWithoutPropertyInput[] | PropertyPhotoUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: PropertyPhotoCreateOrConnectWithoutPropertyInput | PropertyPhotoCreateOrConnectWithoutPropertyInput[]
@@ -19785,6 +27903,36 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutOwnedPropertiesInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOwnedPropertiesInput, UserUpdateWithoutOwnedPropertiesInput>, UserUncheckedUpdateWithoutOwnedPropertiesInput>
+  }
+
+  export type OperationTypeUpdateOneWithoutPropertiesNestedInput = {
+    create?: XOR<OperationTypeCreateWithoutPropertiesInput, OperationTypeUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: OperationTypeCreateOrConnectWithoutPropertiesInput
+    upsert?: OperationTypeUpsertWithoutPropertiesInput
+    disconnect?: OperationTypeWhereInput | boolean
+    delete?: OperationTypeWhereInput | boolean
+    connect?: OperationTypeWhereUniqueInput
+    update?: XOR<XOR<OperationTypeUpdateToOneWithWhereWithoutPropertiesInput, OperationTypeUpdateWithoutPropertiesInput>, OperationTypeUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type PropertyTypeUpdateOneWithoutPropertiesNestedInput = {
+    create?: XOR<PropertyTypeCreateWithoutPropertiesInput, PropertyTypeUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: PropertyTypeCreateOrConnectWithoutPropertiesInput
+    upsert?: PropertyTypeUpsertWithoutPropertiesInput
+    disconnect?: PropertyTypeWhereInput | boolean
+    delete?: PropertyTypeWhereInput | boolean
+    connect?: PropertyTypeWhereUniqueInput
+    update?: XOR<XOR<PropertyTypeUpdateToOneWithWhereWithoutPropertiesInput, PropertyTypeUpdateWithoutPropertiesInput>, PropertyTypeUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type ProvinceUpdateOneWithoutPropertiesNestedInput = {
+    create?: XOR<ProvinceCreateWithoutPropertiesInput, ProvinceUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutPropertiesInput
+    upsert?: ProvinceUpsertWithoutPropertiesInput
+    disconnect?: ProvinceWhereInput | boolean
+    delete?: ProvinceWhereInput | boolean
+    connect?: ProvinceWhereUniqueInput
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutPropertiesInput, ProvinceUpdateWithoutPropertiesInput>, ProvinceUncheckedUpdateWithoutPropertiesInput>
   }
 
   export type PropertyPhotoUpdateManyWithoutPropertyNestedInput = {
@@ -19897,6 +28045,300 @@ export namespace Prisma {
     update?: ReviewUpdateWithWhereUniqueWithoutPropertyInput | ReviewUpdateWithWhereUniqueWithoutPropertyInput[]
     updateMany?: ReviewUpdateManyWithWhereWithoutPropertyInput | ReviewUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type PropertyCreateNestedManyWithoutOperationTypeInput = {
+    create?: XOR<PropertyCreateWithoutOperationTypeInput, PropertyUncheckedCreateWithoutOperationTypeInput> | PropertyCreateWithoutOperationTypeInput[] | PropertyUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOperationTypeInput | PropertyCreateOrConnectWithoutOperationTypeInput[]
+    createMany?: PropertyCreateManyOperationTypeInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserPreferenceCreateNestedManyWithoutOperationTypeInput = {
+    create?: XOR<UserPreferenceCreateWithoutOperationTypeInput, UserPreferenceUncheckedCreateWithoutOperationTypeInput> | UserPreferenceCreateWithoutOperationTypeInput[] | UserPreferenceUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutOperationTypeInput | UserPreferenceCreateOrConnectWithoutOperationTypeInput[]
+    createMany?: UserPreferenceCreateManyOperationTypeInputEnvelope
+    connect?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+  }
+
+  export type UserPreferenceOperationTypeCreateNestedManyWithoutOperationTypeInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput> | UserPreferenceOperationTypeCreateWithoutOperationTypeInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput | UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyOperationTypeInputEnvelope
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutOperationTypeInput = {
+    create?: XOR<PropertyCreateWithoutOperationTypeInput, PropertyUncheckedCreateWithoutOperationTypeInput> | PropertyCreateWithoutOperationTypeInput[] | PropertyUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOperationTypeInput | PropertyCreateOrConnectWithoutOperationTypeInput[]
+    createMany?: PropertyCreateManyOperationTypeInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserPreferenceUncheckedCreateNestedManyWithoutOperationTypeInput = {
+    create?: XOR<UserPreferenceCreateWithoutOperationTypeInput, UserPreferenceUncheckedCreateWithoutOperationTypeInput> | UserPreferenceCreateWithoutOperationTypeInput[] | UserPreferenceUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutOperationTypeInput | UserPreferenceCreateOrConnectWithoutOperationTypeInput[]
+    createMany?: UserPreferenceCreateManyOperationTypeInputEnvelope
+    connect?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+  }
+
+  export type UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutOperationTypeInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput> | UserPreferenceOperationTypeCreateWithoutOperationTypeInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput | UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyOperationTypeInputEnvelope
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+  }
+
+  export type PropertyUpdateManyWithoutOperationTypeNestedInput = {
+    create?: XOR<PropertyCreateWithoutOperationTypeInput, PropertyUncheckedCreateWithoutOperationTypeInput> | PropertyCreateWithoutOperationTypeInput[] | PropertyUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOperationTypeInput | PropertyCreateOrConnectWithoutOperationTypeInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutOperationTypeInput | PropertyUpsertWithWhereUniqueWithoutOperationTypeInput[]
+    createMany?: PropertyCreateManyOperationTypeInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutOperationTypeInput | PropertyUpdateWithWhereUniqueWithoutOperationTypeInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutOperationTypeInput | PropertyUpdateManyWithWhereWithoutOperationTypeInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserPreferenceUpdateManyWithoutOperationTypeNestedInput = {
+    create?: XOR<UserPreferenceCreateWithoutOperationTypeInput, UserPreferenceUncheckedCreateWithoutOperationTypeInput> | UserPreferenceCreateWithoutOperationTypeInput[] | UserPreferenceUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutOperationTypeInput | UserPreferenceCreateOrConnectWithoutOperationTypeInput[]
+    upsert?: UserPreferenceUpsertWithWhereUniqueWithoutOperationTypeInput | UserPreferenceUpsertWithWhereUniqueWithoutOperationTypeInput[]
+    createMany?: UserPreferenceCreateManyOperationTypeInputEnvelope
+    set?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    disconnect?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    delete?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    connect?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    update?: UserPreferenceUpdateWithWhereUniqueWithoutOperationTypeInput | UserPreferenceUpdateWithWhereUniqueWithoutOperationTypeInput[]
+    updateMany?: UserPreferenceUpdateManyWithWhereWithoutOperationTypeInput | UserPreferenceUpdateManyWithWhereWithoutOperationTypeInput[]
+    deleteMany?: UserPreferenceScalarWhereInput | UserPreferenceScalarWhereInput[]
+  }
+
+  export type UserPreferenceOperationTypeUpdateManyWithoutOperationTypeNestedInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput> | UserPreferenceOperationTypeCreateWithoutOperationTypeInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput | UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput[]
+    upsert?: UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutOperationTypeInput | UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutOperationTypeInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyOperationTypeInputEnvelope
+    set?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    disconnect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    delete?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    update?: UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutOperationTypeInput | UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutOperationTypeInput[]
+    updateMany?: UserPreferenceOperationTypeUpdateManyWithWhereWithoutOperationTypeInput | UserPreferenceOperationTypeUpdateManyWithWhereWithoutOperationTypeInput[]
+    deleteMany?: UserPreferenceOperationTypeScalarWhereInput | UserPreferenceOperationTypeScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutOperationTypeNestedInput = {
+    create?: XOR<PropertyCreateWithoutOperationTypeInput, PropertyUncheckedCreateWithoutOperationTypeInput> | PropertyCreateWithoutOperationTypeInput[] | PropertyUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOperationTypeInput | PropertyCreateOrConnectWithoutOperationTypeInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutOperationTypeInput | PropertyUpsertWithWhereUniqueWithoutOperationTypeInput[]
+    createMany?: PropertyCreateManyOperationTypeInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutOperationTypeInput | PropertyUpdateWithWhereUniqueWithoutOperationTypeInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutOperationTypeInput | PropertyUpdateManyWithWhereWithoutOperationTypeInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserPreferenceUncheckedUpdateManyWithoutOperationTypeNestedInput = {
+    create?: XOR<UserPreferenceCreateWithoutOperationTypeInput, UserPreferenceUncheckedCreateWithoutOperationTypeInput> | UserPreferenceCreateWithoutOperationTypeInput[] | UserPreferenceUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutOperationTypeInput | UserPreferenceCreateOrConnectWithoutOperationTypeInput[]
+    upsert?: UserPreferenceUpsertWithWhereUniqueWithoutOperationTypeInput | UserPreferenceUpsertWithWhereUniqueWithoutOperationTypeInput[]
+    createMany?: UserPreferenceCreateManyOperationTypeInputEnvelope
+    set?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    disconnect?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    delete?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    connect?: UserPreferenceWhereUniqueInput | UserPreferenceWhereUniqueInput[]
+    update?: UserPreferenceUpdateWithWhereUniqueWithoutOperationTypeInput | UserPreferenceUpdateWithWhereUniqueWithoutOperationTypeInput[]
+    updateMany?: UserPreferenceUpdateManyWithWhereWithoutOperationTypeInput | UserPreferenceUpdateManyWithWhereWithoutOperationTypeInput[]
+    deleteMany?: UserPreferenceScalarWhereInput | UserPreferenceScalarWhereInput[]
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateManyWithoutOperationTypeNestedInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput> | UserPreferenceOperationTypeCreateWithoutOperationTypeInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput | UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput[]
+    upsert?: UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutOperationTypeInput | UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutOperationTypeInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyOperationTypeInputEnvelope
+    set?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    disconnect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    delete?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    update?: UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutOperationTypeInput | UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutOperationTypeInput[]
+    updateMany?: UserPreferenceOperationTypeUpdateManyWithWhereWithoutOperationTypeInput | UserPreferenceOperationTypeUpdateManyWithWhereWithoutOperationTypeInput[]
+    deleteMany?: UserPreferenceOperationTypeScalarWhereInput | UserPreferenceOperationTypeScalarWhereInput[]
+  }
+
+  export type PropertyCreateNestedManyWithoutPropertyTypeInput = {
+    create?: XOR<PropertyCreateWithoutPropertyTypeInput, PropertyUncheckedCreateWithoutPropertyTypeInput> | PropertyCreateWithoutPropertyTypeInput[] | PropertyUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutPropertyTypeInput | PropertyCreateOrConnectWithoutPropertyTypeInput[]
+    createMany?: PropertyCreateManyPropertyTypeInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserPreferencePropertyTypeCreateNestedManyWithoutPropertyTypeInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput> | UserPreferencePropertyTypeCreateWithoutPropertyTypeInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput | UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyPropertyTypeInputEnvelope
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutPropertyTypeInput = {
+    create?: XOR<PropertyCreateWithoutPropertyTypeInput, PropertyUncheckedCreateWithoutPropertyTypeInput> | PropertyCreateWithoutPropertyTypeInput[] | PropertyUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutPropertyTypeInput | PropertyCreateOrConnectWithoutPropertyTypeInput[]
+    createMany?: PropertyCreateManyPropertyTypeInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutPropertyTypeInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput> | UserPreferencePropertyTypeCreateWithoutPropertyTypeInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput | UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyPropertyTypeInputEnvelope
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+  }
+
+  export type PropertyUpdateManyWithoutPropertyTypeNestedInput = {
+    create?: XOR<PropertyCreateWithoutPropertyTypeInput, PropertyUncheckedCreateWithoutPropertyTypeInput> | PropertyCreateWithoutPropertyTypeInput[] | PropertyUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutPropertyTypeInput | PropertyCreateOrConnectWithoutPropertyTypeInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput | PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput[]
+    createMany?: PropertyCreateManyPropertyTypeInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput | PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutPropertyTypeInput | PropertyUpdateManyWithWhereWithoutPropertyTypeInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserPreferencePropertyTypeUpdateManyWithoutPropertyTypeNestedInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput> | UserPreferencePropertyTypeCreateWithoutPropertyTypeInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput | UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput[]
+    upsert?: UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutPropertyTypeInput | UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutPropertyTypeInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyPropertyTypeInputEnvelope
+    set?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    disconnect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    delete?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    update?: UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutPropertyTypeInput | UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutPropertyTypeInput[]
+    updateMany?: UserPreferencePropertyTypeUpdateManyWithWhereWithoutPropertyTypeInput | UserPreferencePropertyTypeUpdateManyWithWhereWithoutPropertyTypeInput[]
+    deleteMany?: UserPreferencePropertyTypeScalarWhereInput | UserPreferencePropertyTypeScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutPropertyTypeNestedInput = {
+    create?: XOR<PropertyCreateWithoutPropertyTypeInput, PropertyUncheckedCreateWithoutPropertyTypeInput> | PropertyCreateWithoutPropertyTypeInput[] | PropertyUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutPropertyTypeInput | PropertyCreateOrConnectWithoutPropertyTypeInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput | PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput[]
+    createMany?: PropertyCreateManyPropertyTypeInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput | PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutPropertyTypeInput | PropertyUpdateManyWithWhereWithoutPropertyTypeInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateManyWithoutPropertyTypeNestedInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput> | UserPreferencePropertyTypeCreateWithoutPropertyTypeInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput | UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput[]
+    upsert?: UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutPropertyTypeInput | UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutPropertyTypeInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyPropertyTypeInputEnvelope
+    set?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    disconnect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    delete?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    update?: UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutPropertyTypeInput | UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutPropertyTypeInput[]
+    updateMany?: UserPreferencePropertyTypeUpdateManyWithWhereWithoutPropertyTypeInput | UserPreferencePropertyTypeUpdateManyWithWhereWithoutPropertyTypeInput[]
+    deleteMany?: UserPreferencePropertyTypeScalarWhereInput | UserPreferencePropertyTypeScalarWhereInput[]
+  }
+
+  export type PropertyCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<PropertyCreateWithoutProvinceInput, PropertyUncheckedCreateWithoutProvinceInput> | PropertyCreateWithoutProvinceInput[] | PropertyUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutProvinceInput | PropertyCreateOrConnectWithoutProvinceInput[]
+    createMany?: PropertyCreateManyProvinceInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserPreferenceProvinceCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutProvinceInput, UserPreferenceProvinceUncheckedCreateWithoutProvinceInput> | UserPreferenceProvinceCreateWithoutProvinceInput[] | UserPreferenceProvinceUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutProvinceInput | UserPreferenceProvinceCreateOrConnectWithoutProvinceInput[]
+    createMany?: UserPreferenceProvinceCreateManyProvinceInputEnvelope
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<PropertyCreateWithoutProvinceInput, PropertyUncheckedCreateWithoutProvinceInput> | PropertyCreateWithoutProvinceInput[] | PropertyUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutProvinceInput | PropertyCreateOrConnectWithoutProvinceInput[]
+    createMany?: PropertyCreateManyProvinceInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserPreferenceProvinceUncheckedCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutProvinceInput, UserPreferenceProvinceUncheckedCreateWithoutProvinceInput> | UserPreferenceProvinceCreateWithoutProvinceInput[] | UserPreferenceProvinceUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutProvinceInput | UserPreferenceProvinceCreateOrConnectWithoutProvinceInput[]
+    createMany?: UserPreferenceProvinceCreateManyProvinceInputEnvelope
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+  }
+
+  export type PropertyUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<PropertyCreateWithoutProvinceInput, PropertyUncheckedCreateWithoutProvinceInput> | PropertyCreateWithoutProvinceInput[] | PropertyUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutProvinceInput | PropertyCreateOrConnectWithoutProvinceInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutProvinceInput | PropertyUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: PropertyCreateManyProvinceInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutProvinceInput | PropertyUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutProvinceInput | PropertyUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserPreferenceProvinceUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutProvinceInput, UserPreferenceProvinceUncheckedCreateWithoutProvinceInput> | UserPreferenceProvinceCreateWithoutProvinceInput[] | UserPreferenceProvinceUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutProvinceInput | UserPreferenceProvinceCreateOrConnectWithoutProvinceInput[]
+    upsert?: UserPreferenceProvinceUpsertWithWhereUniqueWithoutProvinceInput | UserPreferenceProvinceUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: UserPreferenceProvinceCreateManyProvinceInputEnvelope
+    set?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    disconnect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    delete?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    update?: UserPreferenceProvinceUpdateWithWhereUniqueWithoutProvinceInput | UserPreferenceProvinceUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: UserPreferenceProvinceUpdateManyWithWhereWithoutProvinceInput | UserPreferenceProvinceUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: UserPreferenceProvinceScalarWhereInput | UserPreferenceProvinceScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<PropertyCreateWithoutProvinceInput, PropertyUncheckedCreateWithoutProvinceInput> | PropertyCreateWithoutProvinceInput[] | PropertyUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutProvinceInput | PropertyCreateOrConnectWithoutProvinceInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutProvinceInput | PropertyUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: PropertyCreateManyProvinceInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutProvinceInput | PropertyUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutProvinceInput | PropertyUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutProvinceInput, UserPreferenceProvinceUncheckedCreateWithoutProvinceInput> | UserPreferenceProvinceCreateWithoutProvinceInput[] | UserPreferenceProvinceUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutProvinceInput | UserPreferenceProvinceCreateOrConnectWithoutProvinceInput[]
+    upsert?: UserPreferenceProvinceUpsertWithWhereUniqueWithoutProvinceInput | UserPreferenceProvinceUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: UserPreferenceProvinceCreateManyProvinceInputEnvelope
+    set?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    disconnect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    delete?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    update?: UserPreferenceProvinceUpdateWithWhereUniqueWithoutProvinceInput | UserPreferenceProvinceUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: UserPreferenceProvinceUpdateManyWithWhereWithoutProvinceInput | UserPreferenceProvinceUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: UserPreferenceProvinceScalarWhereInput | UserPreferenceProvinceScalarWhereInput[]
   }
 
   export type PropertyCreateNestedOneWithoutInterestsInput = {
@@ -20167,28 +28609,58 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSavedSearchesInput, UserUpdateWithoutSavedSearchesInput>, UserUncheckedUpdateWithoutSavedSearchesInput>
   }
 
-  export type UserPreferenceCreatepropertyTypesInput = {
-    set: string[]
-  }
-
-  export type UserPreferenceCreatelocationsInput = {
-    set: string[]
-  }
-
   export type UserCreateNestedOneWithoutUserPreferenceInput = {
     create?: XOR<UserCreateWithoutUserPreferenceInput, UserUncheckedCreateWithoutUserPreferenceInput>
     connectOrCreate?: UserCreateOrConnectWithoutUserPreferenceInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserPreferenceUpdatepropertyTypesInput = {
-    set?: string[]
-    push?: string | string[]
+  export type UserPreferenceOperationTypeCreateNestedManyWithoutUserPreferenceInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceOperationTypeCreateWithoutUserPreferenceInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyUserPreferenceInputEnvelope
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
   }
 
-  export type UserPreferenceUpdatelocationsInput = {
-    set?: string[]
-    push?: string | string[]
+  export type UserPreferenceProvinceCreateNestedManyWithoutUserPreferenceInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceProvinceCreateWithoutUserPreferenceInput[] | UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput | UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceProvinceCreateManyUserPreferenceInputEnvelope
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+  }
+
+  export type UserPreferencePropertyTypeCreateNestedManyWithoutUserPreferenceInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferencePropertyTypeCreateWithoutUserPreferenceInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyUserPreferenceInputEnvelope
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+  }
+
+  export type OperationTypeCreateNestedOneWithoutUserPreferencesInput = {
+    create?: XOR<OperationTypeCreateWithoutUserPreferencesInput, OperationTypeUncheckedCreateWithoutUserPreferencesInput>
+    connectOrCreate?: OperationTypeCreateOrConnectWithoutUserPreferencesInput
+    connect?: OperationTypeWhereUniqueInput
+  }
+
+  export type UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutUserPreferenceInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceOperationTypeCreateWithoutUserPreferenceInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyUserPreferenceInputEnvelope
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+  }
+
+  export type UserPreferenceProvinceUncheckedCreateNestedManyWithoutUserPreferenceInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceProvinceCreateWithoutUserPreferenceInput[] | UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput | UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceProvinceCreateManyUserPreferenceInputEnvelope
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+  }
+
+  export type UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutUserPreferenceInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferencePropertyTypeCreateWithoutUserPreferenceInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyUserPreferenceInputEnvelope
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutUserPreferenceNestedInput = {
@@ -20197,6 +28669,184 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutUserPreferenceInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserPreferenceInput, UserUpdateWithoutUserPreferenceInput>, UserUncheckedUpdateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceOperationTypeUpdateManyWithoutUserPreferenceNestedInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceOperationTypeCreateWithoutUserPreferenceInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput[]
+    upsert?: UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyUserPreferenceInputEnvelope
+    set?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    disconnect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    delete?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    update?: UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutUserPreferenceInput[]
+    updateMany?: UserPreferenceOperationTypeUpdateManyWithWhereWithoutUserPreferenceInput | UserPreferenceOperationTypeUpdateManyWithWhereWithoutUserPreferenceInput[]
+    deleteMany?: UserPreferenceOperationTypeScalarWhereInput | UserPreferenceOperationTypeScalarWhereInput[]
+  }
+
+  export type UserPreferenceProvinceUpdateManyWithoutUserPreferenceNestedInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceProvinceCreateWithoutUserPreferenceInput[] | UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput | UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput[]
+    upsert?: UserPreferenceProvinceUpsertWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceProvinceUpsertWithWhereUniqueWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceProvinceCreateManyUserPreferenceInputEnvelope
+    set?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    disconnect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    delete?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    update?: UserPreferenceProvinceUpdateWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceProvinceUpdateWithWhereUniqueWithoutUserPreferenceInput[]
+    updateMany?: UserPreferenceProvinceUpdateManyWithWhereWithoutUserPreferenceInput | UserPreferenceProvinceUpdateManyWithWhereWithoutUserPreferenceInput[]
+    deleteMany?: UserPreferenceProvinceScalarWhereInput | UserPreferenceProvinceScalarWhereInput[]
+  }
+
+  export type UserPreferencePropertyTypeUpdateManyWithoutUserPreferenceNestedInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferencePropertyTypeCreateWithoutUserPreferenceInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput[]
+    upsert?: UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutUserPreferenceInput | UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutUserPreferenceInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyUserPreferenceInputEnvelope
+    set?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    disconnect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    delete?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    update?: UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutUserPreferenceInput | UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutUserPreferenceInput[]
+    updateMany?: UserPreferencePropertyTypeUpdateManyWithWhereWithoutUserPreferenceInput | UserPreferencePropertyTypeUpdateManyWithWhereWithoutUserPreferenceInput[]
+    deleteMany?: UserPreferencePropertyTypeScalarWhereInput | UserPreferencePropertyTypeScalarWhereInput[]
+  }
+
+  export type OperationTypeUpdateOneWithoutUserPreferencesNestedInput = {
+    create?: XOR<OperationTypeCreateWithoutUserPreferencesInput, OperationTypeUncheckedCreateWithoutUserPreferencesInput>
+    connectOrCreate?: OperationTypeCreateOrConnectWithoutUserPreferencesInput
+    upsert?: OperationTypeUpsertWithoutUserPreferencesInput
+    disconnect?: OperationTypeWhereInput | boolean
+    delete?: OperationTypeWhereInput | boolean
+    connect?: OperationTypeWhereUniqueInput
+    update?: XOR<XOR<OperationTypeUpdateToOneWithWhereWithoutUserPreferencesInput, OperationTypeUpdateWithoutUserPreferencesInput>, OperationTypeUncheckedUpdateWithoutUserPreferencesInput>
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput = {
+    create?: XOR<UserPreferenceOperationTypeCreateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceOperationTypeCreateWithoutUserPreferenceInput[] | UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput[]
+    upsert?: UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceOperationTypeCreateManyUserPreferenceInputEnvelope
+    set?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    disconnect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    delete?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    connect?: UserPreferenceOperationTypeWhereUniqueInput | UserPreferenceOperationTypeWhereUniqueInput[]
+    update?: UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutUserPreferenceInput[]
+    updateMany?: UserPreferenceOperationTypeUpdateManyWithWhereWithoutUserPreferenceInput | UserPreferenceOperationTypeUpdateManyWithWhereWithoutUserPreferenceInput[]
+    deleteMany?: UserPreferenceOperationTypeScalarWhereInput | UserPreferenceOperationTypeScalarWhereInput[]
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceNestedInput = {
+    create?: XOR<UserPreferenceProvinceCreateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput> | UserPreferenceProvinceCreateWithoutUserPreferenceInput[] | UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput | UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput[]
+    upsert?: UserPreferenceProvinceUpsertWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceProvinceUpsertWithWhereUniqueWithoutUserPreferenceInput[]
+    createMany?: UserPreferenceProvinceCreateManyUserPreferenceInputEnvelope
+    set?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    disconnect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    delete?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    connect?: UserPreferenceProvinceWhereUniqueInput | UserPreferenceProvinceWhereUniqueInput[]
+    update?: UserPreferenceProvinceUpdateWithWhereUniqueWithoutUserPreferenceInput | UserPreferenceProvinceUpdateWithWhereUniqueWithoutUserPreferenceInput[]
+    updateMany?: UserPreferenceProvinceUpdateManyWithWhereWithoutUserPreferenceInput | UserPreferenceProvinceUpdateManyWithWhereWithoutUserPreferenceInput[]
+    deleteMany?: UserPreferenceProvinceScalarWhereInput | UserPreferenceProvinceScalarWhereInput[]
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput = {
+    create?: XOR<UserPreferencePropertyTypeCreateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput> | UserPreferencePropertyTypeCreateWithoutUserPreferenceInput[] | UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput[]
+    connectOrCreate?: UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput | UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput[]
+    upsert?: UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutUserPreferenceInput | UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutUserPreferenceInput[]
+    createMany?: UserPreferencePropertyTypeCreateManyUserPreferenceInputEnvelope
+    set?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    disconnect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    delete?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    connect?: UserPreferencePropertyTypeWhereUniqueInput | UserPreferencePropertyTypeWhereUniqueInput[]
+    update?: UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutUserPreferenceInput | UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutUserPreferenceInput[]
+    updateMany?: UserPreferencePropertyTypeUpdateManyWithWhereWithoutUserPreferenceInput | UserPreferencePropertyTypeUpdateManyWithWhereWithoutUserPreferenceInput[]
+    deleteMany?: UserPreferencePropertyTypeScalarWhereInput | UserPreferencePropertyTypeScalarWhereInput[]
+  }
+
+  export type UserPreferenceCreateNestedOneWithoutUserPreferenceProvincesInput = {
+    create?: XOR<UserPreferenceCreateWithoutUserPreferenceProvincesInput, UserPreferenceUncheckedCreateWithoutUserPreferenceProvincesInput>
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutUserPreferenceProvincesInput
+    connect?: UserPreferenceWhereUniqueInput
+  }
+
+  export type ProvinceCreateNestedOneWithoutUserPreferencesProvincesInput = {
+    create?: XOR<ProvinceCreateWithoutUserPreferencesProvincesInput, ProvinceUncheckedCreateWithoutUserPreferencesProvincesInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutUserPreferencesProvincesInput
+    connect?: ProvinceWhereUniqueInput
+  }
+
+  export type UserPreferenceUpdateOneRequiredWithoutUserPreferenceProvincesNestedInput = {
+    create?: XOR<UserPreferenceCreateWithoutUserPreferenceProvincesInput, UserPreferenceUncheckedCreateWithoutUserPreferenceProvincesInput>
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutUserPreferenceProvincesInput
+    upsert?: UserPreferenceUpsertWithoutUserPreferenceProvincesInput
+    connect?: UserPreferenceWhereUniqueInput
+    update?: XOR<XOR<UserPreferenceUpdateToOneWithWhereWithoutUserPreferenceProvincesInput, UserPreferenceUpdateWithoutUserPreferenceProvincesInput>, UserPreferenceUncheckedUpdateWithoutUserPreferenceProvincesInput>
+  }
+
+  export type ProvinceUpdateOneRequiredWithoutUserPreferencesProvincesNestedInput = {
+    create?: XOR<ProvinceCreateWithoutUserPreferencesProvincesInput, ProvinceUncheckedCreateWithoutUserPreferencesProvincesInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutUserPreferencesProvincesInput
+    upsert?: ProvinceUpsertWithoutUserPreferencesProvincesInput
+    connect?: ProvinceWhereUniqueInput
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutUserPreferencesProvincesInput, ProvinceUpdateWithoutUserPreferencesProvincesInput>, ProvinceUncheckedUpdateWithoutUserPreferencesProvincesInput>
+  }
+
+  export type UserPreferenceCreateNestedOneWithoutUserPreferencePropertyTypesInput = {
+    create?: XOR<UserPreferenceCreateWithoutUserPreferencePropertyTypesInput, UserPreferenceUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutUserPreferencePropertyTypesInput
+    connect?: UserPreferenceWhereUniqueInput
+  }
+
+  export type PropertyTypeCreateNestedOneWithoutUserPreferencePropertyTypesInput = {
+    create?: XOR<PropertyTypeCreateWithoutUserPreferencePropertyTypesInput, PropertyTypeUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+    connectOrCreate?: PropertyTypeCreateOrConnectWithoutUserPreferencePropertyTypesInput
+    connect?: PropertyTypeWhereUniqueInput
+  }
+
+  export type UserPreferenceUpdateOneRequiredWithoutUserPreferencePropertyTypesNestedInput = {
+    create?: XOR<UserPreferenceCreateWithoutUserPreferencePropertyTypesInput, UserPreferenceUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutUserPreferencePropertyTypesInput
+    upsert?: UserPreferenceUpsertWithoutUserPreferencePropertyTypesInput
+    connect?: UserPreferenceWhereUniqueInput
+    update?: XOR<XOR<UserPreferenceUpdateToOneWithWhereWithoutUserPreferencePropertyTypesInput, UserPreferenceUpdateWithoutUserPreferencePropertyTypesInput>, UserPreferenceUncheckedUpdateWithoutUserPreferencePropertyTypesInput>
+  }
+
+  export type PropertyTypeUpdateOneRequiredWithoutUserPreferencePropertyTypesNestedInput = {
+    create?: XOR<PropertyTypeCreateWithoutUserPreferencePropertyTypesInput, PropertyTypeUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+    connectOrCreate?: PropertyTypeCreateOrConnectWithoutUserPreferencePropertyTypesInput
+    upsert?: PropertyTypeUpsertWithoutUserPreferencePropertyTypesInput
+    connect?: PropertyTypeWhereUniqueInput
+    update?: XOR<XOR<PropertyTypeUpdateToOneWithWhereWithoutUserPreferencePropertyTypesInput, PropertyTypeUpdateWithoutUserPreferencePropertyTypesInput>, PropertyTypeUncheckedUpdateWithoutUserPreferencePropertyTypesInput>
+  }
+
+  export type UserPreferenceCreateNestedOneWithoutOperationTypesInput = {
+    create?: XOR<UserPreferenceCreateWithoutOperationTypesInput, UserPreferenceUncheckedCreateWithoutOperationTypesInput>
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutOperationTypesInput
+    connect?: UserPreferenceWhereUniqueInput
+  }
+
+  export type OperationTypeCreateNestedOneWithoutUserPreferenceOperationTypesInput = {
+    create?: XOR<OperationTypeCreateWithoutUserPreferenceOperationTypesInput, OperationTypeUncheckedCreateWithoutUserPreferenceOperationTypesInput>
+    connectOrCreate?: OperationTypeCreateOrConnectWithoutUserPreferenceOperationTypesInput
+    connect?: OperationTypeWhereUniqueInput
+  }
+
+  export type UserPreferenceUpdateOneRequiredWithoutOperationTypesNestedInput = {
+    create?: XOR<UserPreferenceCreateWithoutOperationTypesInput, UserPreferenceUncheckedCreateWithoutOperationTypesInput>
+    connectOrCreate?: UserPreferenceCreateOrConnectWithoutOperationTypesInput
+    upsert?: UserPreferenceUpsertWithoutOperationTypesInput
+    connect?: UserPreferenceWhereUniqueInput
+    update?: XOR<XOR<UserPreferenceUpdateToOneWithWhereWithoutOperationTypesInput, UserPreferenceUpdateWithoutOperationTypesInput>, UserPreferenceUncheckedUpdateWithoutOperationTypesInput>
+  }
+
+  export type OperationTypeUpdateOneRequiredWithoutUserPreferenceOperationTypesNestedInput = {
+    create?: XOR<OperationTypeCreateWithoutUserPreferenceOperationTypesInput, OperationTypeUncheckedCreateWithoutUserPreferenceOperationTypesInput>
+    connectOrCreate?: OperationTypeCreateOrConnectWithoutUserPreferenceOperationTypesInput
+    upsert?: OperationTypeUpsertWithoutUserPreferenceOperationTypesInput
+    connect?: OperationTypeWhereUniqueInput
+    update?: XOR<XOR<OperationTypeUpdateToOneWithWhereWithoutUserPreferenceOperationTypesInput, OperationTypeUpdateWithoutUserPreferenceOperationTypesInput>, OperationTypeUncheckedUpdateWithoutUserPreferenceOperationTypesInput>
   }
 
   export type UserCreateNestedOneWithoutDeviceTokensInput = {
@@ -20250,6 +28900,13 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -20344,6 +29001,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -20372,6 +29039,17 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedUuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedDecimalNullableFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
@@ -20392,6 +29070,20 @@ export namespace Prisma {
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -20437,17 +29129,6 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type NestedUuidNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -20478,20 +29159,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -20767,7 +29434,6 @@ export namespace Prisma {
     city?: string
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20775,6 +29441,9 @@ export namespace Prisma {
     longitude?: Decimal | DecimalJsLike | number | string | null
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
     interests?: InterestCreateNestedManyWithoutPropertyInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reports?: ReportCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
@@ -20786,9 +29455,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20901,20 +29572,22 @@ export namespace Prisma {
 
   export type UserPreferenceCreateWithoutUserInput = {
     id?: string
-    propertyTypes?: UserPreferenceCreatepropertyTypesInput | string[]
-    modality?: string | null
-    locations?: UserPreferenceCreatelocationsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    operationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeCreateNestedManyWithoutUserPreferenceInput
+    OperationType?: OperationTypeCreateNestedOneWithoutUserPreferencesInput
   }
 
   export type UserPreferenceUncheckedCreateWithoutUserInput = {
     id?: string
-    propertyTypes?: UserPreferenceCreatepropertyTypesInput | string[]
-    modality?: string | null
-    locations?: UserPreferenceCreatelocationsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    operationTypeId?: string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
   }
 
   export type UserPreferenceCreateOrConnectWithoutUserInput = {
@@ -21108,9 +29781,11 @@ export namespace Prisma {
     description?: StringNullableFilter<"Property"> | string | null
     address?: StringNullableFilter<"Property"> | string | null
     city?: StringFilter<"Property"> | string
+    provinceId?: UuidNullableFilter<"Property"> | string | null
     areaM2?: DecimalNullableFilter<"Property"> | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFilter<"Property"> | Decimal | DecimalJsLike | number | string
-    operationType?: StringFilter<"Property"> | string
+    operationTypeId?: UuidNullableFilter<"Property"> | string | null
+    propertyTypeId?: UuidNullableFilter<"Property"> | string | null
     status?: StringFilter<"Property"> | string
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
@@ -21220,20 +29895,22 @@ export namespace Prisma {
 
   export type UserPreferenceUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propertyTypes?: UserPreferenceUpdatepropertyTypesInput | string[]
-    modality?: NullableStringFieldUpdateOperationsInput | string | null
-    locations?: UserPreferenceUpdatelocationsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypes?: UserPreferenceOperationTypeUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUpdateManyWithoutUserPreferenceNestedInput
+    OperationType?: OperationTypeUpdateOneWithoutUserPreferencesNestedInput
   }
 
   export type UserPreferenceUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    propertyTypes?: UserPreferenceUpdatepropertyTypesInput | string[]
-    modality?: NullableStringFieldUpdateOperationsInput | string | null
-    locations?: UserPreferenceUpdatelocationsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
   }
 
   export type FavoriteCreateWithoutPropertyInput = {
@@ -21294,7 +29971,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -21321,7 +29998,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -21343,6 +30020,59 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutOwnedPropertiesInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutOwnedPropertiesInput, UserUncheckedCreateWithoutOwnedPropertiesInput>
+  }
+
+  export type OperationTypeCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    userPreferences?: UserPreferenceCreateNestedManyWithoutOperationTypeInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeUncheckedCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    userPreferences?: UserPreferenceUncheckedCreateNestedManyWithoutOperationTypeInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeCreateOrConnectWithoutPropertiesInput = {
+    where: OperationTypeWhereUniqueInput
+    create: XOR<OperationTypeCreateWithoutPropertiesInput, OperationTypeUncheckedCreateWithoutPropertiesInput>
+  }
+
+  export type PropertyTypeCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeCreateNestedManyWithoutPropertyTypeInput
+  }
+
+  export type PropertyTypeUncheckedCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutPropertyTypeInput
+  }
+
+  export type PropertyTypeCreateOrConnectWithoutPropertiesInput = {
+    where: PropertyTypeWhereUniqueInput
+    create: XOR<PropertyTypeCreateWithoutPropertiesInput, PropertyTypeUncheckedCreateWithoutPropertiesInput>
+  }
+
+  export type ProvinceCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    userPreferencesProvinces?: UserPreferenceProvinceCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    userPreferencesProvinces?: UserPreferenceProvinceUncheckedCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutPropertiesInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutPropertiesInput, ProvinceUncheckedCreateWithoutPropertiesInput>
   }
 
   export type PropertyPhotoCreateWithoutPropertyInput = {
@@ -21484,7 +30214,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21511,7 +30241,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21528,6 +30258,77 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     savedSearches?: SavedSearchUncheckedUpdateManyWithoutUserNestedInput
     userPreference?: UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type OperationTypeUpsertWithoutPropertiesInput = {
+    update: XOR<OperationTypeUpdateWithoutPropertiesInput, OperationTypeUncheckedUpdateWithoutPropertiesInput>
+    create: XOR<OperationTypeCreateWithoutPropertiesInput, OperationTypeUncheckedCreateWithoutPropertiesInput>
+    where?: OperationTypeWhereInput
+  }
+
+  export type OperationTypeUpdateToOneWithWhereWithoutPropertiesInput = {
+    where?: OperationTypeWhereInput
+    data: XOR<OperationTypeUpdateWithoutPropertiesInput, OperationTypeUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type OperationTypeUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userPreferences?: UserPreferenceUpdateManyWithoutOperationTypeNestedInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUpdateManyWithoutOperationTypeNestedInput
+  }
+
+  export type OperationTypeUncheckedUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userPreferences?: UserPreferenceUncheckedUpdateManyWithoutOperationTypeNestedInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutOperationTypeNestedInput
+  }
+
+  export type PropertyTypeUpsertWithoutPropertiesInput = {
+    update: XOR<PropertyTypeUpdateWithoutPropertiesInput, PropertyTypeUncheckedUpdateWithoutPropertiesInput>
+    create: XOR<PropertyTypeCreateWithoutPropertiesInput, PropertyTypeUncheckedCreateWithoutPropertiesInput>
+    where?: PropertyTypeWhereInput
+  }
+
+  export type PropertyTypeUpdateToOneWithWhereWithoutPropertiesInput = {
+    where?: PropertyTypeWhereInput
+    data: XOR<PropertyTypeUpdateWithoutPropertiesInput, PropertyTypeUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type PropertyTypeUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUpdateManyWithoutPropertyTypeNestedInput
+  }
+
+  export type PropertyTypeUncheckedUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedUpdateManyWithoutPropertyTypeNestedInput
+  }
+
+  export type ProvinceUpsertWithoutPropertiesInput = {
+    update: XOR<ProvinceUpdateWithoutPropertiesInput, ProvinceUncheckedUpdateWithoutPropertiesInput>
+    create: XOR<ProvinceCreateWithoutPropertiesInput, ProvinceUncheckedCreateWithoutPropertiesInput>
+    where?: ProvinceWhereInput
+  }
+
+  export type ProvinceUpdateToOneWithWhereWithoutPropertiesInput = {
+    where?: ProvinceWhereInput
+    data: XOR<ProvinceUpdateWithoutPropertiesInput, ProvinceUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type ProvinceUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userPreferencesProvinces?: UserPreferenceProvinceUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userPreferencesProvinces?: UserPreferenceProvinceUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type PropertyPhotoUpsertWithWhereUniqueWithoutPropertyInput = {
@@ -21589,6 +30390,414 @@ export namespace Prisma {
     data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutPropertyInput>
   }
 
+  export type PropertyCreateWithoutOperationTypeInput = {
+    id?: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    interests?: InterestCreateNestedManyWithoutPropertyInput
+    owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
+    propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutOperationTypeInput = {
+    id?: string
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    provinceId?: string | null
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    propertyTypeId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    interests?: InterestUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutOperationTypeInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutOperationTypeInput, PropertyUncheckedCreateWithoutOperationTypeInput>
+  }
+
+  export type PropertyCreateManyOperationTypeInputEnvelope = {
+    data: PropertyCreateManyOperationTypeInput | PropertyCreateManyOperationTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPreferenceCreateWithoutOperationTypeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUserPreferenceInput
+    operationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeCreateNestedManyWithoutUserPreferenceInput
+  }
+
+  export type UserPreferenceUncheckedCreateWithoutOperationTypeInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+  }
+
+  export type UserPreferenceCreateOrConnectWithoutOperationTypeInput = {
+    where: UserPreferenceWhereUniqueInput
+    create: XOR<UserPreferenceCreateWithoutOperationTypeInput, UserPreferenceUncheckedCreateWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceCreateManyOperationTypeInputEnvelope = {
+    data: UserPreferenceCreateManyOperationTypeInput | UserPreferenceCreateManyOperationTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPreferenceOperationTypeCreateWithoutOperationTypeInput = {
+    id?: string
+    userPreference: UserPreferenceCreateNestedOneWithoutOperationTypesInput
+  }
+
+  export type UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput = {
+    id?: string
+    userPreferenceId: string
+  }
+
+  export type UserPreferenceOperationTypeCreateOrConnectWithoutOperationTypeInput = {
+    where: UserPreferenceOperationTypeWhereUniqueInput
+    create: XOR<UserPreferenceOperationTypeCreateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceOperationTypeCreateManyOperationTypeInputEnvelope = {
+    data: UserPreferenceOperationTypeCreateManyOperationTypeInput | UserPreferenceOperationTypeCreateManyOperationTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutOperationTypeInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutOperationTypeInput, PropertyUncheckedUpdateWithoutOperationTypeInput>
+    create: XOR<PropertyCreateWithoutOperationTypeInput, PropertyUncheckedCreateWithoutOperationTypeInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutOperationTypeInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutOperationTypeInput, PropertyUncheckedUpdateWithoutOperationTypeInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutOperationTypeInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceUpsertWithWhereUniqueWithoutOperationTypeInput = {
+    where: UserPreferenceWhereUniqueInput
+    update: XOR<UserPreferenceUpdateWithoutOperationTypeInput, UserPreferenceUncheckedUpdateWithoutOperationTypeInput>
+    create: XOR<UserPreferenceCreateWithoutOperationTypeInput, UserPreferenceUncheckedCreateWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceUpdateWithWhereUniqueWithoutOperationTypeInput = {
+    where: UserPreferenceWhereUniqueInput
+    data: XOR<UserPreferenceUpdateWithoutOperationTypeInput, UserPreferenceUncheckedUpdateWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceUpdateManyWithWhereWithoutOperationTypeInput = {
+    where: UserPreferenceScalarWhereInput
+    data: XOR<UserPreferenceUpdateManyMutationInput, UserPreferenceUncheckedUpdateManyWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceScalarWhereInput = {
+    AND?: UserPreferenceScalarWhereInput | UserPreferenceScalarWhereInput[]
+    OR?: UserPreferenceScalarWhereInput[]
+    NOT?: UserPreferenceScalarWhereInput | UserPreferenceScalarWhereInput[]
+    id?: UuidFilter<"UserPreference"> | string
+    userId?: UuidFilter<"UserPreference"> | string
+    createdAt?: DateTimeFilter<"UserPreference"> | Date | string
+    updatedAt?: DateTimeFilter<"UserPreference"> | Date | string
+    operationTypeId?: UuidNullableFilter<"UserPreference"> | string | null
+  }
+
+  export type UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutOperationTypeInput = {
+    where: UserPreferenceOperationTypeWhereUniqueInput
+    update: XOR<UserPreferenceOperationTypeUpdateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedUpdateWithoutOperationTypeInput>
+    create: XOR<UserPreferenceOperationTypeCreateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedCreateWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutOperationTypeInput = {
+    where: UserPreferenceOperationTypeWhereUniqueInput
+    data: XOR<UserPreferenceOperationTypeUpdateWithoutOperationTypeInput, UserPreferenceOperationTypeUncheckedUpdateWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceOperationTypeUpdateManyWithWhereWithoutOperationTypeInput = {
+    where: UserPreferenceOperationTypeScalarWhereInput
+    data: XOR<UserPreferenceOperationTypeUpdateManyMutationInput, UserPreferenceOperationTypeUncheckedUpdateManyWithoutOperationTypeInput>
+  }
+
+  export type UserPreferenceOperationTypeScalarWhereInput = {
+    AND?: UserPreferenceOperationTypeScalarWhereInput | UserPreferenceOperationTypeScalarWhereInput[]
+    OR?: UserPreferenceOperationTypeScalarWhereInput[]
+    NOT?: UserPreferenceOperationTypeScalarWhereInput | UserPreferenceOperationTypeScalarWhereInput[]
+    id?: UuidFilter<"UserPreferenceOperationType"> | string
+    userPreferenceId?: UuidFilter<"UserPreferenceOperationType"> | string
+    operationTypeId?: UuidFilter<"UserPreferenceOperationType"> | string
+  }
+
+  export type PropertyCreateWithoutPropertyTypeInput = {
+    id?: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    interests?: InterestCreateNestedManyWithoutPropertyInput
+    owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
+    propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutPropertyTypeInput = {
+    id?: string
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    provinceId?: string | null
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    operationTypeId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    interests?: InterestUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutPropertyTypeInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutPropertyTypeInput, PropertyUncheckedCreateWithoutPropertyTypeInput>
+  }
+
+  export type PropertyCreateManyPropertyTypeInputEnvelope = {
+    data: PropertyCreateManyPropertyTypeInput | PropertyCreateManyPropertyTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPreferencePropertyTypeCreateWithoutPropertyTypeInput = {
+    id?: string
+    userPreference: UserPreferenceCreateNestedOneWithoutUserPreferencePropertyTypesInput
+  }
+
+  export type UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput = {
+    id?: string
+    userPreferenceId: string
+  }
+
+  export type UserPreferencePropertyTypeCreateOrConnectWithoutPropertyTypeInput = {
+    where: UserPreferencePropertyTypeWhereUniqueInput
+    create: XOR<UserPreferencePropertyTypeCreateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput>
+  }
+
+  export type UserPreferencePropertyTypeCreateManyPropertyTypeInputEnvelope = {
+    data: UserPreferencePropertyTypeCreateManyPropertyTypeInput | UserPreferencePropertyTypeCreateManyPropertyTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutPropertyTypeInput, PropertyUncheckedUpdateWithoutPropertyTypeInput>
+    create: XOR<PropertyCreateWithoutPropertyTypeInput, PropertyUncheckedCreateWithoutPropertyTypeInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutPropertyTypeInput, PropertyUncheckedUpdateWithoutPropertyTypeInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutPropertyTypeInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutPropertyTypeInput>
+  }
+
+  export type UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutPropertyTypeInput = {
+    where: UserPreferencePropertyTypeWhereUniqueInput
+    update: XOR<UserPreferencePropertyTypeUpdateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedUpdateWithoutPropertyTypeInput>
+    create: XOR<UserPreferencePropertyTypeCreateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedCreateWithoutPropertyTypeInput>
+  }
+
+  export type UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutPropertyTypeInput = {
+    where: UserPreferencePropertyTypeWhereUniqueInput
+    data: XOR<UserPreferencePropertyTypeUpdateWithoutPropertyTypeInput, UserPreferencePropertyTypeUncheckedUpdateWithoutPropertyTypeInput>
+  }
+
+  export type UserPreferencePropertyTypeUpdateManyWithWhereWithoutPropertyTypeInput = {
+    where: UserPreferencePropertyTypeScalarWhereInput
+    data: XOR<UserPreferencePropertyTypeUpdateManyMutationInput, UserPreferencePropertyTypeUncheckedUpdateManyWithoutPropertyTypeInput>
+  }
+
+  export type UserPreferencePropertyTypeScalarWhereInput = {
+    AND?: UserPreferencePropertyTypeScalarWhereInput | UserPreferencePropertyTypeScalarWhereInput[]
+    OR?: UserPreferencePropertyTypeScalarWhereInput[]
+    NOT?: UserPreferencePropertyTypeScalarWhereInput | UserPreferencePropertyTypeScalarWhereInput[]
+    id?: UuidFilter<"UserPreferencePropertyType"> | string
+    userPreferenceId?: UuidFilter<"UserPreferencePropertyType"> | string
+    propertyTypeId?: UuidFilter<"UserPreferencePropertyType"> | string
+  }
+
+  export type PropertyCreateWithoutProvinceInput = {
+    id?: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteCreateNestedManyWithoutPropertyInput
+    interests?: InterestCreateNestedManyWithoutPropertyInput
+    owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
+    reports?: ReportCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutProvinceInput = {
+    id?: string
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+    interests?: InterestUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPhotos?: PropertyPhotoUncheckedCreateNestedManyWithoutPropertyInput
+    reports?: ReportUncheckedCreateNestedManyWithoutPropertyInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutProvinceInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutProvinceInput, PropertyUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type PropertyCreateManyProvinceInputEnvelope = {
+    data: PropertyCreateManyProvinceInput | PropertyCreateManyProvinceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPreferenceProvinceCreateWithoutProvinceInput = {
+    id?: string
+    userPreference: UserPreferenceCreateNestedOneWithoutUserPreferenceProvincesInput
+  }
+
+  export type UserPreferenceProvinceUncheckedCreateWithoutProvinceInput = {
+    id?: string
+    userPreferenceId: string
+  }
+
+  export type UserPreferenceProvinceCreateOrConnectWithoutProvinceInput = {
+    where: UserPreferenceProvinceWhereUniqueInput
+    create: XOR<UserPreferenceProvinceCreateWithoutProvinceInput, UserPreferenceProvinceUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type UserPreferenceProvinceCreateManyProvinceInputEnvelope = {
+    data: UserPreferenceProvinceCreateManyProvinceInput | UserPreferenceProvinceCreateManyProvinceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutProvinceInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutProvinceInput, PropertyUncheckedUpdateWithoutProvinceInput>
+    create: XOR<PropertyCreateWithoutProvinceInput, PropertyUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutProvinceInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutProvinceInput, PropertyUncheckedUpdateWithoutProvinceInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutProvinceInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutProvinceInput>
+  }
+
+  export type UserPreferenceProvinceUpsertWithWhereUniqueWithoutProvinceInput = {
+    where: UserPreferenceProvinceWhereUniqueInput
+    update: XOR<UserPreferenceProvinceUpdateWithoutProvinceInput, UserPreferenceProvinceUncheckedUpdateWithoutProvinceInput>
+    create: XOR<UserPreferenceProvinceCreateWithoutProvinceInput, UserPreferenceProvinceUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type UserPreferenceProvinceUpdateWithWhereUniqueWithoutProvinceInput = {
+    where: UserPreferenceProvinceWhereUniqueInput
+    data: XOR<UserPreferenceProvinceUpdateWithoutProvinceInput, UserPreferenceProvinceUncheckedUpdateWithoutProvinceInput>
+  }
+
+  export type UserPreferenceProvinceUpdateManyWithWhereWithoutProvinceInput = {
+    where: UserPreferenceProvinceScalarWhereInput
+    data: XOR<UserPreferenceProvinceUpdateManyMutationInput, UserPreferenceProvinceUncheckedUpdateManyWithoutProvinceInput>
+  }
+
+  export type UserPreferenceProvinceScalarWhereInput = {
+    AND?: UserPreferenceProvinceScalarWhereInput | UserPreferenceProvinceScalarWhereInput[]
+    OR?: UserPreferenceProvinceScalarWhereInput[]
+    NOT?: UserPreferenceProvinceScalarWhereInput | UserPreferenceProvinceScalarWhereInput[]
+    id?: UuidFilter<"UserPreferenceProvince"> | string
+    userPreferenceId?: UuidFilter<"UserPreferenceProvince"> | string
+    provinceId?: UuidFilter<"UserPreferenceProvince"> | string
+  }
+
   export type PropertyCreateWithoutInterestsInput = {
     id?: string
     title: string
@@ -21597,7 +30806,6 @@ export namespace Prisma {
     city?: string
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21605,6 +30813,9 @@ export namespace Prisma {
     longitude?: Decimal | DecimalJsLike | number | string | null
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
     owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reports?: ReportCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
@@ -21617,9 +30828,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21644,7 +30857,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -21671,7 +30884,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -21742,7 +30955,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21750,6 +30962,9 @@ export namespace Prisma {
     longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
     owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reports?: ReportUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
@@ -21762,9 +30977,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21795,7 +31012,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21822,7 +31039,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21888,7 +31105,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -21915,7 +31132,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -21947,7 +31164,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -21974,7 +31191,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22046,7 +31263,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22073,7 +31290,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22111,7 +31328,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22138,7 +31355,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22165,7 +31382,6 @@ export namespace Prisma {
     city?: string
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22174,6 +31390,9 @@ export namespace Prisma {
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
     interests?: InterestCreateNestedManyWithoutPropertyInput
     owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
     reports?: ReportCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
   }
@@ -22185,9 +31404,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22223,7 +31444,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22232,6 +31452,9 @@ export namespace Prisma {
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
     reports?: ReportUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
   }
@@ -22243,9 +31466,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22265,7 +31490,6 @@ export namespace Prisma {
     city?: string
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22274,6 +31498,9 @@ export namespace Prisma {
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
     interests?: InterestCreateNestedManyWithoutPropertyInput
     owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reports?: ReportCreateNestedManyWithoutPropertyInput
   }
@@ -22285,9 +31512,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22312,7 +31541,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22339,7 +31568,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22382,7 +31611,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22391,6 +31619,9 @@ export namespace Prisma {
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reports?: ReportUpdateManyWithoutPropertyNestedInput
   }
@@ -22402,9 +31633,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22435,7 +31668,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22462,7 +31695,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22489,7 +31722,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22516,7 +31749,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22559,7 +31792,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22586,7 +31819,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22613,7 +31846,6 @@ export namespace Prisma {
     city?: string
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22622,6 +31854,9 @@ export namespace Prisma {
     favorites?: FavoriteCreateNestedManyWithoutPropertyInput
     interests?: InterestCreateNestedManyWithoutPropertyInput
     owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
   }
@@ -22633,9 +31868,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22660,7 +31897,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22687,7 +31924,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22730,7 +31967,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22739,6 +31975,9 @@ export namespace Prisma {
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
   }
@@ -22750,9 +31989,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22783,7 +32024,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22810,7 +32051,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22837,7 +32078,6 @@ export namespace Prisma {
     city?: string
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22845,6 +32085,9 @@ export namespace Prisma {
     longitude?: Decimal | DecimalJsLike | number | string | null
     interests?: InterestCreateNestedManyWithoutPropertyInput
     owner: UserCreateNestedOneWithoutOwnedPropertiesInput
+    operationType?: OperationTypeCreateNestedOneWithoutPropertiesInput
+    propertyType?: PropertyTypeCreateNestedOneWithoutPropertiesInput
+    province?: ProvinceCreateNestedOneWithoutPropertiesInput
     propertyPhotos?: PropertyPhotoCreateNestedManyWithoutPropertyInput
     reports?: ReportCreateNestedManyWithoutPropertyInput
     reviews?: ReviewCreateNestedManyWithoutPropertyInput
@@ -22857,9 +32100,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22884,7 +32129,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22911,7 +32156,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -22954,7 +32199,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22962,6 +32206,9 @@ export namespace Prisma {
     longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     interests?: InterestUpdateManyWithoutPropertyNestedInput
     owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reports?: ReportUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
@@ -22974,9 +32221,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23007,7 +32256,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23034,7 +32283,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23061,7 +32310,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -23088,7 +32337,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -23131,7 +32380,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23158,7 +32407,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23185,7 +32434,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -23212,7 +32461,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -23236,6 +32485,85 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutUserPreferenceInput, UserUncheckedCreateWithoutUserPreferenceInput>
   }
 
+  export type UserPreferenceOperationTypeCreateWithoutUserPreferenceInput = {
+    id?: string
+    operationType: OperationTypeCreateNestedOneWithoutUserPreferenceOperationTypesInput
+  }
+
+  export type UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput = {
+    id?: string
+    operationTypeId: string
+  }
+
+  export type UserPreferenceOperationTypeCreateOrConnectWithoutUserPreferenceInput = {
+    where: UserPreferenceOperationTypeWhereUniqueInput
+    create: XOR<UserPreferenceOperationTypeCreateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceOperationTypeCreateManyUserPreferenceInputEnvelope = {
+    data: UserPreferenceOperationTypeCreateManyUserPreferenceInput | UserPreferenceOperationTypeCreateManyUserPreferenceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPreferenceProvinceCreateWithoutUserPreferenceInput = {
+    id?: string
+    province: ProvinceCreateNestedOneWithoutUserPreferencesProvincesInput
+  }
+
+  export type UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput = {
+    id?: string
+    provinceId: string
+  }
+
+  export type UserPreferenceProvinceCreateOrConnectWithoutUserPreferenceInput = {
+    where: UserPreferenceProvinceWhereUniqueInput
+    create: XOR<UserPreferenceProvinceCreateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceProvinceCreateManyUserPreferenceInputEnvelope = {
+    data: UserPreferenceProvinceCreateManyUserPreferenceInput | UserPreferenceProvinceCreateManyUserPreferenceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserPreferencePropertyTypeCreateWithoutUserPreferenceInput = {
+    id?: string
+    propertyType: PropertyTypeCreateNestedOneWithoutUserPreferencePropertyTypesInput
+  }
+
+  export type UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput = {
+    id?: string
+    propertyTypeId: string
+  }
+
+  export type UserPreferencePropertyTypeCreateOrConnectWithoutUserPreferenceInput = {
+    where: UserPreferencePropertyTypeWhereUniqueInput
+    create: XOR<UserPreferencePropertyTypeCreateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferencePropertyTypeCreateManyUserPreferenceInputEnvelope = {
+    data: UserPreferencePropertyTypeCreateManyUserPreferenceInput | UserPreferencePropertyTypeCreateManyUserPreferenceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OperationTypeCreateWithoutUserPreferencesInput = {
+    id?: string
+    name: string
+    properties?: PropertyCreateNestedManyWithoutOperationTypeInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeUncheckedCreateWithoutUserPreferencesInput = {
+    id?: string
+    name: string
+    properties?: PropertyUncheckedCreateNestedManyWithoutOperationTypeInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeCreateOrConnectWithoutUserPreferencesInput = {
+    where: OperationTypeWhereUniqueInput
+    create: XOR<OperationTypeCreateWithoutUserPreferencesInput, OperationTypeUncheckedCreateWithoutUserPreferencesInput>
+  }
+
   export type UserUpsertWithoutUserPreferenceInput = {
     update: XOR<UserUpdateWithoutUserPreferenceInput, UserUncheckedUpdateWithoutUserPreferenceInput>
     create: XOR<UserCreateWithoutUserPreferenceInput, UserUncheckedCreateWithoutUserPreferenceInput>
@@ -23255,7 +32583,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23282,7 +32610,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23301,6 +32629,371 @@ export namespace Prisma {
     savedSearches?: SavedSearchUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type UserPreferenceOperationTypeUpsertWithWhereUniqueWithoutUserPreferenceInput = {
+    where: UserPreferenceOperationTypeWhereUniqueInput
+    update: XOR<UserPreferenceOperationTypeUpdateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedUpdateWithoutUserPreferenceInput>
+    create: XOR<UserPreferenceOperationTypeCreateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedCreateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceOperationTypeUpdateWithWhereUniqueWithoutUserPreferenceInput = {
+    where: UserPreferenceOperationTypeWhereUniqueInput
+    data: XOR<UserPreferenceOperationTypeUpdateWithoutUserPreferenceInput, UserPreferenceOperationTypeUncheckedUpdateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceOperationTypeUpdateManyWithWhereWithoutUserPreferenceInput = {
+    where: UserPreferenceOperationTypeScalarWhereInput
+    data: XOR<UserPreferenceOperationTypeUpdateManyMutationInput, UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceProvinceUpsertWithWhereUniqueWithoutUserPreferenceInput = {
+    where: UserPreferenceProvinceWhereUniqueInput
+    update: XOR<UserPreferenceProvinceUpdateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedUpdateWithoutUserPreferenceInput>
+    create: XOR<UserPreferenceProvinceCreateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedCreateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceProvinceUpdateWithWhereUniqueWithoutUserPreferenceInput = {
+    where: UserPreferenceProvinceWhereUniqueInput
+    data: XOR<UserPreferenceProvinceUpdateWithoutUserPreferenceInput, UserPreferenceProvinceUncheckedUpdateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferenceProvinceUpdateManyWithWhereWithoutUserPreferenceInput = {
+    where: UserPreferenceProvinceScalarWhereInput
+    data: XOR<UserPreferenceProvinceUpdateManyMutationInput, UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferencePropertyTypeUpsertWithWhereUniqueWithoutUserPreferenceInput = {
+    where: UserPreferencePropertyTypeWhereUniqueInput
+    update: XOR<UserPreferencePropertyTypeUpdateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedUpdateWithoutUserPreferenceInput>
+    create: XOR<UserPreferencePropertyTypeCreateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedCreateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferencePropertyTypeUpdateWithWhereUniqueWithoutUserPreferenceInput = {
+    where: UserPreferencePropertyTypeWhereUniqueInput
+    data: XOR<UserPreferencePropertyTypeUpdateWithoutUserPreferenceInput, UserPreferencePropertyTypeUncheckedUpdateWithoutUserPreferenceInput>
+  }
+
+  export type UserPreferencePropertyTypeUpdateManyWithWhereWithoutUserPreferenceInput = {
+    where: UserPreferencePropertyTypeScalarWhereInput
+    data: XOR<UserPreferencePropertyTypeUpdateManyMutationInput, UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceInput>
+  }
+
+  export type OperationTypeUpsertWithoutUserPreferencesInput = {
+    update: XOR<OperationTypeUpdateWithoutUserPreferencesInput, OperationTypeUncheckedUpdateWithoutUserPreferencesInput>
+    create: XOR<OperationTypeCreateWithoutUserPreferencesInput, OperationTypeUncheckedCreateWithoutUserPreferencesInput>
+    where?: OperationTypeWhereInput
+  }
+
+  export type OperationTypeUpdateToOneWithWhereWithoutUserPreferencesInput = {
+    where?: OperationTypeWhereInput
+    data: XOR<OperationTypeUpdateWithoutUserPreferencesInput, OperationTypeUncheckedUpdateWithoutUserPreferencesInput>
+  }
+
+  export type OperationTypeUpdateWithoutUserPreferencesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUpdateManyWithoutOperationTypeNestedInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUpdateManyWithoutOperationTypeNestedInput
+  }
+
+  export type OperationTypeUncheckedUpdateWithoutUserPreferencesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUncheckedUpdateManyWithoutOperationTypeNestedInput
+    userPreferenceOperationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutOperationTypeNestedInput
+  }
+
+  export type UserPreferenceCreateWithoutUserPreferenceProvincesInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUserPreferenceInput
+    operationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeCreateNestedManyWithoutUserPreferenceInput
+    OperationType?: OperationTypeCreateNestedOneWithoutUserPreferencesInput
+  }
+
+  export type UserPreferenceUncheckedCreateWithoutUserPreferenceProvincesInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operationTypeId?: string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+  }
+
+  export type UserPreferenceCreateOrConnectWithoutUserPreferenceProvincesInput = {
+    where: UserPreferenceWhereUniqueInput
+    create: XOR<UserPreferenceCreateWithoutUserPreferenceProvincesInput, UserPreferenceUncheckedCreateWithoutUserPreferenceProvincesInput>
+  }
+
+  export type ProvinceCreateWithoutUserPreferencesProvincesInput = {
+    id?: string
+    name: string
+    properties?: PropertyCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutUserPreferencesProvincesInput = {
+    id?: string
+    name: string
+    properties?: PropertyUncheckedCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutUserPreferencesProvincesInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutUserPreferencesProvincesInput, ProvinceUncheckedCreateWithoutUserPreferencesProvincesInput>
+  }
+
+  export type UserPreferenceUpsertWithoutUserPreferenceProvincesInput = {
+    update: XOR<UserPreferenceUpdateWithoutUserPreferenceProvincesInput, UserPreferenceUncheckedUpdateWithoutUserPreferenceProvincesInput>
+    create: XOR<UserPreferenceCreateWithoutUserPreferenceProvincesInput, UserPreferenceUncheckedCreateWithoutUserPreferenceProvincesInput>
+    where?: UserPreferenceWhereInput
+  }
+
+  export type UserPreferenceUpdateToOneWithWhereWithoutUserPreferenceProvincesInput = {
+    where?: UserPreferenceWhereInput
+    data: XOR<UserPreferenceUpdateWithoutUserPreferenceProvincesInput, UserPreferenceUncheckedUpdateWithoutUserPreferenceProvincesInput>
+  }
+
+  export type UserPreferenceUpdateWithoutUserPreferenceProvincesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUserPreferenceNestedInput
+    operationTypes?: UserPreferenceOperationTypeUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUpdateManyWithoutUserPreferenceNestedInput
+    OperationType?: OperationTypeUpdateOneWithoutUserPreferencesNestedInput
+  }
+
+  export type UserPreferenceUncheckedUpdateWithoutUserPreferenceProvincesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+  }
+
+  export type ProvinceUpsertWithoutUserPreferencesProvincesInput = {
+    update: XOR<ProvinceUpdateWithoutUserPreferencesProvincesInput, ProvinceUncheckedUpdateWithoutUserPreferencesProvincesInput>
+    create: XOR<ProvinceCreateWithoutUserPreferencesProvincesInput, ProvinceUncheckedCreateWithoutUserPreferencesProvincesInput>
+    where?: ProvinceWhereInput
+  }
+
+  export type ProvinceUpdateToOneWithWhereWithoutUserPreferencesProvincesInput = {
+    where?: ProvinceWhereInput
+    data: XOR<ProvinceUpdateWithoutUserPreferencesProvincesInput, ProvinceUncheckedUpdateWithoutUserPreferencesProvincesInput>
+  }
+
+  export type ProvinceUpdateWithoutUserPreferencesProvincesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateWithoutUserPreferencesProvincesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUncheckedUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type UserPreferenceCreateWithoutUserPreferencePropertyTypesInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUserPreferenceInput
+    operationTypes?: UserPreferenceOperationTypeCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceCreateNestedManyWithoutUserPreferenceInput
+    OperationType?: OperationTypeCreateNestedOneWithoutUserPreferencesInput
+  }
+
+  export type UserPreferenceUncheckedCreateWithoutUserPreferencePropertyTypesInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operationTypeId?: string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedCreateNestedManyWithoutUserPreferenceInput
+  }
+
+  export type UserPreferenceCreateOrConnectWithoutUserPreferencePropertyTypesInput = {
+    where: UserPreferenceWhereUniqueInput
+    create: XOR<UserPreferenceCreateWithoutUserPreferencePropertyTypesInput, UserPreferenceUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+  }
+
+  export type PropertyTypeCreateWithoutUserPreferencePropertyTypesInput = {
+    id?: string
+    name: string
+    properties?: PropertyCreateNestedManyWithoutPropertyTypeInput
+  }
+
+  export type PropertyTypeUncheckedCreateWithoutUserPreferencePropertyTypesInput = {
+    id?: string
+    name: string
+    properties?: PropertyUncheckedCreateNestedManyWithoutPropertyTypeInput
+  }
+
+  export type PropertyTypeCreateOrConnectWithoutUserPreferencePropertyTypesInput = {
+    where: PropertyTypeWhereUniqueInput
+    create: XOR<PropertyTypeCreateWithoutUserPreferencePropertyTypesInput, PropertyTypeUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+  }
+
+  export type UserPreferenceUpsertWithoutUserPreferencePropertyTypesInput = {
+    update: XOR<UserPreferenceUpdateWithoutUserPreferencePropertyTypesInput, UserPreferenceUncheckedUpdateWithoutUserPreferencePropertyTypesInput>
+    create: XOR<UserPreferenceCreateWithoutUserPreferencePropertyTypesInput, UserPreferenceUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+    where?: UserPreferenceWhereInput
+  }
+
+  export type UserPreferenceUpdateToOneWithWhereWithoutUserPreferencePropertyTypesInput = {
+    where?: UserPreferenceWhereInput
+    data: XOR<UserPreferenceUpdateWithoutUserPreferencePropertyTypesInput, UserPreferenceUncheckedUpdateWithoutUserPreferencePropertyTypesInput>
+  }
+
+  export type UserPreferenceUpdateWithoutUserPreferencePropertyTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUserPreferenceNestedInput
+    operationTypes?: UserPreferenceOperationTypeUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUpdateManyWithoutUserPreferenceNestedInput
+    OperationType?: OperationTypeUpdateOneWithoutUserPreferencesNestedInput
+  }
+
+  export type UserPreferenceUncheckedUpdateWithoutUserPreferencePropertyTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    operationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceNestedInput
+  }
+
+  export type PropertyTypeUpsertWithoutUserPreferencePropertyTypesInput = {
+    update: XOR<PropertyTypeUpdateWithoutUserPreferencePropertyTypesInput, PropertyTypeUncheckedUpdateWithoutUserPreferencePropertyTypesInput>
+    create: XOR<PropertyTypeCreateWithoutUserPreferencePropertyTypesInput, PropertyTypeUncheckedCreateWithoutUserPreferencePropertyTypesInput>
+    where?: PropertyTypeWhereInput
+  }
+
+  export type PropertyTypeUpdateToOneWithWhereWithoutUserPreferencePropertyTypesInput = {
+    where?: PropertyTypeWhereInput
+    data: XOR<PropertyTypeUpdateWithoutUserPreferencePropertyTypesInput, PropertyTypeUncheckedUpdateWithoutUserPreferencePropertyTypesInput>
+  }
+
+  export type PropertyTypeUpdateWithoutUserPreferencePropertyTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUpdateManyWithoutPropertyTypeNestedInput
+  }
+
+  export type PropertyTypeUncheckedUpdateWithoutUserPreferencePropertyTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUncheckedUpdateManyWithoutPropertyTypeNestedInput
+  }
+
+  export type UserPreferenceCreateWithoutOperationTypesInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUserPreferenceInput
+    userPreferenceProvinces?: UserPreferenceProvinceCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeCreateNestedManyWithoutUserPreferenceInput
+    OperationType?: OperationTypeCreateNestedOneWithoutUserPreferencesInput
+  }
+
+  export type UserPreferenceUncheckedCreateWithoutOperationTypesInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operationTypeId?: string | null
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedCreateNestedManyWithoutUserPreferenceInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedCreateNestedManyWithoutUserPreferenceInput
+  }
+
+  export type UserPreferenceCreateOrConnectWithoutOperationTypesInput = {
+    where: UserPreferenceWhereUniqueInput
+    create: XOR<UserPreferenceCreateWithoutOperationTypesInput, UserPreferenceUncheckedCreateWithoutOperationTypesInput>
+  }
+
+  export type OperationTypeCreateWithoutUserPreferenceOperationTypesInput = {
+    id?: string
+    name: string
+    properties?: PropertyCreateNestedManyWithoutOperationTypeInput
+    userPreferences?: UserPreferenceCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeUncheckedCreateWithoutUserPreferenceOperationTypesInput = {
+    id?: string
+    name: string
+    properties?: PropertyUncheckedCreateNestedManyWithoutOperationTypeInput
+    userPreferences?: UserPreferenceUncheckedCreateNestedManyWithoutOperationTypeInput
+  }
+
+  export type OperationTypeCreateOrConnectWithoutUserPreferenceOperationTypesInput = {
+    where: OperationTypeWhereUniqueInput
+    create: XOR<OperationTypeCreateWithoutUserPreferenceOperationTypesInput, OperationTypeUncheckedCreateWithoutUserPreferenceOperationTypesInput>
+  }
+
+  export type UserPreferenceUpsertWithoutOperationTypesInput = {
+    update: XOR<UserPreferenceUpdateWithoutOperationTypesInput, UserPreferenceUncheckedUpdateWithoutOperationTypesInput>
+    create: XOR<UserPreferenceCreateWithoutOperationTypesInput, UserPreferenceUncheckedCreateWithoutOperationTypesInput>
+    where?: UserPreferenceWhereInput
+  }
+
+  export type UserPreferenceUpdateToOneWithWhereWithoutOperationTypesInput = {
+    where?: UserPreferenceWhereInput
+    data: XOR<UserPreferenceUpdateWithoutOperationTypesInput, UserPreferenceUncheckedUpdateWithoutOperationTypesInput>
+  }
+
+  export type UserPreferenceUpdateWithoutOperationTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUpdateManyWithoutUserPreferenceNestedInput
+    OperationType?: OperationTypeUpdateOneWithoutUserPreferencesNestedInput
+  }
+
+  export type UserPreferenceUncheckedUpdateWithoutOperationTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+  }
+
+  export type OperationTypeUpsertWithoutUserPreferenceOperationTypesInput = {
+    update: XOR<OperationTypeUpdateWithoutUserPreferenceOperationTypesInput, OperationTypeUncheckedUpdateWithoutUserPreferenceOperationTypesInput>
+    create: XOR<OperationTypeCreateWithoutUserPreferenceOperationTypesInput, OperationTypeUncheckedCreateWithoutUserPreferenceOperationTypesInput>
+    where?: OperationTypeWhereInput
+  }
+
+  export type OperationTypeUpdateToOneWithWhereWithoutUserPreferenceOperationTypesInput = {
+    where?: OperationTypeWhereInput
+    data: XOR<OperationTypeUpdateWithoutUserPreferenceOperationTypesInput, OperationTypeUncheckedUpdateWithoutUserPreferenceOperationTypesInput>
+  }
+
+  export type OperationTypeUpdateWithoutUserPreferenceOperationTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUpdateManyWithoutOperationTypeNestedInput
+    userPreferences?: UserPreferenceUpdateManyWithoutOperationTypeNestedInput
+  }
+
+  export type OperationTypeUncheckedUpdateWithoutUserPreferenceOperationTypesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    properties?: PropertyUncheckedUpdateManyWithoutOperationTypeNestedInput
+    userPreferences?: UserPreferenceUncheckedUpdateManyWithoutOperationTypeNestedInput
+  }
+
   export type UserCreateWithoutDeviceTokensInput = {
     id?: string
     googleId?: string | null
@@ -23309,7 +33002,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -23336,7 +33029,7 @@ export namespace Prisma {
     passwordHash?: string | null
     fullName?: string | null
     phone?: string | null
-    role?: string
+    role: $Enums.UserRole
     verificationStatus?: string
     refreshToken?: string | null
     createdAt?: Date | string
@@ -23379,7 +33072,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23406,7 +33099,7 @@ export namespace Prisma {
     passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     verificationStatus?: StringFieldUpdateOperationsInput | string
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23484,9 +33177,11 @@ export namespace Prisma {
     description?: string | null
     address?: string | null
     city?: string
+    provinceId?: string | null
     areaM2?: Decimal | DecimalJsLike | number | string | null
     price: Decimal | DecimalJsLike | number | string
-    operationType: string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -23692,7 +33387,6 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23700,6 +33394,9 @@ export namespace Prisma {
     longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
     interests?: InterestUpdateManyWithoutPropertyNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
     propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
     reports?: ReportUpdateManyWithoutPropertyNestedInput
     reviews?: ReviewUpdateManyWithoutPropertyNestedInput
@@ -23711,9 +33408,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23732,9 +33431,11 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    operationType?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24003,6 +33704,346 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PropertyCreateManyOperationTypeInput = {
+    id?: string
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    provinceId?: string | null
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    propertyTypeId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type UserPreferenceCreateManyOperationTypeInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserPreferenceOperationTypeCreateManyOperationTypeInput = {
+    id?: string
+    userPreferenceId: string
+  }
+
+  export type PropertyUpdateWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    interests?: InterestUpdateManyWithoutPropertyNestedInput
+    owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
+    propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    interests?: InterestUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type UserPreferenceUpdateWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUserPreferenceNestedInput
+    operationTypes?: UserPreferenceOperationTypeUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUpdateManyWithoutUserPreferenceNestedInput
+  }
+
+  export type UserPreferenceUncheckedUpdateWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operationTypes?: UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferenceProvinces?: UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceNestedInput
+    userPreferencePropertyTypes?: UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceNestedInput
+  }
+
+  export type UserPreferenceUncheckedUpdateManyWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPreferenceOperationTypeUpdateWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreference?: UserPreferenceUpdateOneRequiredWithoutOperationTypesNestedInput
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateManyWithoutOperationTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PropertyCreateManyPropertyTypeInput = {
+    id?: string
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    provinceId?: string | null
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    operationTypeId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type UserPreferencePropertyTypeCreateManyPropertyTypeInput = {
+    id?: string
+    userPreferenceId: string
+  }
+
+  export type PropertyUpdateWithoutPropertyTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    interests?: InterestUpdateManyWithoutPropertyNestedInput
+    owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    province?: ProvinceUpdateOneWithoutPropertiesNestedInput
+    propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutPropertyTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    interests?: InterestUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutPropertyTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type UserPreferencePropertyTypeUpdateWithoutPropertyTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreference?: UserPreferenceUpdateOneRequiredWithoutUserPreferencePropertyTypesNestedInput
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateWithoutPropertyTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateManyWithoutPropertyTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PropertyCreateManyProvinceInput = {
+    id?: string
+    ownerId: string
+    title: string
+    description?: string | null
+    address?: string | null
+    city?: string
+    areaM2?: Decimal | DecimalJsLike | number | string | null
+    price: Decimal | DecimalJsLike | number | string
+    operationTypeId?: string | null
+    propertyTypeId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type UserPreferenceProvinceCreateManyProvinceInput = {
+    id?: string
+    userPreferenceId: string
+  }
+
+  export type PropertyUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUpdateManyWithoutPropertyNestedInput
+    interests?: InterestUpdateManyWithoutPropertyNestedInput
+    owner?: UserUpdateOneRequiredWithoutOwnedPropertiesNestedInput
+    operationType?: OperationTypeUpdateOneWithoutPropertiesNestedInput
+    propertyType?: PropertyTypeUpdateOneWithoutPropertiesNestedInput
+    propertyPhotos?: PropertyPhotoUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    favorites?: FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+    interests?: InterestUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPhotos?: PropertyPhotoUncheckedUpdateManyWithoutPropertyNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutPropertyNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: StringFieldUpdateOperationsInput | string
+    areaM2?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    operationTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyTypeId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type UserPreferenceProvinceUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreference?: UserPreferenceUpdateOneRequiredWithoutUserPreferenceProvincesNestedInput
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userPreferenceId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type MessageCreateManyInterestInput = {
     id?: bigint | number
     senderId: string
@@ -24037,6 +34078,66 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPreferenceOperationTypeCreateManyUserPreferenceInput = {
+    id?: string
+    operationTypeId: string
+  }
+
+  export type UserPreferenceProvinceCreateManyUserPreferenceInput = {
+    id?: string
+    provinceId: string
+  }
+
+  export type UserPreferencePropertyTypeCreateManyUserPreferenceInput = {
+    id?: string
+    propertyTypeId: string
+  }
+
+  export type UserPreferenceOperationTypeUpdateWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    operationType?: OperationTypeUpdateOneRequiredWithoutUserPreferenceOperationTypesNestedInput
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceOperationTypeUncheckedUpdateManyWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    operationTypeId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceProvinceUpdateWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    province?: ProvinceUpdateOneRequiredWithoutUserPreferencesProvincesNestedInput
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferenceProvinceUncheckedUpdateManyWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferencePropertyTypeUpdateWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    propertyType?: PropertyTypeUpdateOneRequiredWithoutUserPreferencePropertyTypesNestedInput
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    propertyTypeId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserPreferencePropertyTypeUncheckedUpdateManyWithoutUserPreferenceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    propertyTypeId?: StringFieldUpdateOperationsInput | string
   }
 
 

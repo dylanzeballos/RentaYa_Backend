@@ -21,27 +21,7 @@ const isValidUUID = (uuid: string): boolean => {
   return uuidRegex.test(uuid);
 };
 
-const serializeBigInt = (obj: any): any => {
-  if (obj === null || obj === undefined) return obj;
-
-  if (typeof obj === "bigint") {
-    return obj.toString();
-  }
-
-  if (Array.isArray(obj)) {
-    return obj.map(serializeBigInt);
-  }
-
-  if (typeof obj === "object") {
-    const serialized: any = {};
-    for (const key in obj) {
-      serialized[key] = serializeBigInt(obj[key]);
-    }
-    return serialized;
-  }
-
-  return obj;
-};
+import { SerializationUtils } from "@/shared/infrastructure/utils/SerializationUtils";
 
 export class PropertyController {
   private createPropertyUseCase: CreatePropertyUseCase;
@@ -121,7 +101,7 @@ export class PropertyController {
 
       res.status(201).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message: "Property created successfully",
       });
     },
@@ -133,7 +113,7 @@ export class PropertyController {
 
       res.status(200).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message: "Properties retrieved successfully",
       });
     },
@@ -150,7 +130,7 @@ export class PropertyController {
 
       res.status(200).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message: "User properties retrieved successfully",
       });
     },
@@ -179,7 +159,7 @@ export class PropertyController {
 
       res.status(200).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message: "Property details retrieved successfully",
       });
     },
@@ -269,7 +249,7 @@ export class PropertyController {
 
       res.status(200).json({
         success: true,
-        data: serializeBigInt(result),
+        data: SerializationUtils.serializePrismaData(result),
         message: "Property updated successfully",
       });
     },

@@ -21,7 +21,7 @@ export class CreatePropertyUseCase {
             const userPreferencesRepo = new UserPreferencesRepository();
             const matchedUserIds = await userPreferencesRepo.findUsersMatchingProperty(
                 created.city || null,
-                created.operationType || null,
+                created.operationTypeId || null,
             );
 
         

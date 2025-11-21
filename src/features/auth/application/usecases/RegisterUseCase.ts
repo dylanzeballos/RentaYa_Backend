@@ -12,10 +12,16 @@ export class RegisterUseCase {
     ) {}
 
     async execute(request: RegisterRequest): Promise<AuthResponse> {
-        const { email, password, fullName, phone } = request;
+        const { email, password, role, fullName, phone } = request;
 
         const existingUser = await this.authRepository.findUserByEmail(email);
         if (existingUser) {
+            if (existingUser.role !== role) {
+                throw new AppError(
+                    `Este correo electrónico ya está registrado como ${existingUser.role}. Un mismo correo no puede tener diferentes roles.`,
+                    409
+                );
+            }
             throw new AppError('El correo electrónico ya está en uso', 409);
         }
 
@@ -24,6 +30,7 @@ export class RegisterUseCase {
         const user = await this.authRepository.createUser({
             email,
             passwordHash,
+            role,
             fullName,
             phone
         });
@@ -33,6 +40,9 @@ export class RegisterUseCase {
             email: user.email,
             role: user.role
         });
+
+        // Guardar el refresh token en la base de datos
+        await this.authRepository.saveRefreshToken(user.id, tokens.refreshToken);
 
         return {
             user: {
