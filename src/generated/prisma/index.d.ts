@@ -14566,43 +14566,36 @@ export namespace Prisma {
   export type ReportMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    type: string | null
-    fileUrl: string | null
-    createdAt: Date | null
-    finishDate: Date | null
     propertyId: string | null
-    startDate: Date | null
-    status: string | null
     totalPrice: Decimal | null
+    status: string | null
+    startDate: Date | null
+    finishDate: Date | null
+    createdAt: Date | null
     uploadedAt: Date | null
   }
 
   export type ReportMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    type: string | null
-    fileUrl: string | null
-    createdAt: Date | null
-    finishDate: Date | null
     propertyId: string | null
-    startDate: Date | null
-    status: string | null
     totalPrice: Decimal | null
+    status: string | null
+    startDate: Date | null
+    finishDate: Date | null
+    createdAt: Date | null
     uploadedAt: Date | null
   }
 
   export type ReportCountAggregateOutputType = {
     id: number
     userId: number
-    type: number
-    parameters: number
-    fileUrl: number
-    createdAt: number
-    finishDate: number
     propertyId: number
-    startDate: number
-    status: number
     totalPrice: number
+    status: number
+    startDate: number
+    finishDate: number
+    createdAt: number
     uploadedAt: number
     _all: number
   }
@@ -14619,43 +14612,36 @@ export namespace Prisma {
   export type ReportMinAggregateInputType = {
     id?: true
     userId?: true
-    type?: true
-    fileUrl?: true
-    createdAt?: true
-    finishDate?: true
     propertyId?: true
-    startDate?: true
-    status?: true
     totalPrice?: true
+    status?: true
+    startDate?: true
+    finishDate?: true
+    createdAt?: true
     uploadedAt?: true
   }
 
   export type ReportMaxAggregateInputType = {
     id?: true
     userId?: true
-    type?: true
-    fileUrl?: true
-    createdAt?: true
-    finishDate?: true
     propertyId?: true
-    startDate?: true
-    status?: true
     totalPrice?: true
+    status?: true
+    startDate?: true
+    finishDate?: true
+    createdAt?: true
     uploadedAt?: true
   }
 
   export type ReportCountAggregateInputType = {
     id?: true
     userId?: true
-    type?: true
-    parameters?: true
-    fileUrl?: true
-    createdAt?: true
-    finishDate?: true
     propertyId?: true
-    startDate?: true
-    status?: true
     totalPrice?: true
+    status?: true
+    startDate?: true
+    finishDate?: true
+    createdAt?: true
     uploadedAt?: true
     _all?: true
   }
@@ -14749,15 +14735,12 @@ export namespace Prisma {
   export type ReportGroupByOutputType = {
     id: string
     userId: string
-    type: string
-    parameters: JsonValue | null
-    fileUrl: string | null
-    createdAt: Date
-    finishDate: Date | null
     propertyId: string
-    startDate: Date | null
-    status: string
     totalPrice: Decimal | null
+    status: string
+    startDate: Date | null
+    finishDate: Date | null
+    createdAt: Date
     uploadedAt: Date | null
     _count: ReportCountAggregateOutputType | null
     _avg: ReportAvgAggregateOutputType | null
@@ -14783,15 +14766,12 @@ export namespace Prisma {
   export type ReportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    type?: boolean
-    parameters?: boolean
-    fileUrl?: boolean
-    createdAt?: boolean
-    finishDate?: boolean
     propertyId?: boolean
-    startDate?: boolean
-    status?: boolean
     totalPrice?: boolean
+    status?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    createdAt?: boolean
     uploadedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -14800,15 +14780,12 @@ export namespace Prisma {
   export type ReportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    type?: boolean
-    parameters?: boolean
-    fileUrl?: boolean
-    createdAt?: boolean
-    finishDate?: boolean
     propertyId?: boolean
-    startDate?: boolean
-    status?: boolean
     totalPrice?: boolean
+    status?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    createdAt?: boolean
     uploadedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -14817,15 +14794,12 @@ export namespace Prisma {
   export type ReportSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    type?: boolean
-    parameters?: boolean
-    fileUrl?: boolean
-    createdAt?: boolean
-    finishDate?: boolean
     propertyId?: boolean
-    startDate?: boolean
-    status?: boolean
     totalPrice?: boolean
+    status?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    createdAt?: boolean
     uploadedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -14834,19 +14808,16 @@ export namespace Prisma {
   export type ReportSelectScalar = {
     id?: boolean
     userId?: boolean
-    type?: boolean
-    parameters?: boolean
-    fileUrl?: boolean
-    createdAt?: boolean
-    finishDate?: boolean
     propertyId?: boolean
-    startDate?: boolean
-    status?: boolean
     totalPrice?: boolean
+    status?: boolean
+    startDate?: boolean
+    finishDate?: boolean
+    createdAt?: boolean
     uploadedAt?: boolean
   }
 
-  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "parameters" | "fileUrl" | "createdAt" | "finishDate" | "propertyId" | "startDate" | "status" | "totalPrice" | "uploadedAt", ExtArgs["result"]["report"]>
+  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyId" | "totalPrice" | "status" | "startDate" | "finishDate" | "createdAt" | "uploadedAt", ExtArgs["result"]["report"]>
   export type ReportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -14869,15 +14840,12 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      type: string
-      parameters: Prisma.JsonValue | null
-      fileUrl: string | null
-      createdAt: Date
-      finishDate: Date | null
       propertyId: string
-      startDate: Date | null
-      status: string
       totalPrice: Prisma.Decimal | null
+      status: string
+      startDate: Date | null
+      finishDate: Date | null
+      createdAt: Date
       uploadedAt: Date | null
     }, ExtArgs["result"]["report"]>
     composites: {}
@@ -15306,15 +15274,12 @@ export namespace Prisma {
   interface ReportFieldRefs {
     readonly id: FieldRef<"Report", 'String'>
     readonly userId: FieldRef<"Report", 'String'>
-    readonly type: FieldRef<"Report", 'String'>
-    readonly parameters: FieldRef<"Report", 'Json'>
-    readonly fileUrl: FieldRef<"Report", 'String'>
-    readonly createdAt: FieldRef<"Report", 'DateTime'>
-    readonly finishDate: FieldRef<"Report", 'DateTime'>
     readonly propertyId: FieldRef<"Report", 'String'>
-    readonly startDate: FieldRef<"Report", 'DateTime'>
-    readonly status: FieldRef<"Report", 'String'>
     readonly totalPrice: FieldRef<"Report", 'Decimal'>
+    readonly status: FieldRef<"Report", 'String'>
+    readonly startDate: FieldRef<"Report", 'DateTime'>
+    readonly finishDate: FieldRef<"Report", 'DateTime'>
+    readonly createdAt: FieldRef<"Report", 'DateTime'>
     readonly uploadedAt: FieldRef<"Report", 'DateTime'>
   }
     
@@ -23359,15 +23324,12 @@ export namespace Prisma {
   export const ReportScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    type: 'type',
-    parameters: 'parameters',
-    fileUrl: 'fileUrl',
-    createdAt: 'createdAt',
-    finishDate: 'finishDate',
     propertyId: 'propertyId',
-    startDate: 'startDate',
-    status: 'status',
     totalPrice: 'totalPrice',
+    status: 'status',
+    startDate: 'startDate',
+    finishDate: 'finishDate',
+    createdAt: 'createdAt',
     uploadedAt: 'uploadedAt'
   };
 
@@ -24366,15 +24328,12 @@ export namespace Prisma {
     NOT?: ReportWhereInput | ReportWhereInput[]
     id?: UuidFilter<"Report"> | string
     userId?: UuidFilter<"Report"> | string
-    type?: StringFilter<"Report"> | string
-    parameters?: JsonNullableFilter<"Report">
-    fileUrl?: StringNullableFilter<"Report"> | string | null
-    createdAt?: DateTimeFilter<"Report"> | Date | string
-    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
     propertyId?: UuidFilter<"Report"> | string
-    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
-    status?: StringFilter<"Report"> | string
     totalPrice?: DecimalNullableFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    status?: StringFilter<"Report"> | string
+    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -24383,15 +24342,12 @@ export namespace Prisma {
   export type ReportOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    parameters?: SortOrderInput | SortOrder
-    fileUrl?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    finishDate?: SortOrderInput | SortOrder
     propertyId?: SortOrder
-    startDate?: SortOrderInput | SortOrder
-    status?: SortOrder
     totalPrice?: SortOrderInput | SortOrder
+    status?: SortOrder
+    startDate?: SortOrderInput | SortOrder
+    finishDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     uploadedAt?: SortOrderInput | SortOrder
     property?: PropertyOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
@@ -24403,15 +24359,12 @@ export namespace Prisma {
     OR?: ReportWhereInput[]
     NOT?: ReportWhereInput | ReportWhereInput[]
     userId?: UuidFilter<"Report"> | string
-    type?: StringFilter<"Report"> | string
-    parameters?: JsonNullableFilter<"Report">
-    fileUrl?: StringNullableFilter<"Report"> | string | null
-    createdAt?: DateTimeFilter<"Report"> | Date | string
-    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
     propertyId?: UuidFilter<"Report"> | string
-    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
-    status?: StringFilter<"Report"> | string
     totalPrice?: DecimalNullableFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    status?: StringFilter<"Report"> | string
+    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -24420,15 +24373,12 @@ export namespace Prisma {
   export type ReportOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    parameters?: SortOrderInput | SortOrder
-    fileUrl?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    finishDate?: SortOrderInput | SortOrder
     propertyId?: SortOrder
-    startDate?: SortOrderInput | SortOrder
-    status?: SortOrder
     totalPrice?: SortOrderInput | SortOrder
+    status?: SortOrder
+    startDate?: SortOrderInput | SortOrder
+    finishDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     uploadedAt?: SortOrderInput | SortOrder
     _count?: ReportCountOrderByAggregateInput
     _avg?: ReportAvgOrderByAggregateInput
@@ -24443,15 +24393,12 @@ export namespace Prisma {
     NOT?: ReportScalarWhereWithAggregatesInput | ReportScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Report"> | string
     userId?: UuidWithAggregatesFilter<"Report"> | string
-    type?: StringWithAggregatesFilter<"Report"> | string
-    parameters?: JsonNullableWithAggregatesFilter<"Report">
-    fileUrl?: StringNullableWithAggregatesFilter<"Report"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
-    finishDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
     propertyId?: UuidWithAggregatesFilter<"Report"> | string
-    startDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
-    status?: StringWithAggregatesFilter<"Report"> | string
     totalPrice?: DecimalNullableWithAggregatesFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    status?: StringWithAggregatesFilter<"Report"> | string
+    startDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
   }
 
@@ -25629,14 +25576,11 @@ export namespace Prisma {
 
   export type ReportCreateInput = {
     id?: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
     property: PropertyCreateNestedOneWithoutReportsInput
     user: UserCreateNestedOneWithoutReportsInput
@@ -25645,28 +25589,22 @@ export namespace Prisma {
   export type ReportUncheckedCreateInput = {
     id?: string
     userId: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
     propertyId: string
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
   }
 
   export type ReportUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     property?: PropertyUpdateOneRequiredWithoutReportsNestedInput
     user?: UserUpdateOneRequiredWithoutReportsNestedInput
@@ -25675,58 +25613,46 @@ export namespace Prisma {
   export type ReportUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     propertyId?: StringFieldUpdateOperationsInput | string
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportCreateManyInput = {
     id?: string
     userId: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
     propertyId: string
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
   }
 
   export type ReportUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     propertyId?: StringFieldUpdateOperationsInput | string
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -26994,15 +26920,12 @@ export namespace Prisma {
   export type ReportCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    parameters?: SortOrder
-    fileUrl?: SortOrder
-    createdAt?: SortOrder
-    finishDate?: SortOrder
     propertyId?: SortOrder
-    startDate?: SortOrder
-    status?: SortOrder
     totalPrice?: SortOrder
+    status?: SortOrder
+    startDate?: SortOrder
+    finishDate?: SortOrder
+    createdAt?: SortOrder
     uploadedAt?: SortOrder
   }
 
@@ -27013,28 +26936,24 @@ export namespace Prisma {
   export type ReportMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    fileUrl?: SortOrder
-    createdAt?: SortOrder
-    finishDate?: SortOrder
     propertyId?: SortOrder
-    startDate?: SortOrder
-    status?: SortOrder
     totalPrice?: SortOrder
+    status?: SortOrder
+    startDate?: SortOrder
+    finishDate?: SortOrder
+    createdAt?: SortOrder
     uploadedAt?: SortOrder
   }
 
   export type ReportMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    fileUrl?: SortOrder
-    createdAt?: SortOrder
-    finishDate?: SortOrder
     propertyId?: SortOrder
-    startDate?: SortOrder
-    status?: SortOrder
     totalPrice?: SortOrder
+    status?: SortOrder
+    startDate?: SortOrder
+    finishDate?: SortOrder
+    createdAt?: SortOrder
     uploadedAt?: SortOrder
   }
 
@@ -29484,29 +29403,23 @@ export namespace Prisma {
 
   export type ReportCreateWithoutUserInput = {
     id?: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
     property: PropertyCreateNestedOneWithoutReportsInput
   }
 
   export type ReportUncheckedCreateWithoutUserInput = {
     id?: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
     propertyId: string
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
   }
 
@@ -29815,15 +29728,12 @@ export namespace Prisma {
     NOT?: ReportScalarWhereInput | ReportScalarWhereInput[]
     id?: UuidFilter<"Report"> | string
     userId?: UuidFilter<"Report"> | string
-    type?: StringFilter<"Report"> | string
-    parameters?: JsonNullableFilter<"Report">
-    fileUrl?: StringNullableFilter<"Report"> | string | null
-    createdAt?: DateTimeFilter<"Report"> | Date | string
-    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
     propertyId?: UuidFilter<"Report"> | string
-    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
-    status?: StringFilter<"Report"> | string
     totalPrice?: DecimalNullableFilter<"Report"> | Decimal | DecimalJsLike | number | string | null
+    status?: StringFilter<"Report"> | string
+    startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
   }
 
@@ -30101,14 +30011,11 @@ export namespace Prisma {
 
   export type ReportCreateWithoutPropertyInput = {
     id?: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
     user: UserCreateNestedOneWithoutReportsInput
   }
@@ -30116,14 +30023,11 @@ export namespace Prisma {
   export type ReportUncheckedCreateWithoutPropertyInput = {
     id?: string
     userId: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
   }
 
@@ -33191,15 +33095,12 @@ export namespace Prisma {
 
   export type ReportCreateManyUserInput = {
     id?: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
     propertyId: string
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
   }
 
@@ -33445,43 +33346,34 @@ export namespace Prisma {
 
   export type ReportUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     property?: PropertyUpdateOneRequiredWithoutReportsNestedInput
   }
 
   export type ReportUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     propertyId?: StringFieldUpdateOperationsInput | string
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     propertyId?: StringFieldUpdateOperationsInput | string
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -33554,14 +33446,11 @@ export namespace Prisma {
   export type ReportCreateManyPropertyInput = {
     id?: string
     userId: string
-    type: string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: string | null
-    createdAt?: Date | string
-    finishDate?: Date | string | null
-    startDate?: Date | string | null
-    status?: string
     totalPrice?: Decimal | DecimalJsLike | number | string | null
+    status: string
+    startDate?: Date | string | null
+    finishDate?: Date | string | null
+    createdAt?: Date | string
     uploadedAt?: Date | string | null
   }
 
@@ -33640,14 +33529,11 @@ export namespace Prisma {
 
   export type ReportUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutReportsNestedInput
   }
@@ -33655,28 +33541,22 @@ export namespace Prisma {
   export type ReportUncheckedUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportUncheckedUpdateManyWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    parameters?: NullableJsonNullValueInput | InputJsonValue
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
