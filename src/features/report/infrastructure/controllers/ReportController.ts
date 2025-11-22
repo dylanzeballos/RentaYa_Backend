@@ -3,6 +3,7 @@ import { ReportUseCase } from "../../application/usecases/ReportUseCase";
 import { ReportRepository } from "../repositories/ReportRepository";
 import { AppError } from "@/shared/domain/errors/AppError";
 import { asyncHandler } from "@/shared/infrastructure/utils/asyncHandler";
+import { AuthenticatedRequest } from '@/shared/infrastructure/middleware/AuthMiddleware';
 
 export class ReportController {
   private reportUseCase: ReportUseCase;
@@ -11,35 +12,26 @@ export class ReportController {
     const reportRepository = new ReportRepository();
     this.reportUseCase = new ReportUseCase(reportRepository);
   }
-
-  createReport: RequestHandler = asyncHandler(
-    async (req: Request, res: Response): Promise<void> => {
+  createReport: 
+  RequestHandler = asyncHandler(
+    async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+      const userId = req.user?.userId;
+      if (!userId) {
+        throw new AppError("Usuario no autentificado", 400);
+      }
       const {
-        userId,
         propertyId,
-        type,
-        status,
-        totalPrice,
         startDate,
         finishDate,
-        uploadedAt,
-        parameters,
-        fileUrl
       } = req.body;
-      if (!userId || !propertyId || !type) {
-        throw new AppError("Missing required fields", 400);
+      if (!finishDate || !propertyId || !startDate) {
+        throw new AppError("Faltan campos requeridos", 400);
       }
       const report = await this.reportUseCase.createReport({
         userId,
         propertyId,
-        type,
-        status,
-        totalPrice,
         startDate,
-        finishDate,
-        uploadedAt,
-        parameters,
-        fileUrl
+        finishDate
       });
       res.status(201).json({
         success: true,

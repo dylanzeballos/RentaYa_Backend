@@ -10,14 +10,10 @@ export class ReportUseCase {
   async createReport(payload: {
     userId: string;
     propertyId: string;
-    type: string;
-    status?: string;
     totalPrice?: any;
     startDate?: Date;
     finishDate?: Date;
     uploadedAt?: Date;
-    parameters?: any;
-    fileUrl?: string;
   }) {
     return await this.reportRepository.createReport(payload);
   }
