@@ -5,7 +5,7 @@ export class ReportUseCase {
   private reportRepository: ReportRepository;
   private propertyRepository: PropertyRepository;
 
-  constructor(reportRepository: ReportRepository) {
+  constructor(reportRepository: ReportRepository, propertyRepository: PropertyRepository) {
     this.reportRepository = reportRepository;
     this.propertyRepository = propertyRepository;
   }
@@ -16,34 +16,45 @@ export class ReportUseCase {
     startDate: Date;
     finishDate: Date;
   }) {
-    const property = await this.propertyRepository.findById(payload.propertyId);
+    const property = await this.propertyRepository.getPropertyDetail(payload.propertyId);
     if (!property) {
       throw new Error("Property not found");
     }
-    const pricePerDay = property.price;
-
+    if (!property.payment) {
+      throw new Error("Property has no payment type configured");
+    }
+    const pricePerPeriod = property.price;
+    const daysPerPeriod = property.payment.days;
     const start = new Date(payload.startDate);
     const finish = new Date(payload.finishDate);
-
     const diffMs = finish.getTime() - start.getTime();
-    const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-
-    if (days <= 0) {
+    const totalDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    if (totalDays <= 0) {
       throw new Error("Invalid date range");
     }
-
-    const totalPrice = pricePerDay * days;
-
+    const periods = totalDays / daysPerPeriod;
+    const totalPrice = periods * pricePerPeriod;
     const report = {
       userId: payload.userId,
       propertyId: payload.propertyId,
       startDate: start,
       finishDate: finish,
       uploadedAt: new Date(),
-      status: "pendiente",
-      totalPrice
+      status: "Pendiente",
+      totalPrice,
     };
+
     return await this.reportRepository.createReport(report);
+  }
+
+  async acceptReport(payload: {
+    reportId: string
+  }) {
+    const report = await this.reportRepository.getById(payload.reportId);
+    if (!report) {
+      throw new Error("Report not found");
+    }
+    return await this.reportRepository.acceptReport(payload.reportId);
   }
 
   async createReportByEmail(payload: {

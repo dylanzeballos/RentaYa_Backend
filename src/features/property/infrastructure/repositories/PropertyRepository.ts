@@ -84,6 +84,7 @@ export class PropertyRepository {
             profilePhoto: true,
           },
         },
+        payment: true
       },
     });
     return property;

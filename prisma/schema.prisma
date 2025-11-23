@@ -207,7 +207,7 @@ model Report {
   finishDate DateTime? @db.Timestamp(0)
 
   createdAt  DateTime  @default(now()) @db.Timestamp(0)
-  uploadedAt DateTime? @db.Timestamp(0)
+  updatedAt  DateTime? @db.Timestamp(0)
 
   property   Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)

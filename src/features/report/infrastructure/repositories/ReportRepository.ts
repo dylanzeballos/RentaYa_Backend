@@ -15,6 +15,23 @@ export class ReportRepository {
       data: payload,
     });
   }
+  async getById(reportId: string): Promise<Report | null> {
+    return await prisma.report.findUnique({
+      where: { id: reportId },
+    });
+  }
+
+  async acceptReport(reportId: string): Promise<Report> {
+    const report = await prisma.report.update({
+      where: { id: reportId },
+      data: {
+        status: "Aceptado",
+        uploadedAt: new Date(),
+      },
+    });
+
+    return report;
+  }
 
   async getReportsByUserAndProperty(
     userId: string,
