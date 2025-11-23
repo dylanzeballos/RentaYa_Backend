@@ -6,14 +6,10 @@ export class ReportRepository {
   async createReport(payload: {
     userId: string;
     propertyId: string;
-    type: string;
-    status?: string;
-    totalPrice?: any;
-    startDate?: Date;
-    finishDate?: Date;
-    uploadedAt?: Date;
-    parameters?: any;
-    fileUrl?: string;
+    status: string;
+    totalPrice: any;
+    startDate: Date;
+    finishDate: Date;
   }): Promise<Report> {
     return await prisma.report.create({
       data: payload,
