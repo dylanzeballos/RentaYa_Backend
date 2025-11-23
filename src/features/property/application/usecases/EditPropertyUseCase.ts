@@ -10,7 +10,9 @@ interface EditPropertyInput {
   city?: string;
   areaM2?: number | null;
   price?: number;
-  operationType?: string;
+  operationTypeId?: string;
+  propertyTypeId?: string | null;
+  provinceId?: string | null;
   photosToAdd?: string[];
   photosToRemove?: string[];
 }

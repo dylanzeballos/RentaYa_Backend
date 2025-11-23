@@ -10,17 +10,33 @@ export class PropertyRepository {
     city?: string;
     bedrooms?: number | null;
     bathrooms?: number | null;
-    areaM2?: number | null;
-    price: number;
-    operationType: string;
+    areaM2?: number | null; 
+    price: number; 
+    operationTypeId?: string | null; 
+    propertyTypeId?: string | null; 
+    provinceId?: string | null; 
     photos?: string[];
     latitude?: number | null;
     longitude?: number | null;
   }): Promise<Property> {
     const { photos, ...propertyData } = payload;
 
+    // Build payload mapping new relation fields and keeping previous simple fields
     const dataPayload: any = {
-      ...propertyData,
+      ownerId: propertyData.ownerId,
+      title: propertyData.title,
+      description: propertyData.description ?? undefined,
+      address: propertyData.address ?? undefined,
+      city: propertyData.city ?? undefined,
+      bedrooms: propertyData.bedrooms ?? undefined,
+      bathrooms: propertyData.bathrooms ?? undefined,
+      areaM2: propertyData.areaM2 ?? undefined,
+      price: propertyData.price,
+      operationTypeId: propertyData.operationTypeId ?? undefined,
+      propertyTypeId: propertyData.propertyTypeId ?? undefined,
+      provinceId: propertyData.provinceId ?? undefined,
+      latitude: propertyData.latitude ?? undefined,
+      longitude: propertyData.longitude ?? undefined,
       propertyPhotos: photos
         ? { create: photos.map((url, idx) => ({ url, order: idx + 1 })) }
         : undefined,
@@ -82,7 +98,9 @@ export class PropertyRepository {
       bathrooms?: number | null;
       areaM2?: number | null;
       price?: number;
-      operationType?: string;
+      operationTypeId?: string;
+      propertyTypeId?: string | null;
+      provinceId?: string | null;
       photosToAdd?: string[];
       photosToRemove?: string[];
       latitude?: number | null;

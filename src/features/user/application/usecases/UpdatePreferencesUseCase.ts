@@ -6,8 +6,8 @@ export class UpdatePreferencesUseCase {
 
     async execute(userId: string, preferencesData: {
         propertyTypes: string[];
-        modality?: string | null;
-        locations: string[];
+        operationTypes: string[];
+        provinces: string[];
     }): Promise<UserPreferences> {
         const existingPreferences = await this.repository.findByUserId(userId);
         if (!existingPreferences) {
@@ -18,8 +18,8 @@ export class UpdatePreferencesUseCase {
             existingPreferences.id,
             userId,
             preferencesData.propertyTypes,
-            preferencesData.modality ?? null,
-            preferencesData.locations,
+            preferencesData.operationTypes,
+            preferencesData.provinces,
             existingPreferences.createdAt,
             new Date()
         );
