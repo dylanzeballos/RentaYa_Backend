@@ -21,7 +21,16 @@ export class UserPreferencesController {
             return;
         }
 
-        const result = await this.savePreferencesUseCase.execute({ ...req.body, userId });
+        // Transformar los datos del request body al formato UserPreferences
+        const { propertyTypes, modality, locations } = req.body;
+        const preferencesData = {
+            userId,
+            propertyTypes: propertyTypes || [],
+            operationTypes: modality ? [modality] : [],
+            provinces: locations || [],
+        };
+
+        const result = await this.savePreferencesUseCase.execute(preferencesData as any);
         res.status(201).json(ApiResponse.success(result, 'Preferencias guardadas exitosamente'));
     });
 
