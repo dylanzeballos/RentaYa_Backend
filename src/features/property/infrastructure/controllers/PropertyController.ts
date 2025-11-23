@@ -235,6 +235,9 @@ export class PropertyController {
         ...(validationResult.data.operationTypeId && {
           operationTypeId: validationResult.data.operationTypeId,
         }),
+        ...(validationResult.data.paymentId && {
+          paymentId: validationResult.data.paymentId,
+        }),
         ...(validationResult.data.provinceId !== undefined && {
           provinceId: validationResult.data.provinceId,
         }),

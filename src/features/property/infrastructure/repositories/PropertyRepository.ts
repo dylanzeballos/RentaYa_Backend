@@ -14,6 +14,7 @@ export class PropertyRepository {
     price: number; 
     operationTypeId?: string | null; 
     propertyTypeId?: string | null; 
+    paymentId?: string | null; 
     provinceId?: string | null; 
     photos?: string[];
     latitude?: number | null;
@@ -34,6 +35,7 @@ export class PropertyRepository {
       price: propertyData.price,
       operationTypeId: propertyData.operationTypeId ?? undefined,
       propertyTypeId: propertyData.propertyTypeId ?? undefined,
+      paymentId: propertyData.paymentId ?? undefined,
       provinceId: propertyData.provinceId ?? undefined,
       latitude: propertyData.latitude ?? undefined,
       longitude: propertyData.longitude ?? undefined,
@@ -100,6 +102,7 @@ export class PropertyRepository {
       price?: number;
       operationTypeId?: string;
       propertyTypeId?: string | null;
+      paymentId?: string | null;
       provinceId?: string | null;
       photosToAdd?: string[];
       photosToRemove?: string[];
