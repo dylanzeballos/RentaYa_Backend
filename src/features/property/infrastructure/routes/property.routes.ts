@@ -3,11 +3,35 @@ import { PropertyController } from "../controllers/PropertyController";
 import { FavoriteController } from "../controllers/FavoriteController";
 import { authMiddleware } from "@/shared/infrastructure/middleware/AuthMiddleware";
 import { ImageUploadService } from "@/shared/infrastructure/services/ImageUploadService";
+import { CatalogsController } from "../controllers/LookupController";
+import { LookupRepository } from "../repositories/LookupRepository";
+import { ListOperationTypesUseCase } from "../../application/usecases/ListOperationTypesUseCase";
+import { ListPropertyTypesUseCase } from "../../application/usecases/ListPropertyTypesUseCase";
+import { ListProvincesUseCase } from "../../application/usecases/ListProvinceUseCase";
 
 const router = Router();
+
 const propertyController = new PropertyController();
 const favoriteController = new FavoriteController();
 const imageUploadService = new ImageUploadService();
+
+const lookupRepo = new LookupRepository();
+const listOperationTypesUseCase = new ListOperationTypesUseCase(lookupRepo);
+const listPropertyTypesUseCase = new ListPropertyTypesUseCase(lookupRepo);
+const listProvincesUseCase = new ListProvincesUseCase(lookupRepo);
+
+const catalogsController = new CatalogsController(
+  listOperationTypesUseCase,
+  listPropertyTypesUseCase,
+  listProvincesUseCase,
+);
+
+router.get("/catalogo/operation-types",catalogsController.getOperationTypes);
+
+router.get("/catalogo/property-types", catalogsController.getPropertyTypes);
+
+router.get("/catalogo/provinces", catalogsController.getProvinces);
+
 
 /**
  * @swagger
@@ -399,5 +423,7 @@ router.get(
   authMiddleware.authenticate,
   favoriteController.listMyFavorites,
 );
+
+
 
 export default router;
