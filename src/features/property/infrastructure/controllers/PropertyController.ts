@@ -232,8 +232,17 @@ export class PropertyController {
         ...(validationResult.data.price && {
           price: validationResult.data.price,
         }),
-        ...(validationResult.data.operationType && {
-          operationType: validationResult.data.operationType,
+        ...(validationResult.data.operationTypeId && {
+          operationTypeId: validationResult.data.operationTypeId,
+        }),
+        ...(validationResult.data.paymentId && {
+          paymentId: validationResult.data.paymentId,
+        }),
+        ...(validationResult.data.provinceId !== undefined && {
+          provinceId: validationResult.data.provinceId,
+        }),
+        ...(validationResult.data.propertyTypeId !== undefined && {
+          propertyTypeId: validationResult.data.propertyTypeId,
         }),
         ...(validationResult.data.latitude !== undefined && {
           latitude: validationResult.data.latitude,

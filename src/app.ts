@@ -11,6 +11,7 @@ import { errorHandler } from "@/shared/infrastructure/middleware/errorHandler";
 import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
 import propertyRoutes from '@/features/property/infrastructure/routes/property.routes';
 import reviewRoutes from '@/features/property/infrastructure/routes/review.routes';
+import paymentRoutes from '@/features/property/infrastructure/routes/payment.routes';
 import interestRoutes from '@/features/property/infrastructure/routes/interest.routes';
 import usersRoutes from '@/features/user/infrastructure/routes/user.routes';
 import reportRoutes from '@/features/report/infrastructure/routes/report.route';
@@ -56,6 +57,7 @@ app.get("/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/properties", propertyRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/payments", paymentRoutes);
 app.use("/api/interests", interestRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/reports", reportRoutes);

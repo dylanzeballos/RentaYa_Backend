@@ -52,7 +52,23 @@ export const createPropertySchema = z.object({
     },
     z.number().positive({ message: "Price must be greater than 0" }),
   ),
-  operationType: z.enum(["alquiler", "anticrétitco"]),
+  paymentId: z.preprocess((val) => {
+    if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+    return String(val);
+  }, z.string().uuid("paymentId must be a valid UUID").optional()),
+  // Use operationTypeId (UUID) to match repository and notification flow
+  operationTypeId: z.preprocess((val) => {
+    if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+    return String(val);
+  }, z.string().uuid("operationTypeId must be a valid UUID").optional()),
+  provinceId: z.preprocess((val) => {
+    if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+    return String(val);
+  }, z.string().uuid("provinceId must be a valid UUID").optional()),
+  propertyTypeId: z.preprocess((val) => {
+    if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+    return String(val);
+  }, z.string().uuid("propertyTypeId must be a valid UUID").optional()),
   photos: z.preprocess(
     (val) => {
       if (!val) return undefined;
@@ -111,7 +127,23 @@ export const updatePropertySchema = z
       const parsed = parseFloat(val as string);
       return isNaN(parsed) ? undefined : parsed;
     }, z.number().min(0, "Price must be greater than 0").optional()),
-    operationType: z.enum(["alquiler", "anticretico"]).optional(),
+    paymentId: z.preprocess((val) => {
+      if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+      return String(val);
+    }, z.string().uuid("paymentId must be a valid UUID").optional()),
+    // Accept operationTypeId when updating - keep backward compatibility if needed
+    operationTypeId: z.preprocess((val) => {
+      if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+      return String(val);
+    }, z.string().uuid("operationTypeId must be a valid UUID").optional()),
+    propertyTypeId: z.preprocess((val) => {
+      if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+      return String(val);
+    }, z.string().uuid("propertyTypeId must be a valid UUID").optional()),
+    provinceId: z.preprocess((val) => {
+      if (!val || val === "" || val === "undefined" || val === "null") return undefined;
+      return String(val);
+    }, z.string().uuid("provinceId must be a valid UUID").optional()),
     photos: z.preprocess(
       (val) => {
         if (!val) return undefined;

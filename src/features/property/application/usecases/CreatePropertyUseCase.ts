@@ -5,6 +5,7 @@ import { NotificationRepository } from '@/features/notification/infrastructure/r
 import { PushNotificationService } from '@/features/notification/application/usecases/PushNotificationService';
 import { NotificationType } from '@/features/notification/domain/types/notification.types';
 import { emitNotificationToUsers } from '@/socket';
+import prisma from '@/config/prisma';
 
 export class CreatePropertyUseCase {
     constructor(private repo: PropertyRepository) { }
@@ -13,6 +14,24 @@ export class CreatePropertyUseCase {
         if (!data.ownerId) {
             throw new AppError('Authentication required', 401);
         }
+
+        // If related IDs are provided, ensure they exist in DB
+        if (data.operationTypeId) {
+            const op = await prisma.operationType.findUnique({ where: { id: data.operationTypeId }, select: { id: true } });
+            if (!op) throw AppError.notFound('OperationType not found');
+        }
+
+        if (data.propertyTypeId) {
+            const pt = await prisma.propertyType.findUnique({ where: { id: data.propertyTypeId }, select: { id: true } });
+            if (!pt) throw AppError.notFound('PropertyType not found');
+        }
+
+        if (data.provinceId) {
+            const prov = await prisma.province.findUnique({ where: { id: data.provinceId }, select: { id: true } });
+            if (!prov) throw AppError.notFound('Province not found');
+        }
+
+  
 
         const created = await this.repo.createProperty(data);
 
