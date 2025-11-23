@@ -31,7 +31,10 @@ export class CreatePropertyUseCase {
             if (!prov) throw AppError.notFound('Province not found');
         }
 
-  
+        if (data.paymentId) {
+            const payment = await prisma.payment.findUnique({ where: { id: data.paymentId }, select: { id: true } });
+            if (!payment) throw AppError.notFound('Payment type not found');
+        }
 
         const created = await this.repo.createProperty(data);
 
