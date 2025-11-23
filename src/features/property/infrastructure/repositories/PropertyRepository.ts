@@ -67,6 +67,13 @@ export class PropertyRepository {
     });
     return items;
   }
+  
+  async findByOwnerId(ownerId: string): Promise<{ id: string }[]> {
+    return prisma.property.findMany({
+      where: { ownerId },
+      select: { id: true },
+    });
+  }
 
   async getPropertyDetail(propertyId: string): Promise<any> {
     const property = await prisma.property.findUnique({

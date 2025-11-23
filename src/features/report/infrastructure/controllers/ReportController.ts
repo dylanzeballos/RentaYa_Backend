@@ -58,7 +58,23 @@ export class ReportController {
       });
     }
   );
-      
+    
+  getReports: 
+  RequestHandler = asyncHandler(
+    async (req: AuthenticatedRequest, res: Response) => {
+      const userId = req.user?.userId;
+      if (!userId) {
+        throw new AppError("Usuario no autentificado", 400);
+      }
+      const reports = await this.reportUseCase.getReportsByOwner({ userId });
+      res.status(200).json({
+        success: true,
+        data: reports,
+        message: "Reports retrieved successfully",
+      });
+    }
+  )
+  
   // getReportsByUserAndProperty: RequestHandler = asyncHandler(
   //   async (req: Request, res: Response): Promise<void> => {
   //     const { userId, propertyId } = req.params;

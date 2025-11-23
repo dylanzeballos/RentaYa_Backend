@@ -33,6 +33,15 @@ export class ReportRepository {
     return report;
   }
 
+  async getByPropertyIds(propertyIds: string[]): Promise<Report[]> {
+    return prisma.report.findMany({
+      where: {
+        propertyId: { in: propertyIds },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+  }
+  
   async getReportsByUserAndProperty(
     userId: string,
     propertyId: string

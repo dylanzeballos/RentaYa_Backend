@@ -57,6 +57,14 @@ export class ReportUseCase {
     return await this.reportRepository.acceptReport(payload.reportId);
   }
 
+  async getReportsByOwner(payload: { userId: string }) {
+    const properties = await this.propertyRepository.findByOwnerId(payload.userId);
+    const propertyIds = properties.map(p => p.id);
+    if (propertyIds.length === 0) return [];
+    const reports = await this.reportRepository.getByPropertyIds(propertyIds);
+    return reports;
+  }
+
   async createReportByEmail(payload: {
     email: string;
     propertyId: string;

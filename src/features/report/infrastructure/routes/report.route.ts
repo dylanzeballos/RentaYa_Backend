@@ -7,6 +7,7 @@ const router = Router();
 const reportController = new ReportController();
 
 router.post('/', authMiddleware.authenticate, validateCreateReport, reportController.createReport);
+router.get('/', authMiddleware.authenticate, reportController.getReports);
 router.patch('/:reportId/accept', authMiddleware.authenticate, reportController.acceptReport);
 
 // router.post('/email', authMiddleware.authenticate, validateCreateReport, reportController.createReportByEmail);
