@@ -54,6 +54,7 @@ model Property {
   provinceId      String?         @db.Uuid
   areaM2          Decimal?        @db.Decimal(10, 2)
   price           Decimal         @db.Decimal(12, 2)
+  paymentId       String?         @db.Uuid
   operationTypeId String?         @db.Uuid
   propertyTypeId  String?         @db.Uuid
   status          String          @default("disponible") @db.VarChar(20)
@@ -64,8 +65,9 @@ model Property {
   favorites       Favorite[]
   interests       Interest[]
   owner           User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  operationType   OperationType?   @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
+  operationType   OperationType?  @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
   propertyType    PropertyType?   @relation(fields: [propertyTypeId], references: [id], onDelete: Cascade)
+  payment         Payment?        @relation(fields: [paymentId], references: [id], onDelete: Cascade)
   province        Province?       @relation(fields: [provinceId], references: [id], onDelete: SetNull)
   propertyPhotos  PropertyPhoto[]
   reports         Report[]
@@ -95,6 +97,16 @@ model PropertyType {
   userPreferencePropertyTypes UserPreferencePropertyType[]
 
   @@map("property_types")
+}
+
+model Payment {
+  id                          String                       @id @default(uuid()) @db.Uuid
+  name                        String                       @unique @db.VarChar(50)
+  days                        Int
+
+  properties  Property[] 
+
+  @@map("payment_types")
 }
 
 model Province {

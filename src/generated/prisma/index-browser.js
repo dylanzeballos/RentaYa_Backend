@@ -147,6 +147,7 @@ exports.Prisma.PropertyScalarFieldEnum = {
   provinceId: 'provinceId',
   areaM2: 'areaM2',
   price: 'price',
+  paymentId: 'paymentId',
   operationTypeId: 'operationTypeId',
   propertyTypeId: 'propertyTypeId',
   status: 'status',
@@ -164,6 +165,12 @@ exports.Prisma.OperationTypeScalarFieldEnum = {
 exports.Prisma.PropertyTypeScalarFieldEnum = {
   id: 'id',
   name: 'name'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  days: 'days'
 };
 
 exports.Prisma.ProvinceScalarFieldEnum = {
@@ -322,6 +329,7 @@ exports.Prisma.ModelName = {
   Property: 'Property',
   OperationType: 'OperationType',
   PropertyType: 'PropertyType',
+  Payment: 'Payment',
   Province: 'Province',
   Interest: 'Interest',
   Message: 'Message',
