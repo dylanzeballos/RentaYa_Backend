@@ -15811,8 +15811,9 @@ export namespace Prisma {
     status: string | null
     startDate: Date | null
     finishDate: Date | null
-    createdAt: Date | null
     uploadedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ReportMaxAggregateOutputType = {
@@ -15823,8 +15824,9 @@ export namespace Prisma {
     status: string | null
     startDate: Date | null
     finishDate: Date | null
-    createdAt: Date | null
     uploadedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ReportCountAggregateOutputType = {
@@ -15835,8 +15837,9 @@ export namespace Prisma {
     status: number
     startDate: number
     finishDate: number
-    createdAt: number
     uploadedAt: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -15857,8 +15860,9 @@ export namespace Prisma {
     status?: true
     startDate?: true
     finishDate?: true
-    createdAt?: true
     uploadedAt?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ReportMaxAggregateInputType = {
@@ -15869,8 +15873,9 @@ export namespace Prisma {
     status?: true
     startDate?: true
     finishDate?: true
-    createdAt?: true
     uploadedAt?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ReportCountAggregateInputType = {
@@ -15881,8 +15886,9 @@ export namespace Prisma {
     status?: true
     startDate?: true
     finishDate?: true
-    createdAt?: true
     uploadedAt?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -15980,8 +15986,9 @@ export namespace Prisma {
     status: string
     startDate: Date | null
     finishDate: Date | null
-    createdAt: Date
     uploadedAt: Date | null
+    createdAt: Date
+    updatedAt: Date | null
     _count: ReportCountAggregateOutputType | null
     _avg: ReportAvgAggregateOutputType | null
     _sum: ReportSumAggregateOutputType | null
@@ -16011,8 +16018,9 @@ export namespace Prisma {
     status?: boolean
     startDate?: boolean
     finishDate?: boolean
-    createdAt?: boolean
     uploadedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report"]>
@@ -16025,8 +16033,9 @@ export namespace Prisma {
     status?: boolean
     startDate?: boolean
     finishDate?: boolean
-    createdAt?: boolean
     uploadedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report"]>
@@ -16039,8 +16048,9 @@ export namespace Prisma {
     status?: boolean
     startDate?: boolean
     finishDate?: boolean
-    createdAt?: boolean
     uploadedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report"]>
@@ -16053,11 +16063,12 @@ export namespace Prisma {
     status?: boolean
     startDate?: boolean
     finishDate?: boolean
-    createdAt?: boolean
     uploadedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyId" | "totalPrice" | "status" | "startDate" | "finishDate" | "createdAt" | "uploadedAt", ExtArgs["result"]["report"]>
+  export type ReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "propertyId" | "totalPrice" | "status" | "startDate" | "finishDate" | "uploadedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["report"]>
   export type ReportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -16085,8 +16096,9 @@ export namespace Prisma {
       status: string
       startDate: Date | null
       finishDate: Date | null
-      createdAt: Date
       uploadedAt: Date | null
+      createdAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["report"]>
     composites: {}
   }
@@ -16519,8 +16531,9 @@ export namespace Prisma {
     readonly status: FieldRef<"Report", 'String'>
     readonly startDate: FieldRef<"Report", 'DateTime'>
     readonly finishDate: FieldRef<"Report", 'DateTime'>
-    readonly createdAt: FieldRef<"Report", 'DateTime'>
     readonly uploadedAt: FieldRef<"Report", 'DateTime'>
+    readonly createdAt: FieldRef<"Report", 'DateTime'>
+    readonly updatedAt: FieldRef<"Report", 'DateTime'>
   }
     
 
@@ -24579,8 +24592,9 @@ export namespace Prisma {
     status: 'status',
     startDate: 'startDate',
     finishDate: 'finishDate',
+    uploadedAt: 'uploadedAt',
     createdAt: 'createdAt',
-    uploadedAt: 'uploadedAt'
+    updatedAt: 'updatedAt'
   };
 
   export type ReportScalarFieldEnum = (typeof ReportScalarFieldEnum)[keyof typeof ReportScalarFieldEnum]
@@ -25638,8 +25652,9 @@ export namespace Prisma {
     status?: StringFilter<"Report"> | string
     startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
     finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
-    createdAt?: DateTimeFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeFilter<"Report"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -25652,8 +25667,9 @@ export namespace Prisma {
     status?: SortOrder
     startDate?: SortOrderInput | SortOrder
     finishDate?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
     uploadedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     property?: PropertyOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
@@ -25669,8 +25685,9 @@ export namespace Prisma {
     status?: StringFilter<"Report"> | string
     startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
     finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
-    createdAt?: DateTimeFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeFilter<"Report"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -25683,8 +25700,9 @@ export namespace Prisma {
     status?: SortOrder
     startDate?: SortOrderInput | SortOrder
     finishDate?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
     uploadedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: ReportCountOrderByAggregateInput
     _avg?: ReportAvgOrderByAggregateInput
     _max?: ReportMaxOrderByAggregateInput
@@ -25703,8 +25721,9 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"Report"> | string
     startDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
     finishDate?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Report"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Report"> | Date | string | null
   }
 
   export type FavoriteWhereInput = {
@@ -26937,8 +26956,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     property: PropertyCreateNestedOneWithoutReportsInput
     user: UserCreateNestedOneWithoutReportsInput
   }
@@ -26951,8 +26971,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReportUpdateInput = {
@@ -26961,8 +26982,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     property?: PropertyUpdateOneRequiredWithoutReportsNestedInput
     user?: UserUpdateOneRequiredWithoutReportsNestedInput
   }
@@ -26975,8 +26997,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportCreateManyInput = {
@@ -26987,8 +27010,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReportUpdateManyMutationInput = {
@@ -26997,8 +27021,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportUncheckedUpdateManyInput = {
@@ -27009,8 +27034,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type FavoriteCreateInput = {
@@ -28316,8 +28342,9 @@ export namespace Prisma {
     status?: SortOrder
     startDate?: SortOrder
     finishDate?: SortOrder
-    createdAt?: SortOrder
     uploadedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReportAvgOrderByAggregateInput = {
@@ -28332,8 +28359,9 @@ export namespace Prisma {
     status?: SortOrder
     startDate?: SortOrder
     finishDate?: SortOrder
-    createdAt?: SortOrder
     uploadedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReportMinOrderByAggregateInput = {
@@ -28344,8 +28372,9 @@ export namespace Prisma {
     status?: SortOrder
     startDate?: SortOrder
     finishDate?: SortOrder
-    createdAt?: SortOrder
     uploadedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReportSumOrderByAggregateInput = {
@@ -30858,8 +30887,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     property: PropertyCreateNestedOneWithoutReportsInput
   }
 
@@ -30870,8 +30900,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReportCreateOrConnectWithoutUserInput = {
@@ -31185,8 +31216,9 @@ export namespace Prisma {
     status?: StringFilter<"Report"> | string
     startDate?: DateTimeNullableFilter<"Report"> | Date | string | null
     finishDate?: DateTimeNullableFilter<"Report"> | Date | string | null
-    createdAt?: DateTimeFilter<"Report"> | Date | string
     uploadedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
+    createdAt?: DateTimeFilter<"Report"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Report"> | Date | string | null
   }
 
   export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
@@ -31484,8 +31516,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     user: UserCreateNestedOneWithoutReportsInput
   }
 
@@ -31496,8 +31529,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReportCreateOrConnectWithoutPropertyInput = {
@@ -34693,8 +34727,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReviewCreateManyUserInput = {
@@ -34946,8 +34981,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     property?: PropertyUpdateOneRequiredWithoutReportsNestedInput
   }
 
@@ -34958,8 +34994,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportUncheckedUpdateManyWithoutUserInput = {
@@ -34969,8 +35006,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReviewUpdateWithoutUserInput = {
@@ -35046,8 +35084,9 @@ export namespace Prisma {
     status: string
     startDate?: Date | string | null
     finishDate?: Date | string | null
-    createdAt?: Date | string
     uploadedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReviewCreateManyPropertyInput = {
@@ -35129,8 +35168,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutReportsNestedInput
   }
 
@@ -35141,8 +35181,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReportUncheckedUpdateManyWithoutPropertyInput = {
@@ -35152,8 +35193,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     finishDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReviewUpdateWithoutPropertyInput = {

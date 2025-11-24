@@ -235,8 +235,9 @@ exports.Prisma.ReportScalarFieldEnum = {
   status: 'status',
   startDate: 'startDate',
   finishDate: 'finishDate',
+  uploadedAt: 'uploadedAt',
   createdAt: 'createdAt',
-  uploadedAt: 'uploadedAt'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.FavoriteScalarFieldEnum = {

@@ -63,11 +63,11 @@ export class PushNotificationService {
         try {
           const tickets = await this.expo.sendPushNotificationsAsync(chunk);
 
-          tickets.forEach((ticket, index) => {
+          tickets.forEach((ticket: ExpoPushTicket, index: number) => {
             if (ticket.status === "error") {
               console.error(`Error enviando push: ${ticket.message}`);
 
-              if (ticket.details?.error === "DeviceNotRegistered") {
+              if ((ticket as any).details?.error === "DeviceNotRegistered") {
                 const token = chunk[index]!.to as string;
                 this.notificationRepository.removeDeviceToken(token);
               }
