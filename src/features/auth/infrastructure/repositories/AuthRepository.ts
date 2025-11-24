@@ -1,6 +1,6 @@
 import prisma from "@/config/prisma";
 import { IAuthRepository } from "@/features/auth/domain/repositories/IAuthRepository";
-import { User } from "@/generated/prisma";
+import { User } from "@prisma/client";
 import { GoogleUserData } from "@/shared/domain/types/AuthTypes";
 
 export class AuthRepository implements IAuthRepository {
