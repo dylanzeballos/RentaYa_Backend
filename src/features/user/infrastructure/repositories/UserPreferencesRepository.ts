@@ -123,23 +123,68 @@ export class UserPreferencesRepository {
 
   async findUsersMatchingProperty(
     city?: string | null,
-    operationType?: string | null
+    operationTypeId?: string | null
   ): Promise<string[]> {
     const andConditions: any[] = [];
 
-    // Filtrar por ciudad
+    // Filtrar por provincia (city es el nombre de la provincia)
     if (city) {
+      // Buscar usuarios que tengan esta provincia en sus preferencias
+      // o que no tengan provincias seleccionadas (aceptan todas)
       andConditions.push({
-        OR: [{ locations: { has: city } }, { locations: { isEmpty: true } }],
+        OR: [
+          {
+            userPreferenceProvinces: {
+              some: {
+                province: {
+                  name: city,
+                },
+              },
+            },
+          },
+          {
+            userPreferenceProvinces: {
+              none: {},
+            },
+          },
+        ],
+      });
+    } else {
+      // Si no hay ciudad, incluir usuarios sin preferencias de provincia (aceptan todas)
+      andConditions.push({
+        userPreferenceProvinces: {
+          none: {},
+        },
       });
     }
 
     // Filtrar por tipo de operación
-    if (operationType) {
+    if (operationTypeId) {
+      // Buscar usuarios que tengan este operationType en sus preferencias
+      // o que no tengan operationTypes seleccionados (aceptan todos)
+      // o que tengan operationTypeId directo
       andConditions.push({
-        OR: [{ modality: operationType }, { modality: null }, { modality: "" }],
+        OR: [
+          {
+            operationTypes: {
+              some: {
+                operationTypeId: operationTypeId,
+              },
+            },
+          },
+          {
+            operationTypeId: operationTypeId,
+          },
+          {
+            operationTypeId: null,
+            operationTypes: {
+              none: {},
+            },
+          },
+        ],
       });
     }
+    // Si no hay operationType, no agregar condición (acepta todos los usuarios)
 
     const where: any = andConditions.length > 0 ? { AND: andConditions } : {};
 

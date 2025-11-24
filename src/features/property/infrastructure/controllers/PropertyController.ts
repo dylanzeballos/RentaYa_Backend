@@ -36,11 +36,11 @@ export class PropertyController {
     this.createPropertyUseCase = new CreatePropertyUseCase(propertyRepository);
     this.listPropertiesUseCase = new ListPropertiesUseCase(propertyRepository);
     this.getPropertyDetailUseCase = new GetPropertyDetailUseCase(
-      propertyRepository,
+      propertyRepository
     );
     this.editPropertyUseCase = new EditPropertyUseCase(propertyRepository);
     this.getUserPropertiesUseCase = new GetUserPropertiesUseCase(
-      propertyRepository,
+      propertyRepository
     );
     this.imageUploadService = new ImageUploadService();
   }
@@ -57,10 +57,7 @@ export class PropertyController {
         res
           .status(400)
           .json(
-            ApiResponse.error(
-              "Validation error",
-              validationResult.error.issues,
-            ),
+            ApiResponse.error("Validation error", validationResult.error.issues)
           );
         return;
       }
@@ -81,13 +78,13 @@ export class PropertyController {
         photoUrls = photosFromBody;
       } else if (req.body.photos && Array.isArray(req.body.photos)) {
         photoUrls = req.body.photos.filter(
-          (url: string) => typeof url === "string" && url.trim() !== "",
+          (url: string) => typeof url === "string" && url.trim() !== ""
         );
       } else if (req.files && Array.isArray(req.files)) {
         photoUrls = await Promise.all(
           req.files.map((file) =>
-            this.imageUploadService.uploadImage(file, "properties"),
-          ),
+            this.imageUploadService.uploadImage(file, "properties")
+          )
         );
       }
 
@@ -104,7 +101,7 @@ export class PropertyController {
         data: SerializationUtils.serializePrismaData(result),
         message: "Property created successfully",
       });
-    },
+    }
   );
 
   listProperties = asyncHandler(
@@ -116,7 +113,7 @@ export class PropertyController {
         data: SerializationUtils.serializePrismaData(result),
         message: "Properties retrieved successfully",
       });
-    },
+    }
   );
 
   getUserProperties = asyncHandler(
@@ -133,7 +130,7 @@ export class PropertyController {
         data: SerializationUtils.serializePrismaData(result),
         message: "User properties retrieved successfully",
       });
-    },
+    }
   );
 
   getPropertyDetail = asyncHandler(
@@ -147,7 +144,7 @@ export class PropertyController {
       if (!isValidUUID(id)) {
         throw new AppError(
           "Invalid Property ID format. Must be a valid UUID",
-          400,
+          400
         );
       }
 
@@ -162,7 +159,7 @@ export class PropertyController {
         data: SerializationUtils.serializePrismaData(result),
         message: "Property details retrieved successfully",
       });
-    },
+    }
   );
 
   updateProperty: RequestHandler = asyncHandler(
@@ -180,7 +177,7 @@ export class PropertyController {
       if (!isValidUUID(id)) {
         throw new AppError(
           "Invalid Property ID format. Must be a valid UUID",
-          400,
+          400
         );
       }
 
@@ -189,10 +186,7 @@ export class PropertyController {
         res
           .status(400)
           .json(
-            ApiResponse.error(
-              "Validation error",
-              validationResult.error.issues,
-            ),
+            ApiResponse.error("Validation error", validationResult.error.issues)
           );
         return;
       }
@@ -208,8 +202,8 @@ export class PropertyController {
       } else if (req.files && Array.isArray(req.files)) {
         newPhotoUrls = await Promise.all(
           req.files.map((file) =>
-            this.imageUploadService.uploadImage(file, "properties"),
-          ),
+            this.imageUploadService.uploadImage(file, "properties")
+          )
         );
       }
 
@@ -261,7 +255,7 @@ export class PropertyController {
         data: SerializationUtils.serializePrismaData(result),
         message: "Property updated successfully",
       });
-    },
+    }
   );
 
   deleteProperty: RequestHandler = asyncHandler(
@@ -279,7 +273,7 @@ export class PropertyController {
       if (!isValidUUID(id)) {
         throw new AppError(
           "Invalid Property ID format. Must be a valid UUID",
-          400,
+          400
         );
       }
 
@@ -294,15 +288,21 @@ export class PropertyController {
       if (!isOwner) {
         throw new AppError(
           "You are not authorized to delete this property",
-          403,
+          403
         );
       }
 
+      // Intentar eliminar imágenes de Cloudinary, pero no fallar si hay errores
       if (property.propertyPhotos && property.propertyPhotos.length > 0) {
-        await Promise.all(
-          property.propertyPhotos.map((photo: any) =>
-            this.imageUploadService.deleteImage(photo.url),
-          ),
+        await Promise.allSettled(
+          property.propertyPhotos.map(async (photo: any) => {
+            try {
+              await this.imageUploadService.deleteImage(photo.url);
+            } catch (error: any) {
+              // Registrar el error pero continuar con la eliminación
+              console.warn(`Error deleting image ${photo.url}:`, error.message);
+            }
+          })
         );
       }
 
@@ -312,6 +312,6 @@ export class PropertyController {
         success: true,
         message: "Property deleted successfully",
       });
-    },
+    }
   );
 }
