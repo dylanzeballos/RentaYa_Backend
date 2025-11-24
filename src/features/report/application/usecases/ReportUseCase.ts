@@ -5,7 +5,10 @@ export class ReportUseCase {
   private reportRepository: ReportRepository;
   private propertyRepository: PropertyRepository;
 
-  constructor(reportRepository: ReportRepository, propertyRepository: PropertyRepository) {
+  constructor(
+    reportRepository: ReportRepository,
+    propertyRepository: PropertyRepository
+  ) {
     this.reportRepository = reportRepository;
     this.propertyRepository = propertyRepository;
   }
@@ -16,7 +19,9 @@ export class ReportUseCase {
     startDate: Date;
     finishDate: Date;
   }) {
-    const property = await this.propertyRepository.getPropertyDetail(payload.propertyId);
+    const property = await this.propertyRepository.getPropertyDetail(
+      payload.propertyId
+    );
     if (!property) {
       throw new Error("Property not found");
     }
@@ -47,9 +52,7 @@ export class ReportUseCase {
     return await this.reportRepository.createReport(report);
   }
 
-  async acceptReport(payload: {
-    reportId: string
-  }) {
+  async acceptReport(payload: { reportId: string }) {
     const report = await this.reportRepository.getById(payload.reportId);
     if (!report) {
       throw new Error("Report not found");
@@ -58,8 +61,10 @@ export class ReportUseCase {
   }
 
   async getReportsByOwner(payload: { userId: string }) {
-    const properties = await this.propertyRepository.findByOwnerId(payload.userId);
-    const propertyIds = properties.map(p => p.id);
+    const properties = await this.propertyRepository.findByOwnerId(
+      payload.userId
+    );
+    const propertyIds = properties.map((p) => p.id);
     if (propertyIds.length === 0) return [];
     const reports = await this.reportRepository.getByPropertyIds(propertyIds);
     return reports;
@@ -81,6 +86,9 @@ export class ReportUseCase {
   }
 
   async getReportsByUserAndProperty(userId: string, propertyId: string) {
-    return await this.reportRepository.getReportsByUserAndProperty(userId, propertyId);
+    return await this.reportRepository.getReportsByUserAndProperty(
+      userId,
+      propertyId
+    );
   }
 }
