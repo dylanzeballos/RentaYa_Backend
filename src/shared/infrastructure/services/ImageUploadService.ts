@@ -1,87 +1,124 @@
-import multer from 'multer';
-import { v2 as cloudinary } from 'cloudinary';
-import { Readable } from 'stream';
+import multer from "multer";
+import { v2 as cloudinary } from "cloudinary";
+import { Readable } from "stream";
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME || '',
-    api_key: process.env.CLOUDINARY_API_KEY || '',
-    api_secret: process.env.CLOUDINARY_API_SECRET || '',
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "",
+  api_key: process.env.CLOUDINARY_API_KEY || "",
+  api_secret: process.env.CLOUDINARY_API_SECRET || "",
 });
 
 export class ImageUploadService {
-    private storage = multer.memoryStorage();
+  private storage = multer.memoryStorage();
 
-    private fileFilter = (req: Express.Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
-        if (allowedTypes.includes(file.mimetype)) {
-            cb(null, true);
-        } else {
-            cb(new Error('Invalid file type. Only JPEG, PNG, JPG, and WEBP are allowed.'));
-        }
-    };
+  private fileFilter = (
+    req: Express.Request,
+    file: Express.Multer.File,
+    cb: multer.FileFilterCallback
+  ) => {
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg", "image/webp"];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(
+        new Error(
+          "Invalid file type. Only JPEG, PNG, JPG, and WEBP are allowed."
+        )
+      );
+    }
+  };
 
-    public upload = multer({
-        storage: this.storage,
-        fileFilter: this.fileFilter,
-        limits: { fileSize: 5 * 1024 * 1024 },
-    });
+  public upload = multer({
+    storage: this.storage,
+    fileFilter: this.fileFilter,
+    limits: { fileSize: 5 * 1024 * 1024 },
+  });
 
-  
-    async uploadImage(file: Express.Multer.File, folder: string = 'profile-images'): Promise<string> {
-        return new Promise((resolve, reject) => {
-            const uploadStream = cloudinary.uploader.upload_stream(
-                {
-                    folder: folder,
-                    resource_type: 'image',
-                    transformation: [
-                        { width: 500, height: 500, crop: 'limit' },
-                        { quality: 'auto' },
-                        { fetch_format: 'auto' }
-                    ]
-                },
-                (error, result) => {
-                    if (error) {
-                        reject(new Error(`Error uploading image to Cloudinary: ${error.message}`));
-                    } else if (result) {
-                        resolve(result.secure_url);
-                    } else {
-                        reject(new Error('Unknown error uploading image to Cloudinary'));
-                    }
-                }
+  async uploadImage(
+    file: Express.Multer.File,
+    folder: string = "profile-images"
+  ): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        {
+          folder: folder,
+          resource_type: "image",
+          transformation: [
+            { width: 500, height: 500, crop: "limit" },
+            { quality: "auto" },
+            { fetch_format: "auto" },
+          ],
+        },
+        (error, result) => {
+          if (error) {
+            reject(
+              new Error(`Error uploading image to Cloudinary: ${error.message}`)
             );
-
-            const bufferStream = Readable.from(file.buffer);
-            bufferStream.pipe(uploadStream);
-        });
-    }
-
-    async deleteImage(imageUrl: string): Promise<boolean> {
-        try {
-            const publicId = this.extractPublicId(imageUrl);
-            if (!publicId) {
-                throw new Error('Invalid Cloudinary URL');
-            }
-
-            const result = await cloudinary.uploader.destroy(publicId);
-            return result.result === 'ok';
-        } catch (error: any) {
-            throw new Error(`Error deleting image from Cloudinary: ${error.message}`);
+          } else if (result) {
+            resolve(result.secure_url);
+          } else {
+            reject(new Error("Unknown error uploading image to Cloudinary"));
+          }
         }
-    }
+      );
 
-    private extractPublicId(url: string): string | null {
-        try {
-            const urlParts = url.split('/');
-            const uploadIndex = urlParts.indexOf('upload');
-            if (uploadIndex === -1) return null;
+      const bufferStream = Readable.from(file.buffer);
+      bufferStream.pipe(uploadStream);
+    });
+  }
 
-            const pathParts = urlParts.slice(uploadIndex + 2); 
-            const pathWithExtension = pathParts.join('/');
-            
-            const lastDotIndex = pathWithExtension.lastIndexOf('.');
-            return pathWithExtension.substring(0, lastDotIndex);
-        } catch (error) {
-            return null;
-        }
+  async deleteImage(imageUrl: string): Promise<boolean> {
+    try {
+      // Si la URL no es de Cloudinary, simplemente retornar true (ya está "eliminada")
+      if (!imageUrl || !imageUrl.includes("cloudinary.com")) {
+        console.warn(`Skipping deletion of non-Cloudinary URL: ${imageUrl}`);
+        return true;
+      }
+
+      const publicId = this.extractPublicId(imageUrl);
+      if (!publicId) {
+        console.warn(`Could not extract public ID from URL: ${imageUrl}`);
+        return false;
+      }
+
+      const result = await cloudinary.uploader.destroy(publicId);
+
+      // Si la imagen ya no existe (not found), considerarlo como éxito
+      if (result.result === "ok" || result.result === "not found") {
+        return true;
+      }
+
+      return false;
+    } catch (error: any) {
+      // Si el error es 404 (imagen no encontrada), considerarlo como éxito
+      if (
+        error.message &&
+        (error.message.includes("404") || error.message.includes("not found"))
+      ) {
+        console.warn(
+          `Image not found in Cloudinary (already deleted?): ${imageUrl}`
+        );
+        return true;
+      }
+
+      // Para otros errores, lanzar la excepción
+      throw new Error(`Error deleting image from Cloudinary: ${error.message}`);
     }
+  }
+
+  private extractPublicId(url: string): string | null {
+    try {
+      const urlParts = url.split("/");
+      const uploadIndex = urlParts.indexOf("upload");
+      if (uploadIndex === -1) return null;
+
+      const pathParts = urlParts.slice(uploadIndex + 2);
+      const pathWithExtension = pathParts.join("/");
+
+      const lastDotIndex = pathWithExtension.lastIndexOf(".");
+      return pathWithExtension.substring(0, lastDotIndex);
+    } catch (error) {
+      return null;
+    }
+  }
 }

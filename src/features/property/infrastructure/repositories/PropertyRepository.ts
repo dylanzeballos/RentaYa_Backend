@@ -1,5 +1,6 @@
 import prisma from "@/config/prisma";
 import { Property } from "@/generated/prisma";
+import { Prisma } from "@/generated/prisma";
 
 export class PropertyRepository {
   async createProperty(payload: {
@@ -10,16 +11,21 @@ export class PropertyRepository {
     city?: string;
     bedrooms?: number | null;
     bathrooms?: number | null;
-    areaM2?: number | null; 
-    price: number; 
-    operationTypeId?: string | null; 
-    propertyTypeId?: string | null; 
-    paymentId?: string | null; 
-    provinceId?: string | null; 
+    areaM2?: number | null;
+    price: number;
+    operationTypeId?: string | null;
+    propertyTypeId?: string | null;
+    paymentId?: string | null;
+    provinceId?: string | null;
     photos?: string[];
     latitude?: number | null;
     longitude?: number | null;
-  }): Promise<Property> {
+  }): Promise<
+    Property & {
+      province: { id: string; name: string } | null;
+      propertyPhotos: any[];
+    }
+  > {
     const { photos, ...propertyData } = payload;
 
     // Build payload mapping new relation fields and keeping previous simple fields
@@ -46,7 +52,15 @@ export class PropertyRepository {
 
     const created = await prisma.property.create({
       data: dataPayload,
-      include: { propertyPhotos: true },
+      include: {
+        propertyPhotos: true,
+        province: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
     });
     return created;
   }
@@ -62,12 +76,18 @@ export class PropertyRepository {
   async listPropertiesByOwner(ownerId: string): Promise<any[]> {
     const items = await prisma.property.findMany({
       where: { ownerId },
-      include: { propertyPhotos: true },
+      include: {
+        propertyPhotos: true,
+        operationType: true,
+        propertyType: true,
+        payment: true,
+        province: true,
+      },
       orderBy: { createdAt: "desc" },
     });
     return items;
   }
-  
+
   async findByOwnerId(ownerId: string): Promise<{ id: string }[]> {
     return prisma.property.findMany({
       where: { ownerId },
@@ -91,7 +111,7 @@ export class PropertyRepository {
             profilePhoto: true,
           },
         },
-        payment: true
+        payment: true,
       },
     });
     return property;
@@ -116,7 +136,7 @@ export class PropertyRepository {
       photosToRemove?: string[];
       latitude?: number | null;
       longitude?: number | null;
-    },
+    }
   ): Promise<Property> {
     const { photosToAdd, photosToRemove, ...propertyData } = payload;
 
@@ -188,13 +208,37 @@ export class PropertyRepository {
   }
 
   async deleteProperty(propertyId: string): Promise<void> {
+    // Eliminar todas las relaciones de la propiedad antes de eliminar la propiedad misma
+    // Esto evita errores de restricciones de clave foránea
+
+    // 1. Eliminar fotos de la propiedad
     await prisma.propertyPhoto.deleteMany({
       where: { propertyId: propertyId },
     });
 
+    // 2. Eliminar favoritos asociados
+    await prisma.favorite.deleteMany({
+      where: { propertyId: propertyId },
+    });
+
+    // 3. Eliminar intereses asociados
+    await prisma.interest.deleteMany({
+      where: { propertyId: propertyId },
+    });
+
+    // 4. Eliminar reseñas asociadas
+    await prisma.review.deleteMany({
+      where: { propertyId: propertyId },
+    });
+
+    // 5. Eliminar reportes asociados
+    await prisma.report.deleteMany({
+      where: { propertyId: propertyId },
+    });
+
+    // 6. Finalmente, eliminar la propiedad
     await prisma.property.delete({
       where: { id: propertyId },
     });
   }
-  
 }

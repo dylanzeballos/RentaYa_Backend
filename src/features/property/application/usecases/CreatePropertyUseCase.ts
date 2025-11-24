@@ -38,67 +38,85 @@ export class CreatePropertyUseCase {
 
         const created = await this.repo.createProperty(data);
 
-        try {
-   
-            const userPreferencesRepo = new UserPreferencesRepository();
-            const matchedUserIds = await userPreferencesRepo.findUsersMatchingProperty(
-                created.city || null,
-                created.operationTypeId || null,
-            );
-
-        
-            const recipients = matchedUserIds.filter((id) => id !== created.ownerId);
-
-            if (recipients.length > 0) {
-                const notificationRepo = new NotificationRepository();
-           
-                const createdNotifications = [] as any[];
-
-                for (const userId of recipients) {
-                    const notif = await notificationRepo.createNotification({
-                        userId,
-                        type: NotificationType.NEW_PROPERTY,
-                        title: 'Nuevo inmueble disponible',
-                        content: `${created.title} en ${created.city || 'ubicación'}`,
-                        metadata: { propertyId: created.id },
-                    });
-                    createdNotifications.push(notif);
-                }
-
-                // Emit real-time notification via sockets
-                try {
-                    const payload = {
-                        type: NotificationType.NEW_PROPERTY,
-                        title: 'Nuevo inmueble disponible',
-                        content: `${created.title} en ${created.city || 'ubicación'}`,
-                        metadata: { propertyId: created.id },
-                        createdAt: new Date().toISOString(),
-                    };
-                    emitNotificationToUsers(recipients, payload);
-                } catch (e) {
-                    console.error('Error emitiendo notificaciones por socket:', e);
-                }
-                const pushService = new PushNotificationService(notificationRepo);
-                await pushService.sendPushToMultipleUsers(
-                    recipients,
-                    'Nuevo inmueble',
-                    `${created.title} en ${created.city || 'ubicación'}`,
-                    { propertyId: created.id },
+        // Ejecutar notificaciones de forma asíncrona sin bloquear la respuesta
+        setImmediate(async () => {
+            try {
+                // Obtener el nombre de la provincia desde la relación o usar city como fallback
+                const provinceName = created.province?.name || created.city || null;
+       
+                const userPreferencesRepo = new UserPreferencesRepository();
+                const matchedUserIds = await userPreferencesRepo.findUsersMatchingProperty(
+                    provinceName,
+                    created.operationTypeId || null,
                 );
 
-         
-                for (const notif of createdNotifications) {
+                console.log(`[CreatePropertyUseCase] Propiedad creada: ${created.title}`);
+                console.log(`[CreatePropertyUseCase] Provincia: ${provinceName}, OperationTypeId: ${created.operationTypeId}`);
+                console.log(`[CreatePropertyUseCase] Usuarios encontrados: ${matchedUserIds.length}`, matchedUserIds);
+            
+                const recipients = matchedUserIds.filter((id) => id !== created.ownerId);
+                
+                console.log(`[CreatePropertyUseCase] Usuarios a notificar (excluyendo owner): ${recipients.length}`, recipients);
+
+                if (recipients.length > 0) {
+                    const notificationRepo = new NotificationRepository();
+               
+                    const createdNotifications = [] as any[];
+
+                    // Crear notificaciones en paralelo
+                    const notificationPromises = recipients.map(userId =>
+                        notificationRepo.createNotification({
+                            userId,
+                            type: NotificationType.NEW_PROPERTY,
+                            title: 'Nuevo inmueble disponible',
+                            content: `${created.title} en ${created.city || 'ubicación'}`,
+                            metadata: { propertyId: created.id },
+                        })
+                    );
+                    
+                    const notifications = await Promise.all(notificationPromises);
+                    createdNotifications.push(...notifications);
+
+                    // Emit real-time notification via sockets
                     try {
-                        await notificationRepo.markPushSent(notif.id);
+                        const payload = {
+                            type: NotificationType.NEW_PROPERTY,
+                            title: 'Nuevo inmueble disponible',
+                            content: `${created.title} en ${created.city || 'ubicación'}`,
+                            metadata: { propertyId: created.id },
+                            createdAt: new Date().toISOString(),
+                        };
+                        emitNotificationToUsers(recipients, payload);
                     } catch (e) {
-                   
-                        console.error('Error marcando pushSent:', e);
+                        console.error('Error emitiendo notificaciones por socket:', e);
                     }
+                    
+                    // Enviar push notifications en paralelo (sin esperar)
+                    const pushService = new PushNotificationService(notificationRepo);
+                    pushService.sendPushToMultipleUsers(
+                        recipients,
+                        'Nuevo inmueble',
+                        `${created.title} en ${created.city || 'ubicación'}`,
+                        { propertyId: created.id },
+                    ).catch((e) => {
+                        console.error('Error enviando push notifications:', e);
+                    });
+
+                    // Marcar push sent después de un delay
+                    setTimeout(async () => {
+                        for (const notif of createdNotifications) {
+                            try {
+                                await notificationRepo.markPushSent(notif.id);
+                            } catch (e) {
+                                console.error('Error marcando pushSent:', e);
+                            }
+                        }
+                    }, 2000);
                 }
+            } catch (error) {
+                console.error('Error notificando a usuarios:', error);
             }
-        } catch (error) {
-            console.error('Error notificando a usuarios:', error);
-        }
+        });
 
         return created;
     }
