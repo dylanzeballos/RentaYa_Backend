@@ -1,6 +1,5 @@
 import prisma from "@/config/prisma";
 import { Property } from "@/generated/prisma";
-import { Prisma } from "@/generated/prisma";
 
 export class PropertyRepository {
   async createProperty(payload: {

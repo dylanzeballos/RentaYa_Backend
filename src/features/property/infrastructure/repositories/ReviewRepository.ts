@@ -1,5 +1,5 @@
 import prisma from "@/config/prisma";
-import { Review } from "@/generated/prisma";
+import { Review } from "@prisma/client";
 
 export class ReviewRepository {
   async createReview(payload: {

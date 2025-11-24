@@ -1,4 +1,4 @@
-import { User } from "@/generated/prisma";
+import { User } from "@prisma/client";
 import { GoogleUserData } from "@/shared/domain/types/AuthTypes";
 
 export interface IAuthRepository {
