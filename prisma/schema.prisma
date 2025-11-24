@@ -8,6 +8,11 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum UserRole {
+  rentante
+  arrendador
+}
+
 model User {
   id                   String          @id @default(uuid()) @db.Uuid
   googleId             String?         @unique
@@ -16,14 +21,14 @@ model User {
   passwordHash         String?
   fullName             String?         @db.VarChar(255)
   phone                String?         @db.VarChar(20)
+  role                 UserRole
   verificationStatus   String          @default("pendiente") @db.VarChar(20)
   refreshToken         String?
   createdAt            DateTime        @default(now()) @db.Timestamp(0)
   updatedAt            DateTime        @updatedAt @db.Timestamp(0)
   resetPasswordExpires DateTime?       @db.Timestamp(0)
   resetPasswordToken   String?
-  role                 UserRole
-  device_tokens        device_tokens[]
+  deviceTokens         DeviceToken[]
   favorites            Favorite[]
   interests            Interest[]
   receivedMessages     Message[]       @relation("ReceivedMessages")
@@ -45,24 +50,24 @@ model Property {
   description     String?
   address         String?         @db.VarChar(500)
   city            String          @default("Cochabamba") @db.VarChar(100)
+  provinceId      String?         @db.Uuid
   areaM2          Decimal?        @db.Decimal(10, 2)
   price           Decimal         @db.Decimal(12, 2)
+  paymentId       String?         @db.Uuid
+  operationTypeId String?         @db.Uuid
+  propertyTypeId  String?         @db.Uuid
   status          String          @default("disponible") @db.VarChar(20)
   createdAt       DateTime        @default(now()) @db.Timestamp(0)
   updatedAt       DateTime        @updatedAt @db.Timestamp(0)
   latitude        Decimal?        @db.Decimal(10, 8)
   longitude       Decimal?        @db.Decimal(11, 8)
-  operationTypeId String?         @db.Uuid
-  propertyTypeId  String?         @db.Uuid
-  provinceId      String?         @db.Uuid
-  paymentId       String?         @db.Uuid
   favorites       Favorite[]
   interests       Interest[]
-  operationType   OperationType?  @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
   owner           User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  payment         Payment?        @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  operationType   OperationType?  @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
   propertyType    PropertyType?   @relation(fields: [propertyTypeId], references: [id], onDelete: Cascade)
-  province        Province?       @relation(fields: [provinceId], references: [id])
+  payment         Payment?        @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  province        Province?       @relation(fields: [provinceId], references: [id], onDelete: SetNull)
   propertyPhotos  PropertyPhoto[]
   reports         Report[]
   reviews         Review[]
@@ -75,38 +80,39 @@ model Property {
 }
 
 model OperationType {
-  id                              String                            @id @default(uuid()) @db.Uuid
-  name                            String                            @unique @db.VarChar(20)
-  properties                      Property[]
-  user_preference_operation_types user_preference_operation_types[]
-  user_preferences                UserPreference[]
+  id                           String                        @id @default(uuid()) @db.Uuid
+  name                         String                        @unique @db.VarChar(20)
+  properties                   Property[]
+  userPreferences              UserPreference[]
+  userPreferenceOperationTypes UserPreferenceOperationType[]
 
   @@map("operation_types")
 }
 
 model PropertyType {
-  id                             String                           @id @default(uuid()) @db.Uuid
-  name                           String                           @unique @db.VarChar(50)
-  properties                     Property[]
-  user_preference_property_types user_preference_property_types[]
+  id                          String                       @id @default(uuid()) @db.Uuid
+  name                        String                       @unique @db.VarChar(50)
+  properties                  Property[]
+  userPreferencePropertyTypes UserPreferencePropertyType[]
 
   @@map("property_types")
 }
 
 model Payment {
-  id         String     @id @default(uuid()) @db.Uuid
-  name       String     @unique @db.VarChar(50)
-  days       Int
+  id   String @id @default(uuid()) @db.Uuid
+  name String @unique @db.VarChar(50)
+  days Int
+
   properties Property[]
 
   @@map("payment_types")
 }
 
 model Province {
-  id                        String                      @id @default(uuid()) @db.Uuid
-  name                      String                      @unique @db.VarChar(100)
-  properties                Property[]
-  user_preference_provinces user_preference_provinces[]
+  id                       String                   @id @default(uuid()) @db.Uuid
+  name                     String                   @unique @db.VarChar(100)
+  properties               Property[]
+  userPreferencesProvinces UserPreferenceProvince[]
 
   @@map("provinces")
 }
@@ -193,16 +199,18 @@ model Notification {
 model Report {
   id         String    @id @default(uuid()) @db.Uuid
   userId     String    @db.Uuid
-  createdAt  DateTime  @default(now()) @db.Timestamp(0)
-  finishDate DateTime? @db.Timestamp(0)
   propertyId String    @db.Uuid
-  startDate  DateTime? @db.Timestamp(0)
-  status     String    @db.VarChar(30)
   totalPrice Decimal?  @db.Decimal(10, 2)
+  status     String    @db.VarChar(30)
+  startDate  DateTime? @db.Timestamp(0)
+  finishDate DateTime? @db.Timestamp(0)
   uploadedAt DateTime? @db.Timestamp(0)
-  updatedAt  DateTime? @db.Timestamp(0)
-  properties Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime? @db.Timestamp(0)
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([propertyId])
@@ -236,65 +244,64 @@ model SavedSearch {
 }
 
 model UserPreference {
-  id                              String                            @id @default(uuid()) @db.Uuid
-  userId                          String                            @unique @db.Uuid
-  createdAt                       DateTime                          @default(now())
-  updatedAt                       DateTime                          @updatedAt
-  operationTypeId                 String?                           @db.Uuid
-  user_preference_operation_types user_preference_operation_types[]
-  user_preference_property_types  user_preference_property_types[]
-  user_preference_provinces       user_preference_provinces[]
-  operation_types                 OperationType?                    @relation(fields: [operationTypeId], references: [id])
-  user                            User                              @relation("UserPreferences", fields: [userId], references: [id])
+  id                          String                        @id @default(uuid()) @db.Uuid
+  userId                      String                        @unique @db.Uuid
+  createdAt                   DateTime                      @default(now())
+  updatedAt                   DateTime                      @updatedAt
+  user                        User                          @relation("UserPreferences", fields: [userId], references: [id])
+  operationTypes              UserPreferenceOperationType[]
+  userPreferenceProvinces     UserPreferenceProvince[]
+  userPreferencePropertyTypes UserPreferencePropertyType[]
+  OperationType               OperationType?                @relation(fields: [operationTypeId], references: [id])
+  operationTypeId             String?                       @db.Uuid
 
   @@map("user_preferences")
 }
 
-model device_tokens {
-  id        String   @id @db.Uuid
+model UserPreferenceProvince {
+  id               String         @id @default(uuid()) @db.Uuid
+  userPreferenceId String         @db.Uuid
+  provinceId       String         @db.Uuid
+  userPreference   UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
+  province         Province       @relation(fields: [provinceId], references: [id], onDelete: Cascade)
+
+  @@unique([userPreferenceId, provinceId])
+  @@map("user_preference_provinces")
+}
+
+model UserPreferencePropertyType {
+  id               String         @id @default(uuid()) @db.Uuid
+  userPreferenceId String         @db.Uuid
+  propertyTypeId   String         @db.Uuid
+  userPreference   UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
+  propertyType     PropertyType   @relation(fields: [propertyTypeId], references: [id], onDelete: Cascade)
+
+  @@unique([userPreferenceId, propertyTypeId])
+  @@map("user_preference_property_types")
+}
+
+model UserPreferenceOperationType {
+  id               String         @id @default(uuid()) @db.Uuid
+  userPreferenceId String         @db.Uuid
+  operationTypeId  String         @db.Uuid
+  userPreference   UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
+  operationType    OperationType  @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
+
+  @@unique([userPreferenceId, operationTypeId])
+  @@map("user_preference_operation_types")
+}
+
+model DeviceToken {
+  id        String   @id @default(uuid()) @db.Uuid
   userId    String   @db.Uuid
   token     String   @db.VarChar(500)
   platform  String   @db.VarChar(20)
   active    Boolean  @default(true)
   createdAt DateTime @default(now()) @db.Timestamp(0)
-  updatedAt DateTime @db.Timestamp(0)
-  users     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, token])
   @@index([userId])
-}
-
-model user_preference_operation_types {
-  id               String         @id @db.Uuid
-  userPreferenceId String         @db.Uuid
-  operationTypeId  String         @db.Uuid
-  operation_types  OperationType  @relation(fields: [operationTypeId], references: [id], onDelete: Cascade)
-  user_preferences UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
-
-  @@unique([userPreferenceId, operationTypeId])
-}
-
-model user_preference_property_types {
-  id               String         @id @db.Uuid
-  userPreferenceId String         @db.Uuid
-  propertyTypeId   String         @db.Uuid
-  property_types   PropertyType   @relation(fields: [propertyTypeId], references: [id], onDelete: Cascade)
-  user_preferences UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
-
-  @@unique([userPreferenceId, propertyTypeId])
-}
-
-model user_preference_provinces {
-  id               String         @id @db.Uuid
-  userPreferenceId String         @db.Uuid
-  provinceId       String         @db.Uuid
-  provinces        Province       @relation(fields: [provinceId], references: [id], onDelete: Cascade)
-  user_preferences UserPreference @relation(fields: [userPreferenceId], references: [id], onDelete: Cascade)
-
-  @@unique([userPreferenceId, provinceId])
-}
-
-enum UserRole {
-  rentante
-  arrendador
+  @@map("device_tokens")
 }
