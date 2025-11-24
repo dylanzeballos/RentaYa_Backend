@@ -15,13 +15,13 @@ export class OwnerRepository {
         if (!properties || properties.length === 0) return null;
 
         const totalProperties = properties.length;
-        const availableCount = properties.filter(p => p.status === 'disponible').length;
-        const rentedCount = properties.filter(p => p.status === 'rentado').length;
-        const anticreticoCount = properties.filter(p => p.operationTypeId && p.operationTypeId === 'anticretico').length;
+        const availableCount = properties.filter((p: any) => p.status === 'disponible').length;
+        const rentedCount = properties.filter((p: any) => p.status === 'rentado').length;
+        const anticreticoCount = properties.filter((p: any) => p.operationTypeId && p.operationTypeId === 'anticretico').length;
 
         // Sum up report.totalPrice (Prisma Decimal) where present
-        const estimatedIncome = properties.reduce((sum, p) => {
-            const propSum = (p.reports || []).reduce((rsum, r) => {
+        const estimatedIncome = properties.reduce((sum: number, p: any) => {
+            const propSum = (p.reports || []).reduce((rsum: number, r: any) => {
                 const val = r.totalPrice ? Number(r.totalPrice) : 0;
                 return rsum + val;
             }, 0);
@@ -101,10 +101,10 @@ export class OwnerRepository {
         });
 
         // Calculate average rating for each property
-        const reportsWithRating = reports.map(report => {
+        const reportsWithRating = reports.map((report: any) => {
             const reviews = report.property.reviews || [];
             const avgRating = reviews.length > 0
-                ? reviews.reduce((sum, r) => sum + (r.rating || 0), 0) / reviews.length
+                ? reviews.reduce((sum: number, r: any) => sum + (r.rating || 0), 0) / reviews.length
                 : null;
             
             return {

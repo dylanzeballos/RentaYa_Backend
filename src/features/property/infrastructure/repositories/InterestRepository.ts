@@ -1,5 +1,5 @@
 import prisma from "@/config/prisma";
-import { Interest } from "@/generated/prisma";
+import { Interest } from "@prisma/client";
 import { AppError } from "@/shared/domain/errors/AppError";
 
 export interface CreateInterestDTO {

@@ -6,7 +6,7 @@ import {
   DeviceTokenDTO,
   NotificationType,
 } from "../../domain/types/notification.types";
-import { Notification } from "@/generated/prisma";
+import { Notification } from "@prisma/client";
 
 export class NotificationUseCase {
   private notificationRepository: NotificationRepository;

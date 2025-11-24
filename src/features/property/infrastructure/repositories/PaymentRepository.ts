@@ -1,5 +1,5 @@
 import prisma from "@/config/prisma";
-import { Payment } from "@/generated/prisma";
+import { Payment } from "@prisma/client";
 
 export class PaymentRepository {
   async createPayment(payload: { name: string; days: number }): Promise<Payment> {

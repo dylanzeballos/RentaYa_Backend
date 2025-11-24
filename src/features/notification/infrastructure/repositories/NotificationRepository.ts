@@ -1,5 +1,5 @@
 import prisma from "@/config/prisma";
-import { Notification, DeviceToken } from "@/generated/prisma";
+import { Notification, DeviceToken } from "@prisma/client";
 import {
   CreateNotificationDTO,
   NotificationFilters,

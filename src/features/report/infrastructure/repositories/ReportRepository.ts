@@ -1,5 +1,5 @@
 import prisma from "@/config/prisma";
-import { Report } from "@/generated/prisma";
+import { Report } from "@prisma/client";
 import { AppError } from "@/shared/domain/errors/AppError";
 
 export class ReportRepository {

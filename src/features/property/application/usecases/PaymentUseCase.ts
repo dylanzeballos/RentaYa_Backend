@@ -1,5 +1,5 @@
 import { PaymentRepository } from "@/features/property/infrastructure/repositories/PaymentRepository";
-import { Payment } from "@/generated/prisma";
+import { Payment } from "@prisma/client";
 
 export class PaymentUseCase {
   constructor(private readonly repo: PaymentRepository) {}
