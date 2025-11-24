@@ -1,0 +1,94 @@
+import { ReportRepository } from "@/features/report/infrastructure/repositories/ReportRepository";
+import { PropertyRepository } from "@/features/property/infrastructure/repositories/PropertyRepository";
+
+export class ReportUseCase {
+  private reportRepository: ReportRepository;
+  private propertyRepository: PropertyRepository;
+
+  constructor(
+    reportRepository: ReportRepository,
+    propertyRepository: PropertyRepository
+  ) {
+    this.reportRepository = reportRepository;
+    this.propertyRepository = propertyRepository;
+  }
+
+  async createReport(payload: {
+    userId: string;
+    propertyId: string;
+    startDate: Date;
+    finishDate: Date;
+  }) {
+    const property = await this.propertyRepository.getPropertyDetail(
+      payload.propertyId
+    );
+    if (!property) {
+      throw new Error("Property not found");
+    }
+    if (!property.payment) {
+      throw new Error("Property has no payment type configured");
+    }
+    const pricePerPeriod = property.price;
+    const daysPerPeriod = property.payment.days;
+    const start = new Date(payload.startDate);
+    const finish = new Date(payload.finishDate);
+    const diffMs = finish.getTime() - start.getTime();
+    const totalDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    if (totalDays <= 0) {
+      throw new Error("Invalid date range");
+    }
+    const periods = totalDays / daysPerPeriod;
+    const totalPrice = periods * pricePerPeriod;
+    const report = {
+      userId: payload.userId,
+      propertyId: payload.propertyId,
+      startDate: start,
+      finishDate: finish,
+      uploadedAt: new Date(),
+      status: "Pendiente",
+      totalPrice,
+    };
+
+    return await this.reportRepository.createReport(report);
+  }
+
+  async acceptReport(payload: { reportId: string }) {
+    const report = await this.reportRepository.getById(payload.reportId);
+    if (!report) {
+      throw new Error("Report not found");
+    }
+    return await this.reportRepository.acceptReport(payload.reportId);
+  }
+
+  async getReportsByOwner(payload: { userId: string }) {
+    const properties = await this.propertyRepository.findByOwnerId(
+      payload.userId
+    );
+    const propertyIds = properties.map((p) => p.id);
+    if (propertyIds.length === 0) return [];
+    const reports = await this.reportRepository.getByPropertyIds(propertyIds);
+    return reports;
+  }
+
+  async createReportByEmail(payload: {
+    email: string;
+    propertyId: string;
+    type: string;
+    status?: string;
+    totalPrice?: any;
+    startDate?: Date;
+    finishDate?: Date;
+    uploadedAt?: Date;
+    parameters?: any;
+    fileUrl?: string;
+  }) {
+    return await this.reportRepository.createReportByEmail(payload as any);
+  }
+
+  async getReportsByUserAndProperty(userId: string, propertyId: string) {
+    return await this.reportRepository.getReportsByUserAndProperty(
+      userId,
+      propertyId
+    );
+  }
+}

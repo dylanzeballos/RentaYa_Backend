@@ -1,11 +1,11 @@
 export class UserPreferences {
   constructor(
-    public id: string,
+    public id: string | null,
     public userId: string,
-    public propertyTypes: string[],
-    public modality: string | null,
-    public locations: string[],
-    public createdAt: Date,
-    public updatedAt: Date
+    public propertyTypes: string[],    
+    public operationTypes: string[],   
+    public provinces: string[],       
+    public createdAt?: Date,
+    public updatedAt?: Date
   ) {}
 }

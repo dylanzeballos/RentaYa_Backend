@@ -9,9 +9,12 @@ export interface LoginRequest {
     password: string;
 }
 
+export type UserRole = "rentante" | "arrendador";
+
 export interface RegisterRequest {
     email: string;
     password: string;
+    role: UserRole;
     fullName?: string;
     phone?: string;
 }
@@ -40,6 +43,7 @@ export interface TokenResponse {
 
 export interface GoogleLoginData {
     token: string;
+    role: UserRole;
 }
 
 export interface GoogleUserData{

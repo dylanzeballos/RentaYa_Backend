@@ -7,12 +7,13 @@ export interface IAuthRepository {
   createUser(userData: {
     email: string;
     passwordHash: string;
+    role: string;
     fullName?: string | undefined;
     phone?: string | undefined;
   }): Promise<User>;
   updateUser(id: string, data: Partial<User>): Promise<User>;
   findUserByGoogleId(googleId: string): Promise<any | null>;
-  createGoogleUser(userData: GoogleUserData): Promise<any>;
+  createGoogleUser(userData: GoogleUserData & { role: string }): Promise<any>;
   updateUserGoogleInfo(
     userId: string,
     googleData: Partial<GoogleUserData>,
