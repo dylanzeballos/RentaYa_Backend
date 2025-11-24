@@ -4,7 +4,7 @@ import { ReportRepository } from "../repositories/ReportRepository";
 import { PropertyRepository } from "../../../property/infrastructure/repositories/PropertyRepository";
 import { AppError } from "@/shared/domain/errors/AppError";
 import { asyncHandler } from "@/shared/infrastructure/utils/asyncHandler";
-import { AuthenticatedRequest } from '@/shared/infrastructure/middleware/AuthMiddleware';
+import { AuthenticatedRequest } from "@/shared/infrastructure/middleware/AuthMiddleware";
 
 export class ReportController {
   private reportUseCase: ReportUseCase;
@@ -13,20 +13,18 @@ export class ReportController {
     const reportRepository = new ReportRepository();
     const propertyRepository = new PropertyRepository();
 
-    this.reportUseCase = new ReportUseCase(reportRepository, propertyRepository);
+    this.reportUseCase = new ReportUseCase(
+      reportRepository,
+      propertyRepository
+    );
   }
-  createReport: 
-  RequestHandler = asyncHandler(
+  createReport: RequestHandler = asyncHandler(
     async (req: AuthenticatedRequest, res: Response): Promise<void> => {
       const userId = req.user?.userId;
       if (!userId) {
         throw new AppError("Usuario no autentificado", 400);
       }
-      const {
-        propertyId,
-        startDate,
-        finishDate,
-      } = req.body;
+      const { propertyId, startDate, finishDate } = req.body;
       if (!finishDate || !propertyId || !startDate) {
         throw new AppError("Faltan campos requeridos", 400);
       }
@@ -34,7 +32,7 @@ export class ReportController {
         userId,
         propertyId,
         startDate,
-        finishDate
+        finishDate,
       });
       res.status(201).json({
         success: true,
@@ -43,9 +41,8 @@ export class ReportController {
       });
     }
   );
-  acceptReport:
-  RequestHandler = asyncHandler(
-    async(req: Request, res: Response): Promise<void> => {
+  acceptReport: RequestHandler = asyncHandler(
+    async (req: Request, res: Response): Promise<void> => {
       const { reportId } = req.params as { reportId?: string };
       if (!reportId) {
         throw new AppError("reportId is required", 400);
@@ -58,9 +55,8 @@ export class ReportController {
       });
     }
   );
-    
-  getReports: 
-  RequestHandler = asyncHandler(
+
+  getReports: RequestHandler = asyncHandler(
     async (req: AuthenticatedRequest, res: Response) => {
       const userId = req.user?.userId;
       if (!userId) {
@@ -73,8 +69,8 @@ export class ReportController {
         message: "Reports retrieved successfully",
       });
     }
-  )
-  
+  );
+
   // getReportsByUserAndProperty: RequestHandler = asyncHandler(
   //   async (req: Request, res: Response): Promise<void> => {
   //     const { userId, propertyId } = req.params;
@@ -132,4 +128,3 @@ export class ReportController {
   //   }
   // );
 }
-

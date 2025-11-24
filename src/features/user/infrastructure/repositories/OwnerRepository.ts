@@ -53,7 +53,7 @@ export class OwnerRepository {
 
     async getReportsByOwner(ownerId: string) {
         // Find all reports for properties that belong to the owner.
-        // We include property and user to provide context in the API.
+        // We include property with relations and user to provide context in the API.
         const reports = await prisma.report.findMany({
             where: {
                 property: {
@@ -61,7 +61,33 @@ export class OwnerRepository {
                 },
             },
             include: {
-                property: true,
+                property: {
+                    include: {
+                        operationType: {
+                            select: {
+                                id: true,
+                                name: true,
+                            },
+                        },
+                        propertyType: {
+                            select: {
+                                id: true,
+                                name: true,
+                            },
+                        },
+                        province: {
+                            select: {
+                                id: true,
+                                name: true,
+                            },
+                        },
+                        reviews: {
+                            select: {
+                                rating: true,
+                            },
+                        },
+                    },
+                },
                 user: {
                     select: {
                         id: true,
@@ -74,6 +100,22 @@ export class OwnerRepository {
             orderBy: { createdAt: 'desc' },
         });
 
-        return reports;
+        // Calculate average rating for each property
+        const reportsWithRating = reports.map(report => {
+            const reviews = report.property.reviews || [];
+            const avgRating = reviews.length > 0
+                ? reviews.reduce((sum, r) => sum + (r.rating || 0), 0) / reviews.length
+                : null;
+            
+            return {
+                ...report,
+                property: {
+                    ...report.property,
+                    averageRating: avgRating,
+                },
+            };
+        });
+
+        return reportsWithRating;
     }
 }
