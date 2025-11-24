@@ -20,10 +20,21 @@ import notificationRoutes from '@/features/notification/infrastructure/routes/no
 const app: Express = express();
 
 app.use(helmet());
+const allowedOrigins = [process.env.FRONTEND_URL, "http://localhost:8081", "http://localhost"].filter(Boolean) as string[];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:8081",
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+
+      for (const ao of allowedOrigins) {
+        if (origin === ao || (typeof origin === 'string' && origin.startsWith(ao))) return callback(null, true);
+      }
+
+      return callback(new Error('CORS policy: Origin not allowed'));
+    },
     credentials: true,
+    optionsSuccessStatus: 200,
   }),
 );
 
