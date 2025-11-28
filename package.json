@@ -22,6 +22,7 @@
   "dependencies": {
     "@prisma/client": "^6.18.0",
     "@types/multer": "^2.0.0",
+    "@types/node-cron": "^3.0.11",
     "@types/nodemailer": "^7.0.3",
     "bcryptjs": "^3.0.2",
     "cloudinary": "^2.8.0",
@@ -35,6 +36,7 @@
     "jsonwebtoken": "^9.0.2",
     "module-alias": "^2.2.3",
     "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
     "nodemailer": "^7.0.10",
     "socket.io": "^4.8.1",
     "swagger-jsdoc": "^6.2.8",

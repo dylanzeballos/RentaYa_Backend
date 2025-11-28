@@ -8,8 +8,6 @@ export class EmailService {
   constructor() {
     const emailUser = process.env.EMAIL_USER;
     const emailPassword = process.env.EMAIL_PASSWORD;
-    const emailHost = process.env.EMAIL_HOST || "smtp.gmail.com";
-    const emailPort = parseInt(process.env.EMAIL_PORT || "587");
     this.fromEmail =
       process.env.EMAIL_FROM || emailUser || "noreply@rentaya.com";
 
@@ -20,9 +18,10 @@ export class EmailService {
     }
 
     this.transporter = nodemailer.createTransport({
-      host: emailHost,
-      port: emailPort,
-      secure: emailPort === 465,
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth:
         emailUser && emailPassword
           ? {
@@ -30,7 +29,23 @@ export class EmailService {
               pass: emailPassword,
             }
           : undefined,
+      tls: {
+        rejectUnauthorized: false
+      }
     });
+
+    if (emailUser && emailPassword) {
+      this.verifyConnection();
+    }
+  }
+
+  private async verifyConnection(): Promise<void> {
+    try {
+      await this.transporter.verify();
+      console.log('SMTP connection verified successfully');
+    } catch (error) {
+      console.error('SMTP connection failed:', error);
+    }
   }
 
   async sendPasswordResetCode(
@@ -520,17 +535,6 @@ El equipo de RentaYa
       });
     } catch (error) {
       console.error("Error sending confirmation email:", error);
-    }
-  }
-
-  async verifyConnection(): Promise<boolean> {
-    try {
-      await this.transporter.verify();
-      console.log("Email service is ready");
-      return true;
-    } catch (error) {
-      console.error("Email service verification failed:", error);
-      return false;
     }
   }
 }

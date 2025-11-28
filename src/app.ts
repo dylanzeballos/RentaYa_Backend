@@ -1,11 +1,11 @@
 import express, { Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
-import rateLimit from "express-rate-limit";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "@/config/swagger";
 
 import { errorHandler } from "@/shared/infrastructure/middleware/errorHandler";
+import { CronService } from "@/shared/infrastructure/services/CronService";
 
 //Rutas de features
 import authRoutes from '@/features/auth/infrastructure/routes/auth.routes';
@@ -20,22 +20,11 @@ import notificationRoutes from '@/features/notification/infrastructure/routes/no
 const app: Express = express();
 
 app.use(helmet());
-const allowedOrigins = [process.env.FRONTEND_URL, "http://localhost:8081", "http://localhost"].filter(Boolean) as string[];
-
 app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-
-      for (const ao of allowedOrigins) {
-        if (origin === ao || (typeof origin === 'string' && origin.startsWith(ao))) return callback(null, true);
-      }
-
-      return callback(new Error('CORS policy: Origin not allowed'));
-    },
-    credentials: true,
-    optionsSuccessStatus: 200,
-  }),
+    cors({
+        origin: process.env.FRONTEND_URL || "http://localhost:8081",
+        credentials: true,
+    }),
 );
 
 
@@ -44,26 +33,37 @@ app.use(express.urlencoded({ extended: true }));
 
 // Swagger Documentation
 app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, {
-    customCss: ".swagger-ui .topbar { display: none }",
-    customSiteTitle: "RentaYa API Documentation",
-  }),
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec, {
+        customCss: ".swagger-ui .topbar { display: none }",
+        customSiteTitle: "RentaYa API Documentation",
+    }),
 );
 
 // Swagger JSON endpoint
 app.get("/api-docs.json", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  res.send(swaggerSpec);
+    res.setHeader("Content-Type", "application/json");
+    res.send(swaggerSpec);
 });
 
 app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "OK",
-    timestamp: new Date().toISOString(),
-  });
+    res.status(200).json({
+        status: "ok",
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        environment: process.env.NODE_ENV || 'development',
+        version: process.env.npm_package_version || '1.0.0',
+        memory: process.memoryUsage()
+    });
 });
+
+// Inicializar cron jobs
+if (process.env.NODE_ENV === 'production') {
+    const cronService = CronService.getInstance();
+    cronService.startAllJobs();
+    console.log('Cron jobs iniciados para producción');
+}
 
 app.use("/api/auth", authRoutes);
 app.use("/api/properties", propertyRoutes);
@@ -73,13 +73,6 @@ app.use("/api/interests", interestRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/notifications", notificationRoutes);
-
-/* app.use('*', (req, res) => {
-    res.status(404).json({
-        success: false,
-        message: `Ruta ${req.originalUrl} no encontrada`,
-    });
-}); */
 
 app.use(errorHandler);
 
