@@ -14,12 +14,10 @@ const options: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
-        description: "Development server",
-      },
-      {
-        url: "https://api.rentaya.com",
-        description: "Production server",
+        url: process.env.NODE_ENV === 'production'
+          ? "https://rentaya-backend.onrender.com"
+          : `http://localhost:${process.env.PORT || 3000}`,
+        description: process.env.NODE_ENV === 'production' ? "Production server" : "Development server",
       },
     ],
     components: {
