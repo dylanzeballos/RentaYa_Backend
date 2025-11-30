@@ -24,13 +24,14 @@ export class ReportController {
       if (!userId) {
         throw new AppError("Usuario no autentificado", 400);
       }
-      const { propertyId, startDate, finishDate } = req.body;
-      if (!finishDate || !propertyId || !startDate) {
+      const { propertyId, startDate, finishDate, interestId } = req.body;
+      if (!finishDate || !propertyId || !startDate || !interestId) {
         throw new AppError("Faltan campos requeridos", 400);
       }
       const report = await this.reportUseCase.createReport({
         userId,
         propertyId,
+        interestId,
         startDate,
         finishDate,
       });
@@ -43,11 +44,11 @@ export class ReportController {
   );
   acceptReport: RequestHandler = asyncHandler(
     async (req: Request, res: Response): Promise<void> => {
-      const { reportId } = req.params as { reportId?: string };
-      if (!reportId) {
-        throw new AppError("reportId is required", 400);
+      const { interestId } = req.params as { interestId?: string };
+      if (!interestId) {
+        throw new AppError("interestId is required", 400);
       }
-      const report = await this.reportUseCase.acceptReport({ reportId });
+      const report = await this.reportUseCase.acceptReport({ interestId });
       res.status(200).json({
         success: true,
         data: report,

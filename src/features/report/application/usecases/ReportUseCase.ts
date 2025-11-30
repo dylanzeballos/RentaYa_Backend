@@ -16,6 +16,7 @@ export class ReportUseCase {
   async createReport(payload: {
     userId: string;
     propertyId: string;
+    interestId: string,
     startDate: Date;
     finishDate: Date;
   }) {
@@ -42,6 +43,7 @@ export class ReportUseCase {
     const report = {
       userId: payload.userId,
       propertyId: payload.propertyId,
+      interestId: payload.interestId,
       startDate: start,
       finishDate: finish,
       uploadedAt: new Date(),
@@ -52,12 +54,12 @@ export class ReportUseCase {
     return await this.reportRepository.createReport(report);
   }
 
-  async acceptReport(payload: { reportId: string }) {
-    const report = await this.reportRepository.getById(payload.reportId);
+  async acceptReport(payload: { interestId: string }) {
+    const report = await this.reportRepository.getById(payload.interestId);
     if (!report) {
       throw new Error("Report not found");
     }
-    return await this.reportRepository.acceptReport(payload.reportId);
+    return await this.reportRepository.acceptReport(payload.interestId);
   }
 
   async getReportsByOwner(payload: { userId: string }) {

@@ -6,6 +6,7 @@ export class ReportRepository {
   async createReport(payload: {
     userId: string;
     propertyId: string;
+    interestId: string;
     status: string;
     totalPrice: any;
     startDate: Date;
@@ -15,15 +16,15 @@ export class ReportRepository {
       data: payload,
     });
   }
-  async getById(reportId: string): Promise<Report | null> {
+  async getById(interestId: string): Promise<Report | null> {
     return await prisma.report.findUnique({
-      where: { id: reportId },
+      where: { interestId: interestId },
     });
   }
 
-  async acceptReport(reportId: string): Promise<Report> {
+  async acceptReport(interestId: string): Promise<Report> {
     const report = await prisma.report.update({
-      where: { id: reportId },
+      where: { interestId: interestId },
       data: {
         status: "Aceptado",
         uploadedAt: new Date(),

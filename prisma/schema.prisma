@@ -126,6 +126,7 @@ model Interest {
   createdAt  DateTime  @default(now()) @db.Timestamp(0)
   property   Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  report     Report?   @relation("InterestToReport")
   messages   Message[]
 
   @@index([userId])
@@ -200,6 +201,7 @@ model Report {
   id         String    @id @default(uuid()) @db.Uuid
   userId     String    @db.Uuid
   propertyId String    @db.Uuid
+  interestId  String?    @unique @db.Uuid
   totalPrice Decimal?  @db.Decimal(10, 2)
   status     String    @db.VarChar(30)
   startDate  DateTime? @db.Timestamp(0)
@@ -211,6 +213,7 @@ model Report {
 
   property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  interest    Interest?  @relation("InterestToReport", fields: [interestId], references: [id])
 
   @@index([userId])
   @@index([propertyId])

@@ -14,7 +14,7 @@ router.post(
 );
 router.get("/", authMiddleware.authenticate, reportController.getReports);
 router.patch(
-  "/:reportId/accept",
+  "/:interestId/accept",
   authMiddleware.authenticate,
   reportController.acceptReport
 );
