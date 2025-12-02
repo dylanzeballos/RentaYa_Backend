@@ -273,7 +273,7 @@ const options: swaggerJsdoc.Options = {
             },
             title: {
               type: "string",
-              example: "¡Nuevo interés en tu propiedad!",
+              example: "¡Nueva solicitud de tu propiedad!",
               description: "Título de la notificación",
             },
             content: {

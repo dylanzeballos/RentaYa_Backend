@@ -123,7 +123,7 @@ export class NotificationUseCase {
     await this.createNotification({
       userId: propertyOwnerId,
       type: NotificationType.NEW_INTEREST,
-      title: "¡Nuevo interés en tu propiedad!",
+      title: "¡Nueva solicitud de tu propiedad!",
       content: `${userName} está interesado en "${propertyTitle}"`,
       metadata: { propertyId, interestId },
       sendPush: true,
@@ -173,8 +173,8 @@ export class NotificationUseCase {
     await this.createNotification({
       userId,
       type: NotificationType.INTEREST_ACCEPTED,
-      title: "¡Tu interés fue aceptado!",
-      content: `El propietario aceptó tu interés en "${propertyTitle}"`,
+      title: "¡Tu solicitud fue aceptada!",
+      content: `El propietario aceptó tu solicitud en "${propertyTitle}"`,
       metadata: { propertyId, interestId },
       sendPush: true,
     });
@@ -188,13 +188,13 @@ export class NotificationUseCase {
     reason?: string,
   ): Promise<void> {
     const content = reason
-      ? `El propietario rechazó tu interés en "${propertyTitle}". Motivo: ${reason}`
-      : `El propietario rechazó tu interés en "${propertyTitle}"`;
+      ? `El propietario rechazó tu solicitud en "${propertyTitle}". Motivo: ${reason}`
+      : `El propietario rechazó tu solicitud en "${propertyTitle}"`;
 
     await this.createNotification({
       userId,
       type: NotificationType.INTEREST_REJECTED,
-      title: "Interés rechazado",
+      title: "solicitud rechazada",
       content,
       metadata: { propertyId, interestId, reason },
       sendPush: true,
