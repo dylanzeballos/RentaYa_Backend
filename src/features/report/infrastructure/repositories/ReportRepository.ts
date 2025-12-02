@@ -34,6 +34,14 @@ export class ReportRepository {
     return report;
   }
 
+  async rejectReport(interestId: string): Promise<Report> {
+    const report = await prisma.report.delete({
+      where: { interestId: interestId }
+    });
+
+    return report;
+  }
+
   async getByPropertyIds(propertyIds: string[]): Promise<Report[]> {
     return prisma.report.findMany({
       where: {

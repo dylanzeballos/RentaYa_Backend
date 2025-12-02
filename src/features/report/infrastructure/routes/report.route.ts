@@ -18,6 +18,11 @@ router.patch(
   authMiddleware.authenticate,
   reportController.acceptReport
 );
+router.delete(
+  "/:interestId/reject",
+  authMiddleware.authenticate,
+  reportController.rejectReport
+);
 
 // router.post('/email', authMiddleware.authenticate, validateCreateReport, reportController.createReportByEmail);
 // router.get('/:userId/:propertyId', authMiddleware.authenticate, reportController.getReportsByUserAndProperty);

@@ -57,6 +57,21 @@ export class ReportController {
     }
   );
 
+  rejectReport: RequestHandler = asyncHandler(
+    async (req: Request, res: Response): Promise<void> => {
+      const { interestId } = req.params as { interestId?: string };
+      if (!interestId) {
+        throw new AppError("interestId is required", 400);
+      }
+      const report = await this.reportUseCase.rejectReport({ interestId });
+      res.status(200).json({
+        success: true,
+        data: report,
+        message: "Report accepted rejected",
+      });
+    }
+  );
+
   getReports: RequestHandler = asyncHandler(
     async (req: AuthenticatedRequest, res: Response) => {
       const userId = req.user?.userId;

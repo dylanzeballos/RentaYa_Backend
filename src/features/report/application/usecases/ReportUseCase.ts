@@ -62,6 +62,14 @@ export class ReportUseCase {
     return await this.reportRepository.acceptReport(payload.interestId);
   }
 
+  async rejectReport(payload: { interestId: string }) {
+    const report = await this.reportRepository.getById(payload.interestId);
+    if (!report) {
+      throw new Error("Report not found");
+    }
+    return await this.reportRepository.rejectReport(payload.interestId);
+  }
+
   async getReportsByOwner(payload: { userId: string }) {
     const properties = await this.propertyRepository.findByOwnerId(
       payload.userId
