@@ -60,7 +60,7 @@ export class CreateInterestUseCase {
       try {
         const socketPayload = {
           type: "NEW_INTEREST",
-          title: "¡Nuevo interés en tu propiedad!",
+          title: "¡Nueva solicitud de tu propiedad!",
           content: `${userName} está interesado en "${propertyTitle}"`,
           metadata: {
             propertyId: property.id,
