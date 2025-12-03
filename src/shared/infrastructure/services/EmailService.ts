@@ -18,10 +18,9 @@ export class EmailService {
     }
 
     this.transporter = nodemailer.createTransport({
-      service: 'gmail',
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
       auth:
         emailUser && emailPassword
           ? {
@@ -30,8 +29,8 @@ export class EmailService {
             }
           : undefined,
       tls: {
-        rejectUnauthorized: false
-      }
+        rejectUnauthorized: false,
+      },
     });
 
     if (emailUser && emailPassword) {
@@ -42,9 +41,9 @@ export class EmailService {
   private async verifyConnection(): Promise<void> {
     try {
       await this.transporter.verify();
-      console.log('SMTP connection verified successfully');
+      console.log("SMTP connection verified successfully");
     } catch (error) {
-      console.error('SMTP connection failed:', error);
+      console.error("SMTP connection failed:", error);
     }
   }
 
