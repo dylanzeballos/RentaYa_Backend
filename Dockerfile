@@ -1,59 +1,61 @@
-# Multi-stage build for optimized image size
+# Stage 1: Build
 FROM node:20-alpine AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copiar archivos de configuración
 COPY package*.json ./
 COPY tsconfig.json ./
 COPY prisma ./prisma/
 
-# Install dependencies (including dev dependencies for build)
-RUN npm ci
+# Instalar todas las dependencias (incluyendo devDependencies)
+RUN npm install && \
+    npx prisma generate && \
+    npm cache clean --force
 
-# Copy source code
-COPY src ./src
-
-# Generate Prisma Client
-RUN npx prisma generate
+# Copiar código fuente
+COPY . .
 
 # Build TypeScript
 RUN npm run build
 
-# Production stage
+# Stage 2: Production
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
+# Copiar package files
 COPY package*.json ./
 COPY prisma ./prisma/
 
-# Install only production dependencies
-RUN npm ci --only=production && \
+# Instalar solo dependencias de producción
+RUN npm install --only=production && \
     npx prisma generate && \
     npm cache clean --force
 
-# Copy built application from builder
+# Copiar código compilado desde builder
 COPY --from=builder /app/dist ./dist
 
-# Create non-root user for security
+# Crear usuario no-root para seguridad
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nodejs -u 1001
 
-# Change ownership of the app directory
+# Cambiar ownership
 RUN chown -R nodejs:nodejs /app
 
-# Switch to non-root user
+# Cambiar a usuario no-root
 USER nodejs
 
-# Expose port
+# Exponer puerto
 EXPOSE 3000
 
+# Variables de entorno por defecto
+ENV NODE_ENV=production
+ENV PORT=3000
+
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
   CMD node -e "require('http').get('http://localhost:3000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
-# Start the application
+# Comando de inicio
 CMD ["node", "-r", "module-alias/register", "dist/server.js"]
