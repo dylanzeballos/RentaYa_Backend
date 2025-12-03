@@ -6,47 +6,64 @@ export class EmailService {
   private fromEmail: string;
 
   constructor() {
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const sendgridApiKey = process.env.SENDGRID_API_KEY;
     const emailUser = process.env.EMAIL_USER;
     const emailPassword = process.env.EMAIL_PASSWORD;
-    const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
-    const smtpPort = parseInt(process.env.SMTP_PORT || "587");
     
-    this.fromEmail =
-      process.env.EMAIL_FROM || emailUser || "noreply@rentaya.com";
+    this.fromEmail = process.env.EMAIL_FROM || "noreply@rentaya.com";
 
-    if (!emailUser || !emailPassword) {
+    if (resendApiKey) {
+      this.transporter = nodemailer.createTransport({
+        host: "smtp.resend.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "resend",
+          pass: resendApiKey,
+        },
+      });
+      console.log("Email service configured with Resend");
+    } else if (sendgridApiKey) {
+      this.transporter = nodemailer.createTransport({
+        host: "smtp.sendgrid.net",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "apikey",
+          pass: sendgridApiKey,
+        },
+      });
+      console.log("Email service configured with SendGrid");
+    } else if (emailUser && emailPassword) {
+      const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
+      const smtpPort = parseInt(process.env.SMTP_PORT || "465");
+      
+      this.transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port: smtpPort,
+        secure: true,
+        auth: {
+          user: emailUser,
+          pass: emailPassword,
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+      });
+      console.warn("Email service configured with Gmail (may fail on Railway)");
+    } else {
       console.warn(
         "Email credentials not configured. Email functionality will be limited.",
       );
+      this.transporter = nodemailer.createTransport({
+        host: "smtp.example.com",
+        port: 587,
+        secure: false,
+      });
     }
 
-    this.transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpPort === 465, // true para 465, false para otros puertos
-      auth:
-        emailUser && emailPassword
-          ? {
-              user: emailUser,
-              pass: emailPassword,
-            }
-          : undefined,
-      tls: {
-        rejectUnauthorized: false,
-      },
-      // Configuraciones para evitar timeouts
-      connectionTimeout: 10000, // 10 segundos
-      greetingTimeout: 10000,
-      socketTimeout: 10000,
-      // Pool de conexiones para mejor rendimiento
-      pool: true,
-      maxConnections: 5,
-      maxMessages: 100,
-    });
-
-    if (emailUser && emailPassword) {
-      this.verifyConnection();
-    }
+    this.verifyConnection();
   }
 
   private async verifyConnection(): Promise<void> {
