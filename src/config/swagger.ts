@@ -14,10 +14,15 @@ const options: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: process.env.NODE_ENV === 'production'
-          ? "https://rentayabackend-production.up.railway.app/"
-          : `http://localhost:${process.env.PORT || 3000}`,
+        url: process.env.API_URL || 
+             (process.env.NODE_ENV === 'production'
+               ? "https://rentayabackend-production.up.railway.app"
+               : `http://localhost:${process.env.PORT || 3000}`),
         description: process.env.NODE_ENV === 'production' ? "Production server" : "Development server",
+      },
+      {
+        url: `http://localhost:${process.env.PORT || 3000}`,
+        description: "Local development server",
       },
     ],
     components: {

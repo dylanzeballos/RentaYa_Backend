@@ -1,23 +1,61 @@
-import { Resend } from "resend";
+import nodemailer, { Transporter } from "nodemailer";
 import { AppError } from "@/shared/domain/errors/AppError";
 
 export class EmailService {
-  private resend: Resend | null = null;
+  private transporter: Transporter | null = null;
   private fromEmail: string;
+  private provider: string = "None";
 
   constructor() {
-    const resendApiKey = process.env.RESEND_API_KEY;
-    
-    this.fromEmail = process.env.EMAIL_FROM || "onboarding@resend.dev";
+    this.fromEmail = process.env.EMAIL_FROM || "noreply@rentaya.com";
 
-    if (resendApiKey) {
-      this.resend = new Resend(resendApiKey);
-      console.log("Email service configured with Resend API");
+    // Prioridad: SendGrid > SMTP/Gmail
+    if (process.env.SENDGRID_API_KEY) {
+      this.provider = "SendGrid";
+      this.transporter = nodemailer.createTransport({
+        host: "smtp.sendgrid.net",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "apikey",
+          pass: process.env.SENDGRID_API_KEY,
+        },
+      });
+      console.log("Email service configured with SendGrid");
       console.log(`Sending from: ${this.fromEmail}`);
+      this.verifyConnection();
+    } else if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
+      this.provider = "SMTP";
+      this.transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || "smtp.gmail.com",
+        port: parseInt(process.env.SMTP_PORT || "587"),
+        secure: process.env.SMTP_PORT === "465",
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+      });
+      console.log("Email service configured with SMTP");
+      console.log(`Sending from: ${this.fromEmail}`);
+      this.verifyConnection();
     } else {
       console.warn(
-        "RESEND_API_KEY not configured. Email functionality will be disabled.",
+        "Email service not configured. Please set SENDGRID_API_KEY or SMTP credentials.",
       );
+    }
+  }
+
+  private async verifyConnection(): Promise<void> {
+    if (!this.transporter) return;
+    
+    try {
+      await this.transporter.verify();
+      console.log(`${this.provider} connection verified successfully`);
+    } catch (error) {
+      console.error(`${this.provider} connection failed:`, error);
     }
   }
 
@@ -26,7 +64,7 @@ export class EmailService {
     subject: string,
     html: string,
   ): Promise<void> {
-    if (!this.resend) {
+    if (!this.transporter) {
       throw new AppError(
         "Email service not configured. Please contact support.",
         500,
@@ -34,24 +72,16 @@ export class EmailService {
     }
 
     try {
-      const { data, error } = await this.resend.emails.send({
-        from: this.fromEmail,
-        to: [to],
+      const info = await this.transporter.sendMail({
+        from: `"RentaYa" <${this.fromEmail}>`,
+        to,
         subject,
         html,
       });
 
-      if (error) {
-        console.error("Resend error:", error);
-        throw new AppError(
-          "Error al enviar el correo electrónico. Por favor, intenta nuevamente.",
-          500,
-        );
-      }
-
-      console.log("Email sent successfully:", data?.id);
+      console.log(`Email sent successfully via ${this.provider}:`, info.messageId);
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error(`Error sending email via ${this.provider}:`, error);
       throw new AppError(
         "Error al enviar el correo electrónico. Por favor, intenta nuevamente.",
         500,
