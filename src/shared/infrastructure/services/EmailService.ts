@@ -1,77 +1,61 @@
-import nodemailer, { Transporter } from "nodemailer";
+import { Resend } from "resend";
 import { AppError } from "@/shared/domain/errors/AppError";
 
 export class EmailService {
-  private transporter: Transporter;
+  private resend: Resend | null = null;
   private fromEmail: string;
 
   constructor() {
     const resendApiKey = process.env.RESEND_API_KEY;
-    const sendgridApiKey = process.env.SENDGRID_API_KEY;
-    const emailUser = process.env.EMAIL_USER;
-    const emailPassword = process.env.EMAIL_PASSWORD;
     
-    this.fromEmail = process.env.EMAIL_FROM || "noreply@rentaya.com";
+    this.fromEmail = process.env.EMAIL_FROM || "onboarding@resend.dev";
 
     if (resendApiKey) {
-      this.transporter = nodemailer.createTransport({
-        host: "smtp.resend.com",
-        port: 465,
-        secure: true,
-        auth: {
-          user: "resend",
-          pass: resendApiKey,
-        },
-      });
-      console.log("Email service configured with Resend");
-    } else if (sendgridApiKey) {
-      this.transporter = nodemailer.createTransport({
-        host: "smtp.sendgrid.net",
-        port: 465,
-        secure: true,
-        auth: {
-          user: "apikey",
-          pass: sendgridApiKey,
-        },
-      });
-      console.log("Email service configured with SendGrid");
-    } else if (emailUser && emailPassword) {
-      const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
-      const smtpPort = parseInt(process.env.SMTP_PORT || "465");
-      
-      this.transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: smtpPort,
-        secure: true,
-        auth: {
-          user: emailUser,
-          pass: emailPassword,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
-      console.warn("Email service configured with Gmail (may fail on Railway)");
+      this.resend = new Resend(resendApiKey);
+      console.log("Email service configured with Resend API");
+      console.log(`Sending from: ${this.fromEmail}`);
     } else {
       console.warn(
-        "Email credentials not configured. Email functionality will be limited.",
+        "RESEND_API_KEY not configured. Email functionality will be disabled.",
       );
-      this.transporter = nodemailer.createTransport({
-        host: "smtp.example.com",
-        port: 587,
-        secure: false,
-      });
     }
-
-    this.verifyConnection();
   }
 
-  private async verifyConnection(): Promise<void> {
+  private async sendEmail(
+    to: string,
+    subject: string,
+    html: string,
+  ): Promise<void> {
+    if (!this.resend) {
+      throw new AppError(
+        "Email service not configured. Please contact support.",
+        500,
+      );
+    }
+
     try {
-      await this.transporter.verify();
-      console.log("SMTP connection verified successfully");
+      const { data, error } = await this.resend.emails.send({
+        from: this.fromEmail,
+        to: [to],
+        subject,
+        html,
+      });
+
+      if (error) {
+        console.error("Resend error:", error);
+        throw new AppError(
+          "Error al enviar el correo electrónico. Por favor, intenta nuevamente.",
+          500,
+        );
+      }
+
+      console.log("Email sent successfully:", data?.id);
     } catch (error) {
-      console.error("SMTP connection failed:", error);
+      console.error("Error sending email:", error);
+      throw new AppError(
+        "Error al enviar el correo electrónico. Por favor, intenta nuevamente.",
+        500,
+      );
     }
   }
 
@@ -83,365 +67,90 @@ export class EmailService {
     const expiryMinutes = 15;
 
     const htmlContent = `
-            <!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <style>
-                    body {
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        line-height: 1.6;
-                        color: #333;
-                        background-color: #f4f4f4;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .container {
-                        max-width: 600px;
-                        margin: 20px auto;
-                        background: #ffffff;
-                        border-radius: 8px;
-                        overflow: hidden;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                    }
-                    .header {
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        color: #ffffff;
-                        padding: 30px 20px;
-                        text-align: center;
-                    }
-                    .code-box {
-                        background: #f8f9fa;
-                        border: 2px dashed #667eea;
-                        border-radius: 10px;
-                        padding: 20px;
-                        margin: 30px 0;
-                        text-align: center;
-                    }
-                    .code {
-                        font-size: 48px;
-                        font-weight: bold;
-                        color: #667eea;
-                        letter-spacing: 8px;
-                        font-family: 'Courier New', monospace;
-                    }
-                    .header h1 {
-                        margin: 0;
-                        font-size: 28px;
-                    }
-                    .content {
-                        padding: 30px 20px;
-                    }
-                    .greeting {
-                        font-size: 18px;
-                        margin-bottom: 20px;
-                        color: #333;
-                    }
-                    .message {
-                        margin-bottom: 25px;
-                        color: #555;
-                    }
-                    .button-container {
-                        text-align: center;
-                        margin: 30px 0;
-                    }
-                    .reset-button {
-                        display: inline-block;
-                        padding: 14px 40px;
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        color: #ffffff;
-                        text-decoration: none;
-                        border-radius: 5px;
-                        font-weight: bold;
-                        font-size: 16px;
-                        transition: transform 0.2s;
-                    }
-                    .reset-button:hover {
-                        transform: translateY(-2px);
-                    }
-                    .alternative-link {
-                        background-color: #f8f9fa;
-                        padding: 15px;
-                        border-radius: 5px;
-                        margin: 20px 0;
-                        word-break: break-all;
-                        font-size: 12px;
-                        color: #666;
-                    }
-                    .warning {
-                        background-color: #fff3cd;
-                        border-left: 4px solid #ffc107;
-                        padding: 12px 15px;
-                        margin: 20px 0;
-                        color: #856404;
-                    }
-                    .footer {
-                        background-color: #f8f9fa;
-                        padding: 20px;
-                        text-align: center;
-                        font-size: 12px;
-                        color: #6c757d;
-                        border-top: 1px solid #dee2e6;
-                    }
-                    .expiry {
-                        font-weight: bold;
-                        color: #dc3545;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="container">
-                    <div class="header">
-                        <h1>RentaYa</h1>
-                    </div>
-                    <div class="content">
-                        <p class="greeting">Hola${userName ? " " + userName : ""},</p>
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+          }
+          .header h1 {
+            margin: 0;
+            font-size: 28px;
+          }
+          .content {
+            padding: 30px 20px;
+          }
+          .code-box {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+          }
+          .code {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            letter-spacing: 8px;
+            font-family: 'Courier New', monospace;
+          }
+          .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>🔐 Recuperación de Contraseña</h1>
+          </div>
+          <div class="content">
+            <p>Hola${userName ? ` ${userName}` : ""},</p>
+            <p>Recibimos una solicitud para restablecer tu contraseña en <strong>RentaYa</strong>.</p>
+            <p>Usa el siguiente código para continuar con el proceso:</p>
+            <div class="code-box">
+              <div class="code">${resetCode}</div>
+            </div>
+            <p><strong>⏰ Este código expirará en ${expiryMinutes} minutos.</strong></p>
+            <p>Si no solicitaste este cambio, puedes ignorar este correo de forma segura.</p>
+          </div>
+          <div class="footer">
+            <p>Este es un correo automático, por favor no respondas.</p>
+            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
 
-                        <div class="message">
-                            <p>Recibimos una solicitud para restablecer la contraseña de tu cuenta en RentaYa.</p>
-                            <p>Usa el siguiente código de verificación en la aplicación:</p>
-                        </div>
-
-                        <div class="code-box">
-                            <div class="code">${resetCode}</div>
-                        </div>
-
-                        <div class="warning">
-                            ⚠️ <strong>Importante:</strong> Este código expirará en <span class="expiry">${expiryMinutes} minutos</span>.
-                        </div>
-
-                        <div class="message">
-                            <p><strong>Instrucciones:</strong></p>
-                            <ol style="text-align: left; color: #555;">
-                                <li>Abre la aplicación RentaYa</li>
-                                <li>Ingresa tu correo electrónico</li>
-                                <li>Introduce el código de 6 dígitos</li>
-                                <li>Crea tu nueva contraseña</li>
-                            </ol>
-                            <p><strong>¿No solicitaste este cambio?</strong></p>
-                            <p>Si no solicitaste restablecer tu contraseña, puedes ignorar este correo de forma segura. Tu contraseña actual permanecerá sin cambios.</p>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
-                        <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
-                    </div>
-                </div>
-            </body>
-            </html>
-        `;
-
-    const textContent = `
-Hola${userName ? " " + userName : ""},
-
-Recibimos una solicitud para restablecer la contraseña de tu cuenta en RentaYa.
-
-Tu código de verificación es: ${resetCode}
-
-Este código expirará en ${expiryMinutes} minutos.
-
-Instrucciones:
-1. Abre la aplicación RentaYa
-2. Ingresa tu correo electrónico
-3. Introduce el código de 6 dígitos
-4. Crea tu nueva contraseña
-
-Si no solicitaste este cambio, puedes ignorar este correo de forma segura.
-
-Saludos,
-El equipo de RentaYa
-        `;
-
-    try {
-      await this.transporter.sendMail({
-        from: `"RentaYa" <${this.fromEmail}>`,
-        to,
-        subject: `Tu código de verificación: ${resetCode} - RentaYa`,
-        text: textContent,
-        html: htmlContent,
-      });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      throw new AppError(
-        "No se pudo enviar el correo electrónico. Por favor, intenta más tarde.",
-        500,
-      );
-    }
-  }
-
-  async sendPasswordResetEmail(
-    to: string,
-    resetToken: string,
-    userName?: string,
-  ): Promise<void> {
-    const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${resetToken}`;
-    const expiryMinutes = 30;
-
-    const htmlContent = `
-            <!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <style>
-                    body {
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        line-height: 1.6;
-                        color: #333;
-                        background-color: #f4f4f4;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .container {
-                        max-width: 600px;
-                        margin: 20px auto;
-                        background: #ffffff;
-                        border-radius: 8px;
-                        overflow: hidden;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                    }
-                    .header {
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        color: #ffffff;
-                        padding: 30px 20px;
-                        text-align: center;
-                    }
-                    .header h1 {
-                        margin: 0;
-                        font-size: 28px;
-                    }
-                    .content {
-                        padding: 30px 20px;
-                    }
-                    .greeting {
-                        font-size: 18px;
-                        margin-bottom: 20px;
-                        color: #333;
-                    }
-                    .message {
-                        margin-bottom: 25px;
-                        color: #555;
-                    }
-                    .button-container {
-                        text-align: center;
-                        margin: 30px 0;
-                    }
-                    .reset-button {
-                        display: inline-block;
-                        padding: 14px 40px;
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        color: #ffffff;
-                        text-decoration: none;
-                        border-radius: 5px;
-                        font-weight: bold;
-                        font-size: 16px;
-                        transition: transform 0.2s;
-                    }
-                    .reset-button:hover {
-                        transform: translateY(-2px);
-                    }
-                    .alternative-link {
-                        background-color: #f8f9fa;
-                        padding: 15px;
-                        border-radius: 5px;
-                        margin: 20px 0;
-                        word-break: break-all;
-                        font-size: 12px;
-                        color: #666;
-                    }
-                    .warning {
-                        background-color: #fff3cd;
-                        border-left: 4px solid #ffc107;
-                        padding: 12px 15px;
-                        margin: 20px 0;
-                        color: #856404;
-                    }
-                    .footer {
-                        background-color: #f8f9fa;
-                        padding: 20px;
-                        text-align: center;
-                        font-size: 12px;
-                        color: #6c757d;
-                        border-top: 1px solid #dee2e6;
-                    }
-                    .expiry {
-                        font-weight: bold;
-                        color: #dc3545;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="container">
-                    <div class="header">
-                        <h1>RentaYa</h1>
-                    </div>
-                    <div class="content">
-                        <p class="greeting">Hola${userName ? " " + userName : ""},</p>
-
-                        <div class="message">
-                            <p>Recibimos una solicitud para restablecer la contraseña de tu cuenta en RentaYa.</p>
-                            <p>Haz clic en el botón de abajo para crear una nueva contraseña:</p>
-                        </div>
-
-                        <div class="button-container">
-                            <a href="${resetUrl}" class="reset-button">Restablecer Contraseña</a>
-                        </div>
-
-                        <div class="alternative-link">
-                            <strong>Si el botón no funciona, copia y pega este enlace en tu navegador:</strong><br>
-                            ${resetUrl}
-                        </div>
-
-                        <div class="warning">
-                            ⚠️ <strong>Importante:</strong> Este enlace expirará en <span class="expiry">${expiryMinutes} minutos</span>.
-                        </div>
-
-                        <div class="message">
-                            <p><strong>¿No solicitaste este cambio?</strong></p>
-                            <p>Si no solicitaste restablecer tu contraseña, puedes ignorar este correo de forma segura. Tu contraseña actual permanecerá sin cambios.</p>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
-                        <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
-                    </div>
-                </div>
-            </body>
-            </html>
-        `;
-
-    const textContent = `
-Hola${userName ? " " + userName : ""},
-
-Recibimos una solicitud para restablecer la contraseña de tu cuenta en RentaYa.
-
-Para restablecer tu contraseña, visita el siguiente enlace:
-${resetUrl}
-
-Este enlace expirará en ${expiryMinutes} minutos.
-
-Si no solicitaste este cambio, puedes ignorar este correo de forma segura.
-
-Saludos,
-El equipo de RentaYa
-        `;
-
-    try {
-      await this.transporter.sendMail({
-        from: `"RentaYa" <${this.fromEmail}>`,
-        to,
-        subject: "Restablece tu contraseña - RentaYa",
-        text: textContent,
-        html: htmlContent,
-      });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      throw new AppError(
-        "No se pudo enviar el correo electrónico. Por favor, intenta más tarde.",
-        500,
-      );
-    }
+    await this.sendEmail(to, "Código de Recuperación de Contraseña - RentaYa", htmlContent);
   }
 
   async sendPasswordChangedConfirmation(
@@ -449,119 +158,251 @@ El equipo de RentaYa
     userName?: string,
   ): Promise<void> {
     const htmlContent = `
-            <!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <style>
-                    body {
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        line-height: 1.6;
-                        color: #333;
-                        background-color: #f4f4f4;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .container {
-                        max-width: 600px;
-                        margin: 20px auto;
-                        background: #ffffff;
-                        border-radius: 8px;
-                        overflow: hidden;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                    }
-                    .header {
-                        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-                        color: #ffffff;
-                        padding: 30px 20px;
-                        text-align: center;
-                    }
-                    .header h1 {
-                        margin: 0;
-                        font-size: 28px;
-                    }
-                    .content {
-                        padding: 30px 20px;
-                    }
-                    .success-icon {
-                        text-align: center;
-                        font-size: 48px;
-                        margin-bottom: 20px;
-                    }
-                    .message {
-                        margin-bottom: 20px;
-                        color: #555;
-                    }
-                    .warning {
-                        background-color: #fff3cd;
-                        border-left: 4px solid #ffc107;
-                        padding: 12px 15px;
-                        margin: 20px 0;
-                        color: #856404;
-                    }
-                    .footer {
-                        background-color: #f8f9fa;
-                        padding: 20px;
-                        text-align: center;
-                        font-size: 12px;
-                        color: #6c757d;
-                        border-top: 1px solid #dee2e6;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="container">
-                    <div class="header">
-                        <h1>RentaYa</h1>
-                    </div>
-                    <div class="content">
-                        <div class="success-icon">🎉</div>
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          .header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+          }
+          .header h1 {
+            margin: 0;
+            font-size: 28px;
+          }
+          .content {
+            padding: 30px 20px;
+          }
+          .success-icon {
+            text-align: center;
+            font-size: 64px;
+            margin: 20px 0;
+          }
+          .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>✅ Contraseña Actualizada</h1>
+          </div>
+          <div class="content">
+            <div class="success-icon">🎉</div>
+            <p>Hola${userName ? ` ${userName}` : ""},</p>
+            <p>Tu contraseña ha sido cambiada exitosamente.</p>
+            <p>Si no realizaste este cambio, por favor contacta a nuestro equipo de soporte inmediatamente.</p>
+          </div>
+          <div class="footer">
+            <p>Este es un correo automático, por favor no respondas.</p>
+            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
 
-                        <p class="greeting">Hola${userName ? " " + userName : ""},</p>
+    await this.sendEmail(to, "Contraseña Actualizada - RentaYa", htmlContent);
+  }
 
-                        <div class="message">
-                            <p><strong>Tu contraseña ha sido cambiada exitosamente.</strong></p>
-                            <p>Ya puedes iniciar sesión con tu nueva contraseña.</p>
-                        </div>
+  async sendWelcomeEmail(to: string, userName: string): Promise<void> {
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+          }
+          .header h1 {
+            margin: 0;
+            font-size: 32px;
+          }
+          .content {
+            padding: 30px 20px;
+          }
+          .welcome-icon {
+            text-align: center;
+            font-size: 64px;
+            margin: 20px 0;
+          }
+          .features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+          }
+          .features ul {
+            margin: 0;
+            padding-left: 20px;
+          }
+          .features li {
+            margin: 10px 0;
+          }
+          .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>¡Bienvenido a RentaYa!</h1>
+          </div>
+          <div class="content">
+            <div class="welcome-icon">👋</div>
+            <p>Hola <strong>${userName}</strong>,</p>
+            <p>¡Estamos emocionados de tenerte con nosotros!</p>
+            <p>Con RentaYa puedes:</p>
+            <div class="features">
+              <ul>
+                <li>Buscar propiedades en alquiler o venta</li>
+                <li>Publicar tus propias propiedades</li>
+                <li>Conectar con propietarios e inquilinos</li>
+                <li>Recibir notificaciones de nuevas propiedades</li>
+                <li>Dejar reseñas y valoraciones</li>
+              </ul>
+            </div>
+            <p>¡Comienza a explorar ahora mismo!</p>
+          </div>
+          <div class="footer">
+            <p>¿Tienes preguntas? Estamos aquí para ayudarte.</p>
+            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
 
-                        <div class="warning">
-                            ⚠️ <strong>¿No realizaste este cambio?</strong><br>
-                            Si no fuiste tú quien cambió la contraseña, por favor contacta a nuestro equipo de soporte inmediatamente para proteger tu cuenta.
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
-                        <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
-                    </div>
-                </div>
-            </body>
-            </html>
-        `;
+    await this.sendEmail(to, "¡Bienvenido a RentaYa! 🏡", htmlContent);
+  }
 
-    const textContent = `
-Hola${userName ? " " + userName : ""},
+  async sendPropertyNotification(
+    to: string,
+    propertyTitle: string,
+    propertyUrl: string,
+  ): Promise<void> {
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+          }
+          .content {
+            padding: 30px 20px;
+          }
+          .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+          }
+          .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>Nueva Propiedad Disponible</h1>
+          </div>
+          <div class="content">
+            <p>¡Hola!</p>
+            <p>Hay una nueva propiedad que puede interesarte:</p>
+            <h2>${propertyTitle}</h2>
+            <p style="text-align: center;">
+              <a href="${propertyUrl}" class="button">Ver Propiedad</a>
+            </p>
+          </div>
+          <div class="footer">
+            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
 
-Tu contraseña ha sido cambiada exitosamente.
-
-Ya puedes iniciar sesión con tu nueva contraseña.
-
-Si no realizaste este cambio, por favor contacta a nuestro equipo de soporte inmediatamente.
-
-Saludos,
-El equipo de RentaYa
-        `;
-
-    try {
-      await this.transporter.sendMail({
-        from: `"RentaYa" <${this.fromEmail}>`,
-        to,
-        subject: "Contraseña cambiada exitosamente - RentaYa",
-        text: textContent,
-        html: htmlContent,
-      });
-    } catch (error) {
-      console.error("Error sending confirmation email:", error);
-    }
+    await this.sendEmail(to, "Nueva Propiedad Disponible - RentaYa", htmlContent);
   }
 }
