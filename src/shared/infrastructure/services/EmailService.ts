@@ -8,6 +8,9 @@ export class EmailService {
   constructor() {
     const emailUser = process.env.EMAIL_USER;
     const emailPassword = process.env.EMAIL_PASSWORD;
+    const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
+    const smtpPort = parseInt(process.env.SMTP_PORT || "587");
+    
     this.fromEmail =
       process.env.EMAIL_FROM || emailUser || "noreply@rentaya.com";
 
@@ -18,9 +21,9 @@ export class EmailService {
     }
 
     this.transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465, // true para 465, false para otros puertos
       auth:
         emailUser && emailPassword
           ? {
@@ -31,6 +34,14 @@ export class EmailService {
       tls: {
         rejectUnauthorized: false,
       },
+      // Configuraciones para evitar timeouts
+      connectionTimeout: 10000, // 10 segundos
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
+      // Pool de conexiones para mejor rendimiento
+      pool: true,
+      maxConnections: 5,
+      maxMessages: 100,
     });
 
     if (emailUser && emailPassword) {
