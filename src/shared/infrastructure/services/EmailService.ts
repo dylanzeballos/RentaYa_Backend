@@ -1,91 +1,50 @@
-import nodemailer, { Transporter } from "nodemailer";
+import sgMail from '@sendgrid/mail';
 import { AppError } from "@/shared/domain/errors/AppError";
 
 export class EmailService {
-  private transporter: Transporter | null = null;
   private fromEmail: string;
-  private provider: string = "None";
+  private isConfigured: boolean = false;
 
   constructor() {
     this.fromEmail = process.env.EMAIL_FROM || "noreply@rentaya.com";
-
-    // Prioridad: SendGrid > SMTP/Gmail
-    if (process.env.SENDGRID_API_KEY) {
-      this.provider = "SendGrid";
-      this.transporter = nodemailer.createTransport({
-        host: "smtp.sendgrid.net",
-        port: 465,
-        secure: true,
-        auth: {
-          user: "apikey",
-          pass: process.env.SENDGRID_API_KEY,
-        },
-      });
-      console.log("Email service configured with SendGrid");
-      console.log(`Sending from: ${this.fromEmail}`);
-      this.verifyConnection();
-    } else if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
-      this.provider = "SMTP";
-      this.transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "smtp.gmail.com",
-        port: parseInt(process.env.SMTP_PORT || "587"),
-        secure: process.env.SMTP_PORT === "465",
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASSWORD,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
-      console.log("Email service configured with SMTP");
-      console.log(`Sending from: ${this.fromEmail}`);
-      this.verifyConnection();
-    } else {
-      console.warn(
-        "Email service not configured. Please set SENDGRID_API_KEY or SMTP credentials.",
-      );
-    }
-  }
-
-  private async verifyConnection(): Promise<void> {
-    if (!this.transporter) return;
     
+    const sendgridApiKey = process.env.SENDGRID_API_KEY;
+
+    if (!sendgridApiKey) {
+      console.error("SENDGRID_API_KEY not configured. Email functionality will be disabled.");
+      this.isConfigured = false;
+      return;
+    }
+
     try {
-      await this.transporter.verify();
-      console.log(`${this.provider} connection verified successfully`);
+      sgMail.setApiKey(sendgridApiKey);
+      this.isConfigured = true;
+      console.log("Email service configured with SendGrid API");
+      console.log(`Sending from: ${this.fromEmail}`);
     } catch (error) {
-      console.error(`${this.provider} connection failed:`, error);
+      console.error("Error configuring SendGrid:", error);
+      this.isConfigured = false;
     }
   }
 
-  private async sendEmail(
-    to: string,
-    subject: string,
-    html: string,
-  ): Promise<void> {
-    if (!this.transporter) {
-      throw new AppError(
-        "Email service not configured. Please contact support.",
-        500,
-      );
+  private async sendEmail(to: string, subject: string, html: string): Promise<void> {
+    if (!this.isConfigured) {
+      throw new AppError("Email service not configured", 500);
     }
 
     try {
-      const info = await this.transporter.sendMail({
-        from: `"RentaYa" <${this.fromEmail}>`,
+      const msg = {
         to,
+        from: this.fromEmail,
         subject,
         html,
-      });
+      };
 
-      console.log(`Email sent successfully via ${this.provider}:`, info.messageId);
-    } catch (error) {
-      console.error(`Error sending email via ${this.provider}:`, error);
-      throw new AppError(
-        "Error al enviar el correo electrónico. Por favor, intenta nuevamente.",
-        500,
-      );
+      await sgMail.send(msg);
+      console.log(`Email sent successfully to: ${to}`);
+    } catch (error: any) {
+      console.error("SendGrid error:", error.response?.body || error);
+      throw new AppError("Error al enviar el correo electrónico. Por favor, intenta nuevamente.", 500);
     }
   }
 
@@ -154,6 +113,11 @@ export class EmailService {
             font-size: 12px;
             color: #666;
           }
+          .warning {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 20px;
+          }
         </style>
       </head>
       <body>
@@ -162,18 +126,19 @@ export class EmailService {
             <h1>🔐 Recuperación de Contraseña</h1>
           </div>
           <div class="content">
-            <p>Hola${userName ? ` ${userName}` : ""},</p>
+            <p>Hola${userName ? ` <strong>${userName}</strong>` : ""},</p>
             <p>Recibimos una solicitud para restablecer tu contraseña en <strong>RentaYa</strong>.</p>
-            <p>Usa el siguiente código para continuar con el proceso:</p>
+            <p>Tu código de verificación es:</p>
             <div class="code-box">
               <div class="code">${resetCode}</div>
             </div>
-            <p><strong>⏰ Este código expirará en ${expiryMinutes} minutos.</strong></p>
-            <p>Si no solicitaste este cambio, puedes ignorar este correo de forma segura.</p>
+            <p>Ingresa este código en la aplicación para continuar con el proceso de recuperación.</p>
+            <p class="warning">⚠️ Este código expirará en ${expiryMinutes} minutos.</p>
+            <p>Si no solicitaste restablecer tu contraseña, puedes ignorar este correo de forma segura.</p>
           </div>
           <div class="footer">
-            <p>Este es un correo automático, por favor no respondas.</p>
-            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
+            <p>Saludos,<br><strong>El equipo de RentaYa</strong></p>
+            <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
           </div>
         </div>
       </body>
@@ -211,7 +176,7 @@ export class EmailService {
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
           }
           .header {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: #ffffff;
             padding: 30px 20px;
             text-align: center;
@@ -223,17 +188,17 @@ export class EmailService {
           .content {
             padding: 30px 20px;
           }
-          .success-icon {
-            text-align: center;
-            font-size: 64px;
-            margin: 20px 0;
-          }
           .footer {
             background: #f8f9fa;
             padding: 20px;
             text-align: center;
             font-size: 12px;
             color: #666;
+          }
+          .success-icon {
+            font-size: 64px;
+            text-align: center;
+            margin: 20px 0;
           }
         </style>
       </head>
@@ -244,13 +209,12 @@ export class EmailService {
           </div>
           <div class="content">
             <div class="success-icon">🎉</div>
-            <p>Hola${userName ? ` ${userName}` : ""},</p>
-            <p>Tu contraseña ha sido cambiada exitosamente.</p>
-            <p>Si no realizaste este cambio, por favor contacta a nuestro equipo de soporte inmediatamente.</p>
+            <p>Hola${userName ? ` <strong>${userName}</strong>` : ""},</p>
+            <p>Tu contraseña ha sido actualizada exitosamente.</p>
+            <p>Si no realizaste este cambio, por favor contacta inmediatamente a nuestro equipo de soporte.</p>
           </div>
           <div class="footer">
-            <p>Este es un correo automático, por favor no respondas.</p>
-            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
+            <p>Saludos,<br><strong>El equipo de RentaYa</strong></p>
           </div>
         </div>
       </body>
@@ -258,181 +222,5 @@ export class EmailService {
     `;
 
     await this.sendEmail(to, "Contraseña Actualizada - RentaYa", htmlContent);
-  }
-
-  async sendWelcomeEmail(to: string, userName: string): Promise<void> {
-    const htmlContent = `
-      <!DOCTYPE html>
-      <html lang="es">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-          body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-          }
-          .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          }
-          .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #ffffff;
-            padding: 40px 20px;
-            text-align: center;
-          }
-          .header h1 {
-            margin: 0;
-            font-size: 32px;
-          }
-          .content {
-            padding: 30px 20px;
-          }
-          .welcome-icon {
-            text-align: center;
-            font-size: 64px;
-            margin: 20px 0;
-          }
-          .features {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-          }
-          .features ul {
-            margin: 0;
-            padding-left: 20px;
-          }
-          .features li {
-            margin: 10px 0;
-          }
-          .footer {
-            background: #f8f9fa;
-            padding: 20px;
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>¡Bienvenido a RentaYa!</h1>
-          </div>
-          <div class="content">
-            <div class="welcome-icon">👋</div>
-            <p>Hola <strong>${userName}</strong>,</p>
-            <p>¡Estamos emocionados de tenerte con nosotros!</p>
-            <p>Con RentaYa puedes:</p>
-            <div class="features">
-              <ul>
-                <li>Buscar propiedades en alquiler o venta</li>
-                <li>Publicar tus propias propiedades</li>
-                <li>Conectar con propietarios e inquilinos</li>
-                <li>Recibir notificaciones de nuevas propiedades</li>
-                <li>Dejar reseñas y valoraciones</li>
-              </ul>
-            </div>
-            <p>¡Comienza a explorar ahora mismo!</p>
-          </div>
-          <div class="footer">
-            <p>¿Tienes preguntas? Estamos aquí para ayudarte.</p>
-            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </body>
-      </html>
-    `;
-
-    await this.sendEmail(to, "¡Bienvenido a RentaYa! 🏡", htmlContent);
-  }
-
-  async sendPropertyNotification(
-    to: string,
-    propertyTitle: string,
-    propertyUrl: string,
-  ): Promise<void> {
-    const htmlContent = `
-      <!DOCTYPE html>
-      <html lang="es">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-          body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-          }
-          .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          }
-          .header {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: #ffffff;
-            padding: 30px 20px;
-            text-align: center;
-          }
-          .content {
-            padding: 30px 20px;
-          }
-          .button {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #667eea;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 20px 0;
-          }
-          .footer {
-            background: #f8f9fa;
-            padding: 20px;
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>Nueva Propiedad Disponible</h1>
-          </div>
-          <div class="content">
-            <p>¡Hola!</p>
-            <p>Hay una nueva propiedad que puede interesarte:</p>
-            <h2>${propertyTitle}</h2>
-            <p style="text-align: center;">
-              <a href="${propertyUrl}" class="button">Ver Propiedad</a>
-            </p>
-          </div>
-          <div class="footer">
-            <p>&copy; ${new Date().getFullYear()} RentaYa. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </body>
-      </html>
-    `;
-
-    await this.sendEmail(to, "Nueva Propiedad Disponible - RentaYa", htmlContent);
   }
 }
