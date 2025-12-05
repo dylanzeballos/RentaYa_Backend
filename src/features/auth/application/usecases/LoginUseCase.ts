@@ -42,7 +42,8 @@ export class LoginUseCase {
                 fullName: user.fullName,
                 phone: user.phone,
                 role: user.role,
-                verificationStatus: user.verificationStatus
+                verificationStatus: user.verificationStatus,
+                profilePhoto: user.profilePhoto || null
             },
             ...tokens
         };

@@ -29,8 +29,7 @@ export class ReportUseCase {
     if (!property.payment) {
       throw new Error("Property has no payment type configured");
     }
-    const pricePerPeriod = property.price;
-    const daysPerPeriod = property.payment.days;
+    
     const start = new Date(payload.startDate);
     const finish = new Date(payload.finishDate);
     const diffMs = finish.getTime() - start.getTime();
@@ -38,6 +37,20 @@ export class ReportUseCase {
     if (totalDays <= 0) {
       throw new Error("Invalid date range");
     }
+
+    // Validar que no haya fechas superpuestas
+    const hasOverlap = await this.reportRepository.hasOverlappingDates(
+      payload.propertyId,
+      start,
+      finish
+    );
+    
+    if (hasOverlap) {
+      throw new Error("La propiedad ya tiene una reserva o solicitud activa en estas fechas");
+    }
+    
+    const pricePerPeriod = property.price;
+    const daysPerPeriod = property.payment.days;
     const periods = totalDays / daysPerPeriod;
     const totalPrice = periods * pricePerPeriod;
     const report = {
