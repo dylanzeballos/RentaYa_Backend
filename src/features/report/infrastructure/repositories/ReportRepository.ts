@@ -95,4 +95,41 @@ export class ReportRepository {
 
     return await prisma.report.create({ data });
   }
+
+  async hasOverlappingDates(
+    propertyId: string,
+    startDate: Date,
+    finishDate: Date
+  ): Promise<boolean> {
+    const overlappingReports = await prisma.report.findMany({
+      where: {
+        propertyId: propertyId,
+        status: {
+          in: ["Aceptado", "Pendiente"]
+        },
+        OR: [
+          {
+            AND: [
+              { startDate: { lte: startDate } },
+              { finishDate: { gte: startDate } }
+            ]
+          },
+          {
+            AND: [
+              { startDate: { lte: finishDate } },
+              { finishDate: { gte: finishDate } }
+            ]
+          },
+          {
+            AND: [
+              { startDate: { gte: startDate } },
+              { finishDate: { lte: finishDate } }
+            ]
+          }
+        ]
+      }
+    });
+
+    return overlappingReports.length > 0;
+  }
 }

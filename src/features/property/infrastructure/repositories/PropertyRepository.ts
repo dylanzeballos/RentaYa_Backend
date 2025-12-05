@@ -66,7 +66,34 @@ export class PropertyRepository {
 
   async listAllProperties(): Promise<any[]> {
     const items = await prisma.property.findMany({
-      include: { propertyPhotos: true },
+      include: {
+        propertyPhotos: true,
+        province: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        propertyType: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        operationType: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        payment: {
+          select: {
+            id: true,
+            name: true,
+            days: true,
+          },
+        },
+      },
       orderBy: { createdAt: "desc" },
     });
     return items;
