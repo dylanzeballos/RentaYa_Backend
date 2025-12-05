@@ -27,6 +27,7 @@ export interface AuthResponse {
         phone?: string | null;
         role: string;
         verificationStatus: string;
+        profilePhoto?: string | null;
     };
     accessToken: string;
     refreshToken: string;
