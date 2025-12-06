@@ -255,7 +255,7 @@ export class InterestRepository {
     `;
 
     if (conflictingInterests.length > 0) {
-      console.log('[hasDateConflict] Conflicto encontrado con Interest:', conflictingInterests[0].id);
+      console.log('[hasDateConflict] Conflicto encontrado con Interest:', conflictingInterests[0]?.id);
       return true;
     }
 
@@ -269,7 +269,7 @@ export class InterestRepository {
     `;
 
     if (conflictingReports.length > 0) {
-      console.log('[hasDateConflict] Conflicto encontrado con Report:', conflictingReports[0].id);
+      console.log('[hasDateConflict] Conflicto encontrado con Report:', conflictingReports[0]?.id);
       return true;
     }
 

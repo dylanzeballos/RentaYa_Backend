@@ -40,6 +40,9 @@ export class ReportRepository {
 
     // Determinar el estado basado en la fecha de inicio
     const now = new Date();
+    if (!existingReport.startDate) {
+      throw new Error("Report does not have a start date");
+    }
     const startDate = new Date(existingReport.startDate);
     const status = startDate <= now ? "En curso" : "Aceptado";
 
