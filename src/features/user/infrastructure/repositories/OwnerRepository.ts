@@ -9,17 +9,16 @@ export class OwnerRepository {
             include: {
                 reports: true,
                 reviews: true,
+                operationType: true,
             },
         });
 
         if (!properties || properties.length === 0) return null;
 
         const totalProperties = properties.length;
-        const availableCount = properties.filter((p: any) => p.status === 'disponible').length;
-        const rentedCount = properties.filter((p: any) => p.status === 'rentado').length;
-        const anticreticoCount = properties.filter((p: any) => p.operationTypeId && p.operationTypeId === 'anticretico').length;
+        const rentedCount = properties.filter((p: any) => p.operationType?.name === 'Alquiler').length;
+        const anticreticoCount = properties.filter((p: any) => p.operationType?.name === 'Anticretico').length;
 
-        // Sum up report.totalPrice (Prisma Decimal) where present
         const estimatedIncome = properties.reduce((sum: number, p: any) => {
             const propSum = (p.reports || []).reduce((rsum: number, r: any) => {
                 const val = r.totalPrice ? Number(r.totalPrice) : 0;
@@ -42,7 +41,6 @@ export class OwnerRepository {
 
         return {
             totalProperties,
-            availableCount,
             rentedCount,
             anticreticoCount,
             estimatedIncome,

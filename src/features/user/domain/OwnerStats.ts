@@ -1,6 +1,5 @@
 export interface OwnerStats {
     totalProperties: number;
-    availableCount: number;
     rentedCount: number;
     anticreticoCount: number;
     estimatedIncome: number; // sum of report.totalPrice for owner's properties
