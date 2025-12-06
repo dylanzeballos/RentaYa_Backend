@@ -5,12 +5,16 @@ export class ReviewRepository {
   async createReview(payload: {
     userId: string;
     propertyId: string;
+    reportId?: string;
     content?: string;
     rating: number;
   }): Promise<Review> {
     const data = {
-      ...payload,
+      userId: payload.userId,
+      propertyId: payload.propertyId,
+      reportId: payload.reportId || null,
       content: payload.content ?? "",
+      rating: payload.rating,
     };
     const created = await prisma.review.create({
       data,

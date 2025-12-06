@@ -32,11 +32,18 @@ export class ReportUseCase {
     
     const start = new Date(payload.startDate);
     const finish = new Date(payload.finishDate);
-    const diffMs = finish.getTime() - start.getTime();
-    const totalDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-    if (totalDays <= 0) {
-      throw new Error("Invalid date range");
+    
+    if (finish < start) {
+      throw new Error("End date cannot be before start date");
     }
+    
+    // Normalizar fechas a medianoche para cálculo correcto de días
+    start.setHours(0, 0, 0, 0);
+    finish.setHours(0, 0, 0, 0);
+    
+    // Calcular días inclusivos: si renta del 5 al 5 = 1 día, del 5 al 6 = 2 días
+    const diffMs = finish.getTime() - start.getTime();
+    const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24)) + 1;
 
     // Validar que no haya fechas superpuestas
     const hasOverlap = await this.reportRepository.hasOverlappingDates(

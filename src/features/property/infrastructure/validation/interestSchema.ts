@@ -10,6 +10,12 @@ export const createInterestSchema = z.object({
       .string()
       .max(500, "El mensaje no debe exceder los 500 caracteres")
       .optional(),
+    startDate: z
+      .string()
+      .datetime({ message: "startDate debe ser una fecha válida en formato ISO" }),
+    finishDate: z
+      .string()
+      .datetime({ message: "finishDate debe ser una fecha válida en formato ISO" }),
   }),
 });
 

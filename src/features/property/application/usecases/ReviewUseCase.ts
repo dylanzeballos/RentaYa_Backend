@@ -44,6 +44,7 @@ export class ReviewUseCase {
   async createReview(payload: {
     userId: string;
     propertyId: string;
+    reportId?: string;
     content: string;
     rating: number;
   }): Promise<ReviewDTO> {
