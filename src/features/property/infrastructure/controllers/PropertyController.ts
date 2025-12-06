@@ -4,6 +4,7 @@ import { ListPropertiesUseCase } from "../../application/usecases/ListProperties
 import { GetPropertyDetailUseCase } from "../../application/usecases/GetPropertyDetailUseCase";
 import { EditPropertyUseCase } from "../../application/usecases/EditPropertyUseCase";
 import { GetUserPropertiesUseCase } from "../../application/usecases/GetUserPropertiesUseCase";
+import { CheckPropertyAvailabilityUseCase } from "../../application/usecases/CheckPropertyAvailabilityUseCase";
 import { PropertyRepository } from "../repositories/PropertyRepository";
 import {
   createPropertySchema,
@@ -29,6 +30,7 @@ export class PropertyController {
   private getPropertyDetailUseCase: GetPropertyDetailUseCase;
   private editPropertyUseCase: EditPropertyUseCase;
   private getUserPropertiesUseCase: GetUserPropertiesUseCase;
+  private checkPropertyAvailabilityUseCase: CheckPropertyAvailabilityUseCase;
   private imageUploadService: ImageUploadService;
 
   constructor() {
@@ -42,6 +44,7 @@ export class PropertyController {
     this.getUserPropertiesUseCase = new GetUserPropertiesUseCase(
       propertyRepository
     );
+    this.checkPropertyAvailabilityUseCase = new CheckPropertyAvailabilityUseCase();
     this.imageUploadService = new ImageUploadService();
   }
 
@@ -312,6 +315,46 @@ export class PropertyController {
         success: true,
         message: "Property deleted successfully",
       });
+    }
+  );
+
+  checkAvailability: RequestHandler = asyncHandler(
+    async (req: Request, res: Response): Promise<void> => {
+      const { id } = req.params;
+      const { startDate, endDate } = req.query;
+
+      if (!id || !isValidUUID(id)) {
+        throw new AppError("Invalid property ID", 400);
+      }
+
+      let start: Date | undefined;
+      let end: Date | undefined;
+
+      if (startDate && typeof startDate === "string") {
+        start = new Date(startDate);
+        if (isNaN(start.getTime())) {
+          throw new AppError("Invalid start date format", 400);
+        }
+      }
+
+      if (endDate && typeof endDate === "string") {
+        end = new Date(endDate);
+        if (isNaN(end.getTime())) {
+          throw new AppError("Invalid end date format", 400);
+        }
+      }
+
+      if (start && end && start > end) {
+        throw new AppError("End date cannot be before start date", 400);
+      }
+
+      const result = await this.checkPropertyAvailabilityUseCase.execute(
+        id,
+        start,
+        end
+      );
+
+      res.status(200).json(ApiResponse.success(result, "Availability checked successfully"));
     }
   );
 }

@@ -1,4 +1,5 @@
 import cron from 'node-cron';
+import prisma from '@/config/prisma';
 
 export class CronService {
   private static instance: CronService;
@@ -51,8 +52,54 @@ export class CronService {
     });
   }
 
+  /**
+   * Actualiza el estado de los reports basándose en las fechas
+   * - "En curso" si startDate <= now < finishDate
+   * - "Terminado" si finishDate < now
+   * Se ejecuta cada hora
+   */
+  public startReportStatusUpdateJob(): void {
+    cron.schedule('0 * * * *', async () => {
+      try {
+        console.log('Actualizando estados de reports...');
+        const now = new Date();
+
+        // Actualizar reports "En curso" que ya terminaron
+        const finishedReports = await prisma.report.updateMany({
+          where: {
+            status: "En curso",
+            finishDate: {
+              lt: now,
+            },
+          },
+          data: {
+            status: "Terminado",
+          },
+        });
+
+        // Actualizar reports "Aceptado" que ya iniciaron a "En curso"
+        const startedReports = await prisma.report.updateMany({
+          where: {
+            status: "Aceptado",
+            startDate: {
+              lte: now,
+            },
+          },
+          data: {
+            status: "En curso",
+          },
+        });
+
+        console.log(`Reports actualizados: ${finishedReports.count} terminados, ${startedReports.count} iniciados`);
+      } catch (error) {
+        console.error('Error actualizando estados de reports:', error);
+      }
+    });
+  }
+
   public startAllJobs(): void {
     this.startKeepAliveJob();
     this.startCleanupJob();
+    this.startReportStatusUpdateJob();
   }
 }

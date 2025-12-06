@@ -131,6 +131,66 @@ router.get("/:id", propertyController.getPropertyDetail);
 
 /**
  * @swagger
+ * /api/properties/{id}/availability:
+ *   get:
+ *     summary: Check property availability
+ *     tags: [Properties]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Property ID
+ *       - in: query
+ *         name: startDate
+ *         schema:
+ *           type: string
+ *           format: date-time
+ *         description: Start date (ISO 8601)
+ *       - in: query
+ *         name: endDate
+ *         schema:
+ *           type: string
+ *           format: date-time
+ *         description: End date (ISO 8601)
+ *     responses:
+ *       200:
+ *         description: Availability status
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     isAvailable:
+ *                       type: boolean
+ *                     currentOccupancy:
+ *                       type: object
+ *                       properties:
+ *                         startDate:
+ *                           type: string
+ *                           format: date-time
+ *                         endDate:
+ *                           type: string
+ *                           format: date-time
+ *                         userId:
+ *                           type: string
+ *                         userName:
+ *                           type: string
+ *                     nextAvailableDate:
+ *                       type: string
+ *                       format: date-time
+ */
+router.get("/:id/availability", propertyController.checkAvailability);
+
+/**
+ * @swagger
  * /api/properties:
  *   post:
  *     summary: Create a new property

@@ -26,16 +26,22 @@ export class InterestController {
         throw new AppError("Usuario no autenticado", 401);
       }
 
-      const { propertyId, message } = req.body;
+      const { propertyId, message, startDate, finishDate } = req.body;
 
       if (!propertyId) {
         throw new AppError("propertyId es requerido", 400);
+      }
+
+      if (!startDate || !finishDate) {
+        throw new AppError("startDate y finishDate son requeridos", 400);
       }
 
       const interest = await this.createInterestUseCase.execute({
         userId,
         propertyId,
         message,
+        startDate: new Date(startDate),
+        finishDate: new Date(finishDate),
       });
 
       res

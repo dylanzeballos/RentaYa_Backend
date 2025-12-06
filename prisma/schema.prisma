@@ -123,6 +123,8 @@ model Interest {
   propertyId String    @db.Uuid
   message    String?
   status     String    @default("pendiente") @db.VarChar(20)
+  startDate  DateTime? @db.Timestamp(0)
+  finishDate DateTime? @db.Timestamp(0)
   createdAt  DateTime  @default(now()) @db.Timestamp(0)
   property   Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -167,14 +169,17 @@ model Review {
   id         BigInt   @id @default(autoincrement())
   userId     String   @db.Uuid
   propertyId String   @db.Uuid
+  reportId   String?  @db.Uuid
   content    String
   rating     Int
   createdAt  DateTime @default(now()) @db.Timestamp(0)
   property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  report     Report?  @relation(fields: [reportId], references: [id], onDelete: SetNull)
 
   @@index([userId])
   @@index([propertyId])
+  @@index([reportId])
   @@map("reviews")
 }
 
@@ -214,6 +219,7 @@ model Report {
   property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   interest    Interest?  @relation("InterestToReport", fields: [interestId], references: [id])
+  reviews  Review[]
 
   @@index([userId])
   @@index([propertyId])

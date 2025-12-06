@@ -8,10 +8,16 @@ export class ReportRepository {
     propertyId: string;
     interestId: string;
     status: string;
-    totalPrice: any;
+    totalPrice: number;
     startDate: Date;
     finishDate: Date;
   }): Promise<Report> {
+    console.log('[ReportRepository] Creating report with payload:', {
+      ...payload,
+      totalPrice: payload.totalPrice,
+      totalPriceType: typeof payload.totalPrice
+    });
+    
     return await prisma.report.create({
       data: payload,
     });
@@ -23,10 +29,24 @@ export class ReportRepository {
   }
 
   async acceptReport(interestId: string): Promise<Report> {
+    // Primero obtener el report para conocer la fecha de inicio
+    const existingReport = await prisma.report.findUnique({
+      where: { interestId: interestId },
+    });
+
+    if (!existingReport) {
+      throw new Error("Report not found");
+    }
+
+    // Determinar el estado basado en la fecha de inicio
+    const now = new Date();
+    const startDate = new Date(existingReport.startDate);
+    const status = startDate <= now ? "En curso" : "Aceptado";
+
     const report = await prisma.report.update({
       where: { interestId: interestId },
       data: {
-        status: "Aceptado",
+        status,
         uploadedAt: new Date(),
       },
     });

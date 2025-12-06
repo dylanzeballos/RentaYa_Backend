@@ -1,4 +1,5 @@
 import { InterestRepository } from "../../infrastructure/repositories/InterestRepository";
+import { ReportRepository } from "@/features/report/infrastructure/repositories/ReportRepository";
 import { NotificationUseCase } from "@/features/notification/application/usecases/NotificationUseCase";
 import { NotificationRepository } from "@/features/notification/infrastructure/repositories/NotificationRepository";
 import { emitNotificationToUsers } from "@/socket";
@@ -6,10 +7,12 @@ import { AppError } from "@/shared/domain/errors/AppError";
 
 export class UpdateInterestStatusUseCase {
   private interestRepository: InterestRepository;
+  private reportRepository: ReportRepository;
   private notificationUseCase: NotificationUseCase;
 
   constructor() {
     this.interestRepository = new InterestRepository();
+    this.reportRepository = new ReportRepository();
     const notificationRepository = new NotificationRepository();
     this.notificationUseCase = new NotificationUseCase(notificationRepository);
   }
@@ -48,6 +51,79 @@ export class UpdateInterestStatusUseCase {
       data.interestId,
       data.status,
     );
+
+    // Si se acepta el interest, crear el Report automáticamente
+    if (data.status === "aceptado") {
+      console.log(`[UpdateInterestStatus] Interest aceptado:`, {
+        interestId: interest.id,
+        startDate: interest.startDate,
+        finishDate: interest.finishDate,
+        hasStartDate: !!interest.startDate,
+        hasFinishDate: !!interest.finishDate
+      });
+
+      if (!interest.startDate || !interest.finishDate) {
+        console.error(`[UpdateInterestStatus] Error: Interest sin fechas`, {
+          interestId: interest.id,
+          startDate: interest.startDate,
+          finishDate: interest.finishDate
+        });
+        throw new AppError(
+          "El interés no tiene fechas definidas. No se puede crear el reporte.",
+          400
+        );
+      }
+
+      // Calcular el total de días
+      // start: 00:00:00 del día inicial
+      // finish: 23:59:59 del día final
+      // Del 5 al 5 = 1 día completo
+      const start = new Date(interest.startDate);
+      const finish = new Date(interest.finishDate);
+      
+      const diffMs = finish.getTime() - start.getTime();
+      let days = Math.ceil(diffMs / (1000 * 60 * 60 * 24)); // Redondear hacia arriba
+      
+      // Si las fechas son exactamente iguales (00:00:00), es 0 días según el cálculo
+      // pero debería ser al menos 1 día
+      if (days === 0) {
+        days = 1;
+      }
+      
+      const pricePerDay = Number(property.price);
+      if (isNaN(pricePerDay) || pricePerDay <= 0) {
+        throw new AppError("El precio de la propiedad no es válido", 400);
+      }
+      
+      const totalPrice = pricePerDay * days;
+
+      console.log(`[UpdateInterestStatus] Cálculo de días:`, {
+        startDate: start.toISOString(),
+        finishDate: finish.toISOString(),
+        diffMs,
+        days,
+        pricePerDay,
+        totalPrice,
+        propertyPriceType: typeof property.price,
+        propertyPrice: property.price
+      });
+
+      // Crear el Report
+      const report = await this.reportRepository.createReport({
+        userId: user.id,
+        propertyId: property.id,
+        interestId: interest.id,
+        startDate: interest.startDate,
+        finishDate: interest.finishDate,
+        totalPrice,
+        status: "Aceptado",
+      });
+
+      console.log(`[UpdateInterestStatus] Report creado exitosamente:`, {
+        reportId: report.id,
+        totalPrice
+      });
+    }
 
     try {
       const propertyTitle = property.title;

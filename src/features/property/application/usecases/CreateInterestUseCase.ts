@@ -21,6 +21,8 @@ export class CreateInterestUseCase {
     userId: string;
     propertyId: string;
     message?: string;
+    startDate: Date;
+    finishDate: Date;
   }) {
     const property = await this.propertyRepository.getPropertyById(
       data.propertyId,
@@ -36,9 +38,25 @@ export class CreateInterestUseCase {
       );
     }
 
+    // Validar que las fechas no se traslapen con otros interests/reports activos
+    const hasConflict = await this.interestRepository.hasDateConflict(
+      data.propertyId,
+      data.startDate,
+      data.finishDate
+    );
+
+    if (hasConflict) {
+      throw new AppError(
+        "Las fechas seleccionadas no están disponibles. Ya existe una solicitud o renta activa en este periodo.",
+        409
+      );
+    }
+
     const interestData: any = {
       userId: data.userId,
       propertyId: data.propertyId,
+      startDate: data.startDate,
+      finishDate: data.finishDate,
     };
     if (data.message) {
       interestData.message = data.message;
